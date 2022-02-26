@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_home"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_fsl_wotd"
+            app:destination="@id/nav_fsl_wotd"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_fsl_wotd"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_fsl_wotd"
+        android:label="@string/menu_fsl_wotd"
+        tools:layout="@layout/fragment_fsl_wotd" />
+    <fragment
+        android:id="@+id/nav_learn"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_learn"
+        android:label="@string/menu_learn"
+        tools:layout="@layout/fragment_learn" />
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_favorites"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <activity
+        android:id="@+id/act_recognize"
+        android:name="com.artemis.ispeaksigns.Recognize"
+        android:label="@string/act_recognize"
+        tools:layout="@layout/activity_recognize" />
+
+</navigation>

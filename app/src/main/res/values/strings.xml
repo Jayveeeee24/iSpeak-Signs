@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">iSpeak Signs</string>
+
+    <string name="nav_header_subtitle">Gender and Development Unit</string>
+
+
+    <!--    strings for menus/fragments-->
+    <string name="menu_home">Home</string>
+    <string name="menu_learn_label">Matuto</string>
+    <string name="menu_learn">Mag-Aral</string>
+    <string name="menu_fsl_wotd">FSL - Salita Ngayong Araw</string>
+    <string name="menu_favorites">Mga Paborito</string>
+    <string name="act_recognize">Rekognisyon</string>
+
+    <!--    Strings for TextViews-->
+    <string name="home_greeting1_label">Kumusta,</string>
+
+
+    <!--    strings for editText Search bar-->
+    <string name="edit_text_hint"><font size="14">Humanap ng Kategorya</font></string>
+    <string name="edit_text_hint_learn"><font size="14">Humanap ng mga FSL na salita</font></string>
+
+
+    <!--    strings for descriptions and labels-->
+    <string name="nav_header_image_desc">iSpeak Signs Logo</string>
+    <string name="toolbar_image_desc">Cavite State University Logo</string>
+    <string name="fab_recognize_desc">Rekognisyon</string>
+    <string name="fsl_see_more_label">TINGNAN</string>
+    <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
+</resources>

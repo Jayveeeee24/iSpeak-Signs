@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_menu_favorites"
+            android:title="@string/menu_favorites"/>
+
+        <item android:title="@string/menu_learn_label"
+            android:id="@+id/learn_label">
+            <menu>
+                <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/nav_fsl_wotd"
+                        android:icon="@drawable/ic_menu_fsl_wotd"
+                        android:title="@string/menu_fsl_wotd"/>
+
+                    <item
+                        android:id="@+id/nav_learn"
+                        android:icon="@drawable/ic_menu_learn"
+                        android:title="@string/menu_learn"/>
+
+                    <item
+                        android:id="@+id/act_recognize"
+                        android:icon="@drawable/ic_fab_camera"
+                        android:title="@string/act_recognize"/>
+                </group>
+
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

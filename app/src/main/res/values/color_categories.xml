@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    colors for categories-->
+    <color name="carmine_pink">#f05134</color>
+    <color name="dark_cyan">#029688</color>
+    <color name="auburn">#a12324</color>
+    <color name="persian_red">#d32f2e</color>
+    <color name="japanese_indigo">#20384f</color>
+    <color name="jungle_green">#26a499</color>
+    <color name="bright_navy_blue">#1975d3</color>
+</resources>
