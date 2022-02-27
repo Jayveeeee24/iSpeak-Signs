@@ -25,6 +25,7 @@
     <string name="nav_header_image_desc">iSpeak Signs Logo</string>
     <string name="toolbar_image_desc">Cavite State University Logo</string>
     <string name="fab_recognize_desc">Rekognisyon</string>
-    <string name="fsl_see_more_label">TINGNAN</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
+    <string name="label_see_more">TINGNAN LAHAT</string>
+    <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salitang maaari mong matutunan</string>
 </resources>

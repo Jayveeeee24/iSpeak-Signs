@@ -15,6 +15,9 @@
             app:destination="@id/nav_fsl_wotd"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"/>
+        <action
+            android:id="@+id/action_nav_home_to_nav_learn"
+            app:destination="@id/nav_learn"/>
     </fragment>
     <fragment
         android:id="@+id/nav_fsl_wotd"

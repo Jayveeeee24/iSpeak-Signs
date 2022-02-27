@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/categoryParent"
     android:layout_width="100dp"
-    android:layout_height="138dp"
+    android:layout_height="145dp"
     android:clickable="true"
     android:focusable="true"
     app:cardElevation="0dp">
@@ -59,8 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/imageParent"
             android:gravity="center"
-            android:text="Alpabeto"
-            android:textColor="#303030"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/black_bg"
+            android:text="Mga\nAlpabeto"
             android:textSize="15sp" />
 
     </RelativeLayout>

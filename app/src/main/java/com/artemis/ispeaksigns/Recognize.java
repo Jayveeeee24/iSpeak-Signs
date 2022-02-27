@@ -21,7 +21,7 @@ public class Recognize extends AppCompatActivity {
         txthatdog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Recognize.super.onBackPressed();
+                finish();
             }
         });
     }

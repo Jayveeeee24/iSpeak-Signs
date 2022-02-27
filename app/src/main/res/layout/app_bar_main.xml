@@ -86,7 +86,6 @@
                     android:drawableTint="@color/colorPrimaryVariant"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="5dp"
-                    android:fontFamily="@font/nunito"
                     android:hint="@string/edit_text_hint"
                     android:importantForAutofill="no"
                     android:inputType="text"

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         ///////Definitions
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
-        TextView txtHomeGreeting1 = (TextView) findViewById(R.id.txtHomeGreeting1);
-        TextView txtHomeGreeting2 = (TextView) findViewById(R.id.txtHomeGreeting2);
+        TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
+        TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
         mAppbarLayout = findViewById(R.id.appbar_layout);
         EditText editSearch = findViewById(R.id.editSearch);
         Toolbar mtoolbar = findViewById(R.id.toolbar);
@@ -77,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.act_recognize)
                 .setOpenableLayout(drawer)
                 .build();
+        NavOptions.Builder navBuilder = new NavOptions.Builder();
+        navBuilder.setEnterAnim(android.R.anim.slide_in_left)
+                .setExitAnim(android.R.anim.slide_out_right)
+                .setPopEnterAnim(android.R.anim.slide_in_left)
+                .setPopExitAnim(android.R.anim.slide_out_right);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

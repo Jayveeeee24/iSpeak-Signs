@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:id="@+id/recyclerCard"
             android:layout_below="@id/fsl_card"
-            app:cardCornerRadius="5dp"
+            android:id="@+id/recyclerCard"
+            app:cardCornerRadius="0dp"
             app:cardElevation="5dp">
 
             <RelativeLayout
@@ -44,29 +44,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_learn"
+                        android:fontFamily="@font/nunito_bold"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtSeeMore"
-                        android:text="TINGNAN LAHAT"
+                        android:id="@+id/txtHomeLearnSeeMore"
+                        android:text="@string/label_see_more"
                         android:textStyle="bold"
                         android:layout_marginTop="3dp"
                         android:layout_alignParentEnd="true"
                         android:textSize="14sp"
-                        android:textColor="@color/colorPrimary"
                         android:clickable="true"
-                        android:focusable="true"/>
+                        android:padding="1dp"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/text_clicked_bg"
+                        android:focusable="true" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtLearnLabel"
-                        android:text="Tuklasin ang iba't ibang salitang maaaari mong matutunan"
+                        android:text="@string/home_learn_category_description"
                         android:textColor="@color/gray"
-                        android:textSize="14sp"/>
+                        android:textSize="15sp"/>
 
 
                 </RelativeLayout>
@@ -76,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/learnRecycler"
                     android:layout_below="@id/learnLabelContainer"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"/>
             </RelativeLayout>
 
