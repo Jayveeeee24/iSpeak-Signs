@@ -6,19 +6,21 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/fsl_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="5dp"
-        android:id="@+id/fsl_card">
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="3dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:paddingStart="15dp"
+            android:paddingTop="10dp"
             android:paddingEnd="15dp"
             android:paddingBottom="10dp">
 
@@ -30,8 +32,8 @@
                 android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
                 android:text="@string/menu_fsl_wotd"
-                android:textSize="20sp"
                 android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +43,7 @@
                 android:id="@+id/card_fsl_resource"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,11 +51,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_fsl_label">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/home_fsl_card_bg"
-                    android:tint="@color/colorPrimary"
                     android:id="@+id/fsl_card_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="110dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/fsl_card_bg"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -62,17 +65,17 @@
                     android:layout_gravity="end|top"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="10dp"
-                    android:tint="@color/white"
                     android:clickable="true"
+                    android:contentDescription="Heart"
                     android:focusable="true"
                     android:src="@drawable/ic_favorites_outline"
-                    android:contentDescription="Heart" />
+                    android:tint="@color/white" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:backgroundTint="@android:color/transparent">
+                    android:backgroundTint="@android:color/transparent"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/txt_home_fsl_name"
@@ -85,15 +88,17 @@
                         android:textSize="24sp" />
 
                     <TextView
+                        android:id="@+id/txt_home_fsl_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_home_fsl_name"
                         android:layout_marginTop="8dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="3dp"
                         android:fontFamily="@font/nunito"
-                        android:id="@+id/txt_home_fsl_desc"
                         android:singleLine="false"
                         android:text="- Kunwari ito ang meaning nya pero joke lang yon"
-                        android:textColor="@color/white"
+                        android:textColor="@color/white_bg"
                         android:textSize="16sp" />
 
 

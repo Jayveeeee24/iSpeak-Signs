@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="235dp"
             android:background="@drawable/appbar_bg"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="#4cb050"
             app:expandedTitleTextColor="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:scrimAnimationDuration="300">

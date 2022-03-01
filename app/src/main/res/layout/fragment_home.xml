@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main_fragments.nav_home">
-<!--    android:background="@color/white_bg"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,12 +19,14 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
             android:layout_below="@id/fsl_card"
             android:id="@+id/recyclerCard"
-            app:cardCornerRadius="0dp"
-            app:cardElevation="5dp">
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -41,9 +42,10 @@
 
                     <TextView
                         android:id="@+id/txtLearnLabel"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_learn"
+                        android:layout_alignParentStart="true"
                         android:fontFamily="@font/nunito_bold"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>
@@ -69,7 +71,7 @@
                         android:layout_below="@+id/txtLearnLabel"
                         android:text="@string/home_learn_category_description"
                         android:textColor="@color/gray"
-                        android:textSize="15sp"/>
+                        android:textSize="14sp"/>
 
 
                 </RelativeLayout>

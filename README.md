@@ -14,3 +14,7 @@ v1.0r17 2/28
 - created a navigation for learn see more in home 
 - imported some of the category logo for learn
 
+
+v1.0r18 3/01
+- Edited the app logo
+- created the splash screen loading

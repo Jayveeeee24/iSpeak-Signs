@@ -2,6 +2,7 @@ package com.artemis.ispeaksigns;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
@@ -78,11 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.act_recognize)
                 .setOpenableLayout(drawer)
                 .build();
-        NavOptions.Builder navBuilder = new NavOptions.Builder();
-        navBuilder.setEnterAnim(android.R.anim.slide_in_left)
-                .setExitAnim(android.R.anim.slide_out_right)
-                .setPopEnterAnim(android.R.anim.slide_in_left)
-                .setPopExitAnim(android.R.anim.slide_out_right);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

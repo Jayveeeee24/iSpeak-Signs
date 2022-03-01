@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.Navigation;
 
 import android.app.Activity;
