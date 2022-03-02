@@ -59,7 +59,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Kamusta,"
+                    android:text="@string/home_greeting1_label"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -70,7 +70,7 @@
                     android:layout_below="@+id/txtHomeGreeting1"
                     android:layout_marginStart="25dp"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Magandang umaga sa iyo"
+                    android:text="@string/learn_greeting1_label"
                     android:textColor="@color/white"
                     android:textSize="18sp"/>
 

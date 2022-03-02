@@ -45,10 +45,11 @@ public class nav_home extends Fragment  {
         RecyclerView learnRecView = view.findViewById(R.id.learnRecycler);
         ArrayList<LearnCategoryItem> learnCategoryItems = new ArrayList<>();
 
+        //TODO change this into database dependent resources
        String[] imageUrls = new String[]
                {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_pamilya"};
        String [] bgColors = new String[]
-               {"dark_cyan", "japanese_indigo", "carmine_pink", "auburn", "jungle_green"};
+               {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
 
        int[] images = new int[]
                {

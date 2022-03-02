@@ -16,15 +16,6 @@ public class Recognize extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recognize);
-
-        TextView txthatdog = findViewById(R.id.txthatdog);
-        txthatdog.setText("Hatdog");
-        txthatdog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
 }

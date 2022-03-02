@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.nav_home">
+    tools:context=".main_fragments.nav_home"
+    android:background="@color/white_bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,6 +87,14 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/recyclerCard"
+            layout="@layout/video_category_item"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"/>
 
     </RelativeLayout>
 
