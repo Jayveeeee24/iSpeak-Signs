@@ -1,39 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.nav_fsl_wotd"
-    android:background="@color/white_bg">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white_bg"
+    tools:context=".main_fragments.nav_fsl_wotd">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
+            android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btnHatdog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hatdog"
-                android:layout_centerInParent="true"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
-                android:clickable="true"
-                android:focusable="true"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:id="@+id/image"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                />
+                android:layout_centerHorizontal="true"
+                app:contentPadding="50dp"
+                android:backgroundTint="@color/colorPrimaryVariant"
+                android:layout_marginBottom="5sp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_buwan"
+                    android:tint="@color/white"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_marginTop="-10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtName"
+                android:text="A"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/image"
+                android:textSize="50sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paglalarawan ng salita sa FSL"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/image"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/txtName"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtName"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="500dp"/>
         </RelativeLayout>
-    </ScrollView>
 
-</RelativeLayout>
+</ScrollView>

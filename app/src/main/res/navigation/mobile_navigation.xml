@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_learn"
             app:destination="@id/nav_learn"/>
+        <action
+            android:id="@+id/action_nav_home_to_learn_category_word"
+            app:destination="@id/learn_category_word" />
     </fragment>
     <fragment
         android:id="@+id/nav_fsl_wotd"
@@ -36,8 +39,13 @@
         tools:layout="@layout/fragment_favorites" />
     <activity
         android:id="@+id/act_recognize"
-        android:name="com.artemis.ispeaksigns.Recognize"
+        android:name="com.artemis.ispeaksigns.RecognizeActivity"
         android:label="@string/act_recognize"
         tools:layout="@layout/activity_recognize" />
+    <fragment
+        android:id="@+id/learn_category_word"
+        android:name="com.artemis.ispeaksigns.sub_fragments.learn_category_word"
+        android:label="@string/learn_category_word"
+        tools:layout="@layout/fragment_learn_category_word" />
 
 </navigation>

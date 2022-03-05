@@ -47,7 +47,7 @@ public class nav_home extends Fragment  {
 
         //TODO change this into database dependent resources
        String[] imageUrls = new String[]
-               {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_pamilya"};
+               {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"};
        String [] bgColors = new String[]
                {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
 
@@ -94,6 +94,7 @@ public class nav_home extends Fragment  {
         ImageView image_favorite = view.findViewById(R.id.image_favorite);
         CardView card_fsl_resource = view.findViewById(R.id.card_fsl_resource);
         TextView home_learn_see_more = view.findViewById(R.id.txtHomeLearnSeeMore);
+        TextView txt_home_fsl_name = view.findViewById(R.id.txt_home_fsl_name);
 
         image_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,19 +126,27 @@ public class nav_home extends Fragment  {
         card_fsl_resource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_fsl_wotd);
+                Bundle bundle = new Bundle();
+                bundle.putString("fsl_wotd", txt_home_fsl_name.getText().toString());
+                NavOptions.Builder navBuilder = new NavOptions.Builder();
+                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                        .setExitAnim(R.anim.nav_default_exit_anim)
+                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_fsl_wotd, bundle, navBuilder.build());
             }
         });
 
         home_learn_see_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(android.R.anim.slide_in_left)
                         .setExitAnim(android.R.anim.slide_out_right)
                         .setPopEnterAnim(android.R.anim.slide_in_left)
                         .setPopExitAnim(android.R.anim.slide_out_right);
-                NavHostFragment.findNavController(nav_home.this).navigate(R.id.action_nav_home_to_nav_learn, null, navBuilder.build());
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_learn, null, navBuilder.build());
             }
         });
     }

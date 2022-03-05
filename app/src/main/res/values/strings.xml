@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">iSpeak Signs</string>
-
     <string name="nav_header_subtitle">Gender and Development Unit</string>
-
 
     <!--    strings for menus/fragments-->
     <string name="menu_home">Home</string>
@@ -12,9 +10,15 @@
     <string name="menu_favorites">Mga Paborito</string>
     <string name="act_recognize">Rekognisyon</string>
 
+    <string name="fsl_label">Salita Ngayong Araw</string>
+
+    <!--    strings for fragments that are not in menus-->
+    <string name="learn_category_word">Hayop</string>
+
     <!--    Strings for TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>
-
+    <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
+    <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salitang maaari mong matutunan</string>
 
     <!--    strings for editText Search bar-->
     <string name="edit_text_hint"><font size="14">Humanap ng Kategorya</font></string>
@@ -25,7 +29,11 @@
     <string name="nav_header_image_desc">iSpeak Signs Logo</string>
     <string name="toolbar_image_desc">Cavite State University Logo</string>
     <string name="fab_recognize_desc">Rekognisyon</string>
-    <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
     <string name="label_see_more">TINGNAN LAHAT</string>
-    <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salitang maaari mong matutunan</string>
+    <string name="heart_label">Puso</string>
+
+    <!--    Strings for Greetings-->
+    <string name="morning_label">Magandang umaga sa iyo</string>
+    <string name="afternoon_label">Magandang hapon sa iyo</string>
+    <string name="night_label">Magandang gabi sa iyo</string>
 </resources>

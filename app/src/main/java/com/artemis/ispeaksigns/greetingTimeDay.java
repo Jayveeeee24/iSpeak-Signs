@@ -1,10 +1,12 @@
 package com.artemis.ispeaksigns;
 
+import android.content.Context;
+import com.artemis.ispeaksigns.R;
 import java.util.Calendar;
 
 public class greetingTimeDay {
 
-    public String getGreeting()
+    public String getGreeting(Context context)
     {
         String greeting = "";
         int currentTime = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
@@ -12,16 +14,16 @@ public class greetingTimeDay {
         {
             if (currentTime == 0)
             {
-                greeting = "Magandang gabi sa iyo";
+                greeting = context.getString(R.string.night_label);//night
             }else {
-                greeting = "Magandang umaga sa iyo";
+                greeting = context.getString(R.string.morning_label);//morning
             }
         }else if (currentTime <=17)
         {
-            greeting = "Magandang hapon sa iyo";
+            greeting = context.getString(R.string.afternoon_label);//afternoon
         }
         else {
-            greeting = "Magandang gabi sa iyo";
+            greeting = context.getString(R.string.night_label);//night
         }
 
         return greeting;
