@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.ISpeakSigns.AppBarOverlay"
         app:liftOnScroll="true"
-        android:backgroundTint="@color/white_bg">
+        android:backgroundTint="@android:color/transparent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapseToolbar"

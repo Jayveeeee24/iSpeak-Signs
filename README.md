@@ -2,13 +2,17 @@
 
 DEBUG NOTES
 
+v1.0r21 3/06
+- added fragments for Mini game, cvsu m&v with their respective menus
+
+
 v1.0r20 3/05
 - edited animations and strings bundle arguments for fragment communication
 - Refactored most of the classes (MainActivity, nav_home, SplashActivity, etc.)
 - created a new fragment for learn category item
 
 v1.0r19 3/02
-- Initialized Video Category
+- Initialized Video Category List
 - Finalized app logo icon
 - added category colors
 

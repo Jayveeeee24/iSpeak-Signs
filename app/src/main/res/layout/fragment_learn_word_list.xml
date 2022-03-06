@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg"
+    tools:context=".sub_fragments.learn_word_list">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/learnProgressCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:backgroundTint="@android:color/transparent"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="1dp"
+                app:contentPadding="15sp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/categoryImageCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/golden_puppy"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/categoryImage"
+                            android:layout_width="115dp"
+                            android:tint="@color/white"
+                            android:layout_height="85dp"
+                            android:padding="15sp"
+                            android:src="@drawable/ic_buwan" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/txtProgressCardLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/categoryImageCard"
+                        android:text="Simulan nang matuto!"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtProgressCardLabel"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/categoryImageCard"
+                        android:text="Salitang natuklasan"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/txtProgressPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtProgressCardLabel"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:text="0/25"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progressHorizontalLearn"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/txtProgressPercent"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/categoryImageCard"
+                        android:max="100"
+                        android:progress="90" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

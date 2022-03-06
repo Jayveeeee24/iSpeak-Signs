@@ -5,8 +5,7 @@
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.nav_home"
-    android:background="@color/white_bg">
+    tools:context=".main_fragments.nav_home">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_nav_home_to_learn_category_word"
             app:destination="@id/learn_category_word" />
+        <action
+            android:id="@+id/action_nav_home_to_learn_category_video"
+            app:destination="@id/learn_category_video" />
     </fragment>
     <fragment
         android:id="@+id/nav_fsl_wotd"
@@ -44,8 +47,25 @@
         tools:layout="@layout/activity_recognize" />
     <fragment
         android:id="@+id/learn_category_word"
-        android:name="com.artemis.ispeaksigns.sub_fragments.learn_category_word"
+        android:name="com.artemis.ispeaksigns.sub_fragments.learn_word_list"
         android:label="@string/learn_category_word"
-        tools:layout="@layout/fragment_learn_category_word" />
+        tools:layout="@layout/fragment_learn_word_list" />
+    <fragment
+        android:id="@+id/learn_category_video"
+        android:name="com.artemis.ispeaksigns.sub_fragments.learn_video_list"
+        android:label="@string/learn_category_video"
+        tools:layout="@layout/fragment_learn_video_list" />
+    <fragment
+        android:id="@+id/nav_cvsu"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_cvsu"
+        android:label="@string/menu_cvsu"
+        tools:layout="@layout/fragment_cvsu" />
+    <fragment
+        android:id="@+id/nav_mini_game"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_mini_game"
+        android:label="@string/menu_mini_game"
+        tools:layout="@layout/fragment_mini_game" />
+
+    <!--TODO create fragments for about, profile-->
 
 </navigation>

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
-import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,10 +20,8 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ///////Definitions
+        ///////Variable Definitions and Initializations
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
         TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
@@ -50,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         greetingTimeDay greeting = new greetingTimeDay();
         collapseToolbar = findViewById(R.id.collapseToolbar);
+        FloatingActionButton mainFab = findViewById(R.id.fab);
         //////End of Definitions
 
-        FloatingActionButton mainFab = findViewById(R.id.fab);
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_learn,
                 R.id.nav_fsl_wotd,
                 R.id.nav_favorites,
-                R.id.act_recognize)
+                R.id.act_recognize,
+                R.id.nav_cvsu,
+                R.id.nav_mini_game)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -81,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
             editSearch.setVisibility(View.VISIBLE);
             mainFab.setVisibility(View.INVISIBLE);
 
+            mtoolbar.setNavigationIcon(R.drawable.ic_back);
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+
             if (navDestination.getId() == R.id.nav_home) {
                 drawer.closeDrawer(GravityCompat.START);
                 txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label));
@@ -91,13 +99,19 @@ public class MainActivity extends AppCompatActivity {
                 toolbarImage1.setVisibility(View.VISIBLE);
 
                 setExpandedEnabled(true);
-                setToolbarSetup(true);
 
                 mainFab.setVisibility(View.VISIBLE);
+                mtoolbar.setNavigationIcon(R.drawable.ic_menu);
+                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        drawer.openDrawer(GravityCompat.START);
+                    }
+                });
             }
             else if (navDestination.getId() == R.id.nav_fsl_wotd) {
                 setExpandedEnabled(false);
-                setToolbarSetup(false);
             }
             else if (navDestination.getId() == R.id.nav_learn) {
                 txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
@@ -108,45 +122,28 @@ public class MainActivity extends AppCompatActivity {
                 toolbarImage1.setVisibility(View.INVISIBLE);
 
                 setExpandedEnabled(true);
-                setToolbarSetup(false);
             }
             else if (navDestination.getId() == R.id.nav_favorites) {
                 toolbarImage1.setVisibility(View.INVISIBLE);
                 editSearch.setVisibility(View.INVISIBLE);
 
                 setExpandedEnabled(true);
-                setToolbarSetup(true);
             }
             else if (navDestination.getId() == R.id.learn_category_word){
                 setExpandedEnabled(false);
-                setToolbarSetup(false);
+            }
+            else if (navDestination.getId() == R.id.learn_category_video){
+                setExpandedEnabled(false);
+            }
+            else if (navDestination.getId() == R.id.nav_cvsu){
+                setExpandedEnabled(false);
+            }
+            else if (navDestination.getId() == R.id.nav_mini_game){
+                setExpandedEnabled(false);
             }
         });
     }
 
-    public void setToolbarSetup(boolean isMenu)
-    {
-        //This setups the toolbar icon menu to either menu or back function
-        if (isMenu) {
-            mtoolbar.setNavigationIcon(R.drawable.ic_menu);
-            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    drawer.openDrawer(GravityCompat.START);
-                }
-            });
-        }else {
-            mtoolbar.setNavigationIcon(R.drawable.ic_back);
-            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
-        }
-    }
 
     public void setExpandedEnabled(boolean isEnabled)
     {

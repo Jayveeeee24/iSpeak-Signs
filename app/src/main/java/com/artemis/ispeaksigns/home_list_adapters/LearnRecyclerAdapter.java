@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class LearnRecyclerAdapter extends RecyclerView.Adapter<LearnRecyclerAdapter.ViewHolder>{
 
     private ArrayList<LearnCategoryItem> learnCategoryItems = new ArrayList<>();
-    Fragment fragment;
     public LearnRecyclerAdapter() {
     }
 
@@ -80,6 +79,7 @@ public class LearnRecyclerAdapter extends RecyclerView.Adapter<LearnRecyclerAdap
         RelativeLayout imageBg;
         ProgressBar progressCategory;
         ImageView imageCategory;
+
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             txtCategoryName = itemView.findViewById(R.id.txtCategoryName);

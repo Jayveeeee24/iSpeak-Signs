@@ -9,11 +9,17 @@
     <string name="menu_fsl_wotd">FSL - Salita Ngayong Araw</string>
     <string name="menu_favorites">Mga Paborito</string>
     <string name="act_recognize">Rekognisyon</string>
+    <string name="menu_cvsu">CvSU - Misyon at Bisyon</string>
+    <string name="menu_mini_game">Laro</string>
+    <string name="menu_setting_label">Mga Settings</string>
 
+    <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>
+    <string name="learn_word_title_set">Mag aral ng </string>
 
     <!--    strings for fragments that are not in menus-->
     <string name="learn_category_word">Hayop</string>
+    <string name="learn_category_video">Hatdog Video</string>
 
     <!--    Strings for TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>

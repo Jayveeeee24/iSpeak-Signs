@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_home"
-            android:title="@string/menu_home" />
+            android:title="@string/menu_home"/>
 
         <item
             android:id="@+id/nav_favorites"
@@ -18,26 +18,51 @@
             android:id="@+id/learn_label">
             <menu>
                 <group android:checkableBehavior="single">
-
                     <item
                         android:id="@+id/nav_fsl_wotd"
                         android:icon="@drawable/ic_menu_fsl_wotd"
                         android:title="@string/menu_fsl_wotd"/>
-
                     <item
                         android:id="@+id/nav_learn"
                         android:icon="@drawable/ic_menu_learn"
                         android:title="@string/menu_learn"/>
-
                     <item
                         android:id="@+id/act_recognize"
                         android:icon="@drawable/ic_fab_camera"
                         android:title="@string/act_recognize"/>
+                    <item
+                        android:id="@+id/nav_cvsu"
+                        android:icon="@drawable/ic_menu_cvsu_logo"
+                        android:title="@string/menu_cvsu"/>
+                    <item
+                        android:id="@+id/nav_mini_game"
+                        android:icon="@drawable/ic_menu_mini_game"
+                        android:title="@string/menu_mini_game"/>
                 </group>
 
             </menu>
+
         </item>
+
+        <!--TODO create menus for settings (dark mode toggle, language selection), profile, about pages-->
 
     </group>
 
 </menu>
+
+<!--<item android:title="@string/menu_setting_label"-->
+<!--android:id="@+id/setting_label">-->
+
+<!--<menu>-->
+
+<!--    <group android:checkableBehavior="all">-->
+
+<!--        <item-->
+<!--            android:id="@+id/toggle_dark"-->
+<!--            android:icon=""/>-->
+
+<!--    </group>-->
+
+<!--</menu>-->
+
+<!--</item>-->
