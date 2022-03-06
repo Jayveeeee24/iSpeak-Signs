@@ -12,6 +12,9 @@
     <string name="menu_cvsu">CvSU - Misyon at Bisyon</string>
     <string name="menu_mini_game">Laro</string>
     <string name="menu_setting_label">Mga Settings</string>
+    <string name="menu_darkmode_label">Dark Mode</string>
+    <string name="menu_language_label">Lenguwahe</string>
+    <string name="menu_about">Tungkol</string>
 
     <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>
@@ -24,12 +27,11 @@
     <!--    Strings for TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
-    <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salitang maaari mong matutunan</string>
+    <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salita na maaari mong matutunan</string>
 
     <!--    strings for editText Search bar-->
-    <string name="edit_text_hint"><font size="14">Humanap ng Kategorya</font></string>
-    <string name="edit_text_hint_learn"><font size="14">Humanap ng mga FSL na salita</font></string>
-
+    <string name="edit_text_hint">Humanap ng kategorya</string>
+    <string name="edit_text_hint_learn"><font size="10">Humanap ng mga FSL na salita</font></string>
 
     <!--    strings for descriptions and labels-->
     <string name="nav_header_image_desc">iSpeak Signs Logo</string>

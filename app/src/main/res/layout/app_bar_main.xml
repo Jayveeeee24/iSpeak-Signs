@@ -74,27 +74,44 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"/>
 
-                <EditText
-                    android:id="@+id/editSearch"
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editSearchParent"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentBottom="true"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/search_bg"
-                    android:drawableTint="@color/colorPrimaryVariant"
-                    android:drawableStart="@drawable/ic_search"
-                    android:drawablePadding="5dp"
-                    android:hint="@string/edit_text_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:singleLine="true"
-                    android:textColor="#535353"
-                    android:textColorHint="#6C6C6C"
-                    android:textSize="16sp" />
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:singleLine="true">
+
+                    <EditText
+                        android:id="@+id/editSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@null"
+                        android:drawableTint="@color/colorPrimaryVariant"
+                        android:drawableStart="@drawable/ic_search"
+                        android:drawablePadding="5dp"
+                        android:hint="@string/edit_text_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:singleLine="true"
+                        android:textColorHint="#535353"
+                        android:textColor="#535353"
+                        android:textSize="15sp"/>
+
+                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
 

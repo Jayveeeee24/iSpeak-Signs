@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
+            app:cardElevation="3dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="3dp"
             app:cardCornerRadius="3dp">
@@ -127,6 +128,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="3dp"
             android:layout_below="@id/fsl_card"
+            app:cardElevation="3dp"
             android:id="@+id/recyclerCard"
             app:cardCornerRadius="3dp">
 
@@ -149,8 +151,7 @@
                         android:text="@string/menu_learn"
                         android:layout_alignParentStart="true"
                         android:fontFamily="@font/nunito_bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"/>
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,7 +173,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtLearnLabel"
                         android:text="@string/home_learn_category_description"
-                        android:textColor="@color/gray"
                         android:textSize="14sp"/>
 
 
@@ -192,6 +192,7 @@
         <!-- TODO change the below include into an actual recycler view -->
 
         <include
+            android:id="@+id/videoCard"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_below="@id/recyclerCard"

@@ -2,7 +2,10 @@ package com.artemis.ispeaksigns;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,17 +14,25 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,9 +41,14 @@ public class MainActivity extends AppCompatActivity {
     public Toolbar mtoolbar;
     public CollapsingToolbarLayout collapseToolbar;
     private DrawerLayout drawer;
+    private SwitchCompat drawerSwitch;
+    int NightMode;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -42,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
         mAppbarLayout = findViewById(R.id.appbar_layout);
         EditText editSearch = findViewById(R.id.editSearch);
+        CardView editSearchParent = findViewById(R.id.editSearchParent);
         mtoolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -73,11 +90,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
+        drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
+
         //Destination Listener setup
         navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
             //this changes the toolbar title as it has a bug of displaying only "home" title
             collapseToolbar.setTitle(navDestination.getLabel());
             editSearch.setVisibility(View.VISIBLE);
+            editSearchParent.setVisibility(View.VISIBLE);
             mainFab.setVisibility(View.INVISIBLE);
 
             mtoolbar.setNavigationIcon(R.drawable.ic_back);
@@ -126,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
             else if (navDestination.getId() == R.id.nav_favorites) {
                 toolbarImage1.setVisibility(View.INVISIBLE);
                 editSearch.setVisibility(View.INVISIBLE);
+                editSearchParent.setVisibility(View.INVISIBLE);
 
                 setExpandedEnabled(true);
             }
@@ -144,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void restartApp()
+    {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
+    }
 
     public void setExpandedEnabled(boolean isEnabled)
     {

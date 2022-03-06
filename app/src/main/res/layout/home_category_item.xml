@@ -61,7 +61,6 @@
             android:layout_below="@id/imageParent"
             android:gravity="center"
             android:fontFamily="@font/nunito"
-            android:textColor="@color/black_bg"
             android:text="Mga\nAlpabeto"
             android:textSize="15sp" />
 

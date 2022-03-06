@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.0r22 3/07
+- created a toggle for dark mode
+- created all navigations except about page
+- refactored layout files to fit for dark mode
+- initialized shared prefs
+
 v1.0r21 3/06
 - added fragments for Mini game, cvsu m&v with their respective menus
 
