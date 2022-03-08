@@ -98,7 +98,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="15dp"
                         android:background="@null"
-                        android:drawableTint="@color/colorPrimaryVariant"
+                        android:drawableTint="@color/colorSecondary"
                         android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="5dp"
                         android:hint="@string/edit_text_hint"
@@ -106,9 +106,8 @@
                         android:inputType="text"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
+                        android:textColorHint="#6A6E6A"
                         android:singleLine="true"
-                        android:textColorHint="#535353"
-                        android:textColor="#535353"
                         android:textSize="15sp"/>
 
                 </com.google.android.material.card.MaterialCardView>

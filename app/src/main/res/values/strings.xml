@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">iSpeak Signs</string>
     <string name="nav_header_subtitle">Gender and Development Unit</string>
+    <string name="selected_language">Filipino</string>/
+
 
     <!--    strings for menus/fragments-->
     <string name="menu_home">Home</string>
@@ -8,13 +10,14 @@
     <string name="menu_learn">Mag-Aral</string>
     <string name="menu_fsl_wotd">FSL - Salita Ngayong Araw</string>
     <string name="menu_favorites">Mga Paborito</string>
-    <string name="act_recognize">Rekognisyon</string>
+    <string name="act_recognize">FSL Rekognisyon</string>
     <string name="menu_cvsu">CvSU - Misyon at Bisyon</string>
     <string name="menu_mini_game">Laro</string>
     <string name="menu_setting_label">Mga Settings</string>
     <string name="menu_darkmode_label">Dark Mode</string>
-    <string name="menu_language_label">Lenguwahe</string>
-    <string name="menu_about">Tungkol</string>
+    <string name="menu_language_label">Wika</string>
+    <string name="menu_about">Tungkol sa App</string>
+
 
     <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>

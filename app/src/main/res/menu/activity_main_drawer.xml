@@ -53,7 +53,7 @@
 
         <menu>
 
-            <group android:checkableBehavior="single">
+            <group>
 
                 <item
                     android:id="@+id/darkmode"
@@ -64,7 +64,7 @@
                 <item
                     android:id="@+id/language"
                     android:icon="@drawable/ic_menu_language"
-                    android:title="@string/menu_language_label"/>
+                    android:title="@string/menu_language_label" />
 
             </group>
 

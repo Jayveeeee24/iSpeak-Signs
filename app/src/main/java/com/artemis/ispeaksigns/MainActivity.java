@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -16,15 +17,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +31,8 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import org.jetbrains.annotations.NotNull;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,12 +42,16 @@ public class MainActivity extends AppCompatActivity {
     public CollapsingToolbarLayout collapseToolbar;
     private DrawerLayout drawer;
     private SwitchCompat drawerSwitch;
-    int NightMode;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        sharedPref = new SharedPref(this);
+//        if (sharedPref.loadNightModeState() == true){
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        }else{
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -83,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_favorites,
                 R.id.act_recognize,
                 R.id.nav_cvsu,
-                R.id.nav_mini_game)
+                R.id.nav_mini_game,
+                R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -91,14 +96,30 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
+//        if (sharedPref.loadNightModeState() == true)
+//        {
+//            drawerSwitch.setChecked(true);
+//        }
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                    sharedPref.setNightModeState(true);
+//                    restartApp();
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                    sharedPref.setNightModeState(false);
+//                    restartApp();
                 }
+            }
+        });
+
+        MenuItem language = navigationView.getMenu().findItem(R.id.language);
+        language.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                return true;
             }
         });
 
@@ -139,11 +160,9 @@ public class MainActivity extends AppCompatActivity {
                         drawer.openDrawer(GravityCompat.START);
                     }
                 });
-            }
-            else if (navDestination.getId() == R.id.nav_fsl_wotd) {
+            } else if (navDestination.getId() == R.id.nav_fsl_wotd) {
                 setExpandedEnabled(false);
-            }
-            else if (navDestination.getId() == R.id.nav_learn) {
+            } else if (navDestination.getId() == R.id.nav_learn) {
                 txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
                 txtHomeGreeting1.setTextSize(18);
                 txtHomeGreeting2.setText("");
@@ -152,28 +171,30 @@ public class MainActivity extends AppCompatActivity {
                 toolbarImage1.setVisibility(View.INVISIBLE);
 
                 setExpandedEnabled(true);
-            }
-            else if (navDestination.getId() == R.id.nav_favorites) {
+            } else if (navDestination.getId() == R.id.nav_favorites) {
                 toolbarImage1.setVisibility(View.INVISIBLE);
                 editSearch.setVisibility(View.INVISIBLE);
                 editSearchParent.setVisibility(View.INVISIBLE);
 
                 setExpandedEnabled(true);
-            }
-            else if (navDestination.getId() == R.id.learn_category_word){
+            } else if (navDestination.getId() == R.id.learn_category_word) {
                 setExpandedEnabled(false);
-            }
-            else if (navDestination.getId() == R.id.learn_category_video){
+            } else if (navDestination.getId() == R.id.learn_category_video) {
                 setExpandedEnabled(false);
-            }
-            else if (navDestination.getId() == R.id.nav_cvsu){
+            } else if (navDestination.getId() == R.id.nav_cvsu) {
                 setExpandedEnabled(false);
-            }
-            else if (navDestination.getId() == R.id.nav_mini_game){
+            } else if (navDestination.getId() == R.id.nav_mini_game) {
                 setExpandedEnabled(false);
+            } else if (navDestination.getId() == R.id.nav_about) {
+                setExpandedEnabled(true);
+                editSearch.setVisibility(View.INVISIBLE);
+                editSearchParent.setVisibility(View.INVISIBLE);
+                toolbarImage1.setVisibility(View.INVISIBLE);
             }
         });
+
     }
+
 
     public void restartApp()
     {

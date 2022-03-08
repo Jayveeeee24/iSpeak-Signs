@@ -51,6 +51,8 @@
                 android:background="@drawable/circle_shape"
                 android:padding="1dp"
                 android:progress="30"
+                android:progressBackgroundTint="@color/white_bg"
+                android:progressTint="@color/colorPrimary"
                 android:progressDrawable="@drawable/circular_progress_bar" />
         </RelativeLayout>
 

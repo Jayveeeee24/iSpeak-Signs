@@ -65,7 +65,10 @@
         android:name="com.artemis.ispeaksigns.main_fragments.nav_mini_game"
         android:label="@string/menu_mini_game"
         tools:layout="@layout/fragment_mini_game" />
-
-    <!--TODO create fragments for about, profile-->
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.artemis.ispeaksigns.main_fragments.nav_about"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>
