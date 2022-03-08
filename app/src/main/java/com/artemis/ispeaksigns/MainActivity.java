@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.START);
                 txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label));
                 txtHomeGreeting1.setTextSize(24);
+                txtHomeGreeting2.setTextSize(18);
                 txtHomeGreeting2.setText(greeting.getGreeting(this));
                 editSearch.setHint(getResources().getString(R.string.edit_text_hint));
                 editSearch.setText("");
@@ -172,6 +173,10 @@ public class MainActivity extends AppCompatActivity {
 
                 setExpandedEnabled(true);
             } else if (navDestination.getId() == R.id.nav_favorites) {
+                txtHomeGreeting1.setText(getResources().getString(R.string.favorite_greeting1_label));
+                txtHomeGreeting1.setTextSize(14);
+                txtHomeGreeting2.setTextSize(16);
+                txtHomeGreeting2.setText(getResources().getString(R.string.favorite_greeting2_label));
                 toolbarImage1.setVisibility(View.INVISIBLE);
                 editSearch.setVisibility(View.INVISIBLE);
                 editSearchParent.setVisibility(View.INVISIBLE);

@@ -18,7 +18,6 @@
     <string name="menu_language_label">Wika</string>
     <string name="menu_about">Tungkol sa App</string>
 
-
     <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>
     <string name="learn_word_title_set">Mag aral ng </string>
@@ -31,6 +30,9 @@
     <string name="home_greeting1_label">Kumusta,</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
     <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salita na maaari mong matutunan</string>
+    <string name="home_learn_video_description">Panoorin ang iba\'t ibang ekspresyon ng mga parirala sa FSL</string>
+    <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
+    <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
 
     <!--    strings for editText Search bar-->
     <string name="edit_text_hint">Humanap ng kategorya</string>
@@ -41,7 +43,8 @@
     <string name="toolbar_image_desc">Cavite State University Logo</string>
     <string name="fab_recognize_desc">Rekognisyon</string>
     <string name="label_see_more">TINGNAN LAHAT</string>
-    <string name="heart_label">Puso</string>
+    <string name="heart_label">Puso</string>\
+    <string name="video_category_label">Mga Parirala</string>
 
     <!--    Strings for Greetings-->
     <string name="morning_label">Magandang umaga sa iyo</string>

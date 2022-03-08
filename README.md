@@ -2,6 +2,10 @@
 
 DEBUG NOTES
 
+v1.0r23 3/09
+- created the recycler view for favorite fragment
+- refactored favorite fragment
+
 v1.0r22 3/07
 - created a toggle for dark mode
 - created all navigations except about page

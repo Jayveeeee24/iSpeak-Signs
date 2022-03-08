@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main_fragments.nav_favorites">
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favoriteRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="512dp"
-            android:paddingBottom="512dp"/>
+            android:layout_height="wrap_content"/>
 
-    </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>

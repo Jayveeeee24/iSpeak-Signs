@@ -7,7 +7,6 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -93,7 +92,7 @@ public class nav_home extends Fragment  {
         //Definitions
         ImageView image_favorite = view.findViewById(R.id.image_favorite);
         CardView card_fsl_resource = view.findViewById(R.id.card_fsl_resource);
-        TextView home_learn_see_more = view.findViewById(R.id.txtHomeLearnSeeMore);
+        TextView home_learn_see_more = view.findViewById(R.id.homeWordSeeMore);
         TextView txt_home_fsl_name = view.findViewById(R.id.txt_home_fsl_name);
 
         image_favorite.setOnClickListener(new View.OnClickListener() {
