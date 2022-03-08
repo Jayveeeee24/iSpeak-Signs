@@ -2,7 +2,7 @@
 
 DEBUG NOTES
 
-v1.0r23 3/09
+v1.0r23 3/09 (error commit name: git commit -a -m)
 - created the recycler view for favorite fragment
 - refactored favorite fragment
 
