@@ -1,7 +1,6 @@
 package com.artemis.ispeaksigns;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -15,24 +14,20 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
     public CollapsingToolbarLayout collapseToolbar;
     private DrawerLayout drawer;
     private SwitchCompat drawerSwitch;
-    Context context;
+    private NavController navController;
+    private NavigationView navigationView;
+    Boolean profileState;
+    Boolean searchState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +59,16 @@ public class MainActivity extends AppCompatActivity {
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
         TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
         mAppbarLayout = findViewById(R.id.appbar_layout);
-        EditText editSearch = findViewById(R.id.editSearch);
+        TextView txtSearch = findViewById(R.id.search_hint);
         CardView editSearchParent = findViewById(R.id.editSearchParent);
         mtoolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         greetingTimeDay greeting = new greetingTimeDay();
         collapseToolbar = findViewById(R.id.collapseToolbar);
         FloatingActionButton mainFab = findViewById(R.id.fab);
+        RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
+        RelativeLayout defaultToolbar = findViewById(R.id.default_toolbar);
         //////End of Definitions
 
         mainFab.setOnClickListener(new View.OnClickListener() {
@@ -91,10 +91,97 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        InitializeMenuSetting();
+
+        //Destination Listener setup
+        navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
+            //this changes the toolbar title as it has a bug of displaying only "home" title
+            collapseToolbar.setTitle(navDestination.getLabel());
+            editSearchParent.setVisibility(View.VISIBLE);
+            mainFab.setVisibility(View.INVISIBLE);
+
+            aboutToolbar.setVisibility(View.INVISIBLE);
+            defaultToolbar.setVisibility(View.VISIBLE);
+            collapseToolbar.setBackgroundResource(R.drawable.appbar_bg);
+            setExpandedEnabled(false);
+            profileState = false;
+            invalidateOptionsMenu();
+
+            mtoolbar.setNavigationIcon(R.drawable.ic_back);
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+
+            editSearchParent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    navController.navigate(R.id.nav_search);
+                }
+            });
+
+            if (navDestination.getId() == R.id.nav_home) {
+                drawer.closeDrawer(GravityCompat.START);
+                txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label));
+                txtHomeGreeting1.setTextSize(24);
+                txtHomeGreeting2.setTextSize(18);
+                txtHomeGreeting2.setText(greeting.getGreeting(this));
+                txtSearch.setText(getResources().getString(R.string.edit_text_hint));
+                toolbarImage1.setVisibility(View.VISIBLE);
+                collapseToolbar.setBackgroundResource(R.drawable.cvsu);
+                setExpandedEnabled(true);
+                profileState = true;
+                invalidateOptionsMenu();
+
+                mainFab.setVisibility(View.VISIBLE);
+
+                mtoolbar.setNavigationIcon(R.drawable.ic_menu);
+                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        drawer.openDrawer(GravityCompat.START);
+                    }
+                });
+            } else if (navDestination.getId() == R.id.nav_fsl_wotd) {
+                setExpandedEnabled(false);
+            } else if (navDestination.getId() == R.id.nav_learn) {
+                txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
+                txtHomeGreeting1.setTextSize(18);
+                txtHomeGreeting2.setText("");
+                txtSearch.setText(getResources().getString(R.string.edit_text_hint_learn));
+                toolbarImage1.setVisibility(View.INVISIBLE);
+
+                setExpandedEnabled(true);
+                profileState = true;
+                invalidateOptionsMenu();
+            } else if (navDestination.getId() == R.id.nav_favorites) {
+                txtHomeGreeting1.setText(getResources().getString(R.string.favorite_greeting1_label));
+                txtHomeGreeting1.setTextSize(18);
+                txtHomeGreeting2.setTextSize(15);
+                txtHomeGreeting2.setText(getResources().getString(R.string.favorite_greeting2_label));
+                toolbarImage1.setVisibility(View.INVISIBLE);
+                editSearchParent.setVisibility(View.INVISIBLE);
+
+                setExpandedEnabled(true);
+            } else if (navDestination.getId() == R.id.nav_about) {
+                setExpandedEnabled(true);
+                defaultToolbar.setVisibility(View.INVISIBLE);
+                aboutToolbar.setVisibility(View.VISIBLE);
+                collapseToolbar.setBackgroundResource(R.drawable.cvsu);
+            }
+        });
+    }
+
+    public void InitializeMenuSetting()
+    {
         drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
 //        if (sharedPref.loadNightModeState() == true)
 //        {
@@ -122,84 +209,27 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //Destination Listener setup
-        navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
-            //this changes the toolbar title as it has a bug of displaying only "home" title
-            collapseToolbar.setTitle(navDestination.getLabel());
-            editSearch.setVisibility(View.VISIBLE);
-            editSearchParent.setVisibility(View.VISIBLE);
-            mainFab.setVisibility(View.INVISIBLE);
-
-            mtoolbar.setNavigationIcon(R.drawable.ic_back);
-            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
-
-            if (navDestination.getId() == R.id.nav_home) {
-                drawer.closeDrawer(GravityCompat.START);
-                txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label));
-                txtHomeGreeting1.setTextSize(24);
-                txtHomeGreeting2.setTextSize(18);
-                txtHomeGreeting2.setText(greeting.getGreeting(this));
-                editSearch.setHint(getResources().getString(R.string.edit_text_hint));
-                editSearch.setText("");
-                toolbarImage1.setVisibility(View.VISIBLE);
-
-                setExpandedEnabled(true);
-
-                mainFab.setVisibility(View.VISIBLE);
-                mtoolbar.setNavigationIcon(R.drawable.ic_menu);
-                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        drawer.openDrawer(GravityCompat.START);
-                    }
-                });
-            } else if (navDestination.getId() == R.id.nav_fsl_wotd) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_learn) {
-                txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
-                txtHomeGreeting1.setTextSize(18);
-                txtHomeGreeting2.setText("");
-                editSearch.setHint(getResources().getString(R.string.edit_text_hint_learn));
-                editSearch.setText("");
-                toolbarImage1.setVisibility(View.INVISIBLE);
-
-                setExpandedEnabled(true);
-            } else if (navDestination.getId() == R.id.nav_favorites) {
-                txtHomeGreeting1.setText(getResources().getString(R.string.favorite_greeting1_label));
-                txtHomeGreeting1.setTextSize(14);
-                txtHomeGreeting2.setTextSize(16);
-                txtHomeGreeting2.setText(getResources().getString(R.string.favorite_greeting2_label));
-                toolbarImage1.setVisibility(View.INVISIBLE);
-                editSearch.setVisibility(View.INVISIBLE);
-                editSearchParent.setVisibility(View.INVISIBLE);
-
-                setExpandedEnabled(true);
-            } else if (navDestination.getId() == R.id.learn_category_word) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.learn_category_video) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_cvsu) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_mini_game) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_about) {
-                setExpandedEnabled(true);
-                editSearch.setVisibility(View.INVISIBLE);
-                editSearchParent.setVisibility(View.INVISIBLE);
-                toolbarImage1.setVisibility(View.INVISIBLE);
-            }
-        });
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (profileState)
+        {
+            getMenuInflater().inflate(R.menu.profileMenu, menu);
+            return super.onCreateOptionsMenu(menu);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.menuProfile)
+        {
+            navController.navigate(R.id.nav_profile);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void restartApp()
     {

@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.0r24 3/12
+- created the favorite category items and adapter
+- created profile and search fragments
+- updated main activity, menus, navigations and other fragments
+
+
 v1.0r23 3/09 (error commit name: git commit -a -m)
 - created the recycler view for favorite fragment
 - refactored favorite fragment

@@ -17,14 +17,15 @@
     <string name="menu_darkmode_label">Dark Mode</string>
     <string name="menu_language_label">Wika</string>
     <string name="menu_about">Tungkol sa App</string>
+    <string name="nav_profile">Profile</string>
 
     <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>
     <string name="learn_word_title_set">Mag aral ng </string>
 
     <!--    strings for fragments that are not in menus-->
-    <string name="learn_category_word">Hayop</string>
-    <string name="learn_category_video">Hatdog Video</string>
+    <string name="learn_category_word">Word</string>
+    <string name="learn_category_video">Video</string>
 
     <!--    Strings for TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>
@@ -33,6 +34,7 @@
     <string name="home_learn_video_description">Panoorin ang iba\'t ibang ekspresyon ng mga parirala sa FSL</string>
     <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
     <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
+    <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
 
     <!--    strings for editText Search bar-->
     <string name="edit_text_hint">Humanap ng kategorya</string>
@@ -50,4 +52,6 @@
     <string name="morning_label">Magandang umaga sa iyo</string>
     <string name="afternoon_label">Magandang hapon sa iyo</string>
     <string name="night_label">Magandang gabi sa iyo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

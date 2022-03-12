@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -18,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.home_list_adapters.LearnCategoryItem;
-import com.artemis.ispeaksigns.home_list_adapters.LearnRecyclerAdapter;
+import com.artemis.ispeaksigns.home_list_adapter.LearnCategoryItem;
+import com.artemis.ispeaksigns.home_list_adapter.LearnRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class nav_home extends Fragment  {
         InitializeClickListener();
         return view;
     }
+
 
     private void InitializeLearnRecyclerView()
     {
