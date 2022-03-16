@@ -3,26 +3,32 @@ package com.artemis.ispeaksigns;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -109,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
             collapseToolbar.setBackgroundResource(R.drawable.appbar_bg);
             setExpandedEnabled(false);
             profileState = false;
+            searchState = false;
+            mtoolbar.setContentInsetStartWithNavigation(150);
             invalidateOptionsMenu();
 
             mtoolbar.setNavigationIcon(R.drawable.ic_back);
@@ -176,9 +184,20 @@ public class MainActivity extends AppCompatActivity {
                 defaultToolbar.setVisibility(View.INVISIBLE);
                 aboutToolbar.setVisibility(View.VISIBLE);
                 collapseToolbar.setBackgroundResource(R.drawable.cvsu);
+            } else if (navDestination.getId() == R.id.nav_search) {
+                setExpandedEnabled(false);
+                searchState = true;
+                mtoolbar.setContentInsetStartWithNavigation(0);
+                invalidateOptionsMenu();
             }
         });
     }
+
+//
+//    app:contentInsetLeft="0dp"
+//    app:contentInsetStart="0dp"
+//    app:contentInsetStartWithNavigation="0dp"
+//    ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
 
     public void InitializeMenuSetting()
     {
@@ -213,13 +232,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (profileState)
-        {
-            getMenuInflater().inflate(R.menu.profileMenu, menu);
+        if (profileState) {
+            getMenuInflater().inflate(R.menu.profile_menu, menu);
             return super.onCreateOptionsMenu(menu);
+        }
+        if (searchState) {
+            getMenuInflater().inflate(R.menu.search_menu, menu);
+            MenuItem menuItem = menu.findItem(R.id.menuSearch);
+            SearchView searchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
+            searchView.setIconifiedByDefault(false);
+            searchView.setQueryHint("Humanap ng Kategorya");
+            return  super.onCreateOptionsMenu(menu);
         }
         return false;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -277,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {

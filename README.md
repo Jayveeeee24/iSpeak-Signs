@@ -2,6 +2,9 @@
 
 DEBUG NOTES
 
+v1.0r25 3/16
+- created search view v1 in action bar
+
 v1.0r24 3/12
 - created the favorite category items and adapter
 - created profile and search fragments
