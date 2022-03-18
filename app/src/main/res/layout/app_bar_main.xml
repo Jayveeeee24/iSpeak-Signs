@@ -137,8 +137,7 @@
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="18dp"
                     android:clickable="true"
-                    android:focusable="true"
-                    android:singleLine="true">
+                    android:focusable="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -146,9 +145,10 @@
 
                         <ImageView
                             android:id="@+id/search_logo"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:src="@drawable/ic_search"
+                            android:layout_centerVertical="true"
                             android:tint="@color/colorSecondary"
                             android:padding="6dp"
                             android:layout_marginStart="10dp"
@@ -156,11 +156,12 @@
 
                         <TextView
                             android:id="@+id/search_hint"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/edit_text_hint"
                             android:textColor="#6A6E6A"
-                            android:textSize="15sp"
+                            android:singleLine="true"
+                            android:textSize="16sp"
                             android:layout_centerVertical="true"
                             android:layout_toEndOf="@id/search_logo"/>
 

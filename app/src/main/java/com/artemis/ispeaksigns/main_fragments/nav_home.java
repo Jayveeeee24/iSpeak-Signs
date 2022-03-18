@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -19,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteCategoryItem;
+import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteRecyclerAdapter;
 import com.artemis.ispeaksigns.home_list_adapter.LearnCategoryItem;
 import com.artemis.ispeaksigns.home_list_adapter.LearnRecyclerAdapter;
 
@@ -28,7 +29,7 @@ public class nav_home extends Fragment  {
 
     Context context;
     View view;
-
+    RecyclerView learnRecView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class nav_home extends Fragment  {
 
     private void InitializeLearnRecyclerView()
     {
-        RecyclerView learnRecView = view.findViewById(R.id.learnRecycler);
+        learnRecView = view.findViewById(R.id.learnRecycler);
         ArrayList<LearnCategoryItem> learnCategoryItems = new ArrayList<>();
 
         //TODO change this into database dependent resources
@@ -52,23 +53,15 @@ public class nav_home extends Fragment  {
        String [] bgColors = new String[]
                {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
 
-       int[] images = new int[]
-               {
-                       getResources().getIdentifier(imageUrls[0], "drawable", context.getPackageName()),
-                       getResources().getIdentifier(imageUrls[1], "drawable", context.getPackageName()),
-                       getResources().getIdentifier(imageUrls[2], "drawable", context.getPackageName()),
-                       getResources().getIdentifier(imageUrls[3], "drawable", context.getPackageName()),
-                       getResources().getIdentifier(imageUrls[4], "drawable", context.getPackageName()),
-               };
+       int[] images = new int[imageUrls.length];
+       for (int i = 0; i<imageUrls.length; i++) {
+           images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
+       }
 
-       int[] colors = new int[]
-               {
-                       getResources().getIdentifier(bgColors[0], "color", context.getPackageName()),
-                       getResources().getIdentifier(bgColors[1], "color", context.getPackageName()),
-                       getResources().getIdentifier(bgColors[2], "color", context.getPackageName()),
-                       getResources().getIdentifier(bgColors[3], "color", context.getPackageName()),
-                       getResources().getIdentifier(bgColors[4], "color", context.getPackageName()),
-               };
+       int[] colors = new int[bgColors.length];
+       for (int i = 0; i<bgColors.length; i++) {
+           colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
+       }
 
        int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
        String[] categoryName = new String[]
@@ -76,16 +69,30 @@ public class nav_home extends Fragment  {
                        "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
                };
 
-       for (int i =0; i<5; i++)
+       for (int i =0; i<categoryName.length; i++)
        {
            learnCategoryItems.add(new LearnCategoryItem(categoryName[i], colors[i], categoryProgress[i], images[i]));
        }
+
+       // Dual adapter in one recycler view
+//       FavoriteRecyclerAdapter adapter1 = new FavoriteRecyclerAdapter();
+//       ArrayList<FavoriteCategoryItem> favoriteCategoryItems = new ArrayList<>();
+//
+//       favoriteCategoryItems.add(new FavoriteCategoryItem("si matt hoven ayy bakla"));
+//       adapter1.setFavoriteCategoryItems(favoriteCategoryItems);
+//
+//       learnRecView.setAdapter(adapter1);
+//       learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
         LearnRecyclerAdapter adapter = new LearnRecyclerAdapter();
         adapter.setCategoryItems(learnCategoryItems);
 
         learnRecView.setAdapter(adapter);
         learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+
+
+
 
     }
 
@@ -142,12 +149,15 @@ public class nav_home extends Fragment  {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString("category_type", "word");
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(android.R.anim.slide_in_left)
                         .setExitAnim(android.R.anim.slide_out_right)
                         .setPopEnterAnim(android.R.anim.slide_in_left)
                         .setPopExitAnim(android.R.anim.slide_out_right);
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_learn, null, navBuilder.build());
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_learn, bundle, navBuilder.build());
+
             }
         });
     }

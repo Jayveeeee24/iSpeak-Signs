@@ -1,10 +1,12 @@
 package com.artemis.ispeaksigns.favorite_list_adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -46,6 +48,8 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             @Override
             public void onClick(View view) {
                 favoriteCategoryItems.remove(holder.getAdapterPosition());
+                String name = holder.txtFavoriteItem.getText().toString();
+                Toast.makeText(view.getContext(), name + " ayy nabura mo na gago ang hirap bago ko nagawa ampota", Toast.LENGTH_SHORT).show();
                 notifyItemRemoved(holder.getAdapterPosition());
                 notifyItemRangeChanged(holder.getAdapterPosition(), favoriteCategoryItems.size());
 

@@ -9,13 +9,17 @@
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/black_bg</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="editTextColor">@color/black</item>
-        <item name="android:editTextColor">@color/black</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColor">@color/black_bg</item>
+        <item name="editTextColor">@color/black_bg</item>
+        <item name="android:editTextColor">@color/black_bg</item>
+        <item name="android:textColorHint">#6A6E6A</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    </style>
+    
+    <style name="SearchView">
+        <item name="android:textSize">16sp</item>
+        
     </style>
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -23,6 +27,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryVariant</item>
         <item name="colorAccent">@color/colorSecondary</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/white_bg</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.ISpeakSigns.NoActionBar">

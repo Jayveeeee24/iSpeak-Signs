@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main_fragments.nav_search">
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_parent"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        app:cardElevation="2dp">
 
-</androidx.core.widget.NestedScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/editSearchParent"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
+
+                <SearchView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryBackground="@android:color/transparent"
+                    android:queryHint="Humanap ng Kategorya"
+                    android:theme="@style/SearchView" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/search_category"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/editSearchParent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:text="@string/search_category"
+                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
+                android:background="@drawable/highlight_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/search_word"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/editSearchParent"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="15dp"
+                android:layout_toEndOf="@id/search_category"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:text="@string/learn_category_word"
+                android:textStyle="bold"
+                android:textColor="#6A6E6A"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/search_phrase"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/editSearchParent"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@id/search_word"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:text="@string/learn_category_phrase"
+                android:textStyle="bold"
+                android:textColor="#6A6E6A"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_parent"
+        android:layout_margin="5dp" />
+
+
+</RelativeLayout>

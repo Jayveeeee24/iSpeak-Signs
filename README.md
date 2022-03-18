@@ -2,6 +2,18 @@
 
 DEBUG NOTES
 
+v1.0r26 3/18
+- replaced and finalized the search view implementation
+- conceptualized  the dynamic data change in a recycler view
+- initialized design in learn fragment
+- updated favoriteRecyclerAdapter "remove favorite" to include retrieving name of removed item
+- refactored collecting of imageUrl and bgColors to loop process
+- redesigned splash activity to disable night mode
+- created and initialized design of about fragment
+- updated strings for about fragment
+- edited the version name to the debug alpha version
+ 
+
 v1.0r25 3/16
 - created search view v1 in action bar
 

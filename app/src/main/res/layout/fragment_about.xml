@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +21,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/gad_logo" />
+                android:src="@drawable/gad_logo"
+                android:contentDescription="@string/gad_logo_desc" />
 
             <ImageView
                 android:id="@+id/logo2"
@@ -30,7 +32,8 @@
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo1"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_ispeak_sign_logo" />
+                android:src="@drawable/ic_ispeak_sign_logo"
+                android:contentDescription="@string/nav_header_image_desc" />
 
             <ImageView
                 android:id="@+id/logo3"
@@ -39,60 +42,233 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo2"
-                android:src="@drawable/cvsu_logo" />
+                android:src="@drawable/cvsu_logo"
+                android:contentDescription="@string/toolbar_image_desc" />
         </RelativeLayout>
+
         <TextView
-            android:id="@+id/description1"
+            android:id="@+id/about_description1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/logo_layout"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="@color/colorPrimaryVariant"
-            android:text="iSPEAK SIGNS: A FILIPINO SIGN LANGUAGE LEARNING APPLICATION WITH STATIC FSL RECOGNITION FOR CAVITE STATE UNIVERSITY – CAVITE CITY CAMPUS GENDER AND DEVELOPMENT UNIT"
-            android:textSize="15sp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/about_thesis_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/description2"
+            android:id="@+id/about_description2"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_description1"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/description1"
-            android:text="\'Gender Equality is a human fight, not a female fight\'"
             android:gravity="center"
-            android:textStyle="bold|italic"
+            android:text="@string/about_gad"
+            android:textColor="@color/colorPrimary"
             android:textSize="13sp"
-            android:textColor="@color/colorPrimaryVariant"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/description3"
+            android:id="@+id/about_description3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/description2"
-            android:text="Gender and Development Resource Center"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="@color/colorPrimaryVariant"
-            android:textSize="13sp"/>
-        <TextView
-            android:id="@+id/description4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/description3"
-            android:text="CvSU-CCC GAD"
+            android:layout_below="@id/about_description2"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textColor="@color/colorPrimaryVariant"
+            android:text="@string/about_cvsu_gad"
+            android:textColor="@color/colorPrimary"
             android:textSize="13sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/about_description4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_description3"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/cvsu_name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/members_label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_description4"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/member_label_title1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/members_label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/members_label1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/member_label_title2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/members_label3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/members_label2"
+            android:layout_centerHorizontal="true"
+            android:text="@string/member_label_title3"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/member_jb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/members_label3"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_jb"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="38dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/jb_profile"
+                    android:contentDescription="@string/member1_image_desc" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/jb_description1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/card_jb"
+                android:text="@string/member1_name"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/jb_description2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jb_description1"
+                android:layout_toEndOf="@id/card_jb"
+                android:text="@string/member1_role"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/member_meann"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/member_jb"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/meann_description1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/member2_name"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/meann_description2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meann_description1"
+                android:layout_toStartOf="@id/card_meann"
+                android:text="@string/member2_role"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_meann"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_toEndOf="@id/meann_description1"
+                app:cardCornerRadius="38dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/jb_profile"
+                    android:contentDescription="@string/member2_image_desc" />
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/member_reianne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/member_meann"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_reianne"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="38dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/jb_profile"
+                    android:contentDescription="@string/member3_image_desc" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/reianne_description1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/card_reianne"
+                android:text="@string/member3_name"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/reianne_description2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reianne_description1"
+                android:layout_toEndOf="@id/card_reianne"
+                android:text="@string/member3_role"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+        </RelativeLayout>
 
 
     </RelativeLayout>

@@ -59,7 +59,7 @@
                     android:id="@+id/darkmode"
                     android:icon="@drawable/ic_menu_night"
                     android:title="@string/menu_darkmode_label"
-                    app:actionLayout="@layout/dark_switch_layout"/>
+                    app:actionLayout="@layout/switch_layout"/>
 
                 <item
                     android:id="@+id/language"

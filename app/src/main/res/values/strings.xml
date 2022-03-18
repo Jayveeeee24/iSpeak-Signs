@@ -18,14 +18,15 @@
     <string name="menu_language_label">Wika</string>
     <string name="menu_about">Tungkol sa App</string>
     <string name="nav_profile">Profile</string>
+    <string name="nav_search">Hanapin</string>
 
     <!--Title setters-->
     <string name="fsl_label">Salita Ngayong Araw</string>
     <string name="learn_word_title_set">Mag aral ng </string>
 
     <!--    strings for fragments that are not in menus-->
-    <string name="learn_category_word">Word</string>
-    <string name="learn_category_video">Video</string>
+    <string name="learn_category_word">Salita</string>
+    <string name="learn_category_phrase">Parirala</string>
 
     <!--    Strings for TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>
@@ -35,23 +36,45 @@
     <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
     <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
     <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
+    <!--    SearchView filter text-->
+    <string name="search_category">Kategorya</string>
+
 
     <!--    strings for editText Search bar-->
     <string name="edit_text_hint">Humanap ng kategorya</string>
-    <string name="edit_text_hint_learn"><font size="10">Humanap ng mga FSL na salita</font></string>
+    <string name="edit_text_hint_learn"><font size="10">Humanap ng kategorya o salita</font></string>
 
     <!--    strings for descriptions and labels-->
     <string name="nav_header_image_desc">iSpeak Signs Logo</string>
     <string name="toolbar_image_desc">Cavite State University Logo</string>
     <string name="fab_recognize_desc">Rekognisyon</string>
     <string name="label_see_more">TINGNAN LAHAT</string>
-    <string name="heart_label">Puso</string>\
+    <string name="heart_label">Puso</string>
     <string name="video_category_label">Mga Parirala</string>
 
     <!--    Strings for Greetings-->
     <string name="morning_label">Magandang umaga sa iyo</string>
     <string name="afternoon_label">Magandang hapon sa iyo</string>
     <string name="night_label">Magandang gabi sa iyo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Strings for About-->
+    <string name="about_thesis_title">iSPEAK SIGNS: A FILIPINO SIGN LANGUAGE LEARNING APPLICATION WITH STATIC FSL RECOGNITION FOR CAVITE STATE UNIVERSITY – CAVITE CITY CAMPUS GENDER AND DEVELOPMENT UNIT</string>
+    <string name="about_gad">Gender and Development Resource Center</string>
+    <string name="about_cvsu_gad">CvSU-CCC GAD</string>
+    <string name="gad_logo_desc">Gender and Development Unit Logo</string>
+    <string name="cvsu_name">Cavite State University - Cavite City Campus</string>
+    <string name="member_label_title1">Kilalanin ang aming Team:</string>
+    <string name="member_label_title2">Sign Youth: SaL</string>
+    <string name="member_label_title3">(Sign Youth: Signs and Languages)</string>
+    <string name="member1_image_desc">Member 1 Image</string>
+    <string name="member1_name">John Bernard Tinio</string>
+    <string name="member1_role">Leader, Lead Programmer</string>
+    <string name="member2_name">Marie Ann Karen De Guzman</string>
+    <string name="member2_role">Lead Graphic Designer</string>
+    <string name="member2_image_desc">Member 2 Image</string>
+    <string name="member3_image_desc">Member 3 Image</string>
+    <string name="member3_name">Rei Anne P. Velasco</string>
+    <string name="member3_role">Public Relations and Communications</string>
+
+
 </resources>

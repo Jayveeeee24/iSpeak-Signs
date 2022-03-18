@@ -82,11 +82,12 @@
     <fragment
         android:id="@+id/learn_category_video"
         android:name="com.artemis.ispeaksigns.sub_fragments.learn_video_list"
-        android:label="@string/learn_category_video"
+        android:label="@string/learn_category_phrase"
         tools:layout="@layout/fragment_learn_video_list" />
     <fragment
         android:id="@+id/nav_search"
         android:name="com.artemis.ispeaksigns.main_fragments.nav_search"
+        android:label="@string/nav_search"
         tools:layout="@layout/fragment_search" />
 
 
