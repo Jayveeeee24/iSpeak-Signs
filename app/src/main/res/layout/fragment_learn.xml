@@ -38,7 +38,6 @@
             android:fontFamily="@font/gotham_book_regular"
             android:text="@string/learn_category_phrase"
             android:textAllCaps="true"
-            android:textStyle="bold"
             android:textColor="@color/gray_text_color"
             android:textSize="16sp" />
 

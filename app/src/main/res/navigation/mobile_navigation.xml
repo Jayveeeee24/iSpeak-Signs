@@ -73,6 +73,12 @@
         <action
             android:id="@+id/action_nav_learn_to_nav_search"
             app:destination="@id/nav_search" />
+        <action
+            android:id="@+id/action_nav_learn_to_learn_category_word"
+            app:destination="@id/learn_category_word" />
+        <action
+            android:id="@+id/action_nav_learn_to_learn_category_video"
+            app:destination="@id/learn_category_video" />
     </fragment>
     <fragment
         android:id="@+id/learn_category_word"

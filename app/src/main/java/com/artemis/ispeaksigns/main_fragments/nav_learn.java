@@ -26,6 +26,8 @@ public class nav_learn extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_learn, container, false);
         context = container.getContext();
+        categoryWord = (TextView) view.findViewById(R.id.category_word);
+        categoryPhrases = (TextView) view.findViewById(R.id.category_phrases);
 
         InitializeDesign();
         InitializeOnClick();
@@ -35,10 +37,9 @@ public class nav_learn extends Fragment {
 
     private void InitializeDesign()
     {
-        categoryWord = (TextView) view.findViewById(R.id.category_word);
-        categoryPhrases = (TextView) view.findViewById(R.id.category_phrases);
 
         categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
+        categoryPhrases.setTypeface(Typeface.DEFAULT);
         category_selected = "";
         if (getArguments() != null) {
             category_selected = getArguments().getString("category_type");

@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.0r27 3/19
+- initialized profile fragment design 
+- Finalized design implementation for fsl word of the day fragment (3/4 done), most functions left.
+- Finalized design implementation for cvsu fragment (3/4) done, videoview left.
+- Solved issue with favorite heart toggle
+
 v1.0r26 3/18
 - replaced and finalized the search view implementation
 - conceptualized  the dynamic data change in a recycler view

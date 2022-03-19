@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main_fragments.nav_profile">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="@color/toolbar_color">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/user_image_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="90dp">
+
+                <ImageView
+                    android:id="@+id/user_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/jb_profile"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/user_image_desc" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_below="@id/user_image_parent"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white_bg"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/edit_user_name"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_edit"
+                android:tint="@color/white"
+                android:layout_below="@id/user_image_parent"
+                android:layout_toEndOf="@id/user_name"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/edit_user_name_desc" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_layout"
+            android:paddingTop="30dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="15dp">
 
 
-</FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -99,35 +99,23 @@ public class nav_home extends Fragment  {
     private void InitializeClickListener()
     {
         //Definitions
-        ImageView image_favorite = view.findViewById(R.id.image_favorite);
+        final ImageView image_favorite = (ImageView) view.findViewById(R.id.image_favorite);
         CardView card_fsl_resource = view.findViewById(R.id.card_fsl_resource);
         TextView home_learn_see_more = view.findViewById(R.id.homeWordSeeMore);
         TextView txt_home_fsl_name = view.findViewById(R.id.txt_home_fsl_name);
 
         image_favorite.setOnClickListener(new View.OnClickListener() {
+            int isFavorite = 0;
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
-//                image_favorite.setImageDrawable(getResources().getDrawable(R.drawable.ic_menu_favorites));
-//                image_favorite.setColorFilter(ContextCompat.getColor(context, R.color.white));
-//                Toast.makeText(context, txt_home_fsl_name_string + " ay nadagdag na sa iyong paborito!", Toast.LENGTH_SHORT).show();
-
-//                Drawable drawable=image_favorite.getDrawable();
-//                Drawable drawable1=context.getDrawable(R.drawable.ic_favorites_outline);
-//
-//                if(drawable.equals(drawable1)){
-//                    Toast.makeText(context, "Taena", Toast.LENGTH_SHORT).show();
-//                    image_favorite.setImageResource(R.drawable.ic_menu_favorites);
-//                }
-
-//                if (drawable == drawable1)
-//                {
-//                }else if (drawable.equals(drawable2))
-//                {
-//                    image_favorite.setImageResource(R.drawable.ic_favorites_outline);
-//                    image_favorite.setColorFilter(ContextCompat.getColor(context, R.color.white));
-//                    Toast.makeText(context, txt_home_fsl_name.toString() + " ay naalis na sa iyong paborito!", Toast.LENGTH_SHORT).show();
-//                }
+                    if (isFavorite == 0) {
+                        image_favorite.setImageResource(R.drawable.ic_menu_favorites);
+                        isFavorite = 1;
+                    } else if (isFavorite == 1) {
+                        image_favorite.setImageResource(R.drawable.ic_favorites_outline);
+                        isFavorite = 0;
+                    }
             }
         });
 

@@ -46,7 +46,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_fsl_resource"
                     android:layout_width="match_parent"
@@ -74,7 +73,7 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="10dp"
                         android:clickable="true"
-                        android:contentDescription="@string/heart_label"
+                        android:contentDescription="@string/heart_desc"
                         android:focusable="true"
                         android:src="@drawable/ic_favorites_outline"
                         android:tint="@color/white" />
@@ -150,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="@string/menu_learn"
+                        android:text="@string/menu_learn_label"
                         android:textSize="18sp" />
 
                     <TextView

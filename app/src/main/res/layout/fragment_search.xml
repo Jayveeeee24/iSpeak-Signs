@@ -86,7 +86,6 @@
                 android:textColor="#6A6E6A"
                 android:textSize="16sp" />
 
-
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -96,7 +95,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/search_parent"
-        android:layout_margin="5dp" />
-
+        android:layout_margin="10dp" />
 
 </RelativeLayout>
