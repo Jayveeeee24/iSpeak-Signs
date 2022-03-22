@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+
+v1.0r28 3/22
+- renamed learn recycler adapters in home to be specific to home
+- created the learn main list (both word and phrases)
+- refactored category colors to fit for learn design
+
 v1.0r27 3/19
 - initialized profile fragment design 
 - Finalized design implementation for fsl word of the day fragment (3/4 done), most functions left.

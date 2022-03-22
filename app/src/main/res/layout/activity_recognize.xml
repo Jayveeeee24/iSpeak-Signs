@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecognizeActivity">
+    tools:context=".RecognizeActivity"
+    android:theme="@style/RecognizeStyle"
+    android:paddingTop="20dp"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="20dp"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/recognize_app_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_ispeak_sign_logo"
+            android:contentDescription="@string/app_logo_desc" />
+
+
+        <TextView
+            android:id="@+id/recognize_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/recognize_app_logo"
+            android:text="@string/recog_app_name"
+            android:layout_marginStart="5dp"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="14sp"
+            android:textColor="@color/white_bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recog_version"
+            android:textColor="@color/colorSecondary"
+            android:layout_toEndOf="@id/recognize_app_name"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/gotham_book_regular"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

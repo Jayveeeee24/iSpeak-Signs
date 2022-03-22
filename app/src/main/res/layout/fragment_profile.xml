@@ -34,11 +34,32 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <EditText
+                android:id="@+id/edit_text_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:visibility="invisible"
+                android:inputType="text"
+                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:maxLength="10"
+                android:layout_below="@id/user_image_parent"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white_bg"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
+
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/user_name"
+                android:visibility="visible"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_below="@id/user_image_parent"
@@ -51,6 +72,8 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_edit"
+                android:clickable="true"
+                android:focusable="true"
                 android:tint="@color/white"
                 android:layout_below="@id/user_image_parent"
                 android:layout_toEndOf="@id/user_name"
@@ -60,24 +83,329 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_streak_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/profile_layout"
-            android:paddingTop="30dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:cardCornerRadius="15dp">
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="25dp">
+
+                <TextView
+                    android:id="@+id/streak_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_streak_label"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_day_streak"
+                    android:tint="@color/outrageous_orange"
+                    app:layout_constraintTop_toTopOf="@id/streak_text"
+                    app:layout_constraintBottom_toBottomOf="@id/streak_text"
+                    app:layout_constraintEnd_toStartOf="@id/streak_text"
+                    android:layout_marginEnd="5dp"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/streak_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_streak_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/streak_label"
+                    app:layout_constraintBottom_toBottomOf="@id/streak_label"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textColor="@color/colorSecondary"
+                    android:textStyle="bold"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/streak_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/streak_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="15dp"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/check_mon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorSecondary"
+                        tools:ignore="ContentDescription"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/check_tue" />
+
+                    <ImageView
+                        android:id="@+id/check_tue"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/colorSecondary"
+                        app:layout_constraintStart_toEndOf="@id/check_mon"
+                        app:layout_constraintTop_toTopOf="@id/check_mon"
+                        app:layout_constraintBottom_toBottomOf="@id/check_mon"
+                        android:layout_marginStart="15dp"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/check_wed"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_uncheck"
+                        android:tint="@color/flame"
+                        tools:ignore="ContentDescription"
+                        app:layout_constraintStart_toEndOf="@id/check_tue"
+                        app:layout_constraintTop_toTopOf="@id/check_tue"
+                        app:layout_constraintBottom_toBottomOf="@id/check_tue"
+                        android:layout_marginStart="15dp"/>
+
+                    <ImageView
+                        android:id="@+id/check_thu"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_uncheck"
+                        android:tint="@color/flame"
+                        tools:ignore="ContentDescription"
+                        app:layout_constraintStart_toEndOf="@id/check_wed"
+                        app:layout_constraintTop_toTopOf="@id/check_wed"
+                        app:layout_constraintBottom_toBottomOf="@id/check_wed"
+                        android:layout_marginStart="15dp"/>
+
+                    <ImageView
+                        android:id="@+id/check_fri"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_check"
+                        tools:ignore="ContentDescription"
+                        android:tint="@color/colorSecondary"
+                        app:layout_constraintStart_toEndOf="@id/check_thu"
+                        app:layout_constraintTop_toTopOf="@id/check_thu"
+                        app:layout_constraintBottom_toBottomOf="@id/check_thu"
+                        android:layout_marginStart="15dp"/>
+
+                    <ImageView
+                        android:id="@+id/check_sat"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/ic_streak_null"
+                        android:tint="@color/gray_text_color"
+                        app:layout_constraintStart_toEndOf="@id/check_fri"
+                        app:layout_constraintTop_toTopOf="@id/check_fri"
+                        app:layout_constraintBottom_toBottomOf="@id/check_fri"
+                        android:layout_marginStart="15dp"/>
+
+                    <ImageView
+                        android:id="@+id/check_sun"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_streak_null"
+                        tools:ignore="ContentDescription"
+                        android:tint="@color/gray_text_color"
+                        app:layout_constraintStart_toEndOf="@id/check_sat"
+                        app:layout_constraintTop_toTopOf="@id/check_sat"
+                        app:layout_constraintBottom_toBottomOf="@id/check_sat"
+                        android:layout_marginStart="15dp"/>
+
+                    <TextView
+                        android:id="@+id/text_mon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/mon_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_mon"
+                        app:layout_constraintEnd_toStartOf="@id/text_tue"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_tue"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/tue_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_tue"
+                        app:layout_constraintStart_toEndOf="@id/text_mon"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_wed"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/wed_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_wed"
+                        app:layout_constraintStart_toEndOf="@id/text_tue"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_thu"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/thu_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_thu"
+                        app:layout_constraintStart_toEndOf="@id/text_wed"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_fri"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/fri_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_fri"
+                        app:layout_constraintStart_toEndOf="@id/text_thu"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_sat"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/sat_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_sat"
+                        app:layout_constraintStart_toEndOf="@id/text_fri"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/text_sun"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:text="@string/sun_label"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/gotham_book_regular"
+                        app:layout_constraintTop_toBottomOf="@id/check_sun"
+                        app:layout_constraintStart_toEndOf="@id/text_sat"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"/>
 
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/streak_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="15dp">
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/word_discorvered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/word_discovered_text"
+                        android:fontFamily="@font/gotham_book_regular"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/phrase_discovered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phrase_discovered_label"
+                        android:fontFamily="@font/gotham_book_regular"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_toEndOf="@id/word_discorvered"
+                        android:layout_marginStart="30dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/favorite_word_phrase_label"
+                        android:fontFamily="@font/gotham_book_regular"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_toEndOf="@id/phrase_discovered"
+                        android:layout_marginStart="30dp"/>
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_below="@id/card_streak_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
+
+                <TextView
+                    android:id="@+id/profile_progress_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_category_progress"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/profile_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_progress_label"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/label_see_more"
+                    android:layout_below="@id/profile_recycler"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/text_clicked_bg"/>
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </RelativeLayout>
 

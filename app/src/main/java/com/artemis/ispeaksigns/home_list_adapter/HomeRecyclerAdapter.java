@@ -21,11 +21,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class LearnRecyclerAdapter extends RecyclerView.Adapter<LearnRecyclerAdapter.ViewHolder>{
+public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>{
 
-    private ArrayList<LearnCategoryItem> learnCategoryItems = new ArrayList<>();
-    public LearnRecyclerAdapter() {
-    }
+    private ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
 
     @NonNull
     @NotNull
@@ -38,17 +36,17 @@ public class LearnRecyclerAdapter extends RecyclerView.Adapter<LearnRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
-        holder.txtCategoryName.setText(learnCategoryItems.get(position).getCategoryName());
-        holder.progressCategory.setProgress(learnCategoryItems.get(position).getProgress());
-        holder.imageCategory.setImageResource(learnCategoryItems.get(position).getImageUrl());
-        holder.imageBg.setBackgroundResource(learnCategoryItems.get(position).getBgColor());
+        holder.txtCategoryName.setText(homeCategoryItems.get(position).getCategoryName());
+        holder.progressCategory.setProgress(homeCategoryItems.get(position).getProgress());
+        holder.imageCategory.setImageResource(homeCategoryItems.get(position).getImageUrl());
+        holder.imageBg.setBackgroundResource(homeCategoryItems.get(position).getBgColor());
 
         holder.categoryParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //TODO change this to an actual method to do when an item is clicked
                 Bundle bundle = new Bundle();
-                bundle.putString("category", learnCategoryItems.get(position).getCategoryName());
+                bundle.putString("category", homeCategoryItems.get(position).getCategoryName());
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
                         .setExitAnim(R.anim.nav_default_exit_anim)
@@ -61,11 +59,11 @@ public class LearnRecyclerAdapter extends RecyclerView.Adapter<LearnRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return learnCategoryItems.size();
+        return homeCategoryItems.size();
     }
 
-    public void setCategoryItems(ArrayList<LearnCategoryItem> learnCategoryItems) {
-        this.learnCategoryItems = learnCategoryItems;
+    public void setCategoryItems(ArrayList<HomeCategoryItem> homeCategoryItems) {
+        this.homeCategoryItems = homeCategoryItems;
         notifyDataSetChanged();
     }
 

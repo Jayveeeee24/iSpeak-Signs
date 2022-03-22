@@ -8,12 +8,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/fsl_image_parent"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="380dp"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/colorPrimaryVariant"
             app:cardCornerRadius="0dp"
@@ -99,7 +100,7 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/how_to_label"
                 android:textColor="@color/gray_text_color"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/play_audio" />
 

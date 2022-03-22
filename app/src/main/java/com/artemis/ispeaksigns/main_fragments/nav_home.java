@@ -15,13 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteCategoryItem;
-import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteRecyclerAdapter;
-import com.artemis.ispeaksigns.home_list_adapter.LearnCategoryItem;
-import com.artemis.ispeaksigns.home_list_adapter.LearnRecyclerAdapter;
+import com.artemis.ispeaksigns.home_list_adapter.HomeCategoryItem;
+import com.artemis.ispeaksigns.home_list_adapter.HomeRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -36,6 +35,7 @@ public class nav_home extends Fragment  {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         context = container.getContext();
 
+
         InitializeLearnRecyclerView();
         InitializeClickListener();
         return view;
@@ -45,7 +45,7 @@ public class nav_home extends Fragment  {
     private void InitializeLearnRecyclerView()
     {
         learnRecView = view.findViewById(R.id.learnRecycler);
-        ArrayList<LearnCategoryItem> learnCategoryItems = new ArrayList<>();
+        ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
 
         //TODO change this into database dependent resources
        String[] imageUrls = new String[]
@@ -71,21 +71,11 @@ public class nav_home extends Fragment  {
 
        for (int i =0; i<categoryName.length; i++)
        {
-           learnCategoryItems.add(new LearnCategoryItem(categoryName[i], colors[i], categoryProgress[i], images[i]));
+           homeCategoryItems.add(new HomeCategoryItem(categoryName[i], colors[i], categoryProgress[i], images[i]));
        }
 
-       // Dual adapter in one recycler view
-//       FavoriteRecyclerAdapter adapter1 = new FavoriteRecyclerAdapter();
-//       ArrayList<FavoriteCategoryItem> favoriteCategoryItems = new ArrayList<>();
-//
-//       favoriteCategoryItems.add(new FavoriteCategoryItem("si matt hoven ayy bakla"));
-//       adapter1.setFavoriteCategoryItems(favoriteCategoryItems);
-//
-//       learnRecView.setAdapter(adapter1);
-//       learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-
-        LearnRecyclerAdapter adapter = new LearnRecyclerAdapter();
-        adapter.setCategoryItems(learnCategoryItems);
+        HomeRecyclerAdapter adapter = new HomeRecyclerAdapter();
+        adapter.setCategoryItems(homeCategoryItems);
 
         learnRecView.setAdapter(adapter);
         learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
@@ -138,7 +128,7 @@ public class nav_home extends Fragment  {
             public void onClick(View view) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("category_type", "word");
+                bundle.putString("category_type", "Salita");
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(android.R.anim.slide_in_left)
                         .setExitAnim(android.R.anim.slide_out_right)

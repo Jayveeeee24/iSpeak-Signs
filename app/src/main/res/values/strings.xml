@@ -1,12 +1,18 @@
 <resources>
     <string name="app_name">iSpeak Signs</string>
     <string name="nav_header_subtitle">Gender and Development Unit</string>
-    <string name="selected_language">Filipino</string>/
+    <string name="selected_language">Filipino</string>
+
+    <!--    strings for general labels and descriptions-->
+    <string name="app_logo_desc">iSpeak Signs Logo</string>
+    <string name="cvsu_logo_desc">Cavite State University Logo</string>
+    <string name="fab_recognize_desc">Rekognisyon</string>
+    <string name="label_see_more">TINGNAN LAHAT</string>
+    <string name="heart_desc">Idagdag sa Paborito</string>
 
     <!--    strings for menus/fragments-->
     <string name="menu_home">Home</string>
-    <string name="menu_learn_label">Matuto</string>
-    <string name="menu_learn">FSL Diksyunaryo</string>
+    <string name="menu_learn">Mag Aral</string>
     <string name="menu_fsl_wotd">FSL - Salita Ngayong Araw</string>
     <string name="menu_favorites">Mga Paborito</string>
     <string name="act_recognize">FSL Rekognisyon</string>
@@ -19,40 +25,34 @@
     <string name="nav_profile">Profile</string>
     <string name="nav_search">Hanapin</string>
 
-    <!--Title setters-->
-    <string name="learn_word_title_set">Alamin ang </string>
+    <!--    Strings for Toolbar TextViews-->
+    <string name="home_greeting1_label">Kumusta,</string>
+    <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
+    <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
+    <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
+    <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
+    <!--    Strings for Greetings-->
+    <string name="morning_label">Magandang Umaga sa Iyo!</string>
+    <string name="afternoon_label">Magandang Hapon sa Iyo!</string>
+    <string name="night_label">Magandang Gabi sa Iyo!</string>
+    <!--    strings for editText Hint Search bar-->
+    <string name="edit_text_hint">Humanap ng kategorya</string>
+    <string name="edit_text_hint_learn"><font size="10">Humanap ng kategorya o salita</font></string>
 
+    <!--Title setters for category Item-->
+    <string name="learn_word_title_set">Tuklasin ang </string>
+
+    <!--    SearchView filter text-->
+    <string name="search_category">Kategorya</string>
     <!--    strings for fragments that are not in menus-->
     <string name="learn_category_word">Salita</string>
     <string name="learn_category_phrase">Parirala</string>
 
-    <!--    Strings for TextViews-->
-    <string name="home_greeting1_label">Kumusta,</string>
-    <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
+    <!--    Strings for Home-->
+    <string name="menu_learn_label">Matuto</string>
+    <string name="video_category_label">Mga Parirala</string>
     <string name="home_learn_category_description">Tuklasin ang iba\'t ibang salita na maaari mong matutunan</string>
     <string name="home_learn_video_description">Panoorin ang iba\'t ibang ekspresyon ng mga parirala sa FSL</string>
-    <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
-    <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
-    <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
-    <!--    SearchView filter text-->
-    <string name="search_category">Kategorya</string>
-
-    <!--    strings for editText Search bar-->
-    <string name="edit_text_hint">Humanap ng kategorya</string>
-    <string name="edit_text_hint_learn"><font size="10">Humanap ng kategorya o salita</font></string>
-
-    <!--    strings for descriptions and labels-->
-    <string name="nav_header_image_desc">iSpeak Signs Logo</string>
-    <string name="toolbar_image_desc">Cavite State University Logo</string>
-    <string name="fab_recognize_desc">Rekognisyon</string>
-    <string name="label_see_more">TINGNAN LAHAT</string>
-    <string name="heart_desc">Idagdag sa Paborito</string>
-    <string name="video_category_label">Mga Parirala</string>
-
-    <!--    Strings for Greetings-->
-    <string name="morning_label">Magandang umaga sa iyo</string>
-    <string name="afternoon_label">Magandang hapon sa iyo</string>
-    <string name="night_label">Magandang gabi sa iyo</string>
 
     <!--    Strings for About-->
     <string name="about_thesis_title">iSPEAK SIGNS: A FILIPINO SIGN LANGUAGE LEARNING APPLICATION WITH STATIC FSL RECOGNITION FOR CAVITE STATE UNIVERSITY – CAVITE CITY CAMPUS GENDER AND DEVELOPMENT UNIT</string>
@@ -86,8 +86,8 @@
     <string name="play_audio_desc">I-play ang audio</string>
 
     <!--    Strings for CvSu Mission and Vision-->
-    <string name="cvsu_mission_nav">CvSU MISYON</string>
-    <string name="cvsu_vision_nav">CvSU BISYON</string>
+    <string name="cvsu_mission_nav">CVSU MISYON</string>
+    <string name="cvsu_vision_nav">CVSU BISYON</string>
     <string name="cvsu_label_mission">Misyon</string>
     <string name="cvsu_text_mission">Cavite State University shall provide excellent, equitable and relevant educational opportunities in the arts, sciences and technology through quality instruction and responsive research and development activities. It shall produce professional, skilled and morally upright individuals for global competitiveness.</string>
     <string name="cvsu_label_vision">Bisyon</string>
@@ -97,5 +97,27 @@
     <string name="user_name">Jayvee</string>
     <string name="user_image_desc">Imahe ng User</string>
     <string name="edit_user_name_desc">i-edit ang pangalan ng user</string>
+    <string name="profile_streak_label">Sunod sunod na araw</string>
+    <string name="profile_streak_count">2 na araw</string>
+    <string name="mon_label">M</string>
+    <string name="tue_label">T</string>
+    <string name="wed_label">W</string>
+    <string name="thu_label">T</string>
+    <string name="fri_label">F</string>
+    <string name="sat_label">S</string>
+    <string name="sun_label">S</string>
+    <string name="word_discovered_text">0\nSalitang\nnatuklasan</string>
+    <string name="phrase_discovered_label">0\nPariralang\nnatuklasan</string>
+    <string name="favorite_word_phrase_label">0\nPaboritong\nSalita/Parirala</string>
+    <string name="profile_category_progress">Progreso sa mga Kategorya</string>
+
+    <!--    Strings for Recognition-->
+    <string name="recog_app_name">iSpeak Signs Rekognisyon</string>
+    <string name="recog_version">ALPHA</string>
+
+    <!--    Strings for Learn-->
+    <string name="learn_item_name">Kasarian</string>
+    <string name="learn_item_type">(Salita)</string>
+    <string name="learn_item_count">10 salita</string>
 
 </resources>

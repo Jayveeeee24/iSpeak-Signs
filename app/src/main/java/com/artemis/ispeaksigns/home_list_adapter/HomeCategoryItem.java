@@ -1,12 +1,12 @@
 package com.artemis.ispeaksigns.home_list_adapter;
 
-public class LearnCategoryItem {
+public class HomeCategoryItem {
     private String categoryName;
     private Integer bgColor;
     private Integer progress;
     private Integer imageUrl;
 
-    public LearnCategoryItem(String categoryName, Integer bgColor, Integer progress, Integer imageUrl) {
+    public HomeCategoryItem(String categoryName, Integer bgColor, Integer progress, Integer imageUrl) {
         this.categoryName = categoryName;
         this.bgColor = bgColor;
         this.progress = progress;

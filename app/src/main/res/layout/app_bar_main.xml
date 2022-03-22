@@ -92,7 +92,7 @@
                     android:layout_height="165dp"
                     android:layout_marginStart="-130dp"
                     android:layout_marginBottom="15dp"
-                    android:contentDescription="@string/toolbar_image_desc"
+                    android:contentDescription="@string/cvsu_logo_desc"
                     android:src="@drawable/cvsu_logo_50"/>
 
                 <TextView
