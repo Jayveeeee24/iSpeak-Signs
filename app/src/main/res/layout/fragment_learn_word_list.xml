@@ -13,7 +13,8 @@
         <RelativeLayout
             android:id="@+id/progress_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/learnProgressCard"
@@ -44,7 +45,8 @@
                             android:tint="@color/white"
                             android:layout_height="85dp"
                             android:padding="15sp"
-                            android:src="@drawable/ic_buwan" />
+                            android:src="@drawable/ic_buwan"
+                            android:contentDescription="@string/learn_list_category_logo" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -54,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@+id/categoryImageCard"
-                        android:text="Simulan nang matuto!"
+                        android:text="@string/learn_category_progress_label"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -65,7 +67,7 @@
                         android:layout_below="@id/txtProgressCardLabel"
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@id/categoryImageCard"
-                        android:text="Salitang natuklasan" />
+                        android:text="@string/learn_list_word_learned" />
 
                     <TextView
                         android:id="@+id/txtProgressPercent"
@@ -74,7 +76,7 @@
                         android:layout_below="@id/txtProgressCardLabel"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="10dp"
-                        android:text="0/25"
+                        android:text="@string/learn_list_progress"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />
 
@@ -94,7 +96,11 @@
 
         </RelativeLayout>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/learn_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/progress_layout"/>
 
     </RelativeLayout>
 

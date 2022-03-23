@@ -186,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
                 collapseToolbar.setBackgroundResource(R.drawable.cvsu);
             } else if (navDestination.getId() == R.id.nav_search) {
                 setExpandedEnabled(false);
-                mtoolbar.setTitle("");
+            } else if (navDestination.getId() == R.id.nav_profile) {
+                setExpandedEnabled(false);
             }
         });
     }

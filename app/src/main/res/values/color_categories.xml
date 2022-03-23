@@ -36,11 +36,39 @@
 
     <color name="flame">#E54D26</color>
     <color name="flame_90">#90E54D26</color>
+
     <color name="outrageous_orange">#FF7143</color>
     <color name="outrageous_orange_90">#90FF7143</color>
 
     <color name="apple">#6DC24B</color>
     <color name="apple_90">#906DC24B</color>
+
+    <color name="carmine_pink">#F05134</color>
+    <color name="carmine_pink_90">#90F05134</color>
+
+    <color name="veronese_green">#009788</color>
+    <color name="veronese_green_90">#90009788</color>
+
+    <color name="violet_blue">#3F51B5</color>
+    <color name="violet_blue_90">#903F51B5</color>
+
+    <color name="steel_teal">#607d8b</color>
+    <color name="steel_teal_90">#90607d8b</color>
+
+    <color name="grape">#791fa1</color>
+    <color name="grape_90">#90791fa1</color>
+
+    <color name="chinese_orange">#fb7242</color>
+    <color name="chinese_orange_90">#90fb7242</color>
+    
+    <color name="may_green">#398d3d</color>
+    <color name="may_green_90">#90398d3d</color>
+
+    <color name="sea_blue">#06648e</color>
+    <color name="sea_blue_90">#9006648e</color>
+
+    <color name="blue_surf">#00b8d4</color>
+    <color name="blue_surf_90">#9000b8d4</color>
 
     <color name="learn_card_item_bg">#ffe1ad</color>
 </resources>

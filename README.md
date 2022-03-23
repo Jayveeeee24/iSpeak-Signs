@@ -2,11 +2,17 @@
 
 DEBUG NOTES
 
+v1.0r29 3/23
+- renamed layout, java project files and packages convention for easy navigation
+- created the progress list in profile
+- refactored learn main list recycler view for performance boost
+
 
 v1.0r28 3/22
 - renamed learn recycler adapters in home to be specific to home
 - created the learn main list (both word and phrases)
 - refactored category colors to fit for learn design
+- created the renaming of user in profile screen
 
 v1.0r27 3/19
 - initialized profile fragment design 

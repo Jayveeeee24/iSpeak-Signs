@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        app:titleTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.ISpeakSigns.AppBarOverlay"
+        app:liftOnScroll="true"
+        android:backgroundTint="@android:color/transparent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapseToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:background="@drawable/appbar_bg"
+            app:contentScrim="#4cb050"
+            app:expandedTitleTextColor="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:scrimAnimationDuration="300">
+
+<!--            THE FOLLOWING LAYOUT IS FOR ABOUT PAGE-->
+            <RelativeLayout
+                android:visibility="invisible"
+                android:id="@+id/about_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?actionBarSize">
+
+                <ImageView
+                    android:id="@+id/about_ispeak_logo"
+                    android:layout_width="65dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="65dp"
+                    android:layout_marginBottom="55dp"
+                    android:src="@drawable/ic_ispeak_sign_logo"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"/>
+                <TextView
+                    android:id="@+id/mabuhay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/about_ispeak_logo"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="85dp"
+                    android:text="@string/greeting_about"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"/>
+                <TextView
+                    android:id="@+id/i"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/about_ispeak_logo"
+                    android:text="@string/about_i"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="55dp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/golden_puppy"/>
+                <TextView
+                    android:id="@+id/speak_sign_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/i"
+                    android:text="@string/about_speak_label"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="55dp"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/white"/>
+
+            </RelativeLayout>
+<!--                END OF ABOUT DEFINITION-->
+
+            <RelativeLayout
+                android:visibility="visible"
+                android:id="@+id/default_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?actionBarSize">
+
+                <ImageView
+                    android:id="@+id/toolbarImage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="165dp"
+                    android:layout_marginStart="-130dp"
+                    android:layout_marginBottom="15dp"
+                    android:contentDescription="@string/cvsu_logo_desc"
+                    android:src="@drawable/cvsu_logo_50"/>
+
+                <TextView
+                    android:id="@+id/txtHomeGreeting1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="25dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@string/home_greeting1_label"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtHomeGreeting2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtHomeGreeting1"
+                    android:layout_marginStart="25dp"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@string/learn_greeting1_label"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/editSearchParent"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/search_logo"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/ic_search"
+                            android:layout_centerVertical="true"
+                            android:tint="@color/colorSecondary"
+                            android:padding="6dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"/>
+
+                        <TextView
+                            android:id="@+id/search_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/edit_text_hint"
+                            android:textColor="#6A6E6A"
+                            android:singleLine="true"
+                            android:textSize="16sp"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/search_logo"/>
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.ISpeakSigns.PopupOverlay" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        layout="@layout/main_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/colorSecondary"
+        android:contentDescription="@string/fab_recognize_desc"
+        android:src="@drawable/ic_fab_camera"
+        app:tint="@color/white"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

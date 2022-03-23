@@ -15,12 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.home_list_adapter.HomeCategoryItem;
-import com.artemis.ispeaksigns.home_list_adapter.HomeRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -29,22 +28,27 @@ public class nav_home extends Fragment  {
     Context context;
     View view;
     RecyclerView learnRecView;
+    RecyclerView learnVideoRecView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         context = container.getContext();
 
+        learnRecView = view.findViewById(R.id.learnRecycler);
+        learnRecView.setNestedScrollingEnabled(false);
+        learnVideoRecView = view.findViewById(R.id.learnVideoRecycler);
+        learnVideoRecView.setNestedScrollingEnabled(false);
 
-        InitializeLearnRecyclerView();
+
+        InitializeRecyclerView();
         InitializeClickListener();
         return view;
     }
 
 
-    private void InitializeLearnRecyclerView()
+    private void InitializeRecyclerView()
     {
-        learnRecView = view.findViewById(R.id.learnRecycler);
         ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
 
         //TODO change this into database dependent resources
@@ -79,10 +83,6 @@ public class nav_home extends Fragment  {
 
         learnRecView.setAdapter(adapter);
         learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-
-
-
-
 
     }
 
@@ -126,7 +126,6 @@ public class nav_home extends Fragment  {
         home_learn_see_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Bundle bundle = new Bundle();
                 bundle.putString("category_type", "Salita");
                 NavOptions.Builder navBuilder = new NavOptions.Builder();

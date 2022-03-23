@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
@@ -27,6 +28,9 @@ public class nav_fsl_wotd extends Fragment {
         String word;
         view = inflater.inflate(R.layout.fragment_fsl_wotd, container, false);
         context = container.getContext();
+
+        ScrollView fslWotdParent = view.findViewById(R.id.fsl_wotd_parent);
+        fslWotdParent.setNestedScrollingEnabled(false);
 
         if (getArguments() != null)
         {

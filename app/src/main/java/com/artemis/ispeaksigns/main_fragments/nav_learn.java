@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.learn_list_adapter.LearnWordRecyclerAdapter;
-import com.artemis.ispeaksigns.learn_list_adapter.LearnVideoCategoryItem;
-import com.artemis.ispeaksigns.learn_list_adapter.LearnVideoRecyclerAdapter;
-import com.artemis.ispeaksigns.learn_list_adapter.LearnWordCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_learn.LearnWordRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_learn.LearnVideoCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_learn.LearnVideoRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_learn.LearnWordCategoryItem;
 
 import java.util.ArrayList;
 
@@ -130,23 +130,19 @@ public class nav_learn extends Fragment {
 
     private void InitializeDesign()
     {
-        categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
-        categoryPhrases.setTypeface(Typeface.DEFAULT);
-        category_selected = "";
+        category_selected = "Salita";
         if (getArguments() != null) {
             category_selected = getArguments().getString("category_type");
         }
-        InitializeLearnRecyclerView("Salita");
-        if (category_selected.equals("Salita")){
-            categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
-            categoryWord.setBackgroundResource(R.drawable.highlight_text);
-            categoryWord.setTextColor(getResources().getColor(R.color.colorSecondary, null));
+        categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
+        categoryWord.setBackgroundResource(R.drawable.highlight_text);
+        categoryWord.setTextColor(getResources().getColor(R.color.colorSecondary, null));
 
-            categoryPhrases.setTypeface(Typeface.DEFAULT);
-            categoryPhrases.setBackgroundResource(android.R.color.transparent);
-            categoryPhrases.setTextColor(getResources().getColor(R.color.gray_text_color, null));
-            InitializeLearnRecyclerView(category_selected);
-        }else if (category_selected.equals("Parirala")){
+        categoryPhrases.setTypeface(Typeface.DEFAULT);
+        categoryPhrases.setBackgroundResource(android.R.color.transparent);
+        categoryPhrases.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+        InitializeLearnRecyclerView(category_selected);
+        if (category_selected.equals("Parirala")){
             categoryPhrases.setTypeface(Typeface.DEFAULT_BOLD);
             categoryPhrases.setBackgroundResource(R.drawable.highlight_text);
             categoryPhrases.setTextColor(getResources().getColor(R.color.colorSecondary, null));
@@ -154,7 +150,6 @@ public class nav_learn extends Fragment {
             categoryWord.setTypeface(Typeface.DEFAULT);
             categoryWord.setBackgroundResource(android.R.color.transparent);
             categoryWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
-            InitializeLearnRecyclerView(category_selected);
         }
     }
 

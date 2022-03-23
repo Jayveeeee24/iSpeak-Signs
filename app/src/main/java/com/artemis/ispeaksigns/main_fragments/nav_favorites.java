@@ -3,8 +3,6 @@ package com.artemis.ispeaksigns.main_fragments;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,10 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteCategoryItem;
-import com.artemis.ispeaksigns.favorite_list_adapter.FavoriteRecyclerAdapter;
-
-import org.jetbrains.annotations.NotNull;
+import com.artemis.ispeaksigns.adapter_list_favorite.FavoriteCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_favorite.FavoriteRecyclerAdapter;
 
 import java.util.ArrayList;
 

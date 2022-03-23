@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fsl_wotd_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main_fragments.nav_fsl_wotd">
@@ -87,7 +88,7 @@
                 android:id="@+id/play_audio"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_play"
+                android:src="@drawable/ic_audio"
                 android:tint="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/audio_label"

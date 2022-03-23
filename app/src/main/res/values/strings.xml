@@ -119,5 +119,9 @@
     <string name="learn_item_name">Kasarian</string>
     <string name="learn_item_type">(Salita)</string>
     <string name="learn_item_count">10 salita</string>
+    <string name="learn_list_category_logo">Logo ng Kategorya</string>
+    <string name="learn_category_progress_label">Simulan nang matuto!</string>
+    <string name="learn_list_word_learned">Salitang natuklasan</string>
+    <string name="learn_list_progress">0/25</string>
 
 </resources>
