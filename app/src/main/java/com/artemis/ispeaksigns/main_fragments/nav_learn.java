@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,8 @@ import com.artemis.ispeaksigns.adapter_list_learn.LearnWordRecyclerAdapter;
 import com.artemis.ispeaksigns.adapter_list_learn.LearnVideoCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_learn.LearnVideoRecyclerAdapter;
 import com.artemis.ispeaksigns.adapter_list_learn.LearnWordCategoryItem;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -35,14 +39,17 @@ public class nav_learn extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_learn, container, false);
         context = container.getContext();
-        categoryWord = (TextView) view.findViewById(R.id.category_word);
-        categoryPhrases = (TextView) view.findViewById(R.id.category_phrases);
-        learnRecycler = view.findViewById(R.id.learnWordRecycler);
-
-        InitializeDesign();
-        InitializeOnClick();
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        categoryWord = view.findViewById(R.id.category_word);
+        categoryPhrases = view.findViewById(R.id.category_phrases);
+        learnRecycler = view.findViewById(R.id.learnWordRecycler);
+        InitializeOnClick();
+        InitializeDesign();
     }
 
     private void InitializeLearnRecyclerView(String categoryType)
@@ -83,7 +90,6 @@ public class nav_learn extends Fragment {
             adapter.setLearnWordCategoryItems(learnWordCategoryItems);
 
             learnRecycler.setAdapter(adapter);
-            learnRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         }else if (categoryType.equals("Parirala"))
         {
             String[] bgColors = new String[]
@@ -121,10 +127,8 @@ public class nav_learn extends Fragment {
             adapter.setLearnVideoCategoryItems(learnVideoCategoryItems);
 
             learnRecycler.setAdapter(adapter);
-            learnRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-
         }
-
+        learnRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
     }
 

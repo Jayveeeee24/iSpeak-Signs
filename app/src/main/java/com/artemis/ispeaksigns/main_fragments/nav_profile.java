@@ -3,7 +3,11 @@ package com.artemis.ispeaksigns.main_fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +26,8 @@ import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressItem;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class nav_profile extends Fragment {
@@ -30,18 +36,24 @@ public class nav_profile extends Fragment {
     Context context;
     TextView editUserTextView;
     RecyclerView profileRecycler;
+    CardView profileSeeMore;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         context = container.getContext();
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         profileRecycler = view.findViewById(R.id.profile_recycler);
         profileRecycler.setNestedScrollingEnabled(false);
         InitializeRecycler();
         InitializeOnClick();
-
-        return view;
     }
 
     private void InitializeRecycler()
@@ -79,10 +91,14 @@ public class nav_profile extends Fragment {
             categoryPercentConverted[i] = categoryPercent[i] + "%";
         }
 
+        String[] categoryType = new String[]{
+            "Salita", "Parirala", "Salita", "Salita", "Parirala"
+        };
+
         for (int i = 0; i<categoryName.length; i++)
         {
             profileProgressItems.add(new ProfileProgressItem(colors[i], images[i], categoryName[i],
-                    categoryPercentConverted[i], categoryProgress[i]));
+                    categoryPercentConverted[i], categoryProgress[i], categoryType[i]));
         }
 
         ProfileProgressListAdapter adapter = new ProfileProgressListAdapter();
@@ -96,6 +112,7 @@ public class nav_profile extends Fragment {
 
     private void InitializeOnClick()
     {
+        profileSeeMore = view.findViewById(R.id.profile_see_more);
         final ImageView editUserButton = (ImageView) view.findViewById(R.id.edit_user_name);
         final EditText editTextUser = view.findViewById(R.id.edit_text_user_name);
         editUserTextView = view.findViewById(R.id.user_name);
@@ -137,6 +154,12 @@ public class nav_profile extends Fragment {
             }
         });
 
+        profileSeeMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_nav_profile_to_profile_see_more);
+            }
+        });
 
     }
 

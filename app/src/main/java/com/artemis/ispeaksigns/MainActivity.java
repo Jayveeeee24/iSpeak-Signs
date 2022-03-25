@@ -158,9 +158,7 @@ public class MainActivity extends AppCompatActivity {
                         drawer.openDrawer(GravityCompat.START);
                     }
                 });
-            } else if (navDestination.getId() == R.id.nav_fsl_wotd) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_learn) {
+            }  else if (navDestination.getId() == R.id.nav_learn) {
                 txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
                 txtHomeGreeting1.setTextSize(18);
                 txtHomeGreeting2.setText("");
@@ -184,10 +182,6 @@ public class MainActivity extends AppCompatActivity {
                 defaultToolbar.setVisibility(View.INVISIBLE);
                 aboutToolbar.setVisibility(View.VISIBLE);
                 collapseToolbar.setBackgroundResource(R.drawable.cvsu);
-            } else if (navDestination.getId() == R.id.nav_search) {
-                setExpandedEnabled(false);
-            } else if (navDestination.getId() == R.id.nav_profile) {
-                setExpandedEnabled(false);
             }
         });
     }

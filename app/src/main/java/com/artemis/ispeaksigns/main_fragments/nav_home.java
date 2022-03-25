@@ -93,6 +93,7 @@ public class nav_home extends Fragment  {
         CardView card_fsl_resource = view.findViewById(R.id.card_fsl_resource);
         TextView home_learn_see_more = view.findViewById(R.id.homeWordSeeMore);
         TextView txt_home_fsl_name = view.findViewById(R.id.txt_home_fsl_name);
+        TextView txtHomeSeeMore = view.findViewById(R.id.homeVideoSeeMore);
 
         image_favorite.setOnClickListener(new View.OnClickListener() {
             int isFavorite = 0;
@@ -128,6 +129,21 @@ public class nav_home extends Fragment  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("category_type", "Salita");
+                NavOptions.Builder navBuilder = new NavOptions.Builder();
+                navBuilder.setEnterAnim(android.R.anim.slide_in_left)
+                        .setExitAnim(android.R.anim.slide_out_right)
+                        .setPopEnterAnim(android.R.anim.slide_in_left)
+                        .setPopExitAnim(android.R.anim.slide_out_right);
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_learn, bundle, navBuilder.build());
+
+            }
+        });
+
+        txtHomeSeeMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category_type", "Parirala");
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(android.R.anim.slide_in_left)
                         .setExitAnim(android.R.anim.slide_out_right)

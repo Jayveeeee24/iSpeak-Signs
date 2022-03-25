@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_learn_list_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/learn_list_word_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_learn_list_word"
+            android:tint="@color/colorPrimary"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/learn_list_word_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lunes"
+            android:layout_toEndOf="@id/learn_list_word_image"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/nunito"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/is_Learned"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_is_learned"
+            android:tint="@color/colorSecondary"
+            android:layout_marginEnd="5dp"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

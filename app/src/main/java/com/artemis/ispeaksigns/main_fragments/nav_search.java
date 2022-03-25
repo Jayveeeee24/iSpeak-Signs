@@ -3,16 +3,29 @@ package com.artemis.ispeaksigns.main_fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.adapter_list_search.SearchCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_search.SearchCategoryListAdapter;
+import com.artemis.ispeaksigns.adapter_list_search.SearchVideoItem;
+import com.artemis.ispeaksigns.adapter_list_search.SearchVideoListAdapter;
+import com.artemis.ispeaksigns.adapter_list_search.SearchWordItem;
+import com.artemis.ispeaksigns.adapter_list_search.SearchWordListAdapter;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 
 public class nav_search extends Fragment {
@@ -24,43 +37,115 @@ public class nav_search extends Fragment {
     TextView searchPhrase;
     SearchView searchView;
     String search_type;
+    RecyclerView searchRecycler;
+    SearchCategoryListAdapter adapter = new SearchCategoryListAdapter();
+    SearchWordListAdapter adapter1 = new SearchWordListAdapter();
+    SearchVideoListAdapter adapter2 = new SearchVideoListAdapter();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search, container, false);
         context = container.getContext();
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         searchView = (SearchView) view.findViewById(R.id.search);
         searchCategory = view.findViewById(R.id.search_category);
         searchWord = view.findViewById(R.id.search_word);
         searchPhrase = view.findViewById(R.id.search_phrase);
+        searchRecycler = view.findViewById(R.id.search_recycler);
+        searchRecycler.setNestedScrollingEnabled(false);
 
         searchView.requestFocus();
-        search_type = "category";
+
+        search_type = "Kategorya";
+
+        InitializeRecycler();
         InitializeOnClick();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
+            public boolean onQueryTextSubmit(String query) {
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                Toast.makeText(context, searchView.getQuery() + " haha", Toast.LENGTH_SHORT).show();
-                return true;
+            public boolean onQueryTextChange(String query) {
+                if (search_type.equals("Kategorya")){
+                    adapter.getFilter().filter(query);
+                }else if (search_type.equals("Salita")){
+                    adapter1.getFilter().filter(query);
+                }else if (search_type.equals("Parirala")){
+                    adapter2.getFilter().filter(query);
+                }
+                return false;
+
             }
         });
-        
-        
-        return view;
+    }
+
+    private void InitializeRecycler()
+    {
+        ArrayList<SearchCategoryItem> searchCategoryItems = new ArrayList<>();
+        ArrayList<SearchVideoItem> searchVideoItems = new ArrayList<>();
+        ArrayList<SearchWordItem> searchWordItems = new ArrayList<>();
+
+        if (search_type.equals("Kategorya")){
+            String[] categoryName = new String[]{
+                    "Kasarian", "Pang-Komunikasyon", "Damit", "Pagbati", "Pang-Emergency"
+            };
+
+            String[] categoryType = new String[]{
+                    "Salita", "Parirala", "Salita", "Parirala", "Parirala"
+            };
+
+            for (int i = 0; i<categoryName.length; i++) {
+                searchCategoryItems.add(new SearchCategoryItem(categoryName[i], categoryType[i]));
+            }
+
+            adapter.setSearchCategoryItems(searchCategoryItems);
+
+            searchRecycler.setAdapter(adapter);
+        }
+        else if (search_type.equals("Salita")) {
+            String[] itemName = new String[]{
+                    "Parke", "Lunes", "Disyembre", "Tuwa", "Aso"
+            };
+
+            for (int i = 0; i<itemName.length; i++) {
+                searchWordItems.add(new SearchWordItem(itemName[i]));
+            }
+            adapter1.setSearchWordItems(searchWordItems);
+            searchRecycler.setAdapter(adapter1);
+        }else if (search_type.equals("Parirala")){
+            String[] phraseName = new String[]{
+                    "Magandang Umaga", "Kamusta ka", "Tulong!", "Anong lugar ito"
+            };
+
+            for (int i = 0; i<phraseName.length; i++) {
+                searchVideoItems.add(new SearchVideoItem(phraseName[i]));
+            }
+            adapter2.setSearchVideoItems(searchVideoItems);
+
+            searchRecycler.setAdapter(adapter2);
+        }
+
+        searchRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
 
     private void InitializeOnClick()
     {
 
+
         searchCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                search_type = "Kategorya";
+                InitializeRecycler();
                 searchCategory.setTextColor(getResources().getColor(R.color.colorSecondary, null));
                 searchWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchPhrase.setTextColor(getResources().getColor(R.color.gray_text_color, null));
@@ -68,13 +153,15 @@ public class nav_search extends Fragment {
                 searchView.setQueryHint("Humanap ng Kategorya");
                 searchWord.setBackgroundResource(android.R.color.transparent);
                 searchPhrase.setBackgroundResource(android.R.color.transparent);
-                search_type = "category";
+                searchView.setQuery("", false);
             }
         });
 
         searchWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                search_type = "Salita";
+                InitializeRecycler();
                 searchWord.setTextColor(getResources().getColor(R.color.colorSecondary, null));
                 searchCategory.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchPhrase.setTextColor(getResources().getColor(R.color.gray_text_color, null));
@@ -82,13 +169,15 @@ public class nav_search extends Fragment {
                 searchView.setQueryHint("Humanap ng FSL na Salita");
                 searchCategory.setBackgroundResource(android.R.color.transparent);
                 searchPhrase.setBackgroundResource(android.R.color.transparent);
-                search_type = "word";
+                searchView.setQuery("", false);
             }
         });
 
         searchPhrase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                search_type = "Parirala";
+                InitializeRecycler();
                 searchPhrase.setTextColor(getResources().getColor(R.color.colorSecondary, null));
                 searchWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchCategory.setTextColor(getResources().getColor(R.color.gray_text_color, null));
@@ -96,7 +185,7 @@ public class nav_search extends Fragment {
                 searchView.setQueryHint("Humanap ng FSL na Parirala");
                 searchCategory.setBackgroundResource(android.R.color.transparent);
                 searchWord.setBackgroundResource(android.R.color.transparent);
-                search_type = "phrase";
+                searchView.setQuery("", false);
             }
         });
     }

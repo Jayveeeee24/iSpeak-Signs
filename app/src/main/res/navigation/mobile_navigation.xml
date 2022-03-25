@@ -58,11 +58,22 @@
         android:name="com.artemis.ispeaksigns.main_fragments.nav_about"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+<!--    Profile Fragments-->
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.artemis.ispeaksigns.main_fragments.nav_profile"
         android:label="@string/nav_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_nav_profile_to_profile_see_more"
+            app:destination="@id/profile_see_more" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_see_more"
+        android:name="com.artemis.ispeaksigns.sub_fragments.profile_see_more"
+        android:label="@string/profile_see_more_title"
+        tools:layout="@layout/fragment_profile_see_more" />
 
 <!--    Learn Fragments-->
     <fragment
@@ -84,17 +95,48 @@
         android:id="@+id/learn_category_word"
         android:name="com.artemis.ispeaksigns.sub_fragments.learn_word_list"
         android:label="@string/learn_category_word"
-        tools:layout="@layout/fragment_learn_word_list" />
+        tools:layout="@layout/fragment_learn_word_list" >
+        <action
+            android:id="@+id/action_learn_category_word_to_learn_word_item"
+            app:destination="@id/learn_word_item" />
+    </fragment>
     <fragment
         android:id="@+id/learn_category_video"
         android:name="com.artemis.ispeaksigns.sub_fragments.learn_video_list"
         android:label="@string/learn_category_phrase"
-        tools:layout="@layout/fragment_learn_video_list" />
+        tools:layout="@layout/fragment_learn_video_list" >
+        <action
+            android:id="@+id/action_learn_category_video_to_learn_video_item"
+            app:destination="@id/learn_video_item" />
+    </fragment>
     <fragment
         android:id="@+id/nav_search"
         android:name="com.artemis.ispeaksigns.main_fragments.nav_search"
         android:label="@string/nav_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_nav_search_to_learn_category_video"
+            app:destination="@id/learn_category_video" />
+        <action
+            android:id="@+id/action_nav_search_to_learn_category_word"
+            app:destination="@id/learn_category_word" />
+        <action
+            android:id="@+id/action_nav_search_to_learn_word_item"
+            app:destination="@id/learn_word_item" />
+        <action
+            android:id="@+id/action_nav_search_to_learn_video_item"
+            app:destination="@id/learn_video_item" />
+    </fragment>
+    <fragment
+        android:id="@+id/learn_word_item"
+        android:name="com.artemis.ispeaksigns.sub_fragments.learn_word_item"
+        android:label="fragment_learn_word_item"
+        tools:layout="@layout/fragment_learn_word_item" />
+    <fragment
+        android:id="@+id/learn_video_item"
+        android:name="com.artemis.ispeaksigns.learn_video_item"
+        android:label="fragment_learn_video_item"
+        tools:layout="@layout/fragment_learn_video_item" />
 
 
 </navigation>

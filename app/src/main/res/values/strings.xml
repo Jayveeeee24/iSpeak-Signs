@@ -24,6 +24,7 @@
     <string name="menu_about">Tungkol sa App</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_search">Hanapin</string>
+    <string name="profile_see_more_title">Lahat ng Kategorya</string>
 
     <!--    Strings for Toolbar TextViews-->
     <string name="home_greeting1_label">Kumusta,</string>
@@ -123,5 +124,7 @@
     <string name="learn_category_progress_label">Simulan nang matuto!</string>
     <string name="learn_list_word_learned">Salitang natuklasan</string>
     <string name="learn_list_progress">0/25</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -27,7 +27,7 @@ public class LearnVideoRecyclerAdapter extends RecyclerView.Adapter<LearnVideoRe
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_category_learn, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_learn, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

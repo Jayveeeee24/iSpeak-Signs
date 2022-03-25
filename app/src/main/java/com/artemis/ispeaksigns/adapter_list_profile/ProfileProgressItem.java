@@ -7,13 +7,15 @@ public class ProfileProgressItem {
     private String itemName;
     private String itemPercent;
     private Integer itemProgress;
+    private String itemType;
 
-    public ProfileProgressItem(Integer imageBg, Integer imageResource, String itemName, String itemPercent, Integer itemProgress) {
+    public ProfileProgressItem(Integer imageBg, Integer imageResource, String itemName, String itemPercent, Integer itemProgress, String itemType) {
         this.imageBg = imageBg;
         this.imageResource = imageResource;
         this.itemName = itemName;
         this.itemPercent = itemPercent;
         this.itemProgress = itemProgress;
+        this.itemType = itemType;
     }
 
     public Integer getImageBg() {
@@ -56,14 +58,11 @@ public class ProfileProgressItem {
         this.itemProgress = itemProgress;
     }
 
-    @Override
-    public String toString() {
-        return "ProfileProgressItem{" +
-                "imageBg=" + imageBg +
-                ", imageResource=" + imageResource +
-                ", itemName='" + itemName + '\'' +
-                ", itemPercent='" + itemPercent + '\'' +
-                ", itemProgress=" + itemProgress +
-                '}';
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 }

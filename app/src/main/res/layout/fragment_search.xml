@@ -90,6 +90,7 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_recycler"
         android:layout_width="match_parent"

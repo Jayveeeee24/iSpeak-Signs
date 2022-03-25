@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.1r1 3/25
+- implemented search filter
+- implemented see more function for category progress in profile fragment
+- refactored list adapters files except home, favorite list adapter
+-renamed project files and packages for list adapter for easy read
+
 v1.0r29 3/23
 - renamed layout, java project files and packages convention for easy navigation
 - created the progress list in profile

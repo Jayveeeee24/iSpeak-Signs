@@ -42,7 +42,7 @@ public class ProfileProgressListAdapter extends RecyclerView.Adapter<ProfileProg
         holder.cardProfileProgressParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //TODO make this an actual command to go to the item
             }
         });
     }
