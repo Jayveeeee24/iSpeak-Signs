@@ -5,6 +5,7 @@ DEBUG NOTES
 v1.1r1 3/25
 - implemented search filter
 - implemented see more function for category progress in profile fragment
+- created the design for learn word list for items
 - refactored list adapters files except home, favorite list adapter
 -renamed project files and packages for list adapter for easy read
 
