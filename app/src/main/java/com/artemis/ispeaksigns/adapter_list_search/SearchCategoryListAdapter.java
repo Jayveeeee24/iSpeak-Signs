@@ -1,5 +1,6 @@
 package com.artemis.ispeaksigns.adapter_list_search;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.R;
@@ -39,7 +42,25 @@ public class SearchCategoryListAdapter extends RecyclerView.Adapter<SearchCatego
        holder.searchCard.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               //TODO make this an actual method of going into the item fragment
+               if (searchCategoryItems.get(position).getItemCategory().equals("Salita")){
+                   Bundle bundle = new Bundle();
+                   bundle.putString("Kategorya", searchCategoryItems.get(position).getSearchItemName());
+                   NavOptions.Builder navBuilder = new NavOptions.Builder();
+                   navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                           .setExitAnim(R.anim.nav_default_exit_anim)
+                           .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                           .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                   Navigation.findNavController(view).navigate(R.id.action_nav_search_to_learn_category_word, bundle, navBuilder.build());
+               }else if (searchCategoryItems.get(position).getItemCategory().equals("Parirala")){
+                   Bundle bundle = new Bundle();
+                   bundle.putString("Kategorya", searchCategoryItems.get(position).getSearchItemName());
+                   NavOptions.Builder navBuilder = new NavOptions.Builder();
+                   navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                           .setExitAnim(R.anim.nav_default_exit_anim)
+                           .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                           .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                   Navigation.findNavController(view).navigate(R.id.action_nav_search_to_learn_category_video, bundle, navBuilder.build());
+               }
            }
        });
     }

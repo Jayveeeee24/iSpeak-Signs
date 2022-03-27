@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp">
+
+                <ImageView
+                    android:id="@+id/logo_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cvsu_logo"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/logo_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender and Development Unit"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textStyle="bold"
+                    android:layout_below="@id/logo_image"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/logo_subname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CvSU-CCC GAD "
+                    android:textSize="15sp"
+                    android:layout_below="@id/logo_name"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/logo_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender Equality is a human fight, not a female fight."
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/logo_subname"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

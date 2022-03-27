@@ -46,7 +46,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             public void onClick(View view) {
                 //TODO change this to an actual method to do when an item is clicked
                 Bundle bundle = new Bundle();
-                bundle.putString("category", homeCategoryItems.get(position).getCategoryName());
+                bundle.putString("Kategorya", homeCategoryItems.get(position).getCategoryName());
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
                         .setExitAnim(R.anim.nav_default_exit_anim)

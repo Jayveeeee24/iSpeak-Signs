@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
 
             <ImageView
                 android:id="@+id/logo1"
@@ -23,6 +23,8 @@
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:src="@drawable/gad_logo"
+                android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="@string/gad_logo_desc" />
 
             <ImageView
@@ -33,6 +35,8 @@
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo1"
                 android:scaleType="centerCrop"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/ic_ispeak_sign_logo"
                 android:contentDescription="@string/app_logo_desc" />
 
@@ -43,6 +47,8 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo2"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/cvsu_logo"
                 android:contentDescription="@string/cvsu_logo_desc" />
         </RelativeLayout>
@@ -53,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/logo_layout"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
@@ -76,22 +83,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/about_description3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/about_description2"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="@string/about_cvsu_gad"
-            android:textColor="@color/colorPrimary"
-            android:textSize="13sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/about_description4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/about_description3"
+            android:layout_below="@id/about_description2"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/cvsu_name"
@@ -105,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/about_description4"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:text="@string/member_label_title1"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -117,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/members_label1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:text="@string/member_label_title2"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -138,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/members_label3"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
 
@@ -147,7 +142,9 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="38dp">
+                app:cardCornerRadius="38dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -253,7 +250,7 @@
                 android:id="@+id/reianne_description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_toEndOf="@id/card_reianne"
                 android:text="@string/member3_name"
                 android:textSize="15sp" />
@@ -270,7 +267,36 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/member_reianne"
+            android:layout_marginTop="40dp">
 
+            <TextView
+                android:id="@+id/thanks_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Espesyal na Pasasalamat"
+                android:layout_centerHorizontal="true"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pag-proofread"
+                android:layout_below="@id/thanks_label"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham_book_regular"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

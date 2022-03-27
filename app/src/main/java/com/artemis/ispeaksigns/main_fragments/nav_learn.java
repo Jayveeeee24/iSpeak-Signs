@@ -1,8 +1,12 @@
 
 package com.artemis.ispeaksigns.main_fragments;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_learn.LearnWordRecyclerAdapter;
@@ -25,6 +32,8 @@ import com.artemis.ispeaksigns.adapter_list_learn.LearnWordCategoryItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class nav_learn extends Fragment {
 

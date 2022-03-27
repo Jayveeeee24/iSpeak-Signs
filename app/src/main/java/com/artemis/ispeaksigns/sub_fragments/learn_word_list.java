@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_learn_word.LearnListWordCategoryItem;
@@ -73,30 +74,30 @@ public class learn_word_list extends Fragment {
 
     public void setProgressSetup()
     {
-        String word = "";
+        String kategorya = "";
         if (getArguments() != null) {
-            word = getArguments().getString("category");
+            kategorya = getArguments().getString("Kategorya");
             ((MainActivity) Objects.requireNonNull(getActivity())).collapseToolbar
-                    .setTitle(getResources().getString(R.string.learn_word_title_set) + " " + word);
+                    .setTitle(kategorya);
         }
 
-        String str = word.toLowerCase();
-        String[] arrStr = str.split(" ");
-        String imageName = "ic";
-        String converted = "";
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String a : arrStr)
-        {
-            if (arrStr.length == 1) {
-                str = "_" + str;
-                break;
-            }
-            str = stringBuilder.append("_").append(a).toString();
-        }
-        imageName =imageName + str ;
+        FunctionHelper functionHelper = new FunctionHelper();
+//        String str = kategorya.toLowerCase();
+//        String[] arrStr = str.split(" ");
+//        String imageName = "ic";
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (String a : arrStr)
+//        {
+//            if (arrStr.length == 1) {
+//                str = "_" + str;
+//                break;
+//            }
+//            str = stringBuilder.append("_").append(a).toString();
+//        }
+//        imageName =imageName + str ;
 
         ImageView categoryImage = view.findViewById(R.id.categoryImage);
-        categoryImage.setImageResource(getResources().getIdentifier(imageName, "drawable", context.getPackageName()));
+        categoryImage.setImageResource(getResources().getIdentifier(functionHelper.getImageLogo(kategorya), "drawable", context.getPackageName()));
 
     }
 }

@@ -3,6 +3,8 @@ package com.artemis.ispeaksigns.main_fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -17,6 +19,8 @@ import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class nav_fsl_wotd extends Fragment {
@@ -25,10 +29,17 @@ public class nav_fsl_wotd extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String word;
         view = inflater.inflate(R.layout.fragment_fsl_wotd, container, false);
         context = container.getContext();
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        String word;
         ScrollView fslWotdParent = view.findViewById(R.id.fsl_wotd_parent);
         fslWotdParent.setNestedScrollingEnabled(false);
 
@@ -51,8 +62,6 @@ public class nav_fsl_wotd extends Fragment {
                 }
             }
         });
-
-        return view;
     }
 }
 

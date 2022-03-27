@@ -1,26 +1,27 @@
 package com.artemis.ispeaksigns.adapter_list_favorite;
 
 public class FavoriteCategoryItem {
-    private String categoryName;
+    private String itemName;
+    private String itemType;
 
-    public FavoriteCategoryItem(String categoryName) {
-        this.categoryName = categoryName;
+    public FavoriteCategoryItem(String itemName, String itemType) {
+        this.itemName = itemName;
+        this.itemType = itemType;
     }
 
-
-    public String getCategoryName() {
-        return categoryName;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
+    public String getItemType() {
+        return itemType;
+    }
 
-    @Override
-    public String toString() {
-        return "FavoriteCategoryItem{" +
-                "categoryName='" + categoryName + '\'' +
-                '}';
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 }

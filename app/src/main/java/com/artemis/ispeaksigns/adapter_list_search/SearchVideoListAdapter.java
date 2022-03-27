@@ -1,5 +1,6 @@
 package com.artemis.ispeaksigns.adapter_list_search;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.R;
@@ -38,7 +41,14 @@ public class SearchVideoListAdapter extends RecyclerView.Adapter<SearchVideoList
         holder.cardItemSearchParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO MAKE THIS AN ACTUAL COMMAND TO GO TO THE LEARN ITEM FRAGMNENT
+                Bundle bundle = new Bundle();
+                bundle.putString("learn_video_item", searchVideoItems.get(position).getItemName());
+                NavOptions.Builder navBuilder = new NavOptions.Builder();
+                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                        .setExitAnim(R.anim.nav_default_exit_anim)
+                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                Navigation.findNavController(view).navigate(R.id.action_nav_search_to_learn_video_item, bundle, navBuilder.build());
             }
         });
     }

@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.1r2 3/26
+- implemented the popup dialog for logo and images in about fragment
+- changed the implementation of day streaks from (Relative) to (Linear) layouts to automatically resize the view.
+- implemented the navigation in the search items in search fragment
+- implemented navigation for the ff fragment items: favorite phrase item,  
+
 v1.1r1 3/25
 - implemented search filter
 - implemented see more function for category progress in profile fragment

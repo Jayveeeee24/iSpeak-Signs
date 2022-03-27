@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
@@ -52,8 +53,21 @@ public class nav_home extends Fragment  {
         ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
 
         //TODO change this into database dependent resources
-       String[] imageUrls = new String[]
-               {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"};
+
+        String[] categoryName = new String[]
+                {
+                        "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
+                };
+
+       String[] imageUrls = new String[]{
+               "ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"
+       };
+//       FunctionHelper functionHelper = new FunctionHelper();
+//       for (int i = 0; i<categoryName.length; i++){
+//           imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
+//       }
+
+       int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
        String [] bgColors = new String[]
                {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
 
@@ -67,11 +81,6 @@ public class nav_home extends Fragment  {
            colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
        }
 
-       int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
-       String[] categoryName = new String[]
-               {
-                       "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
-               };
 
        for (int i =0; i<categoryName.length; i++)
        {

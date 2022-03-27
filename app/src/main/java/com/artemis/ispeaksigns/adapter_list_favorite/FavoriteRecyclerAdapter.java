@@ -1,5 +1,6 @@
 package com.artemis.ispeaksigns.adapter_list_favorite;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.R;
@@ -33,12 +36,30 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
-        holder.txtFavoriteItem.setText(favoriteCategoryItems.get(position).getCategoryName());
+        holder.txtFavoriteItem.setText(favoriteCategoryItems.get(position).getItemName());
 
         holder.cardFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TODO make this an actual click listener into the word or phrase item
+                if (favoriteCategoryItems.get(position).getItemType().equals("Salita")){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("learn_word_item", favoriteCategoryItems.get(position).getItemName());
+                    NavOptions.Builder navBuilder = new NavOptions.Builder();
+                    navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                            .setExitAnim(R.anim.nav_default_exit_anim)
+                            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                            .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_favorites_to_learn_word_item, bundle, navBuilder.build());
+                }else if (favoriteCategoryItems.get(position).getItemType().equals("Parirala")){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("learn_video_item", favoriteCategoryItems.get(position).getItemName());
+                    NavOptions.Builder navBuilder = new NavOptions.Builder();
+                    navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                            .setExitAnim(R.anim.nav_default_exit_anim)
+                            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                            .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_favorites_to_learn_video_item, bundle, navBuilder.build());
+                }
             }
         });
         holder.favoriteRemove.setOnClickListener(new View.OnClickListener() {

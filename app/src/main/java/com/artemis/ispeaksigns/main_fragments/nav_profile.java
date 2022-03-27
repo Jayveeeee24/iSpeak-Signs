@@ -61,6 +61,8 @@ public class nav_profile extends Fragment {
         ArrayList<ProfileProgressItem> profileProgressItems = new ArrayList<>();
 
         //TODO change this into database dependent resources
+        String[] categoryName = new String[]
+                {"Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"};
         String[] imageUrls = new String[]
                 {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"};
         String [] bgColors = new String[]
@@ -77,11 +79,6 @@ public class nav_profile extends Fragment {
         }
 
         int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
-        String[] categoryName = new String[]
-                {
-                        "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
-                };
-
         int[] categoryPercent = new int[] {12, 67, 8, 90, 0};
 
         String[] categoryPercentConverted = new String[categoryPercent.length];
@@ -136,13 +133,10 @@ public class nav_profile extends Fragment {
                     editTextUser.setVisibility(View.VISIBLE);
                     isEdit = 1;
                 } else if (isEdit == 1) {
-
                     editUserButton.setImageResource(R.drawable.ic_edit);
-                    if (!editTextUser.getText().toString().equals(editUserTextView.getText().toString()))
-                    {
+                    if (!editTextUser.getText().toString().equals(editUserTextView.getText().toString())) {
                         editUserTextView.setText(editTextUser.getText().toString());
-                        Toast.makeText(context, "Ang Username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(context, "Ang username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
 //                      TODO provide a real action when the user edit the text (database operations)
                     }
                     editTextUser.setVisibility(View.INVISIBLE);

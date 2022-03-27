@@ -15,6 +15,7 @@
         <item name="android:textColorHint">#6A6E6A</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     
     <style name="SearchView">

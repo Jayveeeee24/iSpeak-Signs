@@ -45,7 +45,7 @@ public class LearnVideoRecyclerAdapter extends RecyclerView.Adapter<LearnVideoRe
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("video_list", learnVideoCategoryItems.get(position).getCategoryName());
+                bundle.putString("Kategorya", learnVideoCategoryItems.get(position).getCategoryName());
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
                         .setExitAnim(R.anim.nav_default_exit_anim)

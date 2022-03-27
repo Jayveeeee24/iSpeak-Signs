@@ -118,9 +118,8 @@
                 android:layout_below="@id/layout"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
-                android:text="Pang-Komunikasyon"
+                android:text="Pangkomunikasyon"
                 android:textSize="15sp"/>
-
 
         </RelativeLayout>
 
