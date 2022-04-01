@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns.main_fragments;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressItem;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
@@ -37,12 +40,13 @@ public class nav_profile extends Fragment {
     TextView editUserTextView;
     RecyclerView profileRecycler;
     CardView profileSeeMore;
+    DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         context = container.getContext();
-
+        DB = new DBHelper(context);
         return view;
     }
 
@@ -59,43 +63,53 @@ public class nav_profile extends Fragment {
     private void InitializeRecycler()
     {
         ArrayList<ProfileProgressItem> profileProgressItems = new ArrayList<>();
+        profileRecycler.setNestedScrollingEnabled(false);
 
-        //TODO change this into database dependent resources
-        String[] categoryName = new String[]
-                {"Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"};
-        String[] imageUrls = new String[]
-                {"ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"};
-        String [] bgColors = new String[]
-                {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
+        Cursor profileSeeMoreCursor = DB.getAllCategory("haha", "Profile");
 
+        String[] categoryName = new String[profileSeeMoreCursor.getCount()];
+        String[] imageUrls = new String[categoryName.length];
+        String [] bgColors = new String[categoryName.length];
         int[] images = new int[imageUrls.length];
-        for (int i = 0; i<imageUrls.length; i++) {
-            images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
-        }
-
         int[] colors = new int[bgColors.length];
-        for (int i = 0; i<bgColors.length; i++) {
-            colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
-        }
-
-        int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
-        int[] categoryPercent = new int[] {12, 67, 8, 90, 0};
-
+        String[] categoryTotal = new String[categoryName.length];
+        int[] categoryProgress = new int[categoryName.length];
+        int[] categoryPercent = new int[categoryProgress.length];
+        String[] categoryType = new String[categoryName.length];
         String[] categoryPercentConverted = new String[categoryPercent.length];
 
-        for (int i = 0; i<categoryPercent.length; i++)
-        {
-            categoryPercentConverted[i] = categoryPercent[i] + "%";
+//        FunctionHelper functionHelper = new FunctionHelper();
+//        for (int i = 0; i<categoryName.length; i++){
+//            imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
+//        }
+        if (profileSeeMoreCursor.getCount() == 0){
+            Toast.makeText(context, "Ang database ay walang laman, Pakiulit na lamang", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            int i = 0;
+            while(profileSeeMoreCursor.moveToNext()){
+                categoryName[i] = profileSeeMoreCursor.getString(0);
+                bgColors[i] = profileSeeMoreCursor.getString(1);
+                categoryTotal[i] = profileSeeMoreCursor.getString(2);
+                categoryType[i] = profileSeeMoreCursor.getString(3);
+                imageUrls[i] = profileSeeMoreCursor.getString(4);
+                categoryProgress[i] = profileSeeMoreCursor.getInt(5);
+                i++;
+            }
         }
 
-        String[] categoryType = new String[]{
-            "Salita", "Parirala", "Salita", "Salita", "Parirala"
-        };
+        for (int i = 0; i<categoryName.length; i++){
+            categoryPercent[i] = categoryProgress[i] * 100/Integer.parseInt(categoryTotal[i]);
+            images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
+            colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
+            categoryPercentConverted[i] = categoryPercent[i] + "%";
+
+        }
 
         for (int i = 0; i<categoryName.length; i++)
         {
             profileProgressItems.add(new ProfileProgressItem(colors[i], images[i], categoryName[i],
-                    categoryPercentConverted[i], categoryProgress[i], categoryType[i]));
+                    categoryPercentConverted[i], categoryPercent[i], categoryType[i]));
         }
 
         ProfileProgressListAdapter adapter = new ProfileProgressListAdapter();

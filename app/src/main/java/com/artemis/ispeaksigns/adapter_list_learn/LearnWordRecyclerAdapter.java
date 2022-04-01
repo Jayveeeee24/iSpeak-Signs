@@ -40,7 +40,6 @@ public class LearnWordRecyclerAdapter extends RecyclerView.Adapter<LearnWordRecy
         holder.categoryType.setText(learnWordCategoryItems.get(position).getCategoryType());
         holder.learnItemCount.setText(learnWordCategoryItems.get(position).getItemCount());
         holder.learnItemCount.setTextColor(view.getResources().getColor(learnWordCategoryItems.get(position).getLearnItemParentBg(), null));
-
         holder.learnCardItemParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +51,12 @@ public class LearnWordRecyclerAdapter extends RecyclerView.Adapter<LearnWordRecy
                         .setExitAnim(R.anim.nav_default_exit_anim)
                         .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
                         .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                Navigation.findNavController(view).navigate(R.id.action_nav_learn_to_learn_category_word, bundle, navBuilder.build());
+                try{
+                    Navigation.findNavController(view).navigate(R.id.action_nav_learn_to_learn_category_word, bundle, navBuilder.build());
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
+
             }
         });
     }

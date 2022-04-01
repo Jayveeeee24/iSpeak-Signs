@@ -2,6 +2,11 @@
 
 DEBUG NOTES
 
+v1.1r3 4/1
+- initialized implementation of database with DBHelper
+- implemented data gather in database for learn, profile and profile see more fragments
+- refactored learn, profile and profile see more java fragment
+
 v1.1r2 3/26
 - implemented the popup dialog for logo and images in about fragment
 - changed the implementation of day streaks from (Relative) to (Linear) layouts to automatically resize the view.

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--    colors for categories-->
-    <color name="razmataz">#E91E63</color>
-    <color name="razmataz_90">#90E91E63</color>
+    <color name="pink">#E91E63</color>
+    <color name="pink_90">#90E91E63</color>
 
     <color name="auburn">#a12324</color>
     <color name="auburn_90">#90a12324</color>
@@ -57,9 +57,6 @@
 
     <color name="grape">#791fa1</color>
     <color name="grape_90">#90791fa1</color>
-
-    <color name="chinese_orange">#fb7242</color>
-    <color name="chinese_orange_90">#90fb7242</color>
     
     <color name="may_green">#398d3d</color>
     <color name="may_green_90">#90398d3d</color>
