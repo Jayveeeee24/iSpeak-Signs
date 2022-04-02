@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns.main_fragments;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_search.SearchCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_search.SearchCategoryListAdapter;
@@ -38,6 +40,7 @@ public class nav_search extends Fragment {
     SearchView searchView;
     String search_type;
     RecyclerView searchRecycler;
+    DBHelper DB;
     SearchCategoryListAdapter adapter = new SearchCategoryListAdapter();
     SearchWordListAdapter adapter1 = new SearchWordListAdapter();
     SearchVideoListAdapter adapter2 = new SearchVideoListAdapter();
@@ -58,34 +61,16 @@ public class nav_search extends Fragment {
         searchWord = view.findViewById(R.id.search_word);
         searchPhrase = view.findViewById(R.id.search_phrase);
         searchRecycler = view.findViewById(R.id.search_recycler);
+        searchRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         searchRecycler.setNestedScrollingEnabled(false);
-
         searchView.requestFocus();
-
         search_type = "Kategorya";
+        DB = new DBHelper(context);
 
         InitializeRecycler();
         InitializeOnClick();
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String query) {
-                if (search_type.equals("Kategorya")){
-                    adapter.getFilter().filter(query);
-                }else if (search_type.equals("Salita")){
-                    adapter1.getFilter().filter(query);
-                }else if (search_type.equals("Parirala")){
-                    adapter2.getFilter().filter(query);
-                }
-                return false;
-
-            }
-        });
     }
 
     private void InitializeRecycler()
@@ -93,22 +78,33 @@ public class nav_search extends Fragment {
         ArrayList<SearchCategoryItem> searchCategoryItems = new ArrayList<>();
         ArrayList<SearchVideoItem> searchVideoItems = new ArrayList<>();
         ArrayList<SearchWordItem> searchWordItems = new ArrayList<>();
-
+        Cursor searchCategoryCursor = DB.getAllCategory("", "Search");
+        String[] categoryName = new String[searchCategoryCursor.getCount()];
+        String[] categoryType = new String[searchCategoryCursor.getCount()];
         if (search_type.equals("Kategorya")){
-            String[] categoryName = new String[]{
-                    "Kasarian", "Pang-Komunikasyon", "Damit", "Pagbati", "Pang-Emergency"
-            };
 
-            String[] categoryType = new String[]{
-                    "Salita", "Parirala", "Salita", "Parirala", "Parirala"
-            };
+            if (searchCategoryCursor.getCount() == 0){
+                categoryName = new String[]{
+                        "Kasarian", "Pang-Komunikasyon", "Damit", "Pagbati", "Pang-Emergency"
+                };
+
+                categoryType = new String[]{
+                        "Salita", "Parirala", "Salita", "Parirala", "Parirala"
+                };
+            }else{
+                int i = 0;
+                while (searchCategoryCursor.moveToNext()){
+                    categoryName[i] = searchCategoryCursor.getString(0);
+                    categoryType[i] = searchCategoryCursor.getString(1);
+                    i++;
+                }
+            }
 
             for (int i = 0; i<categoryName.length; i++) {
                 searchCategoryItems.add(new SearchCategoryItem(categoryName[i], categoryType[i]));
             }
 
             adapter.setSearchCategoryItems(searchCategoryItems);
-
             searchRecycler.setAdapter(adapter);
         }
         else if (search_type.equals("Salita")) {
@@ -134,12 +130,29 @@ public class nav_search extends Fragment {
             searchRecycler.setAdapter(adapter2);
         }
 
-        searchRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
 
     private void InitializeOnClick()
     {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String query) {
+                if (search_type.equals("Kategorya")){
+                    adapter.getFilter().filter(query);
+                }else if (search_type.equals("Salita")){
+                    adapter1.getFilter().filter(query);
+                }else if (search_type.equals("Parirala")){
+                    adapter2.getFilter().filter(query);
+                }
+                return false;
+
+            }
+        });
 
         searchCategory.setOnClickListener(new View.OnClickListener() {
             @Override

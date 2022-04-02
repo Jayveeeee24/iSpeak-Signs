@@ -1,8 +1,11 @@
 package com.artemis.ispeaksigns.main_fragments;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
@@ -17,10 +20,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -30,61 +36,81 @@ public class nav_home extends Fragment  {
     View view;
     RecyclerView learnRecView;
     RecyclerView learnVideoRecView;
+    DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         context = container.getContext();
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         learnRecView = view.findViewById(R.id.learnRecycler);
         learnRecView.setNestedScrollingEnabled(false);
         learnVideoRecView = view.findViewById(R.id.learnVideoRecycler);
         learnVideoRecView.setNestedScrollingEnabled(false);
-
+        DB = new DBHelper(context);
 
         InitializeRecyclerView();
         InitializeClickListener();
-        return view;
     }
-
 
     private void InitializeRecyclerView()
     {
         ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
+        Cursor homeLearnCursor = DB.getAllCategory("Salita", "By5");
+        String[] categoryName = new String[homeLearnCursor.getCount()];
+        String[] imageUrls = new String[categoryName.length];
+        int[] categoryProgress = new int[categoryName.length];
+        int[] categoryPercent = new int[categoryName.length];
+        String[] totalItems = new String[categoryName.length];
+        String [] bgColors = new String[categoryName.length];
+        int[] images = new int[imageUrls.length];
+        int[] colors = new int[bgColors.length];
+        if (homeLearnCursor.getCount() == 0){
+            categoryName = new String[]{
+                            "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
+                    };
 
-        //TODO change this into database dependent resources
+            imageUrls = new String[]{
+                    "ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"
+            };
+            categoryProgress = new int[] {45, 36, 80, 100, 0};
+            bgColors = new String[]
+                    {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
+        }else{
+            int i = 0;
+            while (homeLearnCursor.moveToNext()){
+                categoryName[i] = homeLearnCursor.getString(0);
+                bgColors[i] = homeLearnCursor.getString(1);
+                totalItems[i] = homeLearnCursor.getString(2);
+                imageUrls[i] = homeLearnCursor.getString(4);
+                categoryProgress[i] = homeLearnCursor.getInt(5);
+                i++;
+            }
+        }
 
-        String[] categoryName = new String[]
-                {
-                        "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
-                };
 
-       String[] imageUrls = new String[]{
-               "ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"
-       };
 //       FunctionHelper functionHelper = new FunctionHelper();
 //       for (int i = 0; i<categoryName.length; i++){
 //           imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
 //       }
 
-       int[] categoryProgress = new int[] {45, 36, 80, 100, 0};
-       String [] bgColors = new String[]
-               {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
-
-       int[] images = new int[imageUrls.length];
-       for (int i = 0; i<imageUrls.length; i++) {
-           images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
-       }
-
-       int[] colors = new int[bgColors.length];
-       for (int i = 0; i<bgColors.length; i++) {
-           colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
-       }
-
+        for (int i = 0; i<categoryName.length; i++)
+        {
+            categoryPercent[i] = categoryProgress[i] * 100 / Integer.parseInt(totalItems[i]);
+            images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
+            colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
+        }
 
        for (int i =0; i<categoryName.length; i++)
        {
-           homeCategoryItems.add(new HomeCategoryItem(categoryName[i], colors[i], categoryProgress[i], images[i]));
+           homeCategoryItems.add(new HomeCategoryItem(categoryName[i], colors[i], categoryPercent[i], images[i]));
        }
 
         HomeRecyclerAdapter adapter = new HomeRecyclerAdapter();

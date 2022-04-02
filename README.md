@@ -2,6 +2,10 @@
 
 DEBUG NOTES
 
+v1.1r4 4/2
+- implemented data gather in database for home-learn, search-category fragment
+- refactored some navigation in adapter list to include a try and catch block for error checking
+
 v1.1r3 4/1
 - initialized implementation of database with DBHelper
 - implemented data gather in database for learn, profile and profile see more fragments

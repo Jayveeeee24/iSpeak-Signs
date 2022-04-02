@@ -21,6 +21,7 @@
             android:layout_width="25dp"
             android:layout_centerVertical="true"
             android:layout_height="25dp"
+            android:tint="@color/colorPrimary"
             android:src="@drawable/ic_favorite_bookmark"/>
 
         <TextView

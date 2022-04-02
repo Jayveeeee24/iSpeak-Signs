@@ -52,8 +52,11 @@ public class LearnListWordRecyclerAdapter extends RecyclerView.Adapter<LearnList
                         .setExitAnim(R.anim.nav_default_exit_anim)
                         .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
                         .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                Navigation.findNavController(view).navigate(R.id.action_learn_category_word_to_learn_word_item, bundle, navBuilder.build());
-
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_learn_category_word_to_learn_word_item, bundle, navBuilder.build());
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
             }
         });
     }

@@ -52,7 +52,11 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                         .setExitAnim(R.anim.nav_default_exit_anim)
                         .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
                         .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_learn_category_word, bundle, navBuilder.build());
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_nav_home_to_learn_category_word, bundle, navBuilder.build());
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
             }
         });
     }

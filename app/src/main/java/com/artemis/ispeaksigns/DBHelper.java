@@ -67,8 +67,6 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("categoryProgress", categoryVideoProgress[i]);
             DB.insert("CategoryTable", null, values);
         }
-
-
     }
 
     @Override
@@ -76,18 +74,17 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists CategoryTable");
     }
 
-
     public Cursor getAllCategory(String categoryType, String modifier){
         SQLiteDatabase DB = this.getWritableDatabase();
         if (modifier.equals("Learn")){
             return DB.rawQuery("Select categoryName, categoryColor, categoryTotalItems, categoryType from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC", new String[]{categoryType});
         }else if (modifier.equals("By5")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC LIMIT 5", new String[]{categoryType});
-        }
-        else if (modifier.equals("Profile")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems AND categoryProgress != 0 ORDER BY categoryProgress DESC LIMIT 5", null);
-        }
-        else {
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryType=? AND categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", new String[]{categoryType});
+        }else if (modifier.equals("Profile")){
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
+        }else if (modifier.equals("Search")){
+            return DB.rawQuery("Select categoryName, categoryType from CategoryTable ORDER By categoryName ASC", null);
+        }else {
             return DB.rawQuery("Select * from CategoryTable ORDER BY categoryName ASC", null);
         }
 
