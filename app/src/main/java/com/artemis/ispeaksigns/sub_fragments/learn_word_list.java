@@ -25,7 +25,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class learn_word_list extends Fragment {
+public class
+learn_word_list extends Fragment {
 
     private Context context;
     private View view;

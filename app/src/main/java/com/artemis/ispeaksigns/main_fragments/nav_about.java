@@ -104,7 +104,7 @@ public class nav_about extends Fragment {
             popupName.setText(name);
             popupAge.setText("Age: 22");
             popupGoal.setText("Aspiring Software Engineer");
-            popupStrength.setText("Problem Solver, Detail Oriented, Organized");
+            popupStrength.setText("'What if one day you woke up and you were a potato salad'");
             popupType.setText("Type: O");
             popupType.setOnClickListener(new View.OnClickListener() {
                 int counter = 0;
@@ -122,11 +122,10 @@ public class nav_about extends Fragment {
         else if (name.equals("Marie Ann Karen De Guzman")){
             popupName.setText(name);
             popupImage.setImageResource(R.drawable.cvsu_logo);
-            popupAge.setText("Age: 22");
+            popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring Graphic Artist");
-            popupStrength.setText("");
-            popupType.setText("Type:");
-            popupStrength.setText("");
+            popupStrength.setText("'Everything happens for a reason'");
+            popupType.setText("Type: A");
         }
         else if (name.equals("Rei Anne P. Velasco")){
             popupName.setText(name);

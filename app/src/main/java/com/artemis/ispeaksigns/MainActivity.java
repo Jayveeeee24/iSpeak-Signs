@@ -10,6 +10,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     Boolean profileState;
     Boolean searchState;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
+
         ///////Variable Definitions and Initializations
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mtoolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        FunctionHelper greeting = new FunctionHelper();
+        FunctionHelper functionHelper = new FunctionHelper();
         collapseToolbar = findViewById(R.id.collapseToolbar);
         FloatingActionButton mainFab = findViewById(R.id.fab);
         RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
@@ -130,10 +135,10 @@ public class MainActivity extends AppCompatActivity {
 
             if (navDestination.getId() == R.id.nav_home) {
                 drawer.closeDrawer(GravityCompat.START);
-                txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label));
-                txtHomeGreeting1.setTextSize(24);
-                txtHomeGreeting2.setTextSize(18);
-                txtHomeGreeting2.setText(greeting.getGreeting(this));
+                txtHomeGreeting1.setText(getResources().getString(R.string.home_greeting1_label, userName));
+                txtHomeGreeting1.setTextSize(20);
+                txtHomeGreeting2.setTextSize(19);
+                txtHomeGreeting2.setText(functionHelper.getGreeting(this));
                 txtSearch.setText(getResources().getString(R.string.edit_text_hint));
                 toolbarImage1.setVisibility(View.VISIBLE);
                 collapseToolbar.setBackgroundResource(R.drawable.cvsu);
@@ -225,7 +230,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.menuProfile)
         {
-            navController.navigate(R.id.nav_profile);
+            Bundle bundle = new Bundle();
+            bundle.putString("userName", userName);
+            navController.navigate(R.id.nav_profile, bundle);
         }
         return super.onOptionsItemSelected(item);
     }

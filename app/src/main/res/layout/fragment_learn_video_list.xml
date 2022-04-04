@@ -39,14 +39,22 @@
                         app:cardCornerRadius="15dp"
                         app:cardElevation="0dp">
 
-                        <ImageView
-                            android:id="@+id/categoryVideoImage"
-                            android:layout_width="115dp"
-                            android:tint="@color/white"
-                            android:layout_height="85dp"
-                            android:padding="15sp"
-                            android:src="@drawable/ic_buwan"
-                            android:contentDescription="@string/learn_list_category_logo" />
+                        <RelativeLayout
+                            android:id="@+id/categoryVideoImageParent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/apple">
+
+                            <ImageView
+                                android:id="@+id/categoryVideoImage"
+                                android:layout_width="115dp"
+                                android:tint="@color/white"
+                                android:layout_height="85dp"
+                                android:padding="15sp"
+                                android:src="@drawable/ic_pang_emergency"
+                                android:contentDescription="@string/learn_list_category_logo" />
+
+                        </RelativeLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 

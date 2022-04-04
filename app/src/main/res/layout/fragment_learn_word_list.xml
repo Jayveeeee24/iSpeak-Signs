@@ -35,18 +35,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:backgroundTint="@color/golden_puppy"
                         app:cardCornerRadius="15dp"
                         app:cardElevation="0dp">
 
-                        <ImageView
-                            android:id="@+id/categoryImage"
-                            android:layout_width="115dp"
-                            android:tint="@color/white"
-                            android:layout_height="85dp"
-                            android:padding="15sp"
-                            android:src="@drawable/ic_buwan"
-                            android:contentDescription="@string/learn_list_category_logo" />
+                        <RelativeLayout
+                            android:id="@+id/categoryImageParent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/bright_navy_blue">
+
+                            <ImageView
+                                android:id="@+id/categoryImage"
+                                android:layout_width="115dp"
+                                android:tint="@color/white"
+                                android:layout_height="85dp"
+                                android:padding="15sp"
+                                android:src="@drawable/ic_buwan"
+                                android:contentDescription="@string/learn_list_category_logo" />
+
+                        </RelativeLayout>
+
+
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -75,7 +84,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtProgressCardLabel"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginEnd="1dp"
                         android:text="@string/learn_list_progress"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />

@@ -88,11 +88,15 @@
                 android:id="@+id/play_audio"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:paddingEnd="3dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:src="@drawable/ic_audio"
                 android:tint="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/audio_label"
-                android:contentDescription="@string/play_audio_desc" />
+                android:contentDescription="@string/play_audio_desc"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/how_label"

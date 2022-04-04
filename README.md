@@ -2,6 +2,13 @@
 
 DEBUG NOTES
 
+v1.1r5 4/4
+- added and implemented dummy resource for playing an audio in category items
+- updated the dbhelper to include the usertable
+- added new credits and acknowledgements in about fragment as well as the descriptions of team members
+- added the video category item in home screen (adapters, item and layout)
+- implemented database dependent for username in home and profile screen
+
 v1.1r4 4/2
 - implemented data gather in database for home-learn, search-category fragment
 - refactored some navigation in adapter list to include a try and catch block for error checking

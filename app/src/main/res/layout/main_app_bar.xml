@@ -106,11 +106,11 @@
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/nunito_bold"
                     android:text="@string/home_greeting1_label"
                     android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txtHomeGreeting2"
@@ -125,7 +125,7 @@
                     android:fontFamily="@font/nunito_bold"
                     android:text="@string/learn_greeting1_label"
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="20sp"/>
 
 
 

@@ -12,7 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,9 +36,16 @@ public class nav_profile extends Fragment {
 
     View view;
     Context context;
-    TextView editUserTextView;
+
     RecyclerView profileRecycler;
+    TextView wordDiscovered;
+    TextView phraseDiscovered;
+    TextView favoriteCount;
     CardView profileSeeMore;
+    ImageView userImage;
+    String userName;
+    EditText editTextUserName;
+    TextView userNameText;
     DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,8 +62,35 @@ public class nav_profile extends Fragment {
 
         profileRecycler = view.findViewById(R.id.profile_recycler);
         profileRecycler.setNestedScrollingEnabled(false);
+        wordDiscovered = view.findViewById(R.id.word_discorvered);
+        phraseDiscovered = view.findViewById(R.id.phrase_discovered);
+        favoriteCount = view.findViewById(R.id.favorite_discovered);
+        userImage = view.findViewById(R.id.user_image);
+        userNameText = view.findViewById(R.id.user_name);
+        editTextUserName = view.findViewById(R.id.edit_text_user_name);
+
+        InitializeDesign();
         InitializeRecycler();
         InitializeOnClick();
+    }
+
+    private void InitializeDesign(){
+
+        if (getArguments() != null) {
+            userName = getArguments().getString("userName");
+        }
+        userNameText.setText(userName);
+        editTextUserName.setText(userName);
+
+        int wordDiscoveredCount = 0;
+        int phraseDiscoveredCount = 0;
+        int favoriteCountNo = 0;
+
+        wordDiscovered.setText(getResources().getString(R.string.word_discovered_text, Integer.toString(wordDiscoveredCount)));
+        phraseDiscovered.setText(getResources().getString(R.string.phrase_discovered_label, Integer.toString(phraseDiscoveredCount)));
+        favoriteCount.setText(getResources().getString(R.string.favorite_word_phrase_label, Integer.toString(favoriteCountNo)));
+
+
     }
 
     private void InitializeRecycler()
@@ -126,7 +159,6 @@ public class nav_profile extends Fragment {
         profileSeeMore = view.findViewById(R.id.profile_see_more);
         final ImageView editUserButton = (ImageView) view.findViewById(R.id.edit_user_name);
         final EditText editTextUser = view.findViewById(R.id.edit_text_user_name);
-        editUserTextView = view.findViewById(R.id.user_name);
         editTextUser.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (keyCode == EditorInfo.IME_ACTION_DONE)){
@@ -143,18 +175,23 @@ public class nav_profile extends Fragment {
             public void onClick(View view) {
                 if (isEdit == 0) {
                     editUserButton.setImageResource(R.drawable.ic_save);
-                    editUserTextView.setVisibility(View.INVISIBLE);
+                    userNameText.setVisibility(View.INVISIBLE);
                     editTextUser.setVisibility(View.VISIBLE);
                     isEdit = 1;
                 } else if (isEdit == 1) {
                     editUserButton.setImageResource(R.drawable.ic_edit);
-                    if (!editTextUser.getText().toString().equals(editUserTextView.getText().toString())) {
-                        editUserTextView.setText(editTextUser.getText().toString());
+                    if (!editTextUser.getText().toString().equals(userNameText.getText().toString()) && !editTextUser.getText().toString().equals("")) {
+                        userNameText.setText(editTextUser.getText().toString());
                         Toast.makeText(context, "Ang username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
 //                      TODO provide a real action when the user edit the text (database operations)
                     }
+                    if (editTextUser.getText().toString().equals("")){
+                        Toast.makeText(context, "Ang bagong username ay invalid!", Toast.LENGTH_SHORT).show();
+                        userNameText.setText(userName);
+                        editTextUser.setText(userName);
+                    }
                     editTextUser.setVisibility(View.INVISIBLE);
-                    editUserTextView.setVisibility(View.VISIBLE);
+                    userNameText.setVisibility(View.VISIBLE);
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     isEdit = 0;

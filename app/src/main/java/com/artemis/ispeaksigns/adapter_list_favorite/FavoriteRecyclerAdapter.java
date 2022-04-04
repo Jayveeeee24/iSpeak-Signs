@@ -67,7 +67,7 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             public void onClick(View view) {
                 favoriteCategoryItems.remove(holder.getAdapterPosition());
                 String name = holder.txtFavoriteItem.getText().toString();
-                Toast.makeText(view.getContext(), name + " ayy nabura mo na gago ang hirap bago ko nagawa ampota", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), name + " ay na-alis mo na sa iyong paborito", Toast.LENGTH_SHORT).show();
                 notifyItemRemoved(holder.getAdapterPosition());
                 notifyItemRangeChanged(holder.getAdapterPosition(), favoriteCategoryItems.size());
 

@@ -1,10 +1,16 @@
 package com.artemis.ispeaksigns.main_fragments;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -26,6 +32,8 @@ import java.util.Objects;
 public class nav_fsl_wotd extends Fragment {
     View view;
     Context context;
+    MediaPlayer mediaFslAudio;
+    int audio;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,12 +50,24 @@ public class nav_fsl_wotd extends Fragment {
         String word;
         ScrollView fslWotdParent = view.findViewById(R.id.fsl_wotd_parent);
         fslWotdParent.setNestedScrollingEnabled(false);
+        String audioName = "audio_demo";
+        audio = getResources().getIdentifier(audioName, "raw", context.getPackageName());
+        mediaFslAudio = MediaPlayer.create(context, audio);
 
         if (getArguments() != null)
         {
             word = getArguments().getString("fsl_wotd");
         }
+
+        InitializeOnClick();
+
+
+    }
+
+    private void InitializeOnClick(){
         final ImageView fslFavorite = (ImageView) view.findViewById(R.id.fsl_favorite);
+        final ImageView playAudio = (ImageView) view.findViewById(R.id.play_audio);
+
         fslFavorite.setOnClickListener(new View.OnClickListener() {
             int isFavorite = 0;
             @Override
@@ -62,6 +82,35 @@ public class nav_fsl_wotd extends Fragment {
                 }
             }
         });
+
+
+        playAudio.setOnClickListener(new View.OnClickListener() {
+            int isPlayed = 0;
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                if (isPlayed == 0){
+                    ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
+                    mediaFslAudio.start();
+                    isPlayed = 1;
+                    mediaFslAudio.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                            mediaFslAudio.stop();
+                            mediaFslAudio = MediaPlayer.create(context, audio);
+                            isPlayed = 0;
+                        }
+                    });
+                }else if (isPlayed == 1){
+                    ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                    mediaFslAudio.stop();
+                    mediaFslAudio = MediaPlayer.create(context, audio);
+                    isPlayed = 0;
+                }
+            }
+        });
+
     }
 }
 

@@ -27,7 +27,7 @@
     <string name="profile_see_more_title">Lahat ng Kategorya</string>
 
     <!--    Strings for Toolbar TextViews-->
-    <string name="home_greeting1_label">Kumusta,</string>
+    <string name="home_greeting1_label">Kumusta, %1$s!</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
     <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
     <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
@@ -72,7 +72,7 @@
     <string name="member2_image_desc">Imahe ng Pangalawang Miyembro</string>
     <string name="member3_image_desc">Imahe ng Pangatlong Miyembro</string>
     <string name="member3_name">Rei Anne P. Velasco</string>
-    <string name="member3_role">Public Relations and Communications</string>
+    <string name="member3_role">Documentation Researcher</string>
     <string name="greeting_about">Mabuhay!</string>
     <string name="about_i">i</string>
     <string name="about_speak_label">Speak Signs</string>
@@ -107,9 +107,9 @@
     <string name="fri_label">F</string>
     <string name="sat_label">S</string>
     <string name="sun_label">S</string>
-    <string name="word_discovered_text">0\nSalitang\nnatuklasan</string>
-    <string name="phrase_discovered_label">0\nPariralang\nnatuklasan</string>
-    <string name="favorite_word_phrase_label">0\nPaboritong\nSalita/Parirala</string>
+    <string name="word_discovered_text">%1$s\nSalitang\nnatuklasan</string>
+    <string name="phrase_discovered_label">%1$s\nPariralang\nnatuklasan</string>
+    <string name="favorite_word_phrase_label">%1$s\nPaboritong\nSalita/Parirala</string>
     <string name="profile_category_progress">Progreso sa mga Kategorya</string>
 
     <!--    Strings for Recognition-->

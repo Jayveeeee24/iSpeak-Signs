@@ -19,12 +19,15 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_home.HomeVideoCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_home.HomeVideoRecyclerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -63,7 +66,10 @@ public class nav_home extends Fragment  {
     private void InitializeRecyclerView()
     {
         ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
+        ArrayList<HomeVideoCategoryItem> homeVideoCategoryItems = new ArrayList<>();
         Cursor homeLearnCursor = DB.getAllCategory("Salita", "By5");
+        Cursor homeVideoCursor = DB.getAllCategory("Parirala", "By5");
+
         String[] categoryName = new String[homeLearnCursor.getCount()];
         String[] imageUrls = new String[categoryName.length];
         int[] categoryProgress = new int[categoryName.length];
@@ -73,16 +79,8 @@ public class nav_home extends Fragment  {
         int[] images = new int[imageUrls.length];
         int[] colors = new int[bgColors.length];
         if (homeLearnCursor.getCount() == 0){
-            categoryName = new String[]{
-                            "Alpabeto", "Kasarian", "Hugis", "Araw ng Linggo", "Miyembro ng Pamilya"
-                    };
-
-            imageUrls = new String[]{
-                    "ic_alpabeto", "ic_kasarian", "ic_hugis", "ic_araw_ng_linggo", "ic_miyembro_ng_pamilya"
-            };
-            categoryProgress = new int[] {45, 36, 80, 100, 0};
-            bgColors = new String[]
-                    {"golden_puppy", "japanese_indigo", "outrageous_orange", "apple", "plump_purple"};
+            Toast.makeText(context, "No value on database found!", Toast.LENGTH_SHORT).show();
+            return;
         }else{
             int i = 0;
             while (homeLearnCursor.moveToNext()){
@@ -119,6 +117,41 @@ public class nav_home extends Fragment  {
         learnRecView.setAdapter(adapter);
         learnRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
+
+        String[] categoryVideoName = new String[homeVideoCursor.getCount()];
+        imageUrls = new String[categoryVideoName.length];
+        bgColors = new String[categoryVideoName.length];
+        images = new int[categoryVideoName.length];
+        colors = new int[categoryVideoName.length];
+        if (homeVideoCursor.getCount() == 0){
+            Toast.makeText(context, "No value on database found!", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            int i = 0;
+            while (homeVideoCursor.moveToNext()){
+                categoryVideoName[i] = homeVideoCursor.getString(0);
+                bgColors[i] = homeVideoCursor.getString(1);
+                imageUrls[i] = homeVideoCursor.getString(2);
+                i++;
+            }
+        }
+
+        for (int i = 0; i<categoryVideoName.length; i++)
+        {
+            images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
+            colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
+        }
+
+        for (int i =0; i<categoryVideoName.length; i++)
+        {
+            homeVideoCategoryItems.add(new HomeVideoCategoryItem(categoryVideoName[i], colors[i], images[i]));
+        }
+
+        HomeVideoRecyclerAdapter adapter1 = new HomeVideoRecyclerAdapter();
+        adapter1.setHomeVideoCategoryItems(homeVideoCategoryItems);
+
+        learnVideoRecView.setAdapter(adapter1);
+        learnVideoRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 
     private void InitializeClickListener()

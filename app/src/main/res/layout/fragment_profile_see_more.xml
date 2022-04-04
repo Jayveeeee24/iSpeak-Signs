@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingStart="10dp"
-        android:paddingEnd="10dp">
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/profile_see_more_recycler"

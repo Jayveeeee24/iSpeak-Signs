@@ -22,10 +22,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/gad_logo"
                 android:clickable="true"
+                android:contentDescription="@string/gad_logo_desc"
                 android:focusable="true"
-                android:contentDescription="@string/gad_logo_desc" />
+                android:src="@drawable/gad_logo" />
 
             <ImageView
                 android:id="@+id/logo2"
@@ -34,11 +34,11 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo1"
-                android:scaleType="centerCrop"
                 android:clickable="true"
+                android:contentDescription="@string/app_logo_desc"
                 android:focusable="true"
-                android:src="@drawable/ic_ispeak_sign_logo"
-                android:contentDescription="@string/app_logo_desc" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_ispeak_sign_logo" />
 
             <ImageView
                 android:id="@+id/logo3"
@@ -48,9 +48,9 @@
                 android:layout_margin="5dp"
                 android:layout_toEndOf="@id/logo2"
                 android:clickable="true"
+                android:contentDescription="@string/cvsu_logo_desc"
                 android:focusable="true"
-                android:src="@drawable/cvsu_logo"
-                android:contentDescription="@string/cvsu_logo_desc" />
+                android:src="@drawable/cvsu_logo" />
         </RelativeLayout>
 
         <TextView
@@ -59,15 +59,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/logo_layout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/about_thesis_title"
             android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:fontFamily="@font/gotham_book_regular"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/about_description2"
@@ -77,10 +78,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:gravity="center"
+            android:fontFamily="@font/nunito_bold"
             android:text="@string/about_gad"
             android:textColor="@color/colorPrimary"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/about_description4"
@@ -92,19 +93,19 @@
             android:text="@string/cvsu_name"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/nunito_bold"/>
 
         <TextView
             android:id="@+id/members_label1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/about_description4"
+            android:fontFamily="@font/nunito_bold"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:text="@string/member_label_title1"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/members_label2"
@@ -112,11 +113,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/members_label1"
             android:layout_centerHorizontal="true"
+            android:fontFamily="@font/nunito_bold"
             android:layout_marginTop="15dp"
             android:text="@string/member_label_title2"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/members_label3"
@@ -125,16 +126,17 @@
             android:layout_below="@id/members_label2"
             android:layout_centerHorizontal="true"
             android:text="@string/member_label_title3"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary" />
 
         <RelativeLayout
             android:id="@+id/member_jb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/members_label3"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp">
 
             <androidx.cardview.widget.CardView
@@ -142,16 +144,16 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="38dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                app:cardCornerRadius="38dp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/member1_image_desc"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/jb_profile"
-                    android:contentDescription="@string/member1_image_desc" />
+                    android:src="@drawable/jb_profile" />
 
             </androidx.cardview.widget.CardView>
 
@@ -161,17 +163,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_toEndOf="@id/card_jb"
+                android:fontFamily="@font/gotham_book_regular"
                 android:text="@string/member1_name"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/jb_description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_book_regular"
                 android:layout_below="@id/jb_description1"
                 android:layout_toEndOf="@id/card_jb"
                 android:text="@string/member1_role"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textStyle="italic" />
 
         </RelativeLayout>
@@ -189,18 +193,20 @@
                 android:id="@+id/meann_description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_book_regular"
                 android:layout_marginTop="20dp"
                 android:text="@string/member2_name"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/meann_description2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_book_regular"
                 android:layout_below="@id/meann_description1"
                 android:layout_toStartOf="@id/card_meann"
                 android:text="@string/member2_role"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textStyle="italic" />
 
             <androidx.cardview.widget.CardView
@@ -214,9 +220,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/member2_image_desc"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/jb_profile"
-                    android:contentDescription="@string/member2_image_desc" />
+                    android:src="@drawable/jb_profile" />
 
             </androidx.cardview.widget.CardView>
 
@@ -240,9 +246,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/member3_image_desc"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/jb_profile"
-                    android:contentDescription="@string/member3_image_desc" />
+                    android:src="@drawable/jb_profile" />
 
             </androidx.cardview.widget.CardView>
 
@@ -250,10 +256,11 @@
                 android:id="@+id/reianne_description1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:layout_marginTop="25dp"
                 android:layout_toEndOf="@id/card_reianne"
                 android:text="@string/member3_name"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/reianne_description2"
@@ -261,8 +268,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/reianne_description1"
                 android:layout_toEndOf="@id/card_reianne"
+                android:fontFamily="@font/gotham_book_regular"
                 android:text="@string/member3_role"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textStyle="italic" />
 
         </RelativeLayout>
@@ -277,24 +285,150 @@
                 android:id="@+id/thanks_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Espesyal na Pasasalamat"
                 android:layout_centerHorizontal="true"
-                android:textSize="15sp"
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
+                android:text="Espesyal na Pasasalamat"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/thanks_label1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pag-proofread"
                 android:layout_below="@id/thanks_label"
-                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:text="King David J. Agreda, MIT"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/thanks_label2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label1"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/gotham_book_regular"
-                android:textStyle="bold"
-                android:textSize="15sp"/>
+                android:text="GAD Coordinator at Thesis Adviser"
+                android:textSize="13sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/thanks_label3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:textSize="14sp"
+                android:text="Jocelyn Ramos"/>
+
+            <TextView
+                android:id="@+id/thanks_label4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label3"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham_book_regular"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:text="Technical Critic"/>
+
+            <TextView
+                android:id="@id/thanks_label5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:textSize="14sp"
+                android:text="Maris Antenor"/>
+
+            <TextView
+                android:id="@+id/thanks_label6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/thanks_label5"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham_book_regular"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:text="Persons with Disabilites Affairs Office"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/thanks_label7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/thanks_label6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="QA Test"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/thanks_label8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label7"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:text="Mariel Gabasa"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/thanks_label9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Graphic Design"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/thanks_label10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label9"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:text="Jasmien Gail T. Alosa"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/thanks_label11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label10"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham_book_regular"
+                android:text="Randall M. Dela Cruz"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/thanks_label12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thanks_label11"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham_book_regular"
+                android:text="JM David"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"/>
 
         </RelativeLayout>
 

@@ -60,6 +60,31 @@ public class nav_learn extends Fragment {
         InitializeDesign();
     }
 
+    private void InitializeDesign()
+    {
+        category_selected = "Salita";
+        if (getArguments() != null) {
+            category_selected = getArguments().getString("category_type");
+        }
+        categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
+        categoryWord.setBackgroundResource(R.drawable.highlight_text);
+        categoryWord.setTextColor(getResources().getColor(R.color.colorSecondary, null));
+
+        categoryPhrases.setTypeface(Typeface.DEFAULT);
+        categoryPhrases.setBackgroundResource(android.R.color.transparent);
+        categoryPhrases.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+        InitializeLearnRecyclerView(category_selected);
+        if (category_selected.equals("Parirala")){
+            categoryPhrases.setTypeface(Typeface.DEFAULT_BOLD);
+            categoryPhrases.setBackgroundResource(R.drawable.highlight_text);
+            categoryPhrases.setTextColor(getResources().getColor(R.color.colorSecondary, null));
+
+            categoryWord.setTypeface(Typeface.DEFAULT);
+            categoryWord.setBackgroundResource(android.R.color.transparent);
+            categoryWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+        }
+    }
+
     private void InitializeLearnRecyclerView(String categoryType)
     {
         Log.d("myTag", categoryType);
@@ -117,31 +142,6 @@ public class nav_learn extends Fragment {
             }
         }
 
-    }
-
-    private void InitializeDesign()
-    {
-        category_selected = "Salita";
-        if (getArguments() != null) {
-            category_selected = getArguments().getString("category_type");
-        }
-        categoryWord.setTypeface(Typeface.DEFAULT_BOLD);
-        categoryWord.setBackgroundResource(R.drawable.highlight_text);
-        categoryWord.setTextColor(getResources().getColor(R.color.colorSecondary, null));
-
-        categoryPhrases.setTypeface(Typeface.DEFAULT);
-        categoryPhrases.setBackgroundResource(android.R.color.transparent);
-        categoryPhrases.setTextColor(getResources().getColor(R.color.gray_text_color, null));
-        InitializeLearnRecyclerView(category_selected);
-        if (category_selected.equals("Parirala")){
-            categoryPhrases.setTypeface(Typeface.DEFAULT_BOLD);
-            categoryPhrases.setBackgroundResource(R.drawable.highlight_text);
-            categoryPhrases.setTextColor(getResources().getColor(R.color.colorSecondary, null));
-
-            categoryWord.setTypeface(Typeface.DEFAULT);
-            categoryWord.setBackgroundResource(android.R.color.transparent);
-            categoryWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
-        }
     }
 
     private void InitializeOnClick()
