@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
-import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
@@ -67,8 +66,8 @@ public class nav_home extends Fragment  {
     {
         ArrayList<HomeCategoryItem> homeCategoryItems = new ArrayList<>();
         ArrayList<HomeVideoCategoryItem> homeVideoCategoryItems = new ArrayList<>();
-        Cursor homeLearnCursor = DB.getAllCategory("Salita", "By5");
-        Cursor homeVideoCursor = DB.getAllCategory("Parirala", "By5");
+        Cursor homeLearnCursor = DB.getCategory("Salita", "By5");
+        Cursor homeVideoCursor = DB.getCategory("Parirala", "By5");
 
         String[] categoryName = new String[homeLearnCursor.getCount()];
         String[] imageUrls = new String[categoryName.length];

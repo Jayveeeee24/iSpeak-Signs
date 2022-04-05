@@ -2,6 +2,17 @@
 
 DEBUG NOTES
 
+v1.1r6 4/5
+- updated DBHelper to remove the data storage for daily login 
+- added and updated db method call for multiple data update, single data update and get category
+- refactored fragment layout for about, learn word list and video, and profile fragments
+- added a function for getCategoryProgress for learn lists in functionHelper
+- added and implemented database data dependency for learn word list and learn video list
+- updated main Activity and splash activity to initialize username, longest streak and current streak
+- updated the team mate description for about fragment
+- implemented a data dependency in database for streak count in profile
+- updated and removed some strings (to include item or streak count in strings and daily login strings respectively)
+
 v1.1r5 4/4
 - added and implemented dummy resource for playing an audio in category items
 - updated the dbhelper to include the usertable

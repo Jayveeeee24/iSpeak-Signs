@@ -78,7 +78,7 @@
                 android:id="@+id/popup_strength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Problem Solver, Detail Oriented, Organized"
+                android:text="The Journey of a thousand miles begins with every single step, so start walking"
                 android:layout_below="@id/popup_goal"
                 android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"

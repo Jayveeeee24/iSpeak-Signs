@@ -22,24 +22,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE TABLE FOR USER TABLE
         DB.execSQL("create Table IF NOT EXISTS UserTable(userID INTEGER primary key ," +
-                " userName TEXT , isOldUser INTEGER , dateToday TEXT ," +
-                " isMon INTEGER , isTue INTEGER , isWed INTEGER , " +
-                "isThu INTEGER ,isFri INTEGER , isSat INTEGER , " +
-                "isSun INTEGER , wordDiscovered INTEGER , " +
-                "phraseDiscovered INTEGER , favoriteCount INTEGER , itemNameWOTD TEXT )");
+                " userName TEXT , isOldUser INTEGER , dateToday TEXT , currentStreak INTEGER," +
+                "longestStreak INTEGER, wordDiscovered INTEGER , phraseDiscovered INTEGER , " +
+                "favoriteCount INTEGER , itemNameWOTD TEXT )");
 
         ContentValues userValue = new ContentValues();
         userValue.put("userID", 201810336);
         userValue.put("userName", "Kabayan");
         userValue.put("isOldUser", 0);
         userValue.put("dateToday", "Mon Apr 02 2022");
-        userValue.put("isMon", 0);
-        userValue.put("isTue", 0);
-        userValue.put("isWed", 0);
-        userValue.put("isThu", 0);
-        userValue.put("isFri", 0);
-        userValue.put("isSat", 0);
-        userValue.put("isSun", 0);
+        userValue.put("currentStreak", 0);
+        userValue.put("longestStreak", 0);
         userValue.put("wordDiscovered", 0);
         userValue.put("phraseDiscovered", 0);
         userValue.put("favoriteCount", 0);
@@ -100,31 +93,79 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getUserData(String value, String modifier){
         SQLiteDatabase DB = this.getWritableDatabase();
 
-        if (modifier.equals("Splash")){
-            return DB.rawQuery("Select userName, isOldUser, dateToday from UserTable WHERE userID=201810336", null);
-        } else{
-            return DB.rawQuery("Select * from UserTable", null);
+        switch (modifier) {
+            case "GetNameStreak":
+                return DB.rawQuery("Select userName, longestStreak from UserTable WHERE userID=201810336", null);
+            case "GetUserName":
+                return DB.rawQuery("Select userName from UserTable where userID=201810336", null);
+            case "StreakCard":
+                return DB.rawQuery("Select currentStreak, longestStreak, wordDiscovered, phraseDiscovered, favoriteCount from UserTable WHERE userID=201810336", null);
+            case "Splash":
+                return DB.rawQuery("Select dateToday, isOldUser from UserTable where userID=201810336", null);
+            default:
+                return DB.rawQuery("Select * from UserTable", null);
         }
     }
 
-    public boolean insertSingleData(String dateToday){
+    public boolean updateSingleData (String value, int intValue, String modifier){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("dateToday", dateToday);
-        Cursor cursor = DB.rawQuery("Select dateToday from UserTable where userID=201810336", null);
-        if (cursor.getCount()>0){
-            long result = DB.update("UserTable", values, "userID=201810336", null);
-            if (result == -1) {
+        switch (modifier) {
+            case "Splash":
+                values.put("dateToday", value);
+                try (Cursor cursor = DB.rawQuery("Select dateToday from UserTable where userID=201810336", null)) {
+                    if (cursor.getCount() > 0) {
+                        long result = DB.update("UserTable", values, "userID=201810336", null);
+                        return result != -1;
+                    } else {
+                        return false;
+                    }
+                }
+            case "ChangeUserName":
+                values.put("userName", value);
+                try (Cursor cursor = DB.rawQuery("Select userName from UserTable where UserID=201810336", null)) {
+                    if (cursor.getCount() > 0) {
+                        long result = DB.update("UserTable", values, "userID=201810336", null);
+                        return result != -1;
+                    } else {
+                        return false;
+                    }
+                }
+            case "Streak":
+                values.put("currentStreak", intValue);
+                try (Cursor cursor = DB.rawQuery("Select currentStreak from UserTable where UserID=201810336", null)) {
+                    if (cursor.getCount() > 0) {
+                        long result = DB.update("UserTable", values, "userID=201810336", null);
+                        return result != -1;
+                    } else {
+                        return false;
+                    }
+                }
+            default:
                 return false;
-            }else{
-                return true;
+        }
+    }
+
+    public boolean UpdateMultipleData(int[] intValue, String[] stringValue, String modifier){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        if (modifier.equals("Streak")){
+            values.put("currentStreak", intValue[0]);
+            values.put("longestStreak", intValue[1]);
+            try (Cursor cursor = DB.rawQuery("Select currentStreak, longestStreak from UserTable where UserID=201810336", null)){
+                if (cursor.getCount()>0){
+                    long result = DB.update("UserTable", values, "userID=201810336", null);
+                    return result != -1;
+                }else{
+                    return false;
+                }
             }
         }else{
             return false;
         }
     }
 
-    public Cursor getAllCategory(String categoryType, String modifier){
+    public Cursor getCategory(String categoryType, String modifier){
         SQLiteDatabase DB = this.getWritableDatabase();
         if (modifier.equals("Learn")){
             return DB.rawQuery("Select categoryName, categoryColor, categoryTotalItems, categoryType from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC", new String[]{categoryType});
@@ -136,6 +177,8 @@ public class DBHelper extends SQLiteOpenHelper {
             return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
         }else if (modifier.equals("Search")){
             return DB.rawQuery("Select categoryName, categoryType from CategoryTable ORDER By categoryName ASC", null);
+        }else if (modifier.equals("SingleCategory")){
+            return DB.rawQuery("Select categoryColor, categoryTotalItems, imageURL, categoryProgress from CategoryTable WHERE categoryName=?", new String[]{categoryType});
         }else {
             return DB.rawQuery("Select * from CategoryTable ORDER BY categoryName ASC", null);
         }

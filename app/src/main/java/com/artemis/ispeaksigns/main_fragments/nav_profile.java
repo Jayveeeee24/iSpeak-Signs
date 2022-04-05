@@ -31,6 +31,7 @@ import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class nav_profile extends Fragment {
 
@@ -41,18 +42,20 @@ public class nav_profile extends Fragment {
     TextView wordDiscovered;
     TextView phraseDiscovered;
     TextView favoriteCount;
-    CardView profileSeeMore;
+    CardView profileSeeMoreCard;
     ImageView userImage;
     String userName;
     EditText editTextUserName;
     TextView userNameText;
+    TextView currentStreak;
+    TextView longestStreak;
     DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         context = container.getContext();
-        DB = new DBHelper(context);
+
         return view;
     }
 
@@ -68,6 +71,9 @@ public class nav_profile extends Fragment {
         userImage = view.findViewById(R.id.user_image);
         userNameText = view.findViewById(R.id.user_name);
         editTextUserName = view.findViewById(R.id.edit_text_user_name);
+        currentStreak = view.findViewById(R.id.current_streak);
+        longestStreak = view.findViewById(R.id.longest_streak);
+        DB = new DBHelper(context);
 
         InitializeDesign();
         InitializeRecycler();
@@ -76,20 +82,38 @@ public class nav_profile extends Fragment {
 
     private void InitializeDesign(){
 
-        if (getArguments() != null) {
-            userName = getArguments().getString("userName");
-        }
-        userNameText.setText(userName);
-        editTextUserName.setText(userName);
-
         int wordDiscoveredCount = 0;
         int phraseDiscoveredCount = 0;
         int favoriteCountNo = 0;
+        int currentStreakCount = 0;
+        int longestStreakCount = 0;
+        if (getArguments() != null) {
+            userName = getArguments().getString("userName");
+        }
+        Cursor updateStreakCard = DB.getUserData("", "StreakCard");
+
+        if (updateStreakCard.getCount() == 0){
+            Toast.makeText(context, "Ang database ay walang laman, Pakiulit na lamang", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            while(updateStreakCard.moveToNext()){
+                currentStreakCount = updateStreakCard.getInt(0);
+                longestStreakCount = updateStreakCard.getInt(1);
+                wordDiscoveredCount = updateStreakCard.getInt(2);
+                phraseDiscoveredCount = updateStreakCard.getInt(3);
+                favoriteCountNo = updateStreakCard.getInt(4);
+            }
+        }
+
+        userNameText.setText(userName);
+        editTextUserName.setText(userName);
 
         wordDiscovered.setText(getResources().getString(R.string.word_discovered_text, Integer.toString(wordDiscoveredCount)));
         phraseDiscovered.setText(getResources().getString(R.string.phrase_discovered_label, Integer.toString(phraseDiscoveredCount)));
         favoriteCount.setText(getResources().getString(R.string.favorite_word_phrase_label, Integer.toString(favoriteCountNo)));
 
+        longestStreak.setText(getResources().getString(R.string.longest_streak_days, Integer.toString(longestStreakCount)));
+        currentStreak.setText(getResources().getString(R.string.profile_streak_count, Integer.toString(currentStreakCount)));
 
     }
 
@@ -98,7 +122,7 @@ public class nav_profile extends Fragment {
         ArrayList<ProfileProgressItem> profileProgressItems = new ArrayList<>();
         profileRecycler.setNestedScrollingEnabled(false);
 
-        Cursor profileSeeMoreCursor = DB.getAllCategory("haha", "Profile");
+        Cursor profileSeeMoreCursor = DB.getCategory("haha", "Profile");
 
         String[] categoryName = new String[profileSeeMoreCursor.getCount()];
         String[] imageUrls = new String[categoryName.length];
@@ -116,7 +140,7 @@ public class nav_profile extends Fragment {
 //            imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
 //        }
         if (profileSeeMoreCursor.getCount() == 0){
-            Toast.makeText(context, "Ang database ay walang laman, Pakiulit na lamang", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
             return;
         }else{
             int i = 0;
@@ -156,7 +180,7 @@ public class nav_profile extends Fragment {
 
     private void InitializeOnClick()
     {
-        profileSeeMore = view.findViewById(R.id.profile_see_more);
+        profileSeeMoreCard = view.findViewById(R.id.profile_see_more_label);
         final ImageView editUserButton = (ImageView) view.findViewById(R.id.edit_user_name);
         final EditText editTextUser = view.findViewById(R.id.edit_text_user_name);
         editTextUser.setOnKeyListener(new View.OnKeyListener() {
@@ -182,8 +206,12 @@ public class nav_profile extends Fragment {
                     editUserButton.setImageResource(R.drawable.ic_edit);
                     if (!editTextUser.getText().toString().equals(userNameText.getText().toString()) && !editTextUser.getText().toString().equals("")) {
                         userNameText.setText(editTextUser.getText().toString());
-                        Toast.makeText(context, "Ang username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
-//                      TODO provide a real action when the user edit the text (database operations)
+                        boolean checkUpdate = DB.updateSingleData(editTextUser.getText().toString(), 0, "ChangeUserName");
+                        if (checkUpdate){
+                            Toast.makeText(context, "Ang username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(context, "Hindi mapalitan ang iyong username, itry nalang muli", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     if (editTextUser.getText().toString().equals("")){
                         Toast.makeText(context, "Ang bagong username ay invalid!", Toast.LENGTH_SHORT).show();
@@ -192,14 +220,14 @@ public class nav_profile extends Fragment {
                     }
                     editTextUser.setVisibility(View.INVISIBLE);
                     userNameText.setVisibility(View.VISIBLE);
-                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     isEdit = 0;
                 }
             }
         });
 
-        profileSeeMore.setOnClickListener(new View.OnClickListener() {
+        profileSeeMoreCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_nav_profile_to_profile_see_more);

@@ -11,8 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +28,6 @@ import com.artemis.ispeaksigns.adapter_list_learn.LearnWordCategoryItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
 
 public class nav_learn extends Fragment {
 
@@ -88,7 +85,7 @@ public class nav_learn extends Fragment {
     private void InitializeLearnRecyclerView(String categoryType)
     {
         Log.d("myTag", categoryType);
-        Cursor learnCategoryCursor = DB.getAllCategory(categoryType, "Learn");
+        Cursor learnCategoryCursor = DB.getCategory(categoryType, "Learn");
         String[] categoryName = new String[learnCategoryCursor.getCount()];
         String[] bgColors = new String[categoryName.length];
         String[] itemCount = new String[categoryName.length];

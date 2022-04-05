@@ -10,13 +10,16 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,11 +27,18 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
     private SwitchCompat drawerSwitch;
     private NavController navController;
     private NavigationView navigationView;
+    DBHelper DB;
     Boolean profileState;
     Boolean searchState;
-    String userName;
+
+    //for userUpdate
+    String userName = "";
+    int longestStreak = 0;
+    int currentStreak = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent intent = getIntent();
-        userName = intent.getStringExtra("userName");
+        DB = new DBHelper(this);
 
         ///////Variable Definitions and Initializations
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
@@ -75,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
         RelativeLayout defaultToolbar = findViewById(R.id.default_toolbar);
         //////End of Definitions
+
+        onUserLogin();
+        userStreak();
 
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Destination Listener setup
         navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
+
             //this changes the toolbar title as it has a bug of displaying only "home" title
             collapseToolbar.setTitle(navDestination.getLabel());
             editSearchParent.setVisibility(View.VISIBLE);
@@ -292,4 +309,117 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void userStreak(){
+
+        Cursor userDataCursor = DB.getUserData("", "GetNameStreak");
+
+        if (userDataCursor.getCount()==0){
+            Toast.makeText(this, "No value on database found!", Toast.LENGTH_SHORT).show();
+        }else{
+            while (userDataCursor.moveToNext()){
+                userName = userDataCursor.getString(0);
+                longestStreak = userDataCursor.getInt(1);
+            }
+
+        }
+
+        currentStreak = getStreak();
+
+        if (currentStreak>longestStreak){
+            longestStreak = currentStreak;
+            boolean checkUpdateStreak = DB.UpdateMultipleData(new int[]{currentStreak, longestStreak}, null, "Streak");
+            if (checkUpdateStreak){
+                Log.i("LONGEST STREAK UPDATE", Integer.toString(longestStreak));
+                Log.i("STREAK UPDATE", Integer.toString(currentStreak));
+            }else{
+                Toast.makeText(MainActivity.this, "Streak Update gone wrong!", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            boolean checkUpdateStreak = DB.updateSingleData(null, currentStreak, "Streak");
+            if (checkUpdateStreak){
+                Log.i("STREAK UPDATE", Integer.toString(currentStreak));
+            }else{
+                Toast.makeText(MainActivity.this, "Streak Update gone wrong!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+    }
+
+
+    //FOR USER STREAK LOGIN
+    public void onUserLogin() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        Date date = new Date();
+        String today = dateFormat.format(date);
+        String lastLoginDay = getLastLoginDate();
+
+        String yesterday = getYesterdayDate(dateFormat, date);
+
+        if (lastLoginDay == null) {
+            // user logged in for the first time
+            updateLastLoginDate(today);
+            incrementDays();
+        } else {
+            if (lastLoginDay.equals(today)) {
+                // User logged in the same day , do nothing
+            } else if (lastLoginDay.equals(yesterday)) {
+                // User logged in consecutive days , add 1
+                updateLastLoginDate(today);
+                incrementDays();
+            } else {
+                // It's been more than a day user logged in, reset the counter to 1
+                updateLastLoginDate(today);
+                resetDays();
+            }
+        }
+    }
+
+    private String getYesterdayDate(DateFormat simpleDateFormat, Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, -1);
+        return simpleDateFormat.format(calendar.getTime());
+    }
+
+    private void updateLastLoginDate(String date) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("last_login_day", date);
+        editor.apply();
+    }
+
+    private String getLastLoginDate() {
+        String lastLogin = null;
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        lastLogin = sharedPref.getString("last_login_day", null);
+        return lastLogin;
+    }
+
+    private int getConsecutiveDays() {
+        int days = 0;
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        days = sharedPref.getInt("num_consecutive_days", 0);
+        return days;
+    }
+
+    private void incrementDays() {
+        int days = getConsecutiveDays() + 1;
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("num_consecutive_days", days);
+        editor.apply();
+    }
+
+    private void resetDays() {
+        int days = 1;
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("num_consecutive_days", days);
+        editor.apply();
+    }
+
+    public int getStreak() {
+        return getConsecutiveDays();
+    }
 }

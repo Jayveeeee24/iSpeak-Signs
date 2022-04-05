@@ -1,10 +1,15 @@
 package com.artemis.ispeaksigns;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.artemis.ispeaksigns.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class FunctionHelper {
 
@@ -29,6 +34,23 @@ public class FunctionHelper {
         return greeting;
     }
 
+    public String getCategoryProgressDescription(int categoryProgress){
+
+        if (categoryProgress<30){
+            return "Simulan ng matuto!";
+        }else if (categoryProgress<49){
+            return "Malapit na sa kalahati!";
+        }else if (categoryProgress==50){
+            return "Nasa kalahati ka na!";
+        }else if (categoryProgress<65){
+            return "Lagpas na sa kalahati!";
+        }else if (categoryProgress<99){
+            return "Malapit mo na matapos!";
+        }else{
+            return "Natapos mo na!";
+        }
+    }
+
     public String getImageLogo(String categoryName){
 
         String str = categoryName.toLowerCase();
@@ -51,4 +73,19 @@ public class FunctionHelper {
         imageName = imageName + str ;
         return imageName;
     }
+
+    public int[] getStreak(int[] streakDays, int streakCount, String currentDay){
+
+        String[] days = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+
+        for (int i = 0; i<streakDays.length; i++){
+            if (days[i].equals(currentDay)){
+                streakDays[i] = 1;
+            }
+        }
+
+
+        return streakDays;
+    }
+
 }

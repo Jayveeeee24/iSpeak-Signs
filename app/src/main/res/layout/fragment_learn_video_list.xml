@@ -59,21 +59,22 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
-                        android:id="@+id/txtProgressCardLabel"
+                        android:id="@+id/txtProgressVideoCardLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@+id/categoryVideoImageCard"
                         android:text="@string/learn_category_progress_label"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtProgress"
+                        android:id="@+id/txtVideoProgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtProgressCardLabel"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/txtProgressVideoCardLabel"
+                        android:layout_marginTop="5dp"
+                        android:textSize="14sp"
                         android:layout_toEndOf="@id/categoryVideoImageCard"
                         android:text="@string/learn_list_word_learned" />
 
@@ -81,9 +82,10 @@
                         android:id="@+id/txtProgressVideoPercent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtProgressCardLabel"
+                        android:layout_below="@id/txtProgressVideoCardLabel"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="14sp"
                         android:text="@string/learn_list_progress"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />

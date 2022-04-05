@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
 
         <RelativeLayout
             android:id="@+id/logo_layout"
@@ -293,78 +294,70 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/thanks_label1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/authority_credit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:text="King David J. Agreda, MIT"
-                android:textSize="14sp" />
+                android:gravity="center"
+                android:layout_below="@id/thanks_label"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/thanks_label2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label1"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gotham_book_regular"
-                android:text="GAD Coordinator at Thesis Adviser"
-                android:textSize="13sp"
-                android:textStyle="italic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="King David J. Agreda, MIT"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/thanks_label3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:textSize="14sp"
-                android:text="Jocelyn Ramos"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="GAD Coordinator at Thesis Adviser"
+                    android:textSize="13sp"
+                    android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/thanks_label4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label3"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gotham_book_regular"
-                android:textSize="13sp"
-                android:textStyle="italic"
-                android:text="Technical Critic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="14sp"
+                    android:text="Jocelyn Ramos"/>
 
-            <TextView
-                android:id="@id/thanks_label5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label4"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:textSize="14sp"
-                android:text="Maris Antenor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:text="Technical Critic"/>
 
-            <TextView
-                android:id="@+id/thanks_label6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/thanks_label5"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gotham_book_regular"
-                android:textSize="13sp"
-                android:textStyle="italic"
-                android:text="Persons with Disabilites Affairs Office"
-                android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="14sp"
+                    android:text="Maris Antenor"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:text="Persons with Disabilites Affairs Office"
+                    android:gravity="center"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/thanks_label7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/thanks_label6"
+                android:layout_below="@+id/authority_credit"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/nunito_bold"
@@ -384,51 +377,170 @@
                 android:text="Mariel Gabasa"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/thanks_label9"
-                android:layout_width="wrap_content"
+
+
+            <LinearLayout
+                android:id="@+id/thanks_graphic"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label8"
-                android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:layout_marginTop="25dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Graphic Design"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15sp" />
+                android:orientation="vertical"
+                android:layout_below="@id/thanks_label8">
 
-            <TextView
-                android:id="@+id/thanks_label10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label9"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:text="Jasmien Gail T. Alosa"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Graphic Design"
+                    android:layout_marginTop="5dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/thanks_label11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label10"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gotham_book_regular"
-                android:text="Randall M. Dela Cruz"
-                android:layout_marginTop="2dp"
-                android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Jasmien Gail T. Alosa"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/thanks_label12"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Randall M. Dela Cruz"
+                    android:layout_marginTop="2dp"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Cristine J. Perno"
+                    android:layout_marginTop="2dp"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JM David"
+                    android:layout_marginTop="2dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sen Arya Dinosaur"
+                    android:layout_marginTop="2dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jewel Pony"
+                    android:layout_marginTop="2dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/thanks_localization"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thanks_label11"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gotham_book_regular"
-                android:text="JM David"
-                android:layout_marginTop="2dp"
-                android:textSize="14sp"/>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/thanks_graphic">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Localization"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Eunice Jem Avelin"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"/>
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/gotham_book_regular"-->
+<!--                    android:text="Kevin Bryan Pajarillo"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_marginTop="2dp"/>-->
+<!--                -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Annie Jane Jaminal"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp"/>
+<!--                -->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/gotham_book_regular"-->
+<!--                    android:text="Mr. Eros S. Atalia"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_marginTop="2dp"/>-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ispeak_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/thanks_localization"
+                android:layout_marginTop="40dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="iSpeak Signs Feedbacks"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:text="Maaaring magbigay ng suhestyon o puna ukol sa iyong karanasan sa paggamit ng app"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="johnbernard.tinio@cvsu.edu.ph"/>
+
+
+            </LinearLayout>
 
         </RelativeLayout>
 

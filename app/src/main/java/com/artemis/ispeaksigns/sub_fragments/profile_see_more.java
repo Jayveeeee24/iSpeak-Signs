@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
-import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressItem;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
@@ -27,8 +24,6 @@ import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class profile_see_more extends Fragment {
 
@@ -55,7 +50,7 @@ public class profile_see_more extends Fragment {
         RecyclerView profileSeeMoreRecycler = view.findViewById(R.id.profile_see_more_recycler);
         profileSeeMoreRecycler.setNestedScrollingEnabled(false);
 
-        Cursor profileSeeMoreCursor = DB.getAllCategory("", "all");
+        Cursor profileSeeMoreCursor = DB.getCategory("", "all");
 
         String[] categoryName = new String[profileSeeMoreCursor.getCount()];
         String[] imageUrls = new String[categoryName.length];

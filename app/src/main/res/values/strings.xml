@@ -30,7 +30,7 @@
     <string name="home_greeting1_label">Kumusta, %1$s!</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
     <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
-    <string name="favorite_greeting2_label">Maaaring i-save ang mga salitang iyong ginagamit</string>
+    <string name="favorite_greeting2_label">Maaaring i-save ang mga salita o pariralang iyong napupusuan</string>
     <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
     <!--    Strings for Greetings-->
     <string name="morning_label">Magandang Umaga sa Iyo!</string>
@@ -99,18 +99,12 @@
     <string name="user_image_desc">Imahe ng User</string>
     <string name="edit_user_name_desc">i-edit ang pangalan ng user</string>
     <string name="profile_streak_label">Sunod sunod na araw</string>
-    <string name="profile_streak_count">2 na araw</string>
-    <string name="mon_label">M</string>
-    <string name="tue_label">T</string>
-    <string name="wed_label">W</string>
-    <string name="thu_label">T</string>
-    <string name="fri_label">F</string>
-    <string name="sat_label">S</string>
-    <string name="sun_label">S</string>
+    <string name="profile_streak_count">%1$s na araw</string>
     <string name="word_discovered_text">%1$s\nSalitang\nnatuklasan</string>
     <string name="phrase_discovered_label">%1$s\nPariralang\nnatuklasan</string>
     <string name="favorite_word_phrase_label">%1$s\nPaboritong\nSalita/Parirala</string>
     <string name="profile_category_progress">Progreso sa mga Kategorya</string>
+    <string name="longest_streak_days">Longest Streak: %1$s day/s</string>
 
     <!--    Strings for Recognition-->
     <string name="recog_app_name">iSpeak Signs Rekognisyon</string>
@@ -123,6 +117,6 @@
     <string name="learn_list_category_logo">Logo ng Kategorya</string>
     <string name="learn_category_progress_label">Simulan nang matuto!</string>
     <string name="learn_list_word_learned">Salitang natuklasan</string>
-    <string name="learn_list_progress">0/25</string>
+    <string name="learn_list_progress">%1$s/%2$s</string>
 
 </resources>

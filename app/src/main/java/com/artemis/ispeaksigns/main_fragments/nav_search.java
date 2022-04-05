@@ -78,7 +78,7 @@ public class nav_search extends Fragment {
         ArrayList<SearchCategoryItem> searchCategoryItems = new ArrayList<>();
         ArrayList<SearchVideoItem> searchVideoItems = new ArrayList<>();
         ArrayList<SearchWordItem> searchWordItems = new ArrayList<>();
-        Cursor searchCategoryCursor = DB.getAllCategory("", "Search");
+        Cursor searchCategoryCursor = DB.getCategory("", "Search");
         String[] categoryName = new String[searchCategoryCursor.getCount()];
         String[] categoryType = new String[searchCategoryCursor.getCount()];
         if (search_type.equals("Kategorya")){

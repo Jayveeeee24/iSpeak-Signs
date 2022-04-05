@@ -2,6 +2,7 @@ package com.artemis.ispeaksigns.sub_fragments;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
