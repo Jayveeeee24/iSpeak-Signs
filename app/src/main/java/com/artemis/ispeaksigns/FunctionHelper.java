@@ -74,18 +74,4 @@ public class FunctionHelper {
         return imageName;
     }
 
-    public int[] getStreak(int[] streakDays, int streakCount, String currentDay){
-
-        String[] days = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-
-        for (int i = 0; i<streakDays.length; i++){
-            if (days[i].equals(currentDay)){
-                streakDays[i] = 1;
-            }
-        }
-
-
-        return streakDays;
-    }
-
 }

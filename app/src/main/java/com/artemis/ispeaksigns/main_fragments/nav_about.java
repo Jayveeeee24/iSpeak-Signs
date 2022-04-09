@@ -132,7 +132,7 @@ public class nav_about extends Fragment {
             popupImage.setImageResource(R.drawable.cvsu_logo);
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring World Class Chef ");
-            popupStrength.setText("\"The Journey of a thousand miles begins with every single step, so start walking\"");
+            popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");
             popupType.setText("Type: B");
         }
         memberPopup.show();

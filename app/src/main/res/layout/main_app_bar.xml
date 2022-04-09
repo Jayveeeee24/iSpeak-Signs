@@ -80,6 +80,13 @@
             </RelativeLayout>
 <!--                END OF ABOUT DEFINITION-->
 
+            <ImageView
+                android:id="@+id/collapse_toolbar_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:ignore="ContentDescription" />
+
             <RelativeLayout
                 android:visibility="visible"
                 android:id="@+id/default_toolbar"
@@ -105,7 +112,7 @@
                     android:shadowColor="@color/black"
                     android:shadowDx="1"
                     android:shadowDy="1"
-                    android:shadowRadius="2"
+                    android:shadowRadius="3"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/nunito_bold"
                     android:text="@string/home_greeting1_label"
@@ -118,16 +125,15 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtHomeGreeting1"
                     android:layout_marginStart="25dp"
+                    android:layout_marginEnd="2dp"
                     android:shadowColor="@color/black"
                     android:shadowDx="1"
                     android:shadowDy="1"
-                    android:shadowRadius="2"
+                    android:shadowRadius="3"
                     android:fontFamily="@font/nunito_bold"
                     android:text="@string/learn_greeting1_label"
                     android:textColor="@color/white"
                     android:textSize="20sp"/>
-
-
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/editSearchParent"
@@ -154,7 +160,8 @@
                             android:tint="@color/colorSecondary"
                             android:padding="6dp"
                             android:layout_marginStart="10dp"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:id="@+id/search_hint"

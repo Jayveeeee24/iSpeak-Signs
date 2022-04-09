@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -39,6 +41,7 @@ public class learn_video_list extends Fragment {
     ProgressBar categoryVideoProgressBar;
     RecyclerView learnVideoListRecycler;
     RelativeLayout categoryVideoImageParent;
+    String kategorya = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,7 +67,6 @@ public class learn_video_list extends Fragment {
     }
 
     public void setProgressSetup(){
-        String kategorya = "";
         String progressLabel;
         String progressText;
         int progressBar = 0;
@@ -105,5 +107,23 @@ public class learn_video_list extends Fragment {
         categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar));
         categoryVideoProgressBar.setProgress(progressBar);
 
+
+        categoryVideoImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("learn_video_item", kategorya);
+                NavOptions.Builder navBuilder = new NavOptions.Builder();
+                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+                        .setExitAnim(R.anim.nav_default_exit_anim)
+                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                try {
+                    Navigation.findNavController(view).navigate(R.id.action_learn_category_video_to_learn_video_item, bundle, navBuilder.build());
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

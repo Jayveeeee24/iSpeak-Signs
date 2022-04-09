@@ -2,6 +2,14 @@
 
 DEBUG NOTES
 
+v1.1r7 4/9
+- initialized video item fragment (design and backend)
+- added favorite and learn fragment bg for toolbars
+- added an imageview in main appbar for learn and fragment toolbar bg
+- implemented the toolbar bg change in mainActivity 
+- added a dummy resource for video demo in implementing video feature
+- changed appbar bg colors
+
 v1.1r6 4/5
 - updated DBHelper to remove the data storage for daily login 
 - added and updated db method call for multiple data update, single data update and get category

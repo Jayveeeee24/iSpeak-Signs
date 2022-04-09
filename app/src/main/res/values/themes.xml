@@ -17,10 +17,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
-    
+
     <style name="SearchView">
         <item name="android:textSize">16sp</item>
-        
+
     </style>
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -48,4 +48,5 @@
     <style name="Theme.ISpeakSigns.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ISpeakSigns.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

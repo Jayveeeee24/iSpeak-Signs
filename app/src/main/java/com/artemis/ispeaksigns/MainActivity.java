@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DB = new DBHelper(this);
 
         ///////Variable Definitions and Initializations
+        DB = new DBHelper(this);
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
         TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton mainFab = findViewById(R.id.fab);
         RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
         RelativeLayout defaultToolbar = findViewById(R.id.default_toolbar);
+        ImageView collapseToolbarImage = findViewById(R.id.collapse_toolbar_image);
         //////End of Definitions
 
         onUserLogin();
-        userStreak();
 
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Destination Listener setup
         navController.addOnDestinationChangedListener((navController1, navDestination, bundle) -> {
-
+            getUserStreak();
             //this changes the toolbar title as it has a bug of displaying only "home" title
             collapseToolbar.setTitle(navDestination.getLabel());
             editSearchParent.setVisibility(View.VISIBLE);
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             aboutToolbar.setVisibility(View.INVISIBLE);
             defaultToolbar.setVisibility(View.VISIBLE);
             collapseToolbar.setBackgroundResource(R.drawable.appbar_bg);
+            collapseToolbarImage.setImageDrawable(null);
             setExpandedEnabled(false);
             profileState = false;
             searchState=false;
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 txtHomeGreeting2.setText("");
                 txtSearch.setText(getResources().getString(R.string.edit_text_hint_learn));
                 toolbarImage1.setVisibility(View.INVISIBLE);
+                collapseToolbarImage.setImageResource(R.drawable.ic_magaral_bg);
 
                 setExpandedEnabled(true);
                 profileState = true;
@@ -190,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 txtHomeGreeting2.setText(getResources().getString(R.string.favorite_greeting2_label));
                 toolbarImage1.setVisibility(View.INVISIBLE);
                 editSearchParent.setVisibility(View.INVISIBLE);
+                collapseToolbarImage.setImageResource(R.drawable.ic_favorite_bg);
 
                 setExpandedEnabled(true);
             } else if (navDestination.getId() == R.id.nav_about) {
@@ -309,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void userStreak(){
+    public void getUserStreak(){
 
         Cursor userDataCursor = DB.getUserData("", "GetNameStreak");
 
@@ -363,6 +366,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (lastLoginDay.equals(today)) {
                 // User logged in the same day , do nothing
+                Log.i("LOGIN UPDATE", "USER LOGGED THE SAME DAY");
             } else if (lastLoginDay.equals(yesterday)) {
                 // User logged in consecutive days , add 1
                 updateLastLoginDate(today);

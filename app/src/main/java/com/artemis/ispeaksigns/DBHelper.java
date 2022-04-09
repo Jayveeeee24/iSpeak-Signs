@@ -79,9 +79,6 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("categoryProgress", progress[i]);
             DB.insert("CategoryTable", null, values);
 
-
-
-
         }
     }
 

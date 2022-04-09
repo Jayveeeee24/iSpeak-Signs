@@ -30,7 +30,7 @@
     <string name="home_greeting1_label">Kumusta, %1$s!</string>
     <string name="learn_greeting1_label">Ano ang nais mong matutunan\nngayong araw?</string>
     <string name="favorite_greeting1_label">Bawat salita ay mahalaga!</string>
-    <string name="favorite_greeting2_label">Maaaring i-save ang mga salita o pariralang iyong napupusuan</string>
+    <string name="favorite_greeting2_label">Maaaring i-save ang mga salita o parirala na iyong mapipili</string>
     <string name="favorite_no_item_title">Wala ka pang paborito? Tumuklas na ng salita at idadag rito!</string>
     <!--    Strings for Greetings-->
     <string name="morning_label">Magandang Umaga sa Iyo!</string>
