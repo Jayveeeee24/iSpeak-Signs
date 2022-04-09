@@ -14,10 +14,12 @@
 
         <ImageView
             android:id="@+id/learn_list_word_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_learn_list_word"
             android:tint="@color/colorPrimary"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_centerVertical="true"/>
 
         <TextView

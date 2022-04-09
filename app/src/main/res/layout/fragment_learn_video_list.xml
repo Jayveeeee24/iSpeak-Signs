@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sub_fragments.learn_word_list">
+    tools:context=".sub_fragments.learn_video_list">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,11 +48,11 @@
                             <ImageView
                                 android:id="@+id/categoryVideoImage"
                                 android:layout_width="115dp"
-                                android:tint="@color/white"
                                 android:layout_height="85dp"
+                                android:contentDescription="@string/learn_list_category_logo"
                                 android:padding="15sp"
                                 android:src="@drawable/ic_pang_emergency"
-                                android:contentDescription="@string/learn_list_category_logo" />
+                                android:tint="@color/white" />
 
                         </RelativeLayout>
 

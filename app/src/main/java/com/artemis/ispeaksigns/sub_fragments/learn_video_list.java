@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -24,9 +25,14 @@ import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListVideoCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListVideoRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListWordCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListWordRecyclerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -64,9 +70,10 @@ public class learn_video_list extends Fragment {
 
 
         setProgressSetup();
+        InitializeRecycler();
     }
 
-    public void setProgressSetup(){
+    private void setProgressSetup(){
         String progressLabel;
         String progressText;
         int progressBar = 0;
@@ -108,22 +115,29 @@ public class learn_video_list extends Fragment {
         categoryVideoProgressBar.setProgress(progressBar);
 
 
-        categoryVideoImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("learn_video_item", kategorya);
-                NavOptions.Builder navBuilder = new NavOptions.Builder();
-                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
-                        .setExitAnim(R.anim.nav_default_exit_anim)
-                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                try {
-                    Navigation.findNavController(view).navigate(R.id.action_learn_category_video_to_learn_video_item, bundle, navBuilder.build());
-                }catch (IllegalArgumentException e){
-                    e.printStackTrace();
-                }
-            }
-        });
+
+    }
+
+    private void InitializeRecycler(){
+        ArrayList<LearnListVideoCategoryItem> learnListVideoCategoryItems = new ArrayList<>();
+
+        String[] itemName = new String[]{
+                "Magandang Araw", "Maaari bang humiram ng telepono", "Ano ang pangalan mo",
+                "Tulungan nyo ako", "Ako ay nawawala", "Nauunawaan mo ba ako",
+                "Maraming salamat sa iyo"
+        };
+        int[] isLearned = new int[]{
+                1, 0, 0, 1, 1, 0, 1
+        };
+
+        for (int i = 0; i<itemName.length; i++) {
+            learnListVideoCategoryItems.add(new LearnListVideoCategoryItem(itemName[i], isLearned[i]));
+        }
+
+        LearnListVideoRecyclerAdapter adapter = new LearnListVideoRecyclerAdapter();
+        adapter.setLearnListVideoCategoryItems(learnListVideoCategoryItems);
+
+        learnVideoListRecycler.setAdapter(adapter);
+        learnVideoListRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
 }

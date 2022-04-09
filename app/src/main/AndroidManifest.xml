@@ -3,22 +3,28 @@
     package="com.artemis.ispeaksigns">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.ISpeakSigns">
-        <activity android:name=".SplashActivity"
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:configChanges="orientation|screenSize|screenLayout" />
         <activity
             android:name=".RecognizeActivity"
             android:screenOrientation="portrait"
@@ -27,8 +33,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ISpeakSigns.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.ISpeakSigns.NoActionBar" />
     </application>
 
 </manifest>

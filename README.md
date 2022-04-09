@@ -2,6 +2,16 @@
 
 DEBUG NOTES
 
+v1.1r8 4/9
+- updated the learn video list for displaying video items
+- added and implemented an videoActivity to fix issues with video fullscreen feature
+- added a custom controller for activity video
+- refactored and updated some fragment layout for code cleanup
+- added vector icons for the video functions
+- changed the learn video item fragment to implement a thumbnail display for video and on click functions
+- implemented and initialized the recyclerview, adapter and item of learn video list recycler
+- added styles for the videoActivity function
+
 v1.1r7 4/9
 - initialized video item fragment (design and backend)
 - added favorite and learn fragment bg for toolbars

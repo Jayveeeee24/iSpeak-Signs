@@ -40,7 +40,7 @@
             android:paddingEnd="20dp">
 
             <TextView
-                android:id="@+id/txt_item_name"
+                android:id="@+id/learn_fslword_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_book_regular"
@@ -60,7 +60,7 @@
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_item_name" />
+                app:layout_constraintTop_toBottomOf="@id/learn_fslword_item_name" />
 
             <ImageView
                 android:id="@+id/fsl_favorite"
@@ -68,9 +68,9 @@
                 android:layout_height="35dp"
                 android:src="@drawable/ic_favorites_outline"
                 android:tint="@color/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="@id/txt_item_name"
+                app:layout_constraintBottom_toBottomOf="@id/learn_fslword_item_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_item_name"
+                app:layout_constraintTop_toTopOf="@id/learn_fslword_item_name"
                 android:contentDescription="@string/heart_desc" />
 
             <TextView

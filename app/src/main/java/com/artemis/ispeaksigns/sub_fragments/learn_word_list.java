@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,16 +23,15 @@ import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
-import com.artemis.ispeaksigns.adapter_list_learn_word.LearnListWordCategoryItem;
-import com.artemis.ispeaksigns.adapter_list_learn_word.LearnListWordRecyclerAdapter;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListWordCategoryItem;
+import com.artemis.ispeaksigns.adapter_list_learn_list.LearnListWordRecyclerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class
-learn_word_list extends Fragment {
+public class learn_word_list extends Fragment {
 
     private Context context;
     private View view;

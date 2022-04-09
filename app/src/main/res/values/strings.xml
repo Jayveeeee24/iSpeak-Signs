@@ -119,4 +119,7 @@
     <string name="learn_list_word_learned">Salitang natuklasan</string>
     <string name="learn_list_progress">%1$s/%2$s</string>
 
+    <string name="play_video_desc">i-play ang video</string>
+    <string name="video_item_category_desc">Kategorya: %1$s</string>
+
 </resources>
