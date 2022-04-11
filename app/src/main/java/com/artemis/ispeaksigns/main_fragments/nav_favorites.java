@@ -34,24 +34,19 @@ public class nav_favorites extends Fragment {
     }
 
     private void InitializeRecycler() {
-        RecyclerView favoriteRecView = view.findViewById(R.id.favoriteRecycler);
+        RecyclerView favoriteRecView = (RecyclerView) view.findViewById(R.id.favoriteRecycler);
         ArrayList<FavoriteCategoryItem> favoriteCategoryItems = new ArrayList<>();
 
         String[] categoryName = new String[]{
-                        "Parke", "Magandang Umaga", "Lunes", "Tulong!", "Tuwa"
-                };
-
+                        "Parke", "Magandang Umaga", "Lunes", "Tulong!", "Tuwa"};
         String[] categoryType = new String[]{
-                        "Salita", "Parirala", "Salita", "Parirala", "Salita"
-        };
-
+                        "Salita", "Parirala", "Salita", "Parirala", "Salita"};
         for (int i = 0; i < categoryName.length; i++) {
             favoriteCategoryItems.add(new FavoriteCategoryItem(categoryName[i], categoryType[i]));
         }
 
         adapter = new FavoriteRecyclerAdapter();
         adapter.setFavoriteCategoryItems(favoriteCategoryItems);
-
         favoriteRecView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

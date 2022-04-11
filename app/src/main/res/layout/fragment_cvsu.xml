@@ -53,10 +53,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <VideoView
-                android:id="@+id/cvsu_videoview"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvsu_videoViewLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
+
+                    <ImageView
+                        android:id="@+id/cvsu_video_thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_magaral_bg"
+                        android:background="@color/may_green"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/cvsu_play_video"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_play"
+                        android:tint="@color/white"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/play_video_desc" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/cvsu_label"
@@ -69,7 +99,7 @@
                 android:fontFamily="@font/gotham_book_regular"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:layout_below="@id/cvsu_videoview"
+                android:layout_below="@id/cvsu_videoViewLayout"
                 android:layout_marginTop="20dp"/>
 
             <TextView

@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns.adapter_list_favorite;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             @Override
             public void onClick(View view) {
                 if (favoriteCategoryItems.get(position).getItemType().equals("Salita")){
+
+                    Log.i("REMOVE FAVORITE", Integer.toString(holder.getAbsoluteAdapterPosition()));
                     Bundle bundle = new Bundle();
                     bundle.putString("learn_word_item", favoriteCategoryItems.get(position).getItemName());
                     NavOptions.Builder navBuilder = new NavOptions.Builder();
@@ -65,13 +68,13 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
         holder.favoriteRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                favoriteCategoryItems.remove(holder.getAdapterPosition());
+                favoriteCategoryItems.remove(holder.getAbsoluteAdapterPosition());
                 String name = holder.txtFavoriteItem.getText().toString();
                 Toast.makeText(view.getContext(), name + " ay na-alis mo na sa iyong paborito", Toast.LENGTH_SHORT).show();
-                notifyItemRemoved(holder.getAdapterPosition());
-                notifyItemRangeChanged(holder.getAdapterPosition(), favoriteCategoryItems.size());
+                notifyDataSetChanged();
 
-
+                Log.i("REMOVE FAVORITE", Integer.toString(holder.getAbsoluteAdapterPosition()));
+                Log.i("REMOVE FAVORITE SIZE", Integer.toString(favoriteCategoryItems.size()));
             }
         });
 
@@ -93,12 +96,14 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
         TextView txtFavoriteItem;
         CardView cardFavorite;
         ImageView favoriteRemove;
+        TextView favoriteNoItem;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             cardFavorite = itemView.findViewById(R.id.card_favorite_item);
             txtFavoriteItem = itemView.findViewById(R.id.txt_favorite_item);
             favoriteRemove = itemView.findViewById(R.id.favorite_remove);
+            favoriteNoItem = itemView.findViewById(R.id.favorite_no_item);
         }
     }
 }

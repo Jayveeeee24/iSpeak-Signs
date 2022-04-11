@@ -22,6 +22,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.VideoActivity;
@@ -35,6 +36,7 @@ public class learn_video_item extends Fragment {
     View view;
     Context context;
     MediaPlayer mediaAudioWord;
+    FunctionHelper functionHelper;
     int audio;
 
     ImageView videoThumbnail;
@@ -65,6 +67,8 @@ public class learn_video_item extends Fragment {
             ((MainActivity) Objects.requireNonNull(getActivity())).collapseToolbar
                     .setTitle(videoName);
         }
+
+        functionHelper = new FunctionHelper();
 
         videoThumbnail = view.findViewById(R.id.video_thumbnail);
         playVideo = view.findViewById(R.id.play_video);
@@ -118,24 +122,26 @@ public class learn_video_item extends Fragment {
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
-                if (isPlayed == 0){
-                    ImageViewCompat.setImageTintList(learnVideoPlayAudio , ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
-                    mediaAudioWord.start();
-                    isPlayed = 1;
-                    mediaAudioWord.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ImageViewCompat.setImageTintList(learnVideoPlayAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
-                            mediaAudioWord.stop();
-                            mediaAudioWord = MediaPlayer.create(context, audio);
-                            isPlayed = 0;
-                        }
-                    });
-                }else if (isPlayed == 1){
-                    ImageViewCompat.setImageTintList(learnVideoPlayAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
-                    mediaAudioWord.stop();
-                    mediaAudioWord = MediaPlayer.create(context, audio);
-                    isPlayed = 0;
+                if (functionHelper.checkFocusGain(Objects.requireNonNull(getActivity()), mediaAudioWord, null)){
+                    if (isPlayed == 0){
+                        ImageViewCompat.setImageTintList(learnVideoPlayAudio , ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
+                        mediaAudioWord.start();
+                        isPlayed = 1;
+                        mediaAudioWord.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                ImageViewCompat.setImageTintList(learnVideoPlayAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                                mediaAudioWord.stop();
+                                mediaAudioWord = MediaPlayer.create(context, audio);
+                                isPlayed = 0;
+                            }
+                        });
+                    }else if (isPlayed == 1){
+                        ImageViewCompat.setImageTintList(learnVideoPlayAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                        mediaAudioWord.stop();
+                        mediaAudioWord = MediaPlayer.create(context, audio);
+                        isPlayed = 0;
+                    }
                 }
             }
         });
@@ -154,6 +160,12 @@ public class learn_video_item extends Fragment {
                 playVideo.performClick();
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mediaAudioWord.stop();
     }
 
 }

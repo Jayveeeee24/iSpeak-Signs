@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.1r9 4/11
+- changed implementation of removing items in favorites (getAdapterPosition to getAbsoluteAdapterPosition)
+- changed implementation of videoview in cvsu fragment to exoplayer
+- fixed the bug of an external audio still playing when playing audio and video via MediaPlayer and ExoPlayer respectively in learn_word_item, learn_video_item and in video activity
+- fixed index out of bound error in favorite recyclerview when removing an item
+
 v1.1r8 4/9
 - updated the learn video list for displaying video items
 - added and implemented an videoActivity to fix issues with video fullscreen feature

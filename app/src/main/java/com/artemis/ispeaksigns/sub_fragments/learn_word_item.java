@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 
@@ -30,6 +31,7 @@ public class learn_word_item extends Fragment {
     View view;
     Context context;
     MediaPlayer mediaAudioWord;
+    FunctionHelper functionHelper;
     int audio;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +46,7 @@ public class learn_word_item extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        functionHelper = new FunctionHelper();
         String word;
         ScrollView learnWordItemParent = view.findViewById(R.id.learn_word_item_parent);
         learnWordItemParent.setNestedScrollingEnabled(false);
@@ -86,27 +89,35 @@ public class learn_word_item extends Fragment {
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
-                if (isPlayed == 0){
-                    ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
-                    mediaAudioWord.start();
-                    isPlayed = 1;
-                    mediaAudioWord.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
-                            mediaAudioWord.stop();
-                            mediaAudioWord = MediaPlayer.create(context, audio);
-                            isPlayed = 0;
-                        }
-                    });
-                }else if (isPlayed == 1){
-                    ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
-                    mediaAudioWord.stop();
-                    mediaAudioWord = MediaPlayer.create(context, audio);
-                    isPlayed = 0;
+                if (functionHelper.checkFocusGain(Objects.requireNonNull(getActivity()), mediaAudioWord, null)){
+                    if (isPlayed == 0){
+                        ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
+                        mediaAudioWord.start();
+                        isPlayed = 1;
+                        mediaAudioWord.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                                mediaAudioWord.stop();
+                                mediaAudioWord = MediaPlayer.create(context, audio);
+                                isPlayed = 0;
+                            }
+                        });
+                    }else if (isPlayed == 1){
+                        ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                        mediaAudioWord.stop();
+                        mediaAudioWord = MediaPlayer.create(context, audio);
+                        isPlayed = 0;
+                    }
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mediaAudioWord.stop();
     }
 }

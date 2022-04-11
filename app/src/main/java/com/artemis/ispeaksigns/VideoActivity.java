@@ -22,6 +22,7 @@ import com.google.android.exoplayer2.ui.PlayerView;
 public class VideoActivity extends AppCompatActivity {
 
     ExoPlayer exoPlayer;
+    FunctionHelper functionHelper;
     PlayerView playerView;
     ProgressBar progressBar;
     ImageView bt_fullscreen;
@@ -36,6 +37,7 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        functionHelper = new FunctionHelper();
         playerView = findViewById(R.id.player);
         progressBar = findViewById(R.id.progress_bar);
         bt_fullscreen = findViewById(R.id.bt_fullscreen);
@@ -83,7 +85,6 @@ public class VideoActivity extends AppCompatActivity {
                 .setSeekForwardIncrementMs(5000)
                 .build();
         playerView.setPlayer(exoPlayer);
-        //screen alway active
         playerView.setKeepScreenOn(true);
         //track state
         exoPlayer.addListener(new Player.Listener()
@@ -91,7 +92,6 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onPlaybackStateChanged(int playbackState)
             {
-                //when data video fetch stream from internet
                 if (playbackState == Player.STATE_BUFFERING)
                 {
                     progressBar.setVisibility(View.VISIBLE);
@@ -108,8 +108,10 @@ public class VideoActivity extends AppCompatActivity {
         Uri videoUrl = Uri.parse("android.resource://" + getPackageName() + "/" + videoNameConverted);
         MediaItem media = MediaItem.fromUri(videoUrl);
         exoPlayer.setMediaItem(media);
-        exoPlayer.prepare();
-        exoPlayer.play();
+        if (functionHelper.checkFocusGain(this, null ,exoPlayer)){
+            exoPlayer.prepare();
+            exoPlayer.play();
+        }
     }
 
     private void lockScreen(boolean lock)
@@ -120,11 +122,13 @@ public class VideoActivity extends AppCompatActivity {
         {
             sec_mid.setVisibility(View.INVISIBLE);
             sec_bottom.setVisibility(View.INVISIBLE);
+            exoItemName.setVisibility(View.INVISIBLE);
         }
         else
         {
             sec_mid.setVisibility(View.VISIBLE);
             sec_bottom.setVisibility(View.VISIBLE);
+            exoItemName.setVisibility(View.VISIBLE);
         }
     }
 

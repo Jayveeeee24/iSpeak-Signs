@@ -65,6 +65,7 @@ public class learn_video_list extends Fragment {
         categoryVideoProgressText = view.findViewById(R.id.txtProgressVideoPercent);
         categoryVideoProgressBar = view.findViewById(R.id.progressVideoLearn);
         learnVideoListRecycler = view.findViewById(R.id.learn_video_list_recycler);
+        learnVideoListRecycler.setNestedScrollingEnabled(false);
         categoryVideoImageParent = view.findViewById(R.id.categoryVideoImageParent);
         DB = new DBHelper(context);
 
@@ -114,20 +115,18 @@ public class learn_video_list extends Fragment {
         categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar));
         categoryVideoProgressBar.setProgress(progressBar);
 
-
-
     }
 
     private void InitializeRecycler(){
         ArrayList<LearnListVideoCategoryItem> learnListVideoCategoryItems = new ArrayList<>();
 
         String[] itemName = new String[]{
-                "Magandang Araw", "Maaari bang humiram ng telepono", "Ano ang pangalan mo",
+                "Magandang Araw", "Maaari bang humiram ng telepono mo taena shem loko", "Ano ang pangalan mo",
                 "Tulungan nyo ako", "Ako ay nawawala", "Nauunawaan mo ba ako",
                 "Maraming salamat sa iyo"
         };
         int[] isLearned = new int[]{
-                1, 0, 0, 1, 1, 0, 1
+                1, 1, 0, 1, 1, 0, 1
         };
 
         for (int i = 0; i<itemName.length; i++) {
