@@ -2,6 +2,11 @@
 
 DEBUG NOTES
 
+v1.1r10 4/14
+- last commit before implementing sign language recognition
+- changed profile editing name no. of characters to 10 from 8, and allow to have spaces
+
+
 v1.1r9 4/11
 - changed implementation of removing items in favorites (getAdapterPosition to getAbsoluteAdapterPosition)
 - changed implementation of videoview in cvsu fragment to exoplayer
