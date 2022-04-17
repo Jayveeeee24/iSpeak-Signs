@@ -1,2 +1,3 @@
 rootProject.name = "iSpeak Signs"
 include ':app'
+include ':openCVLibrary3413'

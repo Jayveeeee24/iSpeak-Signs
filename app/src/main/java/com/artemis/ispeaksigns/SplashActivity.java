@@ -16,6 +16,8 @@ import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import org.opencv.android.OpenCVLoader;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +25,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class SplashActivity extends AppCompatActivity {
+
+    static {
+        if (OpenCVLoader.initDebug()){
+            Log.i("SplashActivity", "OpenCVLoader Success");
+        }else{
+            Log.i("SplashActivity", "OpenCVLoader Failed");
+        }
+    }
 
     DBHelper DB;
     String oldDate;
