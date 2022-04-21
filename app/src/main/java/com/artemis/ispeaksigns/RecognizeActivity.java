@@ -14,7 +14,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -59,7 +58,6 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         int MY_PERMISSIONS_REQUEST = 0;
-
         if (ContextCompat.checkSelfPermission(RecognizeActivity.this, Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(RecognizeActivity.this, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
@@ -67,7 +65,6 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         setContentView(R.layout.activity_recognize);
 
         flipCamera = findViewById(R.id.flip_camera);
-
         flipCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +77,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         mOpenCvCameraView.setCvCameraViewListener(this);
 
         try{
-            objectDetectorClass=new objectDetectorClass(getAssets(),"hand_model.tflite","custom_label.txt",300, "Sign_language_model.tflite", 96);
+            objectDetectorClass=new objectDetectorClass(getAssets(),"hand_model.tflite",300, "Sign_language_model.tflite", 96);
             Log.d("MainActivity","Model is successfully loaded");
         }
         catch (IOException e){
@@ -141,7 +138,6 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
             Core.flip(mRgba, mRgba, 1);
             Core.flip(mGray, mGray, 1);
         }
-
         Mat out=new Mat();
         out=objectDetectorClass.recognizeImage(mRgba);
 

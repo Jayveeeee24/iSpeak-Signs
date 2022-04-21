@@ -42,7 +42,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RecognizeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(MainActivity.this, RecognizeActivity.class));
             }
         });
         setSupportActionBar(mtoolbar);
@@ -349,9 +348,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
     }
-
 
     //FOR USER STREAK LOGIN
     public void onUserLogin() {
