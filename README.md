@@ -2,6 +2,38 @@
 
 DEBUG NOTES
 
+v1.2r1 4/24
+
+STRUCTURAL CHANGES
+- shrinked app size with minifyEnabled and shrinkResources.
+- removed viewBinding feature
+- added aapt option not to compress tflite files
+- added tensorflow dependencies
+- added camera permissions in manifest file
+- removed .so files for OpenCV for deprecated architectures (mips, x64, armeabi)
+
+RECOGNITION
+- implemented the main fsl recognition in recognize activity using OpenCV
+- Camera using JavaCamera
+- Switching of camera
+- sign language recognition functions such as onResume, onPause, onDestroy, onCameraViewStarted, onCameraViewStopped, onCameraFrame, swapCamera
+- added fix for camera where it crashes when memory is leaking
+- PPS: fix by adding a null check for mRgba in onCameraFrame
+- the sign language model boasts up to 75%
+
+OTHER FRAGMENTS
+- removed hidden function in about fragment
+- added layout for sign language recognition in recognizeActivity
+
+OBJECT DETECTOR CLASS
+- implemented the main sign language detection using object detector class
+- implemented finger spelling by adding the letters in a textview
+- fixed the camera where the memory is leaking when not releasing mat after use (99:103, 204:208)
+- removed dialog in onEnterStartedState in CameraBridgeViewBase class
+
+
+//THE ABOVE COMMITS CONTAINS THE SIGN LANGUAGE RECOGNITION IMPLEMENTATION
+
 v1.1r10 4/14
 - last commit before implementing sign language recognition
 - changed profile editing name no. of characters to 10 from 8, and allow to have spaces
