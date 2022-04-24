@@ -190,7 +190,6 @@ org/opencv/android/Utils.java
  org.opencv.android.Utils
 org/opencv/android/CameraBridgeViewBase.java
  org.opencv.android.CameraBridgeViewBase
- org.opencv.android.CameraBridgeViewBase$1
  org.opencv.android.CameraBridgeViewBase$CvCameraViewFrame
  org.opencv.android.CameraBridgeViewBase$CvCameraViewListener
  org.opencv.android.CameraBridgeViewBase$CvCameraViewListener2

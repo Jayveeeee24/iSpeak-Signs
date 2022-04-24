@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -14,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -34,6 +36,10 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
     private ImageView flipCamera;
     private int cameraId = 0;
     private objectDetectorClass objectDetectorClass;
+
+    private CardView recognizeRemove;
+    private CardView recognizeAdd;
+    private TextView recognizeText;
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -65,6 +71,9 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         setContentView(R.layout.activity_recognize);
 
         flipCamera = findViewById(R.id.flip_camera);
+        recognizeAdd = findViewById(R.id.recognize_add);
+        recognizeRemove = findViewById(R.id.recognize_remove);
+        recognizeText = findViewById(R.id.recognized_text);
         flipCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,12 +81,14 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
                 swapCamera();
             }
         });
+
+
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.recognize_camera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
 
         try{
-            objectDetectorClass=new objectDetectorClass(getAssets(),"hand_model.tflite",300, "Sign_language_model.tflite", 96);
+            objectDetectorClass=new objectDetectorClass(recognizeAdd, recognizeRemove, recognizeText, getAssets(),"hand_model.tflite",300, "Sign_language_model.tflite", 96);
             Log.d("MainActivity","Model is successfully loaded");
         }
         catch (IOException e){
@@ -105,6 +116,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
 
         if (mOpenCvCameraView != null){
             mOpenCvCameraView.disableView();
+            mRgba.release();
         }
     }
 
@@ -131,6 +143,11 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+
+        if (mRgba != null){
+            mRgba.release();
+        }
+
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
 
@@ -138,10 +155,8 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
             Core.flip(mRgba, mRgba, 1);
             Core.flip(mGray, mGray, 1);
         }
-        Mat out=new Mat();
-        out=objectDetectorClass.recognizeImage(mRgba);
 
-        return out;
+        return objectDetectorClass.recognizeImage(mRgba);
     }
 
     private void swapCamera(){

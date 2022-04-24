@@ -106,18 +106,6 @@ public class nav_about extends Fragment {
             popupGoal.setText("Aspiring Software Engineer");
             popupStrength.setText("\"What if one day you woke up and you were a potato salad\"");
             popupType.setText("Type: O");
-            popupType.setOnClickListener(new View.OnClickListener() {
-                int counter = 0;
-                @Override
-                public void onClick(View view) {
-                    if (counter < 2){
-                        counter++;
-                        Toast.makeText(context, "You are " + (3-counter) + " click away from the secret", Toast.LENGTH_SHORT).show();
-                    }else if (counter==2){
-                        Toast.makeText(context, "Type ko si ayra ez.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
         }
         else if (name.equals("Marie Ann Karen De Guzman")){
             popupName.setText(name);

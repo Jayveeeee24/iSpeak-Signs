@@ -4,6 +4,10 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -36,44 +40,69 @@ public class  objectDetectorClass {
     private int height=0;
     private  int width=0;
     private int Classification_Input_Size = 0;
+    private String finalText = "";
+    private String currentText = "";
 
-    objectDetectorClass(AssetManager assetManager,String modelPath,int inputSize, String classification_model, int classification_inputsize) throws IOException{
+    objectDetectorClass(CardView recognizeAdd, CardView recognizeRemove, TextView recognizeText, AssetManager assetManager, String modelPath, int inputSize, String classification_model, int classification_inputsize) throws IOException{
         INPUT_SIZE=inputSize;
         Classification_Input_Size = classification_inputsize;
         // use to define gpu or cpu // no. of threads
-        Interpreter.Options options=new Interpreter.Options();
-        gpuDelegate=new GpuDelegate();
+        Interpreter.Options options = new Interpreter.Options();
+        gpuDelegate = new GpuDelegate();
         options.addDelegate(gpuDelegate);
-        options.setNumThreads(4); // set it according to your phone
+        options.setNumThreads(2);
         // loading model
         interpreter=new Interpreter(loadModelFile(assetManager,modelPath),options);
 
         Interpreter.Options options2 = new Interpreter.Options();
-        options2.setNumThreads(2);
+        options2.setNumThreads(4);
         interpreter2 = new Interpreter(loadModelFile(assetManager, classification_model),options2);
+
+        recognizeAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!currentText.equals("")){
+                    finalText = finalText + currentText;
+                    recognizeText.setText(finalText);
+                }
+                currentText = "";
+            }
+        });
+
+        recognizeRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!finalText.equals("")){
+                    finalText = finalText.substring(0, finalText.length()-1);
+                    recognizeText.setText(finalText);
+                }
+                currentText = "";
+            }
+        });
 
     }
 
     private ByteBuffer loadModelFile(AssetManager assetManager, String modelPath) throws IOException {
         // use to get description of file
-        AssetFileDescriptor fileDescriptor=assetManager.openFd(modelPath);
-        FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
-        FileChannel fileChannel=inputStream.getChannel();
-        long startOffset =fileDescriptor.getStartOffset();
-        long declaredLength=fileDescriptor.getDeclaredLength();
+        AssetFileDescriptor fileDescriptor = assetManager.openFd(modelPath);
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
 
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
 
     public Mat recognizeImage(Mat mat_image){
+
         // Rotate original image by 90 degree get get portrait frame
+        Mat rotated_mat_image = new Mat();
+        Mat a=mat_image.t();
+        Core.flip(a,rotated_mat_image,1);
+        a.release();
+        mat_image.release();
 
-        Mat rotated_mat_image=new Mat();
-//        Mat a=mat_image.t();
-//        Core.flip(a,rotated_mat_image,1);
-//        a.release();
-
-        Core.flip(mat_image.t(), rotated_mat_image, 1);
+//        Core.flip(mat_image.t(), rotated_mat_image, 1);
 
         // if you do not do this process you will get improper prediction, less no. of object
         Bitmap bitmap = Bitmap.createBitmap(rotated_mat_image.cols(),rotated_mat_image.rows(),Bitmap.Config.ARGB_8888);
@@ -117,7 +146,6 @@ public class  objectDetectorClass {
         // Here we will draw boxes and label it with it's name
 
         Object value=output_map.get(0);
-        Object Object_class=output_map.get(1);
         Object score=output_map.get(2);
 
         // loop through each object
@@ -155,7 +183,7 @@ public class  objectDetectorClass {
                 float h1 = y2-y1;
                 Rect cropped_roi = new Rect((int)x1, (int)y1, (int)w1, (int)h1);
                 Mat cropped = new Mat(rotated_mat_image, cropped_roi).clone();
-                Bitmap bitmap1 = null;
+                Bitmap bitmap1;
                 bitmap1 = Bitmap.createBitmap(cropped.cols(), cropped.rows(), Bitmap.Config.ARGB_8888);
                 Utils.matToBitmap(cropped, bitmap1);
 
@@ -166,17 +194,20 @@ public class  objectDetectorClass {
                 Log.d("objectDetectionClass", "output_class_value: "+ output_class_value[0][0]);
 
                 String sign_val = get_alphabets(output_class_value[0][0]);
-                Imgproc.putText(rotated_mat_image, ""+sign_val,new Point(x1+10,y1+40),2,1.5,new Scalar(237, 237, 237),2); // white
+                currentText = sign_val;
+                Imgproc.putText(rotated_mat_image, ""+sign_val,new Point(x1+10,y1+40),2,1.5,new Scalar(253, 193, 6),2); // golden puppy
                 Imgproc.rectangle(rotated_mat_image,new Point(x1,y1),new Point(x2,y2),new Scalar(90, 200, 81),2); // colorSecondary
 
                 // Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
             }
         }
-//        Mat b=rotated_mat_image.t();
-//        Core.flip(b,mat_image,0);
-//        b.release();
+        Mat b=rotated_mat_image.t();
+        Core.flip(b,mat_image,0);
+        rotated_mat_image.release();
+        a.release();
+        b.release();
 
-        Core.flip(rotated_mat_image.t(), mat_image, 0);
+//        Core.flip(rotated_mat_image.t(), mat_image, 0);
 
         return mat_image;
     }
