@@ -223,7 +223,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/member2_image_desc"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/jb_profile" />
+                    android:src="@drawable/meann_profile" />
 
             </androidx.cardview.widget.CardView>
 
@@ -289,7 +289,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
-                android:text="Espesyal na Pasasalamat"
+                android:text="@string/espesyal_na_pasasalamat"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp" />
@@ -314,7 +314,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_book_regular"
-                    android:text="GAD Coordinator at Thesis Adviser"
+                    android:text="@string/sirKingDesc"
                     android:textSize="13sp"
                     android:textStyle="italic" />
 
@@ -392,7 +392,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Graphic Design"
+                    android:text="@string/graphic_design"
                     android:layout_marginTop="5dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
@@ -461,7 +461,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Localization"
+                    android:text="@string/localization"
                     android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp"/>
@@ -474,14 +474,14 @@
                     android:textSize="14sp"
                     android:layout_marginTop="5dp"/>
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/gotham_book_regular"-->
-<!--                    android:text="Kevin Bryan Pajarillo"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:layout_marginTop="2dp"/>-->
-<!--                -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Kevin Bryan Pajarillo"
+                    android:textSize="14sp"
+                    android:layout_marginTop="2dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -515,7 +515,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="iSpeak Signs Feedbacks"
+                    android:text="@string/ispeak_signs_feedbacks"
                     android:textAllCaps="true"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp"/>
@@ -527,7 +527,7 @@
                     android:layout_marginTop="5dp"
                     android:textSize="14sp"
                     android:gravity="center"
-                    android:text="Maaaring magbigay ng suhestyon o puna ukol sa iyong karanasan sa paggamit ng app"/>
+                    android:text="@string/feedback_desc"/>
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -26,10 +26,8 @@ public class VideoActivity extends AppCompatActivity {
     PlayerView playerView;
     ProgressBar progressBar;
     ImageView bt_fullscreen;
-    ImageView bt_lockscreen;
     TextView exoItemName;
     boolean isFullScreen = false;
-    boolean isLock = false;
 
     String videoName = "";
     @Override
@@ -41,7 +39,6 @@ public class VideoActivity extends AppCompatActivity {
         playerView = findViewById(R.id.player);
         progressBar = findViewById(R.id.progress_bar);
         bt_fullscreen = findViewById(R.id.bt_fullscreen);
-        bt_lockscreen = findViewById(R.id.exo_lock);
         exoItemName = findViewById(R.id.exo_item_name);
 
         InitializeDesign();
@@ -68,18 +65,7 @@ public class VideoActivity extends AppCompatActivity {
             }
             isFullScreen = !isFullScreen;
         });
-        bt_lockscreen.setOnClickListener(view ->
-        {
-            if (!isLock)
-            {
-                bt_lockscreen.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_lock));
-            } else
-            {
-                bt_lockscreen.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_outline_lock_open));
-            }
-            isLock = !isLock;
-            lockScreen(isLock);
-        });
+
         exoPlayer = new ExoPlayer.Builder(this)
                 .setSeekBackIncrementMs(5000)
                 .setSeekForwardIncrementMs(5000)
@@ -114,29 +100,9 @@ public class VideoActivity extends AppCompatActivity {
         }
     }
 
-    private void lockScreen(boolean lock)
-    {
-        LinearLayout sec_mid = findViewById(R.id.sec_controlvid1);
-        LinearLayout sec_bottom = findViewById(R.id.sec_controlvid2);
-        if(lock)
-        {
-            sec_mid.setVisibility(View.INVISIBLE);
-            sec_bottom.setVisibility(View.INVISIBLE);
-            exoItemName.setVisibility(View.INVISIBLE);
-        }
-        else
-        {
-            sec_mid.setVisibility(View.VISIBLE);
-            sec_bottom.setVisibility(View.VISIBLE);
-            exoItemName.setVisibility(View.VISIBLE);
-        }
-    }
-
     @Override
     public void onBackPressed()
     {
-        //on lock screen back press button not work
-        if(isLock) return;
 
         //if user is in landscape mode we turn to portriat mode first then we can exit the app.
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)

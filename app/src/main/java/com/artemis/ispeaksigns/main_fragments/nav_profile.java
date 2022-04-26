@@ -49,6 +49,7 @@ public class nav_profile extends Fragment {
     TextView userNameText;
     TextView currentStreak;
     TextView longestStreak;
+    String avatarName = "";
     DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,7 +91,7 @@ public class nav_profile extends Fragment {
         if (getArguments() != null) {
             userName = getArguments().getString("userName");
         }
-        Cursor updateStreakCard = DB.getUserData("", "StreakCard");
+        Cursor updateStreakCard = DB.getUserData("", "StreakAvatarCard");
 
         if (updateStreakCard.getCount() == 0){
             Toast.makeText(context, "Ang database ay walang laman, Pakiulit na lamang", Toast.LENGTH_SHORT).show();
@@ -102,6 +103,7 @@ public class nav_profile extends Fragment {
                 wordDiscoveredCount = updateStreakCard.getInt(2);
                 phraseDiscoveredCount = updateStreakCard.getInt(3);
                 favoriteCountNo = updateStreakCard.getInt(4);
+                avatarName = updateStreakCard.getString(5);
             }
         }
 
@@ -114,6 +116,8 @@ public class nav_profile extends Fragment {
 
         longestStreak.setText(getResources().getString(R.string.longest_streak_days, Integer.toString(longestStreakCount)));
         currentStreak.setText(getResources().getString(R.string.profile_streak_count, Integer.toString(currentStreakCount)));
+        int avatarImage = getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
+        userImage.setImageResource(avatarImage);
 
     }
 
@@ -135,10 +139,6 @@ public class nav_profile extends Fragment {
         String[] categoryType = new String[categoryName.length];
         String[] categoryPercentConverted = new String[categoryPercent.length];
 
-//        FunctionHelper functionHelper = new FunctionHelper();
-//        for (int i = 0; i<categoryName.length; i++){
-//            imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
-//        }
         if (profileSeeMoreCursor.getCount() == 0){
             Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
             return;
@@ -206,7 +206,7 @@ public class nav_profile extends Fragment {
                     editUserButton.setImageResource(R.drawable.ic_edit);
                     if (!editTextUser.getText().toString().equals(userNameText.getText().toString()) && !editTextUser.getText().toString().equals("")) {
                         userNameText.setText(editTextUser.getText().toString());
-                        boolean checkUpdate = DB.updateSingleData(editTextUser.getText().toString(), 0, "ChangeUserName");
+                        boolean checkUpdate = DB.updateSingleData(editTextUser.getText().toString(), 0, "UserName");
                         if (checkUpdate){
                             Toast.makeText(context, "Ang username ay napalitan na bilang " + editTextUser.getText().toString(), Toast.LENGTH_SHORT).show();
                         }else{

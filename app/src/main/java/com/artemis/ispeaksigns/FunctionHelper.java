@@ -3,8 +3,14 @@ package com.artemis.ispeaksigns;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
+import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import com.artemis.ispeaksigns.R;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -14,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class FunctionHelper {
 
@@ -38,20 +45,39 @@ public class FunctionHelper {
         return greeting;
     }
 
-    public String getCategoryProgressDescription(int categoryProgress){
+    public void setAppLocale (Activity activity){
+        DBHelper DB = new DBHelper(activity);
+        String selectedLanguage = "";
+
+        Cursor getLocaleCursor = DB.getUserData("", "GetLocale");
+        if (getLocaleCursor.getCount()==0){
+            Toast.makeText(activity, "No value on database found!", Toast.LENGTH_SHORT).show();
+        }else{
+            while (getLocaleCursor.moveToNext()){
+                selectedLanguage = getLocaleCursor.getString(0);
+            }
+        }
+        Resources resources = activity.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(new Locale(selectedLanguage.toLowerCase()));
+        resources.updateConfiguration(config, dm);
+    }
+
+    public String getCategoryProgressDescription(int categoryProgress, Activity activity){
 
         if (categoryProgress<30){
-            return "Simulan ng matuto!";
+            return activity.getString(R.string.una);
         }else if (categoryProgress<49){
-            return "Malapit na sa kalahati!";
+            return activity.getString(R.string.pangalawa);
         }else if (categoryProgress==50){
-            return "Nasa kalahati ka na!";
+            return activity.getString(R.string.pangatlo);
         }else if (categoryProgress<65){
-            return "Lagpas na sa kalahati!";
+            return activity.getString(R.string.pangapat);
         }else if (categoryProgress<99){
-            return "Malapit mo na matapos!";
+            return activity.getString(R.string.panglima);
         }else{
-            return "Natapos mo na!";
+            return activity.getString(R.string.huli);
         }
     }
 
@@ -76,6 +102,13 @@ public class FunctionHelper {
         }
         imageName = imageName + str ;
         return imageName;
+
+
+        //IMPLEMENTATION
+//        FunctionHelper functionHelper = new FunctionHelper();
+//        for (int i = 0; i<categoryName.length; i++){
+//            imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
+//        }
     }
 
     Activity thisActivity;

@@ -112,7 +112,7 @@ public class learn_video_list extends Fragment {
         categoryVideoImage.setImageResource(imageName);
         categoryVideoImageParent.setBackgroundResource(color);
         categoryVideoProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), tempTotalItems));
-        categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar));
+        categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
         categoryVideoProgressBar.setProgress(progressBar);
 
     }

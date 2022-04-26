@@ -109,7 +109,7 @@ public class nav_about extends Fragment {
         }
         else if (name.equals("Marie Ann Karen De Guzman")){
             popupName.setText(name);
-            popupImage.setImageResource(R.drawable.cvsu_logo);
+            popupImage.setImageResource(R.drawable.meann_profile);
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring Graphic Artist");
             popupStrength.setText("\"Everything happens for a reason\"");

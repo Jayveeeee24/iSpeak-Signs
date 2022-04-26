@@ -18,7 +18,6 @@ public class SharedPref {
     }
     public Boolean loadNightModeState ()
     {
-        Boolean state = mySharedPref.getBoolean("NightMode", false);
-        return state;
+        return mySharedPref.getBoolean("NightMode", false);
     }
 }

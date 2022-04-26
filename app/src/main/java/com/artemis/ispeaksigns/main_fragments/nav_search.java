@@ -163,7 +163,7 @@ public class nav_search extends Fragment {
                 searchWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchPhrase.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchCategory.setBackgroundResource(R.drawable.highlight_text);
-                searchView.setQueryHint("Humanap ng Kategorya");
+                searchView.setQueryHint(getString(R.string.humanap_ng_kategorya));
                 searchWord.setBackgroundResource(android.R.color.transparent);
                 searchPhrase.setBackgroundResource(android.R.color.transparent);
                 searchView.setQuery("", false);
@@ -179,7 +179,7 @@ public class nav_search extends Fragment {
                 searchCategory.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchPhrase.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchWord.setBackgroundResource(R.drawable.highlight_text);
-                searchView.setQueryHint("Humanap ng FSL na Salita");
+                searchView.setQueryHint(getString(R.string.humanap_ng_fsl_na_salita));
                 searchCategory.setBackgroundResource(android.R.color.transparent);
                 searchPhrase.setBackgroundResource(android.R.color.transparent);
                 searchView.setQuery("", false);
@@ -195,7 +195,7 @@ public class nav_search extends Fragment {
                 searchWord.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchCategory.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 searchPhrase.setBackgroundResource(R.drawable.highlight_text);
-                searchView.setQueryHint("Humanap ng FSL na Parirala");
+                searchView.setQueryHint(getString(R.string.humanap_ng_fsl_na_parirala));
                 searchCategory.setBackgroundResource(android.R.color.transparent);
                 searchWord.setBackgroundResource(android.R.color.transparent);
                 searchView.setQuery("", false);

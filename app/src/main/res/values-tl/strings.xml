@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iSpeak Signs</string>
     <string name="nav_header_subtitle">Gender and Development Unit</string>
@@ -73,7 +74,7 @@
     <string name="cvsu_text_vision">The premier university in historic Cavite recognized for excellence in the development of globally competitive and morally upright individuals</string>
 
     <!--    Strings for Profile-->
-    <string name="user_name">Juan</string>
+    <string name="user_name">Jayvee</string>
     <string name="user_image_desc">Imahe ng User</string>
     <string name="edit_user_name_desc">i-edit ang pangalan ng user</string>
     <string name="profile_streak_label">Sunod sunod na araw</string>
@@ -110,7 +111,6 @@
     <string name="panglima">Malapit mo na matapos!</string>
     <string name="huli">Natapos mo na!</string>
 
-
     <string name="save">i-Save</string>
     <string name="pumili_ng_wika">Pumili ng Wika</string>
 
@@ -141,7 +141,6 @@
     <string name="localization">Lokalisasyon</string>
     <string name="ispeak_signs_feedbacks">iSpeak Signs - Mga Puna</string>
     <string name="feedback_desc">Maaaring magbigay ng suhestyon o puna ukol sa iyong karanasan sa paggamit ng app</string>
-
 
     <!--    STRINGS FOR SEARCH FRAGMENT-->
     <string name="humanap_ng_kategorya">Humanap ng Kategorya</string>

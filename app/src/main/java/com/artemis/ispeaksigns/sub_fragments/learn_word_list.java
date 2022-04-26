@@ -111,7 +111,7 @@ public class learn_word_list extends Fragment {
         categoryImage.setImageResource(imageName);
         categoryImageParent.setBackgroundResource(color);
         categoryProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), tempTotalItems));
-        categoryProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar));
+        categoryProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
         categoryProgressBar.setProgress(progressBar);
 
     }

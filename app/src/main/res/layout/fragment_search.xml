@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:iconifiedByDefault="false"
                     android:queryBackground="@android:color/transparent"
-                    android:queryHint="Humanap ng Kategorya"
+                    android:queryHint="@string/humanap_ng_kategorya"
                     android:theme="@style/SearchView" />
 
             </com.google.android.material.card.MaterialCardView>

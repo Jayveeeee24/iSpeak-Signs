@@ -23,14 +23,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"/>
 
-        <ImageView
-            android:id="@+id/exo_lock"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_outline_lock_open"
-            android:theme="@style/ClickableView"/>
-
     </LinearLayout>
 
     <LinearLayout

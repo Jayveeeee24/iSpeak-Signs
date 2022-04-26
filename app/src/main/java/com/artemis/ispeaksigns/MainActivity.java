@@ -14,18 +14,25 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,27 +41,29 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import org.opencv.android.OpenCVLoader;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     private AppBarLayout mAppbarLayout;
     public Toolbar mtoolbar;
     public CollapsingToolbarLayout collapseToolbar;
     private DrawerLayout drawer;
-    private SwitchCompat drawerSwitch;
     private NavController navController;
     private NavigationView navigationView;
+
+    FunctionHelper functionHelper;
     DBHelper DB;
     Boolean profileState;
     Boolean searchState;
+    String languageCode = "";
 
     //for userUpdate
     String userName = "";
@@ -71,10 +80,15 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         super.onCreate(savedInstanceState);
+
+        DB = new DBHelper(this);
+        functionHelper = new FunctionHelper();
+        functionHelper.setAppLocale(this);
+        onUserLogin();
+
         setContentView(R.layout.activity_main);
 
         ///////Variable Definitions and Initializations
-        DB = new DBHelper(this);
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
         TextView txtHomeGreeting2 = findViewById(R.id.txtHomeGreeting2);
@@ -92,16 +106,14 @@ public class MainActivity extends AppCompatActivity {
         ImageView collapseToolbarImage = findViewById(R.id.collapse_toolbar_image);
         //////End of Definitions
 
-        onUserLogin();
-
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RecognizeActivity.class));
             }
         });
-        setSupportActionBar(mtoolbar);
 
+        setSupportActionBar(mtoolbar);
         //Setup for Navigation Drawer and AppBar
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
@@ -130,7 +142,9 @@ public class MainActivity extends AppCompatActivity {
 
             aboutToolbar.setVisibility(View.INVISIBLE);
             defaultToolbar.setVisibility(View.VISIBLE);
+            //toolbar bg for curved green and the cvsu bg
             collapseToolbar.setBackgroundResource(R.drawable.appbar_bg);
+            //bg for mag-aral and favorite toolbar bg
             collapseToolbarImage.setImageDrawable(null);
             setExpandedEnabled(false);
             profileState = false;
@@ -208,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void InitializeMenuSetting()
     {
-        drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
+        SwitchCompat drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
 //        if (sharedPref.loadNightModeState() == true)
 //        {
 //            drawerSwitch.setChecked(true);
@@ -232,9 +246,53 @@ public class MainActivity extends AppCompatActivity {
         language.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+                final Dialog changeLanguage = new Dialog(MainActivity.this);
+                changeLanguage.setContentView(R.layout.popup_change_language);
+                changeLanguage.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(100, 0, 0, 0)));
+                changeLanguage.setCanceledOnTouchOutside(true);
+                changeLanguage.setCancelable(true);
+
+                final Spinner changeLanguageSpinner = (Spinner) changeLanguage.findViewById(R.id.change_language_spinner);
+                final Button changeLanguageSave = (Button) changeLanguage.findViewById(R.id.change_language_save);
+                List<String> languages = new ArrayList<>();
+                languages.add("Filipino");
+                languages.add("English");
+
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, languages);
+                changeLanguageSpinner.setAdapter(dataAdapter);
+                changeLanguageSpinner.setOnItemSelectedListener(MainActivity.this);
+                changeLanguage.show();
+
+                changeLanguageSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean checkInsertLanguage = DB.updateSingleData(languageCode, 0, "Language");
+                        if (checkInsertLanguage){
+                            Log.i("Splash Activity", "Update Language Success!");
+                        }else{
+                            Log.i("Splash Activity", "Update Language Success!");
+                        }
+                        changeLanguage.dismiss();
+                        restartApp();
+                    }
+                });
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+        if (parent.getItemAtPosition(position).toString().equals("Filipino")){
+            languageCode = "tl";
+        }else if (parent.getItemAtPosition(position).toString().equals("English")){
+            languageCode = "en";
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        languageCode = "tl";
     }
 
     @Override
@@ -329,7 +387,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         currentStreak = getStreak();
-
         if (currentStreak>longestStreak){
             longestStreak = currentStreak;
             boolean checkUpdateStreak = DB.UpdateMultipleData(new int[]{currentStreak, longestStreak}, null, "Streak");
@@ -394,14 +451,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getLastLoginDate() {
-        String lastLogin = null;
+        String lastLogin;
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         lastLogin = sharedPref.getString("last_login_day", null);
         return lastLogin;
     }
 
     private int getConsecutiveDays() {
-        int days = 0;
+        int days;
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         days = sharedPref.getInt("num_consecutive_days", 0);
         return days;
@@ -426,4 +483,6 @@ public class MainActivity extends AppCompatActivity {
     public int getStreak() {
         return getConsecutiveDays();
     }
+
+
 }

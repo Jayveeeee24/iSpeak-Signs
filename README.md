@@ -2,8 +2,20 @@
 
 DEBUG NOTES
 
-v1.2r1 4/24
+v1.2r2 4/26
+- implemented changing of language (Filipino or English) (added new string resource)
+- added user addition for first time user (name, avatar, preferred language) in the splash activity
+- removed lock feature in video activity
+- refactored DBHelper class (UserTable) to add user avatar and selected language
+- added 2 categories for video phrases
+- added new resources for the new categories
+- added a new modifier for updating single data to add language as well as updating multiple data to add a dependency for new user
+- refactored strings in about and search fragment (search query hint) to be dependent on string resource
+- addded a new function in function helper class (setAppLocale)
+- refactored MainActivity to include setting of app locale language upon use
+- added pop ups for changing the language in the app and for adding new user upon first time use
 
+v1.2r1 4/24
 STRUCTURAL CHANGES
 - shrinked app size with minifyEnabled and shrinkResources.
 - removed viewBinding feature
@@ -18,8 +30,8 @@ RECOGNITION
 - Switching of camera
 - sign language recognition functions such as onResume, onPause, onDestroy, onCameraViewStarted, onCameraViewStopped, onCameraFrame, swapCamera
 - added fix for camera where it crashes when memory is leaking
-- PPS: fix by adding a null check for mRgba in onCameraFrame
-- the sign language model boasts up to 75%
+- PPS: fixed by adding a null check for mRgba in onCameraFrame
+- the sign language model and recognition boosts up to 75%
 
 OTHER FRAGMENTS
 - removed hidden function in about fragment
