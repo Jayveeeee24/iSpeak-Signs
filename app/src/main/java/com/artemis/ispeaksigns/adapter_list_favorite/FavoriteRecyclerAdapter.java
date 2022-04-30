@@ -1,5 +1,6 @@
 package com.artemis.ispeaksigns.adapter_list_favorite;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,14 +27,22 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
 
     private ArrayList<FavoriteCategoryItem> favoriteCategoryItems = new ArrayList<>();
 
+    Context context;
+    FunctionHelper functionHelper;
+    TextView favoriteNoItem;
+
+    public FavoriteRecyclerAdapter(Context context, TextView favoriteNoItem){
+        this.context = context;
+        functionHelper = new FunctionHelper();
+        this.favoriteNoItem = favoriteNoItem;
+    }
 
     @NonNull
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favorite, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -43,8 +53,6 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             @Override
             public void onClick(View view) {
                 if (favoriteCategoryItems.get(position).getItemType().equals("Salita")){
-
-                    Log.i("REMOVE FAVORITE", Integer.toString(holder.getAbsoluteAdapterPosition()));
                     Bundle bundle = new Bundle();
                     bundle.putString("learn_word_item", favoriteCategoryItems.get(position).getItemName());
                     NavOptions.Builder navBuilder = new NavOptions.Builder();
@@ -70,9 +78,14 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             public void onClick(View view) {
                 favoriteCategoryItems.remove(holder.getAbsoluteAdapterPosition());
                 String name = holder.txtFavoriteItem.getText().toString();
-                Toast.makeText(view.getContext(), name + " ay na-alis mo na sa iyong paborito", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
+                functionHelper.updateFavorite(context, name, null, "Remove");
 
+                if (getItemCount() == 0){
+                    favoriteNoItem.setVisibility(View.VISIBLE);
+                }else{
+                    favoriteNoItem.setVisibility(View.INVISIBLE);
+                }
                 Log.i("REMOVE FAVORITE", Integer.toString(holder.getAbsoluteAdapterPosition()));
                 Log.i("REMOVE FAVORITE SIZE", Integer.toString(favoriteCategoryItems.size()));
             }
@@ -95,14 +108,12 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
         TextView txtFavoriteItem;
         CardView cardFavorite;
         ImageView favoriteRemove;
-        TextView favoriteNoItem;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             cardFavorite = itemView.findViewById(R.id.card_favorite_item);
             txtFavoriteItem = itemView.findViewById(R.id.txt_favorite_item);
             favoriteRemove = itemView.findViewById(R.id.favorite_remove);
-            favoriteNoItem = itemView.findViewById(R.id.favorite_no_item);
         }
     }
 }

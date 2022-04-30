@@ -10,6 +10,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.R;
@@ -81,36 +82,6 @@ public class FunctionHelper {
         }
     }
 
-    public String getImageLogo(String categoryName){
-
-        String str = categoryName.toLowerCase();
-        String[] arrStr;
-        if (str.contains(" ")){
-            arrStr = str.split(" ");
-        }else {
-            arrStr = str.split("-");
-        }
-        String imageName = "ic";
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String a : arrStr)
-        {
-            if (arrStr.length == 1) {
-                str = "_" + str;
-                break;
-            }
-            str = stringBuilder.append("_").append(a).toString();
-        }
-        imageName = imageName + str ;
-        return imageName;
-
-
-        //IMPLEMENTATION
-//        FunctionHelper functionHelper = new FunctionHelper();
-//        for (int i = 0; i<categoryName.length; i++){
-//            imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
-//        }
-    }
-
     Activity thisActivity;
     MediaPlayer thisMediaPlayer;
     ExoPlayer thisExoPlayer;
@@ -176,5 +147,49 @@ public class FunctionHelper {
                     }
                 }
             };
+
+    public void updateisLearnedProgress(Context context, String itemCategory, String word){
+        DBHelper DB = new DBHelper(context);
+        boolean updateIsLearned = DB.UpdateItem(word, 1, "isLearned");
+        if (updateIsLearned){
+            Log.i("Learn Word Item", "Update isLearned Success");
+        }else{
+            Log.i("Learn Word Item", "Update isLearned Failed");
+        }
+        int categoryProgress = 0;
+        Cursor getCategoryProgress = DB.getItem(itemCategory, "getCategoryProgress");
+        if (getCategoryProgress.getCount()!=0){
+            while (getCategoryProgress.moveToNext()){
+                categoryProgress = getCategoryProgress.getInt(0);
+            }
+        }
+        categoryProgress += 1;
+
+        boolean updateCategoryProgress = DB.updateSingleData(itemCategory, categoryProgress, "updateCategoryProgress");
+        if (updateCategoryProgress){
+            Log.i("Learn Word Item", "Update Category Progress Success");
+        }else{
+            Log.i("Learn Word Item", "Update Category Progress Failed");
+        }
+    }
+
+    public void updateFavorite(Context context, String itemName, String itemType, String modifier){
+        DBHelper DB = new DBHelper(context);
+        if (modifier.equals("Add")){
+            boolean insertNewFavorite = DB.newFavorite(itemName, itemType, "Add");
+            if (insertNewFavorite){
+                Log.i("Learn Word Item", "Insert New Favorite Success");
+            }else{
+                Log.i("Learn Word Item", "Insert New Favorite Failed");
+            }
+        }else if (modifier.equals("Remove")){
+            boolean removeFavorite = DB.newFavorite(itemName, itemType, "Remove");
+            if (removeFavorite){
+                Log.i("Learn Word Item", "Remove Favorite Success");
+            }else{
+                Log.i("Learn Word Item", "Remove Favorite Failed");
+            }
+        }
+    }
 
 }

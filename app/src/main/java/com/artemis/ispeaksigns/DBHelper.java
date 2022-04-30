@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -23,8 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //DATABASE TABLE FOR USER TABLE
         DB.execSQL("create Table IF NOT EXISTS UserTable(userID INTEGER primary key ," +
                 " userName TEXT , isOldUser INTEGER , dateToday TEXT , currentStreak INTEGER," +
-                "longestStreak INTEGER, wordDiscovered INTEGER , phraseDiscovered INTEGER , " +
-                "favoriteCount INTEGER , itemNameWOTD TEXT , selectedLanguage TEXT, avatarName TEXT)");
+                "longestStreak INTEGER, itemNameWOTD TEXT , selectedLanguage TEXT, avatarName TEXT)");
 
         ContentValues userValue = new ContentValues();
         userValue.put("userID", 201810336);
@@ -33,9 +29,6 @@ public class DBHelper extends SQLiteOpenHelper {
         userValue.put("dateToday", "Mon Apr 02 2022");
         userValue.put("currentStreak", 0);
         userValue.put("longestStreak", 0);
-        userValue.put("wordDiscovered", 0);
-        userValue.put("phraseDiscovered", 0);
-        userValue.put("favoriteCount", 0);
         userValue.put("itemNameWOTD", "");
         userValue.put("selectedLanguage", "tl");
         userValue.put("avatarName", "avatar1");
@@ -46,6 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 " categoryColor TEXT, categoryTotalItems INTEGER," +
                 " categoryType TEXT, imageURL TEXT," +
                 " categoryProgress INTEGER)");
+
         String[] categoryName = new String[]{
                 "Araw ng Linggo", "Buwan", "Lugar", "Emosyon", "Alpabeto",
                 "Numero", "Hayop", "Hugis", "Kulay", "Prutas",
@@ -58,15 +52,14 @@ public class DBHelper extends SQLiteOpenHelper {
                         "golden_puppy", "cornflower_blue", "flame", "apple", "may_green",
                         "veronese_green", "violet_blue", "grape", "steel_teal", "blue_surf"};
         int[] itemCount = new int[]{7, 12, 7, 7, 26, 10, 7, 5, 7,
-                                     6, 11, 8, 6, 4, 6,
+                                     6, 11, 8, 6, 4, 7,
                                      6, 7, 10, 8, 6};
         String[] imageURL = new String[]{
                 "ic_araw_ng_linggo", "ic_buwan", "ic_lugar", "ic_emosyon", "ic_alpabeto",
                 "ic_numero", "ic_hayop", "ic_hugis", "ic_kulay", "ic_prutas",
                 "ic_gulay", "ic_parte_ng_katawan", "ic_sasakyan", "ic_kasarian", "ic_miyembro_ng_pamilya",
                 "ic_pagbati", "ic_pang_emergency", "ic_pangkomunikasyon", "ic_ekspresyon_ng_oras", "ic_ekspresyon_ng_pagmamahal"};
-        int[] progress = new int[]{3, 5, 7, 7, 19, 7, 3, 1, 0, 4, 5, 7, 3, 4, 1,
-                                    3, 4, 8, 0, 2};
+
         for (int i = 0; i<categoryName.length; i++){
             ContentValues values = new ContentValues();
             values.put("categoryName", categoryName[i]);
@@ -78,10 +71,116 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put("categoryType", "Parirala");
             }
             values.put("imageURL", imageURL[i]);
-            values.put("categoryProgress", progress[i]);
+            values.put("categoryProgress", 0);
             DB.insert("CategoryTable", null, values);
-
         }
+
+        //DATABASE FOR ITEM TABLE
+        DB.execSQL("create Table IF NOT EXISTS ItemTable(itemName TEXT primary key," +
+                " itemCategory TEXT, itemType TEXT, isLearned INTEGER)");
+
+        String[] itemName = new String[]{
+                "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo",
+                "Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre",
+                "Bahay", "Botika", "Ospital",  "Paaralan", "Palengke", "Parke", "Simbahan",
+                "Galit", "Gulat", "Hiya", "Lungkot", "Saya", "Takot", "Tuwa",
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                "Isa", "Dalawa", "Tatlo", "Apat", "Lima", "Anim", "Pito", "Walo", "Siyam", "Sero",
+                "Aso", "Ahas", "Ibon", "Isda", "Palaka", "Pusa", "Unggoy",
+                "Bilog", "Bituin", "Parihaba", "Parisukat", "Tatsulok",
+                "Berde", "Bughaw", "Dilaw", "Itim", "Lila", "Pula", "Puti",
+                "Buko", "Mansanas", "Mangga", "Pakwan", "Pinya", "Saging",
+                "Bawang", "Kalabasa", "Kamatis", "Patatas", "Petsay", "Pipino", "Repolyo", "Sibuyas", "Sili", "Sitaw", "Talong",
+                "Bibig", "Ilong", "Kamay", "Leeg", "Mata", "Paa", "Tainga", "Ulo",
+                "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
+                "Babae", "Lalaki", "Bakla", "Tomboy",
+                "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Bunso",
+                "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi  sa iyo", "Paalam na sa’yo", "Mabuhay!",
+                "Tulungan nyo ako!", "Nanakawan ako", "Ako ay nawawala", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
+                "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
+                "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Ala sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
+                "Lagi akong nariririto para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sayo", "Gusto kitang yakapin", "Gusto kita"
+        };
+
+        String[] itemCategory = new String[itemName.length];
+        String[] itemType = new String[itemName.length];
+        for (int i = 0; i < itemName.length; i++){
+            if (i < 7){
+                itemCategory[i] = "Araw ng Linggo";
+                itemType[i] = "Salita";
+            }else if (i < 19){
+                itemCategory[i] = "Buwan";
+                itemType[i] = "Salita";
+            }else if (i < 26){
+                itemCategory[i] = "Lugar";
+                itemType[i] = "Salita";
+            }else if (i < 33){
+                itemCategory[i] = "Emosyon";
+                itemType[i] = "Salita";
+            }else if (i < 59){
+                itemCategory[i] = "Alpabeto";
+                itemType[i] = "Salita";
+            }else if (i < 69){
+                itemCategory[i] = "Numero";
+                itemType[i] = "Salita";
+            }else if (i < 76){
+                itemCategory[i] = "Hayop";
+                itemType[i] = "Salita";
+            }else if (i < 81){
+                itemCategory[i] = "Hugis";
+                itemType[i] = "Salita";
+            }else if (i < 88){
+                itemCategory[i] = "Kulay";
+                itemType[i] = "Salita";
+            }else if (i < 94){
+                itemCategory[i] = "Prutas";
+                itemType[i] = "Salita";
+            }else if (i < 105){
+                itemCategory[i] = "Gulay";
+                itemType[i] = "Salita";
+            }else if (i < 113){
+                itemCategory[i] = "Parte ng Katawan";
+                itemType[i] = "Salita";
+            }else if (i < 119){
+                itemCategory[i] = "Sasakyan";
+                itemType[i] = "Salita";
+            }else if (i < 123){
+                itemCategory[i] = "Kasarian";
+                itemType[i] = "Salita";
+            }else if (i < 130){
+                itemCategory[i] = "Miyembro ng Pamilya";
+                itemType[i] = "Salita";
+            }else if (i < 136){
+                itemCategory[i] = "Pagbati";
+                itemType[i] = "Parirala";
+            }else if (i < 143){
+                itemCategory[i] = "Pang-Emergency";
+                itemType[i] = "Parirala";
+            }else if (i < 153){
+                itemCategory[i] = "Pangkomunikasyon";
+                itemType[i] = "Parirala";
+            }else if (i < 161){
+                itemCategory[i] = "Ekspresyon ng Oras";
+                itemType[i] = "Parirala";
+            }else {
+                itemCategory[i] = "Ekspresyon ng Pagmamahal";
+                itemType[i] = "Parirala";
+            }
+        }
+
+        for (int i = 0; i < itemName.length; i++){
+            ContentValues values = new ContentValues();
+            values.put("itemName", itemName[i]);
+            values.put("itemCategory", itemCategory[i]);
+            values.put("itemType", itemType[i]);
+            values.put("isLearned", 0);
+            DB.insert("ItemTable", null, values);
+        }
+
+        //DATABASE FOR FAVORITE TABLE
+        DB.execSQL("create Table IF NOT EXISTS FavoriteTable(itemName TEXT primary key," +
+                " itemType TEXT)");
+
     }
 
     @Override
@@ -100,7 +199,7 @@ public class DBHelper extends SQLiteOpenHelper {
             case "GetUserName":
                 return DB.rawQuery("Select userName from UserTable where userID=201810336", null);
             case "StreakAvatarCard":
-                return DB.rawQuery("Select currentStreak, longestStreak, wordDiscovered, phraseDiscovered, favoriteCount, avatarName from UserTable WHERE userID=201810336", null);
+                return DB.rawQuery("Select currentStreak, longestStreak, avatarName from UserTable WHERE userID=201810336", null);
             case "Splash":
                 return DB.rawQuery("Select dateToday, isOldUser from UserTable where userID=201810336", null);
             default:
@@ -162,6 +261,16 @@ public class DBHelper extends SQLiteOpenHelper {
                         return false;
                     }
                 }
+            case "updateCategoryProgress":
+                values.put("categoryProgress", intValue);
+                try (Cursor cursor = DB.rawQuery("Select categoryProgress from CategoryTable where categoryName=?", new String[]{value})) {
+                    if (cursor.getCount() > 0) {
+                        long result = DB.update("CategoryTable", values, "categoryName=?", new String[]{value});
+                        return result != -1;
+                    } else {
+                        return false;
+                    }
+                }
             default:
                 return false;
         }
@@ -195,7 +304,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     return false;
                 }
             }
-        }else{
+        }else {
             return false;
         }
     }
@@ -217,6 +326,83 @@ public class DBHelper extends SQLiteOpenHelper {
         }else {
             return DB.rawQuery("Select * from CategoryTable ORDER BY categoryName ASC", null);
         }
-
     }
+
+    public Cursor getItem(String value, String modifier){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        switch (modifier) {
+            case "SearchItem":
+                return DB.rawQuery("Select itemName from ItemTable WHERE itemType=? ORDER BY itemCategory ASC", new String[]{value});
+            case "ItemList":
+                return DB.rawQuery("Select itemName, isLearned from ItemTable WHERE itemCategory=?", new String[]{value});
+            case "getCategoryProgress":
+                return DB.rawQuery("Select categoryProgress from CategoryTable WHERE categoryName=?", new String[]{value});
+            case "getItemCategory":
+                return DB.rawQuery("Select itemCategory, isLearned from ItemTable WHERE itemName=?", new String[]{value});
+            case "getItemHeart":
+                return DB.rawQuery("Select * from FavoriteTable WHERE itemName=?", new String[]{value});
+            case "Favorite":
+                return DB.rawQuery("Select * from FavoriteTable", null);
+            default:
+                return DB.rawQuery("Select * from ItemTable WHERE itemName=?", new String[]{value});
+        }
+    }
+
+    public boolean UpdateItem (String stringValue, int intValue, String modifier){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        if (modifier.equals("isLearned")){
+            values.put("isLearned", intValue);
+
+            try(Cursor cursor = DB.rawQuery("Select isLearned from ItemTable where itemName=?", new String[]{stringValue})){
+                if (cursor.getCount()>0){
+                    long result = DB.update("ItemTable", values, "itemName=?", new String[]{stringValue});
+                    return result != -1;
+                }else{
+                    return false;
+                }
+            }
+        }else {
+            return false;
+        }
+    }
+
+    public boolean newFavorite(String itemName, String itemType, String modifier){
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        if (modifier.equals("Add")){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("itemName", itemName);
+            contentValues.put("itemType", itemType);
+            long result = DB.insert("FavoriteTable", null, contentValues);
+            return result != -1;
+        }else if (modifier.equals("Remove")){
+            try (Cursor cursor = DB.rawQuery("Select * from FavoriteTable where itemName =?", new String[]{itemName})) {
+                if (cursor.getCount() > 0) {
+                    long result = DB.delete("FavoriteTable", "itemName=?", new String[]{itemName});
+                    return result != -1;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Cursor countItems(String modifier){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        switch (modifier) {
+            case "WordDiscovered":
+                return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1' AND itemType='Salita'", null);
+            case "PhraseDiscovered":
+                return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1' AND itemType='Parirala'", null);
+            case "FavoriteCount":
+                return DB.rawQuery("Select COUNT(*) from FavoriteTable", null);
+            default:
+                return null;
+        }
+    }
+
+
 }

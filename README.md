@@ -2,6 +2,21 @@
 
 DEBUG NOTES
 
+v1.2r4 4/30
+DBHelper
+- removed wordDiscovered, phraseDiscovered and favoriteCount in the UserTable and migrated the dependency to SQL COUNT
+- added new Tables (FavoriteTable and ItemTable) migrated the dependency of item data to database dependent
+- added new functions (getItem, UpdateItem, newFavorite and itemCount) for (ItemTable, Itemtable, FavoriteTable and Counting in Profile respectively)
+
+Others
+- re-implemented the textview sign when items in favorite fragment are all removed
+- removed playing audio in video activity
+- added new Functions in FunctionHelper (UpdateisLearnedProgress and UpdateFavorite)
+- implemented database dependency for items in fragments of word and video item as well as word and video list (3/4 complete)
+- implemented database dependency for Favorite fragment
+- implemented database dependency for profile fragment
+- implemented database dependency for search fragment
+
 v1.2r3 4/30 revised DBHelper
 - refactored database table (categoryTotalItems from TEXT to INTEGER) and all its dependency
 

@@ -41,6 +41,8 @@ public class learn_video_list extends Fragment {
     View view;
     Context context;
     DBHelper DB;
+    FunctionHelper functionHelper;
+
     ImageView categoryVideoImage;
     TextView categoryVideoProgressLabel;
     TextView categoryVideoProgressText;
@@ -68,10 +70,35 @@ public class learn_video_list extends Fragment {
         learnVideoListRecycler.setNestedScrollingEnabled(false);
         categoryVideoImageParent = view.findViewById(R.id.categoryVideoImageParent);
         DB = new DBHelper(context);
-
+        functionHelper = new FunctionHelper();
 
         setProgressSetup();
         InitializeRecycler();
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        int progressBar = 0;
+        int tempProgress = 0;
+        int totalItems = 0;
+
+        Cursor learnVideoListCursor = DB.getCategory(kategorya, "SingleCategory");
+
+        if (learnVideoListCursor.getCount() == 0){
+            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+        }else{
+            while (learnVideoListCursor.moveToNext()){
+                totalItems = learnVideoListCursor.getInt(1);
+                tempProgress = learnVideoListCursor.getInt(3);
+                progressBar = tempProgress * 100/totalItems;
+            }
+        }
+        categoryVideoProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
+        categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
+        categoryVideoProgressBar.setProgress(progressBar);
+
     }
 
     private void setProgressSetup(){
@@ -82,6 +109,7 @@ public class learn_video_list extends Fragment {
         int imageName = 0;
         String tempColor;
         int color = 0;
+
         if (getArguments() != null) {
             kategorya = getArguments().getString("Kategorya");
             ((MainActivity) Objects.requireNonNull(getActivity())).collapseToolbar
@@ -104,7 +132,6 @@ public class learn_video_list extends Fragment {
                 progressBar = tempProgress * 100/totalItems;
             }
         }
-        FunctionHelper functionHelper = new FunctionHelper();
         categoryVideoImage.setImageResource(imageName);
         categoryVideoImageParent.setBackgroundResource(color);
         categoryVideoProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
@@ -115,15 +142,28 @@ public class learn_video_list extends Fragment {
 
     private void InitializeRecycler(){
         ArrayList<LearnListVideoCategoryItem> learnListVideoCategoryItems = new ArrayList<>();
+        Cursor phraseListCursor = DB.getItem(kategorya, "ItemList");
+        String[] itemName = new String[phraseListCursor.getCount()];
+        int[] isLearned = new int[phraseListCursor.getCount()];
 
-        String[] itemName = new String[]{
-                "Magandang Araw", "Maaari bang humiram ng telepono mo taena shem loko", "Ano ang pangalan mo",
-                "Tulungan nyo ako", "Ako ay nawawala", "Nauunawaan mo ba ako",
-                "Maraming salamat sa iyo"
-        };
-        int[] isLearned = new int[]{
-                1, 1, 0, 1, 1, 0, 1
-        };
+        if (phraseListCursor.getCount() == 0){
+            itemName = new String[]{
+                    "Magandang Araw", "Maaari bang humiram ng telepono mo taena shem loko", "Ano ang pangalan mo",
+                    "Tulungan nyo ako", "Ako ay nawawala", "Nauunawaan mo ba ako",
+                    "Maraming salamat sa iyo"
+            };
+            isLearned = new int[]{
+                    1, 1, 0, 1, 1, 0, 1
+            };
+        }else{
+            int i = 0;
+            while (phraseListCursor.moveToNext()){
+                itemName[i] = phraseListCursor.getString(0);
+                isLearned[i] = phraseListCursor.getInt(1);
+                i++;
+            }
+        }
+
 
         for (int i = 0; i<itemName.length; i++) {
             learnListVideoCategoryItems.add(new LearnListVideoCategoryItem(itemName[i], isLearned[i]));

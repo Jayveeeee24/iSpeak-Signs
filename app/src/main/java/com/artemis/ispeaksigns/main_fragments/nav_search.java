@@ -78,11 +78,10 @@ public class nav_search extends Fragment {
         ArrayList<SearchCategoryItem> searchCategoryItems = new ArrayList<>();
         ArrayList<SearchVideoItem> searchVideoItems = new ArrayList<>();
         ArrayList<SearchWordItem> searchWordItems = new ArrayList<>();
-        Cursor searchCategoryCursor = DB.getCategory("", "Search");
-        String[] categoryName = new String[searchCategoryCursor.getCount()];
-        String[] categoryType = new String[searchCategoryCursor.getCount()];
         if (search_type.equals("Kategorya")){
-
+            Cursor searchCategoryCursor = DB.getCategory("", "Search");
+            String[] categoryName = new String[searchCategoryCursor.getCount()];
+            String[] categoryType = new String[searchCategoryCursor.getCount()];
             if (searchCategoryCursor.getCount() == 0){
                 categoryName = new String[]{
                         "Kasarian", "Pang-Komunikasyon", "Damit", "Pagbati", "Pang-Emergency"
@@ -108,9 +107,19 @@ public class nav_search extends Fragment {
             searchRecycler.setAdapter(adapter);
         }
         else if (search_type.equals("Salita")) {
-            String[] itemName = new String[]{
-                    "Parke", "Lunes", "Disyembre", "Tuwa", "Aso"
-            };
+            Cursor searchWordCursor = DB.getItem("Salita", "SearchItem");
+            String[] itemName = new String[searchWordCursor.getCount()];
+            if (searchWordCursor.getCount() == 0){
+                itemName = new String[]{
+                        "Parke", "Lunes", "Disyembre", "Tuwa", "Aso"
+                };
+            }else{
+                int i = 0;
+                while (searchWordCursor.moveToNext()){
+                    itemName[i] = searchWordCursor.getString(0);
+                    i++;
+                }
+            }
 
             for (int i = 0; i<itemName.length; i++) {
                 searchWordItems.add(new SearchWordItem(itemName[i]));
@@ -118,15 +127,25 @@ public class nav_search extends Fragment {
             adapter1.setSearchWordItems(searchWordItems);
             searchRecycler.setAdapter(adapter1);
         }else if (search_type.equals("Parirala")){
-            String[] phraseName = new String[]{
+            Cursor searchPhraseCursor = DB.getItem("Parirala", "SearchItem");
+            String[] phraseName = new String[searchPhraseCursor.getCount()];
+
+            if (searchPhraseCursor.getCount() == 0){
+                phraseName = new String[]{
                     "Magandang Umaga", "Kamusta ka", "Tulong!", "Anong lugar ito"
-            };
+                };
+            }else{
+                int i = 0;
+                while (searchPhraseCursor.moveToNext()){
+                    phraseName[i] = searchPhraseCursor.getString(0);
+                    i++;
+                }
+            }
 
             for (int i = 0; i<phraseName.length; i++) {
                 searchVideoItems.add(new SearchVideoItem(phraseName[i]));
             }
             adapter2.setSearchVideoItems(searchVideoItems);
-
             searchRecycler.setAdapter(adapter2);
         }
 

@@ -36,12 +36,16 @@ public class learn_word_list extends Fragment {
     private Context context;
     private View view;
     DBHelper DB;
+    FunctionHelper functionHelper;
+
     ImageView categoryImage;
     TextView categoryProgressLabel;
     TextView categoryProgressText;
     ProgressBar categoryProgressBar;
     RecyclerView learnListRecycler;
     RelativeLayout categoryImageParent;
+
+    String kategorya = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,14 +69,39 @@ public class learn_word_list extends Fragment {
         categoryImageParent = view.findViewById(R.id.categoryImageParent);
 
         DB = new DBHelper(context);
+        functionHelper = new FunctionHelper();
 
-        InitializeRecycler();
         setProgressSetup();
+        InitializeRecycler();
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        int progressBar = 0;
+        int tempProgress = 0;
+        int totalItems = 0;
+
+        Cursor learnWordListCursor = DB.getCategory(kategorya, "SingleCategory");
+
+        if (learnWordListCursor.getCount() == 0){
+            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+        }else{
+            while (learnWordListCursor.moveToNext()){
+                totalItems = learnWordListCursor.getInt(1);
+                tempProgress = learnWordListCursor.getInt(3);
+                progressBar = tempProgress * 100/totalItems;
+            }
+        }
+
+        categoryProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
+        categoryProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
+        categoryProgressBar.setProgress(progressBar);
     }
 
     public void setProgressSetup()
     {
-        String kategorya = "";
         int progressBar = 0;
         int tempProgress = 0;
         int totalItems = 0;
@@ -103,7 +132,6 @@ public class learn_word_list extends Fragment {
                 progressBar = tempProgress * 100/totalItems;
             }
         }
-        FunctionHelper functionHelper = new FunctionHelper();
         categoryImage.setImageResource(imageName);
         categoryImageParent.setBackgroundResource(color);
         categoryProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
@@ -114,13 +142,26 @@ public class learn_word_list extends Fragment {
 
     private void InitializeRecycler(){
         ArrayList<LearnListWordCategoryItem> learnListWordCategoryItems = new ArrayList<>();
+        Cursor wordListCursor = DB.getItem(kategorya, "ItemList");
+        String[] itemName = new String[wordListCursor.getCount()];
+        int[] isLearned = new int[wordListCursor.getCount()];
 
-        String[] itemName = new String[]{
-            "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo"
-        };
-        int[] isLearned = new int[]{
-                1, 0, 0, 1, 0, 0, 0
-        };
+        if (wordListCursor.getCount() == 0){
+            itemName = new String[]{
+                    "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo"
+            };
+
+            isLearned = new int[]{
+                    1, 0, 0, 1, 0, 0, 0
+            };
+        }else{
+            int i = 0;
+            while (wordListCursor.moveToNext()){
+                itemName[i] = wordListCursor.getString(0);
+                isLearned[i] = wordListCursor.getInt(1);
+                i++;
+            }
+        }
 
         for (int i = 0; i<itemName.length; i++) {
             learnListWordCategoryItems.add(new LearnListWordCategoryItem(itemName[i], isLearned[i]));

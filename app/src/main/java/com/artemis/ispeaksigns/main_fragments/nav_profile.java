@@ -114,15 +114,32 @@ public class nav_profile extends Fragment {
             while(updateStreakCard.moveToNext()){
                 currentStreakCount = updateStreakCard.getInt(0);
                 longestStreakCount = updateStreakCard.getInt(1);
-                wordDiscoveredCount = updateStreakCard.getInt(2);
-                phraseDiscoveredCount = updateStreakCard.getInt(3);
-                favoriteCountNo = updateStreakCard.getInt(4);
-                avatarName = updateStreakCard.getString(5);
+                avatarName = updateStreakCard.getString(2);
             }
         }
 
         userNameText.setText(userName);
         editTextUserName.setText(userName);
+
+        Cursor wordDiscoveredCursor = DB.countItems("WordDiscovered");
+        Cursor phraseDiscoveredCursor = DB.countItems("PhraseDiscovered");
+        Cursor favoriteCountCursor = DB.countItems("FavoriteCount");
+
+        if (wordDiscoveredCursor.getCount() != 0){
+            while (wordDiscoveredCursor.moveToNext()){
+                wordDiscoveredCount = wordDiscoveredCursor.getInt(0);
+            }
+        }
+        if (phraseDiscoveredCursor.getCount() != 0){
+            while (phraseDiscoveredCursor.moveToNext()){
+                phraseDiscoveredCount = phraseDiscoveredCursor.getInt(0);
+            }
+        }
+        if (favoriteCountCursor.getCount() != 0){
+            while (favoriteCountCursor.moveToNext()){
+                favoriteCountNo = favoriteCountCursor.getInt(0);
+            }
+        }
 
         wordDiscovered.setText(getResources().getString(R.string.word_discovered_text, Integer.toString(wordDiscoveredCount)));
         phraseDiscovered.setText(getResources().getString(R.string.phrase_discovered_label, Integer.toString(phraseDiscoveredCount)));

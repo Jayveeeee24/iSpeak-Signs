@@ -408,18 +408,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/gotham_book_regular"
-                    android:text="Jasmien Gail T. Alosa"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_book_regular"
                     android:text="Randall M. Dela Cruz"
                     android:layout_marginTop="2dp"
                     android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:text="Jasmien Gail T. Alosa"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -493,7 +493,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham_book_regular"
-                    android:text="Annie Jane Jaminal"
+                    android:text="Jessa S. Masamoc"
                     android:textSize="14sp"
                     android:layout_marginTop="2dp"/>
 <!--                -->
@@ -504,13 +504,7 @@
 <!--                    android:text="Mr. Eros S. Atalia"-->
 <!--                    android:textSize="14sp"-->
 <!--                    android:layout_marginTop="2dp"/>-->
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:fontFamily="@font/gotham_book_regular"-->
-                <!--                    android:text="Jessa S. Masamoc"-->
-                <!--                    android:textSize="14sp"-->
-                <!--                    android:layout_marginTop="2dp"/>-->
+
                 <!--                <TextView-->
                 <!--                    android:layout_width="wrap_content"-->
                 <!--                    android:layout_height="wrap_content"-->
@@ -518,7 +512,6 @@
                 <!--                    android:text="Milraam Hann Dioneda"-->
                 <!--                    android:textSize="14sp"-->
                 <!--                    android:layout_marginTop="2dp"/>-->
-
 
             </LinearLayout>
 

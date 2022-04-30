@@ -2,6 +2,7 @@ package com.artemis.ispeaksigns.sub_fragments;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -10,13 +11,16 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
+import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
@@ -29,9 +33,19 @@ public class learn_word_item extends Fragment {
 
     View view;
     Context context;
+    DBHelper DB;
     MediaPlayer mediaAudioWord;
     FunctionHelper functionHelper;
     int audio;
+
+    TextView learnWordItemName;
+    TextView partsOfSpeech;
+    ImageView heartItem;
+    TextView howTo;
+    int isFavorite;
+    String itemType = "";
+
+    String word;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,24 +58,56 @@ public class learn_word_item extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        DB = new DBHelper(context);
 
+        SetUpDesign();
+        InitializeOnClick();
+    }
+
+    private void SetUpDesign(){
         functionHelper = new FunctionHelper();
-        String word;
         ScrollView learnWordItemParent = view.findViewById(R.id.learn_word_item_parent);
         learnWordItemParent.setNestedScrollingEnabled(false);
         String audioName = "audio_demo";
         audio = getResources().getIdentifier(audioName, "raw", context.getPackageName());
         mediaAudioWord = MediaPlayer.create(context, audio);
-
+        learnWordItemName = view.findViewById(R.id.learn_word_item_name);
+        partsOfSpeech = view.findViewById(R.id.parts_of_speech);
+        heartItem = view.findViewById(R.id.learn_word_item_favorite);
+        howTo = view.findViewById(R.id.learn_word_how_description);
 
         if (getArguments() != null)
         {
             word = getArguments().getString("learn_word_item");
             ((MainActivity) Objects.requireNonNull(getActivity())).collapseToolbar
-                .setTitle(word);
+                    .setTitle(word);
         }
 
-        InitializeOnClick();
+        int isLearned = 0;
+        String itemCategory = "";
+        learnWordItemName.setText(word);
+        Cursor learnWordItemCursor = DB.getItem(word, "");
+        if (learnWordItemCursor.getCount() != 0){
+            while(learnWordItemCursor.moveToNext()){
+                itemCategory = learnWordItemCursor.getString(1);
+                itemType = learnWordItemCursor.getString(2);
+                isLearned = learnWordItemCursor.getInt(3);
+            }
+        }
+
+        if (isLearned == 0){
+            functionHelper.updateisLearnedProgress(context, itemCategory, word);
+        }
+
+        Cursor learnWordFavoriteCursor = DB.getItem(word, "getItemHeart");
+        if (learnWordFavoriteCursor.getCount() == 0){
+            heartItem.setImageResource(R.drawable.ic_favorites_outline);
+            isFavorite = 0;
+        }else{
+            heartItem.setImageResource(R.drawable.ic_menu_favorites);
+            isFavorite = 1;
+        }
+
     }
 
     private void InitializeOnClick(){
@@ -69,16 +115,17 @@ public class learn_word_item extends Fragment {
         final ImageView playAudio = (ImageView) view.findViewById(R.id.learn_word_play_audio);
 
         learnWordItemFavorite.setOnClickListener(new View.OnClickListener() {
-            int isFavorite = 0;
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (isFavorite == 0) {
                     learnWordItemFavorite.setImageResource(R.drawable.ic_menu_favorites);
                     isFavorite = 1;
+                    functionHelper.updateFavorite(context, word, itemType, "Add");
                 } else if (isFavorite == 1) {
                     learnWordItemFavorite.setImageResource(R.drawable.ic_favorites_outline);
                     isFavorite = 0;
+                    functionHelper.updateFavorite(context, word, null, "Remove");
                 }
             }
         });
