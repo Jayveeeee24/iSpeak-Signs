@@ -147,7 +147,7 @@ public class nav_profile extends Fragment {
         String [] bgColors = new String[categoryName.length];
         int[] images = new int[imageUrls.length];
         int[] colors = new int[bgColors.length];
-        String[] categoryTotal = new String[categoryName.length];
+        int[] categoryTotal = new int[categoryName.length];
         int[] categoryProgress = new int[categoryName.length];
         int[] categoryPercent = new int[categoryProgress.length];
         String[] categoryType = new String[categoryName.length];
@@ -161,7 +161,7 @@ public class nav_profile extends Fragment {
             while(profileSeeMoreCursor.moveToNext()){
                 categoryName[i] = profileSeeMoreCursor.getString(0);
                 bgColors[i] = profileSeeMoreCursor.getString(1);
-                categoryTotal[i] = profileSeeMoreCursor.getString(2);
+                categoryTotal[i] = profileSeeMoreCursor.getInt(2);
                 categoryType[i] = profileSeeMoreCursor.getString(3);
                 imageUrls[i] = profileSeeMoreCursor.getString(4);
                 categoryProgress[i] = profileSeeMoreCursor.getInt(5);
@@ -170,7 +170,7 @@ public class nav_profile extends Fragment {
         }
 
         for (int i = 0; i<categoryName.length; i++){
-            categoryPercent[i] = categoryProgress[i] * 100/Integer.parseInt(categoryTotal[i]);
+            categoryPercent[i] = categoryProgress[i] * 100/ categoryTotal[i];
             images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
             colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
             categoryPercentConverted[i] = categoryPercent[i] + "%";

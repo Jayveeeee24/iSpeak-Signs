@@ -73,12 +73,9 @@ public class learn_word_list extends Fragment {
     public void setProgressSetup()
     {
         String kategorya = "";
-        String progressLabel;
-        String progressText;
         int progressBar = 0;
         int tempProgress = 0;
-        String tempTotalItems = "";
-        int totalItems;
+        int totalItems = 0;
         String tempImageName;
         int imageName = 0;
         String tempColor;
@@ -97,12 +94,11 @@ public class learn_word_list extends Fragment {
         }else{
             while (learnWordListCursor.moveToNext()){
                 tempColor = learnWordListCursor.getString(0);
-                tempTotalItems = learnWordListCursor.getString(1);
+                totalItems = learnWordListCursor.getInt(1);
                 tempImageName = learnWordListCursor.getString(2);
                 tempProgress = learnWordListCursor.getInt(3);
 
                 color = getResources().getIdentifier(tempColor, "color", context.getPackageName());
-                totalItems = Integer.parseInt(tempTotalItems);
                 imageName = getResources().getIdentifier(tempImageName, "drawable", context.getPackageName());
                 progressBar = tempProgress * 100/totalItems;
             }
@@ -110,7 +106,7 @@ public class learn_word_list extends Fragment {
         FunctionHelper functionHelper = new FunctionHelper();
         categoryImage.setImageResource(imageName);
         categoryImageParent.setBackgroundResource(color);
-        categoryProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), tempTotalItems));
+        categoryProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
         categoryProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
         categoryProgressBar.setProgress(progressBar);
 

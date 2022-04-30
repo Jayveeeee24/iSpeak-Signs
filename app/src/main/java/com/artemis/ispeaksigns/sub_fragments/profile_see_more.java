@@ -57,7 +57,7 @@ public class profile_see_more extends Fragment {
         String [] bgColors = new String[categoryName.length];
         int[] images = new int[imageUrls.length];
         int[] colors = new int[bgColors.length];
-        String[] categoryTotal = new String[categoryName.length];
+        int[] categoryTotal = new int[categoryName.length];
         int[] categoryProgress = new int[categoryName.length];
         int[] categoryPercent = new int[categoryProgress.length];
         String[] categoryType = new String[categoryName.length];
@@ -75,7 +75,7 @@ public class profile_see_more extends Fragment {
             while(profileSeeMoreCursor.moveToNext()){
                 categoryName[i] = profileSeeMoreCursor.getString(0);
                 bgColors[i] = profileSeeMoreCursor.getString(1);
-                categoryTotal[i] = profileSeeMoreCursor.getString(2);
+                categoryTotal[i] = profileSeeMoreCursor.getInt(2);
                 categoryType[i] = profileSeeMoreCursor.getString(3);
                 imageUrls[i] = profileSeeMoreCursor.getString(4);
                 categoryProgress[i] = profileSeeMoreCursor.getInt(5);
@@ -84,7 +84,7 @@ public class profile_see_more extends Fragment {
         }
 
         for (int i = 0; i<categoryName.length; i++){
-            categoryPercent[i] = categoryProgress[i] * 100/Integer.parseInt(categoryTotal[i]);
+            categoryPercent[i] = categoryProgress[i] * 100/ categoryTotal[i];
             images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
             colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
             categoryPercentConverted[i] = categoryPercent[i] + "%";
@@ -92,7 +92,7 @@ public class profile_see_more extends Fragment {
             Log.d("Try", Integer.toString(100 * 4/7));
             Log.d("Percent", Integer.toString(categoryPercent[i]));
             Log.d("Progress", Integer.toString(categoryProgress[i]));
-            Log.d("Total", categoryTotal[i]);
+            Log.d("Total", Integer.toString(categoryTotal[i]));
             Log.d("Percent Converted", categoryPercentConverted[i]);
         }
 

@@ -43,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE TABLE FOR CATEGORY TABLE
         DB.execSQL("create Table IF NOT EXISTS CategoryTable(categoryName TEXT primary key," +
-                " categoryColor TEXT, categoryTotalItems TEXT," +
+                " categoryColor TEXT, categoryTotalItems INTEGER," +
                 " categoryType TEXT, imageURL TEXT," +
                 " categoryProgress INTEGER)");
         String[] categoryName = new String[]{

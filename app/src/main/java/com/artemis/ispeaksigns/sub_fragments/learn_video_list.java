@@ -75,12 +75,9 @@ public class learn_video_list extends Fragment {
     }
 
     private void setProgressSetup(){
-        String progressLabel;
-        String progressText;
         int progressBar = 0;
         int tempProgress = 0;
-        String tempTotalItems = "";
-        int totalItems;
+        int totalItems = 0;
         String tempImageName;
         int imageName = 0;
         String tempColor;
@@ -98,12 +95,11 @@ public class learn_video_list extends Fragment {
         }else{
             while (learnVideoListCursor.moveToNext()){
                 tempColor = learnVideoListCursor.getString(0);
-                tempTotalItems = learnVideoListCursor.getString(1);
+                totalItems = learnVideoListCursor.getInt(1);
                 tempImageName = learnVideoListCursor.getString(2);
                 tempProgress = learnVideoListCursor.getInt(3);
 
                 color = getResources().getIdentifier(tempColor, "color", context.getPackageName());
-                totalItems = Integer.parseInt(tempTotalItems);
                 imageName = getResources().getIdentifier(tempImageName, "drawable", context.getPackageName());
                 progressBar = tempProgress * 100/totalItems;
             }
@@ -111,7 +107,7 @@ public class learn_video_list extends Fragment {
         FunctionHelper functionHelper = new FunctionHelper();
         categoryVideoImage.setImageResource(imageName);
         categoryVideoImageParent.setBackgroundResource(color);
-        categoryVideoProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), tempTotalItems));
+        categoryVideoProgressText.setText(getResources().getString(R.string.learn_list_progress, Integer.toString(tempProgress), Integer.toString(totalItems)));
         categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
         categoryVideoProgressBar.setProgress(progressBar);
 

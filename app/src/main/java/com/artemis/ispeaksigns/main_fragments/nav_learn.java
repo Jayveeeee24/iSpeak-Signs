@@ -88,7 +88,7 @@ public class nav_learn extends Fragment {
         Cursor learnCategoryCursor = DB.getCategory(categoryType, "Learn");
         String[] categoryName = new String[learnCategoryCursor.getCount()];
         String[] bgColors = new String[categoryName.length];
-        String[] itemCount = new String[categoryName.length];
+        int[] itemCount = new int[categoryName.length];
         String[] gotoBgColors = new String[bgColors.length];
         int[] bgColorsConverted = new int[bgColors.length];
         int[] gotoBgColorsConverted = new int[gotoBgColors.length];
@@ -102,7 +102,7 @@ public class nav_learn extends Fragment {
             while(learnCategoryCursor.moveToNext()){
                 categoryName[i] = learnCategoryCursor.getString(0);
                 bgColors[i] = learnCategoryCursor.getString(1);
-                itemCount[i] = learnCategoryCursor.getString(2);
+                itemCount[i] = learnCategoryCursor.getInt(2);
                 categorytype = learnCategoryCursor.getString(3);
                 i++;
             }

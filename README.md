@@ -2,6 +2,9 @@
 
 DEBUG NOTES
 
+v1.2r3 4/30 revised DBHelper
+- refactored database table (categoryTotalItems from TEXT to INTEGER) and all its dependency
+
 v1.2r3 4/30
 - redesigned recognize fragment to fit the buttons and textboxes for recognition
 - implemented a walkthrough feature using viewpager 

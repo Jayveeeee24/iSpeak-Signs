@@ -73,7 +73,7 @@ public class nav_home extends Fragment  {
         String[] imageUrls = new String[categoryName.length];
         int[] categoryProgress = new int[categoryName.length];
         int[] categoryPercent = new int[categoryName.length];
-        String[] totalItems = new String[categoryName.length];
+        int[] totalItems = new int[categoryName.length];
         String [] bgColors = new String[categoryName.length];
         int[] images = new int[imageUrls.length];
         int[] colors = new int[bgColors.length];
@@ -85,7 +85,7 @@ public class nav_home extends Fragment  {
             while (homeLearnCursor.moveToNext()){
                 categoryName[i] = homeLearnCursor.getString(0);
                 bgColors[i] = homeLearnCursor.getString(1);
-                totalItems[i] = homeLearnCursor.getString(2);
+                totalItems[i] = homeLearnCursor.getInt(2);
                 imageUrls[i] = homeLearnCursor.getString(4);
                 categoryProgress[i] = homeLearnCursor.getInt(5);
                 i++;
@@ -100,7 +100,7 @@ public class nav_home extends Fragment  {
 
         for (int i = 0; i<categoryName.length; i++)
         {
-            categoryPercent[i] = categoryProgress[i] * 100 / Integer.parseInt(totalItems[i]);
+            categoryPercent[i] = categoryProgress[i] * 100 / totalItems[i];
             images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
             colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
         }

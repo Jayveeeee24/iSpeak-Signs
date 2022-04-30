@@ -78,7 +78,6 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
             }
         });
 
-
     }
 
     @Override
