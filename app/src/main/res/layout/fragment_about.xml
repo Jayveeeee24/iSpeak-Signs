@@ -140,7 +140,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_jb"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -156,7 +156,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/jb_profile" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/jb_description1"
@@ -164,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_toEndOf="@id/card_jb"
+                android:layout_marginEnd="2dp"
                 android:fontFamily="@font/gotham_book_regular"
                 android:text="@string/member1_name"
                 android:textSize="14sp" />
@@ -177,6 +178,7 @@
                 android:layout_toEndOf="@id/card_jb"
                 android:text="@string/member1_role"
                 android:textSize="13sp"
+                android:layout_marginEnd="2dp"
                 android:textStyle="italic" />
 
         </RelativeLayout>
@@ -210,11 +212,13 @@
                 android:textSize="13sp"
                 android:textStyle="italic" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_meann"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_toEndOf="@id/meann_description1"
                 app:cardCornerRadius="38dp">
 
@@ -225,7 +229,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/meann_profile" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
 
@@ -237,11 +241,13 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_reianne"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="38dp">
 
                 <ImageView
@@ -251,7 +257,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/jb_profile" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/reianne_description1"
@@ -271,6 +277,7 @@
                 android:layout_toEndOf="@id/card_reianne"
                 android:fontFamily="@font/gotham_book_regular"
                 android:text="@string/member3_role"
+                android:layout_marginEnd="2dp"
                 android:textSize="13sp"
                 android:textStyle="italic" />
 
@@ -497,6 +504,21 @@
 <!--                    android:text="Mr. Eros S. Atalia"-->
 <!--                    android:textSize="14sp"-->
 <!--                    android:layout_marginTop="2dp"/>-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:fontFamily="@font/gotham_book_regular"-->
+                <!--                    android:text="Jessa S. Masamoc"-->
+                <!--                    android:textSize="14sp"-->
+                <!--                    android:layout_marginTop="2dp"/>-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:fontFamily="@font/gotham_book_regular"-->
+                <!--                    android:text="Milraam Hann Dioneda"-->
+                <!--                    android:textSize="14sp"-->
+                <!--                    android:layout_marginTop="2dp"/>-->
+
 
             </LinearLayout>
 

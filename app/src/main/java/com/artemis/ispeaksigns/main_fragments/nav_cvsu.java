@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.media.MediaMetadataRetriever;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -79,7 +78,7 @@ public class nav_cvsu extends Fragment {
         cvsuPlayVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 startActivity(new Intent(Objects.requireNonNull(getActivity()).getBaseContext(), VideoActivity.class).putExtra("ItemName", videoName));
             }
         });

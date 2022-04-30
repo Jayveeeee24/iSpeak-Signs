@@ -68,9 +68,9 @@
     <string name="cvsu_mission_nav">CVSU MISYON</string>
     <string name="cvsu_vision_nav">CVSU BISYON</string>
     <string name="cvsu_label_mission">Misyon</string>
-    <string name="cvsu_text_mission">Cavite State University shall provide excellent, equitable and relevant educational opportunities in the arts, sciences and technology through quality instruction and responsive research and development activities. It shall produce professional, skilled and morally upright individuals for global competitiveness.</string>
     <string name="cvsu_label_vision">Bisyon</string>
-    <string name="cvsu_text_vision">The premier university in historic Cavite recognized for excellence in the development of globally competitive and morally upright individuals</string>
+    <string name="cvsu_text_mission">Ang Cavite State University ay makapagbibigay ng mahusay, pantay, at makabuluhang edukasyon sa sining, agham, at teknolohiya sa pamamagitan ng may kalidad na pagtuturo at tumutugon sa pangangailangang pananaliksik at mga gawaing pang kaunlaran. Makalikha ito ng mga indibidwal na dalubhasa, may kasanayan at kagandahang asal para sa pandaigdigang kakayahan.</string>
+    <string name="cvsu_text_vision">Ang nangungunang pamantasan sa makasaysayang Kabite at kinikilala sa kahusayan sa paghubog ng mga indibidwal na may pandaigdigang kakayahan at kagandahang asal.</string>
 
     <!--    Strings for Profile-->
     <string name="user_name">Juan</string>
@@ -82,7 +82,7 @@
     <string name="phrase_discovered_label">%1$s\nPariralang\nnatuklasan</string>
     <string name="favorite_word_phrase_label">%1$s\nPaboritong\nSalita/Parirala</string>
     <string name="profile_category_progress">Progreso sa mga Kategorya</string>
-    <string name="longest_streak_days">Pinakamahabang Streak: %1$s day/s</string>
+    <string name="longest_streak_days">Pinakamahabang araw ng pag-login: %1$s day/s</string>
 
     <!--    Strings for Recognition-->
     <string name="recog_app_name">iSpeak Signs Rekognisyon</string>
@@ -112,7 +112,7 @@
 
 
     <string name="save">i-Save</string>
-    <string name="pumili_ng_wika">Pumili ng Wika</string>
+    <string name="pumili_ng_wika">Pumili ng Wika ng App</string>
 
     <!--    Strings for About-->
     <string name="about_thesis_title">iSPEAK SIGNS: A FILIPINO SIGN LANGUAGE LEARNING APPLICATION WITH STATIC FSL RECOGNITION FOR CAVITE STATE UNIVERSITY – CAVITE CITY CAMPUS GENDER AND DEVELOPMENT UNIT</string>
@@ -147,5 +147,11 @@
     <string name="humanap_ng_kategorya">Humanap ng Kategorya</string>
     <string name="humanap_ng_fsl_na_salita">Humanap ng FSL na Salita</string>
     <string name="humanap_ng_fsl_na_parirala">Humanap ng FSL na Parirala</string>
+    <string name="pumili_ng_avatar">Pumili ng Avatar</string>
+    <string name="i_save">i-save</string>
+    <string name="camera_flash">Camera Flash</string>
+    <string name="ibalik">Ibalik</string>
+    <string name="susunod">Susunod</string>
+    <string name="tapos">Wakas</string>
 
 </resources>

@@ -20,7 +20,6 @@
 
     <style name="SearchView">
         <item name="android:textSize">16sp</item>
-
     </style>
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -33,10 +32,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="WalkthroughTheme" parent="SplashTheme">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimaryVariant</item>
+    </style>
+
     <style name="RecognizeStyle" parent="Theme.MaterialComponents.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black_bg</item>
 
     </style>
 

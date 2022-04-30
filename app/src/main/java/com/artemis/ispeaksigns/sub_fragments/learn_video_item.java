@@ -106,7 +106,7 @@ public class learn_video_item extends Fragment {
             int isFavorite = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (isFavorite == 0) {
                     learnVideoItemFavorite.setImageResource(R.drawable.ic_menu_favorites);
                     isFavorite = 1;
@@ -121,7 +121,7 @@ public class learn_video_item extends Fragment {
             int isPlayed = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (functionHelper.checkFocusGain(Objects.requireNonNull(getActivity()), mediaAudioWord, null)){
                     if (isPlayed == 0){
                         ImageViewCompat.setImageTintList(learnVideoPlayAudio , ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
@@ -149,7 +149,7 @@ public class learn_video_item extends Fragment {
         playVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 startActivity(new Intent(Objects.requireNonNull(getActivity()).getBaseContext(), VideoActivity.class).putExtra("ItemName", videoName));
             }
         });

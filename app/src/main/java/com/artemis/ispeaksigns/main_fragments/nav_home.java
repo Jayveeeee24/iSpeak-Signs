@@ -166,7 +166,7 @@ public class nav_home extends Fragment  {
             int isFavorite = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                     if (isFavorite == 0) {
                         image_favorite.setImageResource(R.drawable.ic_menu_favorites);
                         isFavorite = 1;

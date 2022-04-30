@@ -1,7 +1,10 @@
 package com.artemis.ispeaksigns.main_fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,14 +15,17 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +55,13 @@ public class nav_profile extends Fragment {
     TextView userNameText;
     TextView currentStreak;
     TextView longestStreak;
+
+    CardView userImageParent;
+    CardView userImageEdit;
+
     String avatarName = "";
+    String selectedAvatar = "";
+    int avatarImage;
     DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +86,8 @@ public class nav_profile extends Fragment {
         editTextUserName = view.findViewById(R.id.edit_text_user_name);
         currentStreak = view.findViewById(R.id.current_streak);
         longestStreak = view.findViewById(R.id.longest_streak);
+        userImageParent = view.findViewById(R.id.user_image_parent);
+        userImageEdit = view.findViewById(R.id.user_image_edit);
         DB = new DBHelper(context);
 
         InitializeDesign();
@@ -116,7 +130,7 @@ public class nav_profile extends Fragment {
 
         longestStreak.setText(getResources().getString(R.string.longest_streak_days, Integer.toString(longestStreakCount)));
         currentStreak.setText(getResources().getString(R.string.profile_streak_count, Integer.toString(currentStreakCount)));
-        int avatarImage = getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
+        avatarImage = getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
         userImage.setImageResource(avatarImage);
 
     }
@@ -234,6 +248,91 @@ public class nav_profile extends Fragment {
             }
         });
 
+        final Dialog changeUserImage = new Dialog(context);
+        changeUserImage.setContentView(R.layout.popup_change_avatar);
+        changeUserImage.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(100, 0, 0, 0)));
+        changeUserImage.setCanceledOnTouchOutside(true);
+        changeUserImage.setCancelable(true);
+        final Button saveImageButton = (Button) changeUserImage.findViewById(R.id.save_new_user_image);
+        final CardView avatar1, avatar2, avatar3, avatar4;
+        avatar1 = (CardView) changeUserImage.findViewById(R.id.card_avatar1);
+        avatar2 = (CardView) changeUserImage.findViewById(R.id.card_avatar2);
+        avatar3 = (CardView) changeUserImage.findViewById(R.id.card_avatar3);
+        avatar4 = (CardView) changeUserImage.findViewById(R.id.card_avatar4);
+
+        userImageParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedAvatar = "avatar1";
+                avatar1.setCardElevation(20);
+
+                changeUserImage.show();
+
+                avatar1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedAvatar = "avatar1";
+                        avatar1.setCardElevation(20);
+                        avatar2.setCardElevation(0);
+                        avatar3.setCardElevation(0);
+                        avatar4.setCardElevation(0);
+                    }
+                });
+                avatar2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedAvatar = "avatar2";
+                        avatar1.setCardElevation(0);
+                        avatar2.setCardElevation(20);
+                        avatar3.setCardElevation(0);
+                        avatar4.setCardElevation(0);
+                    }
+                });
+
+                avatar3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedAvatar = "avatar3";
+                        avatar1.setCardElevation(0);
+                        avatar2.setCardElevation(0);
+                        avatar3.setCardElevation(20);
+                        avatar4.setCardElevation(0);
+                    }
+                });
+                avatar4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedAvatar = "avatar4";
+                        avatar1.setCardElevation(0);
+                        avatar2.setCardElevation(0);
+                        avatar3.setCardElevation(0);
+                        avatar4.setCardElevation(20);
+                    }
+                });
+
+                saveImageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!avatarName.equals(selectedAvatar)){
+                            boolean checkUpdateUserAvatar = DB.updateSingleData(selectedAvatar, 0, "Avatar");
+                            if (checkUpdateUserAvatar){
+                                Log.i("Nav Profile", "Insert New User Success!");
+                            }else{
+                                Log.i("Nav Profile", "Insert New User Failed.");
+                            }
+                            changeUserImage.dismiss();
+                            avatarImage = getResources().getIdentifier(selectedAvatar, "drawable", context.getPackageName());
+                            userImage.setImageResource(avatarImage);
+                            avatarName = selectedAvatar;
+                        }else{
+                            changeUserImage.dismiss();
+                        }
+                    }
+                });
+            }
+        });
+
+        userImageEdit.setOnClickListener(view -> userImageParent.performClick());
     }
 
 }

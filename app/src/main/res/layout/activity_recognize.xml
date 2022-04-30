@@ -3,18 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RecognizeActivity"
     android:theme="@style/RecognizeStyle"
-    android:paddingTop="10dp"
     android:background="@color/gray">
 
     <RelativeLayout
         android:id="@+id/logo_layout"
         android:layout_width="match_parent"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp">
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_height="50dp">
 
         <ImageView
             android:id="@+id/recognize_app_logo"
@@ -34,7 +35,7 @@
             android:layout_marginStart="5dp"
             android:layout_centerVertical="true"
             android:fontFamily="@font/nunito_bold"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textColor="@color/white_bg"/>
 
         <TextView
@@ -44,7 +45,7 @@
             android:text="@string/recog_version"
             android:textColor="@color/colorSecondary"
             android:layout_toEndOf="@id/recognize_app_name"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:layout_toStartOf="@id/flip_camera"
             android:fontFamily="@font/gotham_book_regular"
             android:textStyle="bold"
@@ -52,9 +53,9 @@
 
         <ImageView
             android:id="@+id/flip_camera"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_switch_camera"
             android:layout_alignParentEnd="true"
@@ -62,54 +63,49 @@
             android:layout_gravity="center_vertical"
             tools:ignore="ContentDescription" />
 
-
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="95dp"
         android:layout_below="@id/logo_layout">
 
-            <org.opencv.android.JavaCameraView
-                android:id="@+id/recognize_camera"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+        <org.opencv.android.JavaCameraView
+            android:id="@+id/recognize_camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/controls_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
+        android:layout_height="95dp"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:padding="10dp">
+        android:paddingBottom="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
-        <TextView
-            android:id="@+id/recognized_text"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/white"
-            android:singleLine="true"
-            android:textSize="26sp"
-            android:layout_weight="9"
-            android:gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"/>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/recognize_add"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="5dp"
-                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.49"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
@@ -132,20 +128,25 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/gotham_book_regular"
                         android:text="@string/idagdag"
-                        android:layout_toEndOf="@id/letter_add"
+                        android:layout_centerHorizontal="true"
                         android:textColor="@color/white"
                         android:textSize="16sp"/>
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/recognize_remove"
-                android:layout_below="@id/recognize_add"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_width="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.49"
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
@@ -165,8 +166,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_centerHorizontal="true"
                         android:fontFamily="@font/gotham_book_regular"
-                        android:layout_toEndOf="@id/letter_remove"
                         android:textColor="@color/white"
                         android:text="@string/bawasan"
                         android:layout_centerVertical="true"
@@ -174,9 +176,27 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/recognized_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textSize="16sp"
+            android:background="@drawable/textview_border"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"/>
 
     </LinearLayout>
 

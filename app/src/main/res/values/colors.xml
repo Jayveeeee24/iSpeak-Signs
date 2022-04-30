@@ -8,6 +8,7 @@
     <color name="white">#FFFFFF</color>
     <color name="white_bg">#ededed</color>
     <color name="white_fg">#fefefc</color>
+    <color name="walkthrough_bg">#58755c</color>
     <color name="black_bg">#1b1b1b</color>
     <color name="gray">#353535</color>
     <color name="toolbar_color">#4cb050</color>

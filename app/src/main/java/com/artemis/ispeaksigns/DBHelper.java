@@ -152,6 +152,16 @@ public class DBHelper extends SQLiteOpenHelper {
                         return false;
                     }
                 }
+            case "Avatar":
+                values.put("avatarName", value);
+                try (Cursor cursor = DB.rawQuery("Select avatarName from UserTable where UserID=201810336", null)) {
+                    if (cursor.getCount() > 0) {
+                        long result = DB.update("UserTable", values, "userID=201810336", null);
+                        return result != -1;
+                    } else {
+                        return false;
+                    }
+                }
             default:
                 return false;
         }

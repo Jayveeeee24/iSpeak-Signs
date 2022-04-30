@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private NavController navController;
     private NavigationView navigationView;
 
-    FunctionHelper functionHelper;
+
+    FunctionHelper functionHelper = new FunctionHelper();
     DBHelper DB;
     Boolean profileState;
     Boolean searchState;
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
 
         DB = new DBHelper(this);
-        functionHelper = new FunctionHelper();
         functionHelper.setAppLocale(this);
         onUserLogin();
 
@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mtoolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        FunctionHelper functionHelper = new FunctionHelper();
         collapseToolbar = findViewById(R.id.collapseToolbar);
         FloatingActionButton mainFab = findViewById(R.id.fab);
         RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
@@ -270,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         if (checkInsertLanguage){
                             Log.i("Splash Activity", "Update Language Success!");
                         }else{
-                            Log.i("Splash Activity", "Update Language Success!");
+                            Log.i("Splash Activity", "Update Language Failed!");
                         }
                         changeLanguage.dismiss();
                         restartApp();

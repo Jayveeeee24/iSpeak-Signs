@@ -3,16 +3,12 @@ package com.artemis.ispeaksigns.main_fragments;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.artemis.ispeaksigns.FunctionHelper;
-import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 
 
@@ -75,7 +70,7 @@ public class nav_fsl_wotd extends Fragment {
             int isFavorite = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (isFavorite == 0) {
                     fslFavorite.setImageResource(R.drawable.ic_menu_favorites);
                     isFavorite = 1;
@@ -91,7 +86,7 @@ public class nav_fsl_wotd extends Fragment {
             int isPlayed = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (functionHelper.checkFocusGain(Objects.requireNonNull(getActivity()), mediaFslAudio, null)){
                     if (isPlayed == 0){
                         ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));

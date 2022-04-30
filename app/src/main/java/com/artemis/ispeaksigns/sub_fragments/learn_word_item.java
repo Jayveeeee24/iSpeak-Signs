@@ -2,7 +2,6 @@ package com.artemis.ispeaksigns.sub_fragments;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -73,7 +72,7 @@ public class learn_word_item extends Fragment {
             int isFavorite = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (isFavorite == 0) {
                     learnWordItemFavorite.setImageResource(R.drawable.ic_menu_favorites);
                     isFavorite = 1;
@@ -88,7 +87,7 @@ public class learn_word_item extends Fragment {
             int isPlayed = 0;
             @Override
             public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.heart_clicked));
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                 if (functionHelper.checkFocusGain(Objects.requireNonNull(getActivity()), mediaAudioWord, null)){
                     if (isPlayed == 0){
                         ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));

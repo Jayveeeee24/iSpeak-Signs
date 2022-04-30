@@ -6,15 +6,21 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -33,13 +39,16 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
     private Mat mRgba;
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
+
     private ImageView flipCamera;
+    private ImageView recognizeInfo;
     private int cameraId = 0;
     private objectDetectorClass objectDetectorClass;
 
     private CardView recognizeRemove;
     private CardView recognizeAdd;
     private TextView recognizeText;
+
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -74,14 +83,11 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         recognizeAdd = findViewById(R.id.recognize_add);
         recognizeRemove = findViewById(R.id.recognize_remove);
         recognizeText = findViewById(R.id.recognized_text);
-        flipCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.startAnimation(AnimationUtils.loadAnimation(RecognizeActivity.this, R.anim.heart_clicked));
-                swapCamera();
-            }
-        });
 
+        flipCamera.setOnClickListener(view -> {
+            view.startAnimation(AnimationUtils.loadAnimation(RecognizeActivity.this, R.anim.image_button_clicked));
+            swapCamera();
+        });
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.recognize_camera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -166,4 +172,6 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         mOpenCvCameraView.setCameraIndex(cameraId);
         mOpenCvCameraView.enableView();
     }
+
+
 }

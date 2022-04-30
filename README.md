@@ -2,6 +2,17 @@
 
 DEBUG NOTES
 
+v1.2r3 4/30
+- redesigned recognize fragment to fit the buttons and textboxes for recognition
+- implemented a walkthrough feature using viewpager 
+- updated the android manifest for activity themes, config changes(locale, locked orientation)
+- updated the video activity to include playback speed
+- updated the DBHelper to include updating avatar
+- changed cardview implementation from native cardview to material cardview to support clickable
+- added a feature for changing avatar in profile using dialog
+- migrated the implementation of new user pop up from Splash Activity to the Walkthrough Activity
+
+
 v1.2r2 4/26
 - implemented changing of language (Filipino or English) (added new string resource)
 - added user addition for first time user (name, avatar, preferred language) in the splash activity
