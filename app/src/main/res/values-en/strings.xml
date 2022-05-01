@@ -14,7 +14,7 @@
     <!--    strings for menus/fragments-->
     <string name="menu_home">Home</string>
     <string name="menu_learn">Learn</string>
-    <string name="menu_fsl_wotd">FSL - Word of the Day</string>
+    <string name="menu_fsl_wotd">FSL - Sign of the Day</string>
     <string name="menu_favorites">Favorites</string>
     <string name="act_recognize">FSL Recognition</string>
     <string name="menu_cvsu">CvSU - Mission and Vision</string>

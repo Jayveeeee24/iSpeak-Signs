@@ -11,6 +11,8 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.R;
@@ -190,6 +192,39 @@ public class FunctionHelper {
                 Log.i("Learn Word Item", "Remove Favorite Failed");
             }
         }
+    }
+
+    public String[] getWordOfTheDay(Context context){
+        DBHelper DB = new DBHelper(context);
+        Cursor getWOTDCursor = DB.getItem("", "getWordOfTheDay");
+        int index = 0;
+
+        String wotdItem = "";
+        String itemType = "";
+        String[] tempWotdItem = new String[130];
+        String[] tempItemType = new String[130];
+
+
+        if (getWOTDCursor.getCount() != 0){
+            while (getWOTDCursor.moveToNext()){
+                index = getWOTDCursor.getInt(0);
+            }
+        }
+
+        Cursor getAllItemCursor = DB.getItem("", "getWOTDItem");
+        if (getAllItemCursor.getCount() != 0){
+            int i = 0;
+            while (getAllItemCursor.moveToNext()){
+                tempWotdItem[i] = getAllItemCursor.getString(0);
+                tempItemType[i] = getAllItemCursor.getString(2);
+                i++;
+            }
+
+            wotdItem = tempWotdItem[index];
+            itemType = tempItemType[index];
+        }
+
+        return new String[]{wotdItem, itemType};
     }
 
 }

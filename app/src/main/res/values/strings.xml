@@ -13,7 +13,7 @@
     <!--    strings for menus/fragments-->
     <string name="menu_home">Home</string>
     <string name="menu_learn">Mag Aral</string>
-    <string name="menu_fsl_wotd">FSL - Salita Ngayong Araw</string>
+    <string name="menu_fsl_wotd">FSL - Senyas Ngayong Araw</string>
     <string name="menu_favorites">Mga Paborito</string>
     <string name="act_recognize">FSL Rekognisyon</string>
     <string name="menu_cvsu">CvSU - Misyon at Bisyon</string>
@@ -103,7 +103,7 @@
     <string name="video_item_category_desc">Kategorya: %1$s</string>
 
     <!--    Strings for CategoryProgress-->
-    <string name="una">Simulan ng matuto!</string>
+    <string name="una">Simulan nang matuto!</string>
     <string name="pangalawa">Malapit na sa kalahati!</string>
     <string name="pangatlo">Nasa kalahati ka na!</string>
     <string name="pangapat">Lagpas na sa kalahati!</string>

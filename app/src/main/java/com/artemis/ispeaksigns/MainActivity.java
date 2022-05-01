@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
                 R.id.nav_learn,
-                R.id.nav_fsl_wotd,
                 R.id.nav_favorites,
                 R.id.act_recognize,
                 R.id.nav_cvsu,
@@ -238,6 +237,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //                    sharedPref.setNightModeState(false);
 //                    restartApp();
                 }
+            }
+        });
+
+        MenuItem fslWord = navigationView.getMenu().findItem(R.id.nav_fsl_wotd);
+        fslWord.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                String[] getFavorite = functionHelper.getWordOfTheDay(MainActivity.this);
+                String word = "";
+                word = getFavorite[0];
+                Bundle bundle = new Bundle();
+                bundle.putString("learn_word_item", word);
+                navController.navigate(R.id.learn_word_item, bundle);
+
+                return true;
             }
         });
 

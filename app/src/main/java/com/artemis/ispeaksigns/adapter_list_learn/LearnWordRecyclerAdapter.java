@@ -43,7 +43,6 @@ public class LearnWordRecyclerAdapter extends RecyclerView.Adapter<LearnWordRecy
         holder.learnCardItemParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//TODO change this to an actual method to do when an item is clicked
                 Bundle bundle = new Bundle();
                 bundle.putString("Kategorya", learnWordCategoryItems.get(position).getCategoryName());
                 NavOptions.Builder navBuilder = new NavOptions.Builder();

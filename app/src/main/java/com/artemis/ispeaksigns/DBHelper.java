@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //DATABASE TABLE FOR USER TABLE
         DB.execSQL("create Table IF NOT EXISTS UserTable(userID INTEGER primary key ," +
                 " userName TEXT , isOldUser INTEGER , dateToday TEXT , currentStreak INTEGER," +
-                "longestStreak INTEGER, itemNameWOTD TEXT , selectedLanguage TEXT, avatarName TEXT)");
+                "longestStreak INTEGER, itemNameWOTD INTEGER , selectedLanguage TEXT, avatarName TEXT)");
 
         ContentValues userValue = new ContentValues();
         userValue.put("userID", 201810336);
@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
         userValue.put("dateToday", "Mon Apr 02 2022");
         userValue.put("currentStreak", 0);
         userValue.put("longestStreak", 0);
-        userValue.put("itemNameWOTD", "");
+        userValue.put("itemNameWOTD", 0);
         userValue.put("selectedLanguage", "tl");
         userValue.put("avatarName", "avatar1");
         DB.insert("UserTable", null, userValue);
@@ -343,6 +343,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 return DB.rawQuery("Select * from FavoriteTable WHERE itemName=?", new String[]{value});
             case "Favorite":
                 return DB.rawQuery("Select * from FavoriteTable", null);
+            case "getWordOfTheDay":
+                return DB.rawQuery("Select itemNameWOTD from UserTable WHERE UserID=201810336", null);
+            case "getWOTDItem":
+                return DB.rawQuery("Select * from ItemTable WHERE itemType='Salita'", null);
             default:
                 return DB.rawQuery("Select * from ItemTable WHERE itemName=?", new String[]{value});
         }
@@ -357,6 +361,17 @@ public class DBHelper extends SQLiteOpenHelper {
             try(Cursor cursor = DB.rawQuery("Select isLearned from ItemTable where itemName=?", new String[]{stringValue})){
                 if (cursor.getCount()>0){
                     long result = DB.update("ItemTable", values, "itemName=?", new String[]{stringValue});
+                    return result != -1;
+                }else{
+                    return false;
+                }
+            }
+        }else if (modifier.equals("NewWordOfTheDay")){
+            values.put("itemNameWOTD", intValue);
+
+            try(Cursor cursor = DB.rawQuery("Select itemNameWOTD from UserTable where UserID=201810336", null)){
+                if (cursor.getCount()>0){
+                    long result = DB.update("UserTable", values, "UserID=201810336", null);
                     return result != -1;
                 }else{
                     return false;

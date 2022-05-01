@@ -5,7 +5,7 @@
     android:id="@+id/learn_word_item_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_fragments.nav_fsl_wotd">
+    tools:context=".sub_fragments.learn_word_item">
 
     <RelativeLayout
         android:layout_width="match_parent"

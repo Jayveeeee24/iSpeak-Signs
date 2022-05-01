@@ -83,8 +83,18 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
 
-                if (!currentDate.equals(oldDate)){//checking if the database date is up to date to date today
+                if (!currentDate.equals(oldDate)){//DATE IS NOT UPDATED
                     boolean checkDate = DB.updateSingleData(currentDate, 0, "currentDate");
+                    int min = 0;
+                    int max = 129;
+                    int random = (int)(Math.random()*(max-min+1)+min);
+                    boolean UpdateWotd = DB.UpdateItem(null, random, "NewWordOfTheDay");
+                    if (UpdateWotd){
+                        Log.i("SplashActivity", "New Word Of the Day update Success");
+                    }else{
+                        Log.i("SplashActivity", "New Word Of the Day update failed");
+                    }
+
                     if (checkDate)
                     {//check if the date is inserted
                         Log.i("ETO OLD DATE", oldDate);
@@ -93,7 +103,7 @@ public class SplashActivity extends AppCompatActivity {
                     }else{//date insert gone wrong
                         Log.i("DATE", "UPDATE GONE WRONG");
                     }
-                }else {
+                }else {//DATE IS UPDATED
                     Log.i("DATE", "UPDATED NA TALAGA LODS");
                 }
 

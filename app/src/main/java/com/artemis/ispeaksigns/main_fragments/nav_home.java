@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_home.HomeCategoryItem;
 import com.artemis.ispeaksigns.adapter_list_home.HomeRecyclerAdapter;
@@ -36,8 +37,18 @@ public class nav_home extends Fragment  {
 
     Context context;
     View view;
+    FunctionHelper functionHelper;
+
     RecyclerView learnRecView;
     RecyclerView learnVideoRecView;
+    TextView txtHomeFslName;
+    ImageView imageFslFavorite;
+    TextView txtHomeFslDesc;
+
+    String wotdItem = "";
+    String itemType = "";
+
+    int isFavorite = 0;
     DBHelper DB;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,14 +63,49 @@ public class nav_home extends Fragment  {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         learnRecView = view.findViewById(R.id.learnRecycler);
         learnRecView.setNestedScrollingEnabled(false);
         learnVideoRecView = view.findViewById(R.id.learnVideoRecycler);
         learnVideoRecView.setNestedScrollingEnabled(false);
-        DB = new DBHelper(context);
 
+        txtHomeFslName = view.findViewById(R.id.txt_home_fsl_name);
+        imageFslFavorite = view.findViewById(R.id.image_favorite);
+        txtHomeFslDesc = view.findViewById(R.id.txt_home_fsl_desc);
+        DB = new DBHelper(context);
+        functionHelper = new FunctionHelper();
+
+        InitializeGetData();
         InitializeRecyclerView();
         InitializeClickListener();
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        InitializeGetData();
+    }
+
+    public void InitializeGetData(){
+
+        String[] getFavorite = functionHelper.getWordOfTheDay(context);
+        wotdItem = getFavorite[0];
+        itemType = getFavorite[1];
+
+        Cursor learnWordFavoriteCursor = DB.getItem(wotdItem, "getItemHeart");
+
+        if (learnWordFavoriteCursor.getCount() == 0){
+            imageFslFavorite.setImageResource(R.drawable.ic_favorites_outline);
+            isFavorite = 0;
+        }else{
+            imageFslFavorite.setImageResource(R.drawable.ic_menu_favorites);
+            isFavorite = 1;
+        }
+
+
+        txtHomeFslName.setText(wotdItem);
+
     }
 
     private void InitializeRecyclerView()
@@ -91,12 +137,6 @@ public class nav_home extends Fragment  {
                 i++;
             }
         }
-
-
-//       FunctionHelper functionHelper = new FunctionHelper();
-//       for (int i = 0; i<categoryName.length; i++){
-//           imageUrls[i] = functionHelper.getImageLogo(categoryName[i]);
-//       }
 
         for (int i = 0; i<categoryName.length; i++)
         {
@@ -163,16 +203,17 @@ public class nav_home extends Fragment  {
         TextView txtHomeSeeMore = view.findViewById(R.id.homeVideoSeeMore);
 
         image_favorite.setOnClickListener(new View.OnClickListener() {
-            int isFavorite = 0;
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
                     if (isFavorite == 0) {
                         image_favorite.setImageResource(R.drawable.ic_menu_favorites);
                         isFavorite = 1;
+                        functionHelper.updateFavorite(context, wotdItem, itemType, "Add");
                     } else if (isFavorite == 1) {
                         image_favorite.setImageResource(R.drawable.ic_favorites_outline);
                         isFavorite = 0;
+                        functionHelper.updateFavorite(context, wotdItem, itemType, "Remove");
                     }
             }
         });
@@ -180,14 +221,18 @@ public class nav_home extends Fragment  {
         card_fsl_resource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String[] getFavorite = functionHelper.getWordOfTheDay(context);
+                String word = "";
+                word = getFavorite[0];
                 Bundle bundle = new Bundle();
-                bundle.putString("fsl_wotd", txt_home_fsl_name.getText().toString());
+                bundle.putString("learn_word_item", word);
+
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
                 navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
                         .setExitAnim(R.anim.nav_default_exit_anim)
                         .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
                         .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_fsl_wotd, bundle, navBuilder.build());
+                Navigation.findNavController(view).navigate(R.id.learn_word_item, bundle, navBuilder.build());
             }
         });
 

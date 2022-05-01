@@ -11,11 +11,6 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_nav_fsl_wotd"
-            app:destination="@id/nav_fsl_wotd"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
             android:id="@+id/action_nav_home_to_nav_learn"
             app:destination="@id/nav_learn"/>
         <action
@@ -28,11 +23,6 @@
             android:id="@+id/action_nav_home_to_fragment_search"
             app:destination="@id/nav_search" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_fsl_wotd"
-        android:name="com.artemis.ispeaksigns.main_fragments.nav_fsl_wotd"
-        android:label="@string/menu_fsl_wotd"
-        tools:layout="@layout/fragment_fsl_wotd" />
     <fragment
         android:id="@+id/nav_favorites"
         android:name="com.artemis.ispeaksigns.main_fragments.nav_favorites"
