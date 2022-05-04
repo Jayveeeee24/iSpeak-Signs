@@ -1,5 +1,8 @@
 package com.artemis.ispeaksigns.adapter_list_learn_list;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.SplashActivity;
+import com.artemis.ispeaksigns.VideoActivity;
+import com.artemis.ispeaksigns.WalkthroughActivity;
+import com.artemis.ispeaksigns.adapter_list_learn.LearnVideoRecyclerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +29,11 @@ import java.util.ArrayList;
 public class LearnListVideoRecyclerAdapter extends RecyclerView.Adapter<LearnListVideoRecyclerAdapter.ViewHolder> {
 
     ArrayList<LearnListVideoCategoryItem> learnListVideoCategoryItems = new ArrayList<>();
+    Context context;
+
+    public LearnListVideoRecyclerAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @NotNull
@@ -43,15 +55,10 @@ public class LearnListVideoRecyclerAdapter extends RecyclerView.Adapter<LearnLis
         holder.cardLearnListVideoParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("learn_video_item", learnListVideoCategoryItems.get(position).getItemName());
-                NavOptions.Builder navBuilder = new NavOptions.Builder();
-                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
-                        .setExitAnim(R.anim.nav_default_exit_anim)
-                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
                 try {
-                    Navigation.findNavController(view).navigate(R.id.action_learn_category_video_to_learn_video_item, bundle, navBuilder.build());
+                    Intent intent = new Intent(context, VideoActivity.class);
+                    intent.putExtra("ItemName", learnListVideoCategoryItems.get(position).getItemName());
+                    context.startActivity(intent);
                 }catch (IllegalArgumentException e){
                     e.printStackTrace();
                 }

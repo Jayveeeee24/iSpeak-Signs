@@ -77,7 +77,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE FOR ITEM TABLE
         DB.execSQL("create Table IF NOT EXISTS ItemTable(itemName TEXT primary key," +
-                " itemCategory TEXT, itemType TEXT, isLearned INTEGER)");
+                " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT)");
 
         String[] itemName = new String[]{
                 "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo",
@@ -168,12 +168,35 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         }
 
+        String[] partsOfSpeech = new String[]{
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+                "pang-uri", "pangngalan", "pandiwa", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+                "Letrang A", "Letrang B", "Letrang C", "Letrang D", "Letrang E", "Letrang F", "Letrang G", "Letrang H", "Letrang I", "Letrang J", "Letrang K", "Letrang L", "Letrang M", "Letrang N", "Letrang O", "Letrang P", "Letrang Q", "Letrang R", "Letrang S", "Letrang T", "Letrang U", "Letrang V", "Letrang W", "Letrang X", "Letrang Y", "Letrang Z",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+                "pangngalan", "pangngalan", "pangngalan", "pang-uri", "pangngalan",
+                "pang-uri","pang-uri","pang-uri","pang-uri","pangngalan","pang-uri","pang-uri",
+                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
+                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
+                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan",
+                "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri",
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan", "pangngalan",
+        };
+
         for (int i = 0; i < itemName.length; i++){
             ContentValues values = new ContentValues();
             values.put("itemName", itemName[i]);
             values.put("itemCategory", itemCategory[i]);
             values.put("itemType", itemType[i]);
             values.put("isLearned", 0);
+            if (i < 130){
+                values.put("partsOfSpeech", partsOfSpeech[i]);
+            }else{
+                values.put("partsOfSpeech", "");
+            }
             DB.insert("ItemTable", null, values);
         }
 
@@ -314,11 +337,11 @@ public class DBHelper extends SQLiteOpenHelper {
         if (modifier.equals("Learn")){
             return DB.rawQuery("Select categoryName, categoryColor, categoryTotalItems, categoryType from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC", new String[]{categoryType});
         }else if (categoryType.equals("Salita") && modifier.equals("By5")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' AND categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' ORDER BY categoryProgress DESC LIMIT 5", null);
         }else if (categoryType.equals("Parirala") && modifier.equals("By5")){
-            return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' AND categoryProgress != categoryTotalItems ORDER BY categoryName ASC LIMIT 3", null);
+            return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' ORDER BY categoryName ASC LIMIT 3", null);
         }else if (modifier.equals("Profile")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
+            return DB.rawQuery("Select * from CategoryTable ORDER BY categoryProgress DESC LIMIT 5", null);
         }else if (modifier.equals("Search")){
             return DB.rawQuery("Select categoryName, categoryType from CategoryTable ORDER By categoryName ASC", null);
         }else if (modifier.equals("SingleCategory")){

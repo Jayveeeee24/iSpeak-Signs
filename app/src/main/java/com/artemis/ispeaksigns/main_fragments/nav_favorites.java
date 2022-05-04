@@ -51,25 +51,13 @@ public class nav_favorites extends Fragment {
 
         favoriteNoItem = view.findViewById(R.id.favorite_no_item);
         InitializeRecycler();
-
-        if (favoriteCategoryItems.isEmpty())
-        {
-            TextView favoriteNoItem = view.findViewById(R.id.favorite_no_item);
-            favoriteNoItem.setVisibility(View.VISIBLE);
-            favoriteRecView.setVisibility(View.INVISIBLE);
-        }
     }
 
     @Override
-    public void onViewStateRestored(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
-        if (favoriteCategoryItems.isEmpty())
-        {
-            TextView favoriteNoItem = view.findViewById(R.id.favorite_no_item);
-            favoriteNoItem.setVisibility(View.VISIBLE);
-            favoriteRecView.setVisibility(View.INVISIBLE);
-        }
+        InitializeRecycler();
     }
 
     private void InitializeRecycler() {
@@ -99,6 +87,13 @@ public class nav_favorites extends Fragment {
 
             favoriteRecView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
+        }
+
+        if (favoriteCategoryItems.isEmpty())
+        {
+            TextView favoriteNoItem = view.findViewById(R.id.favorite_no_item);
+            favoriteNoItem.setVisibility(View.VISIBLE);
+            favoriteRecView.setVisibility(View.INVISIBLE);
         }
     }
 

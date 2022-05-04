@@ -80,6 +80,11 @@ public class learn_video_list extends Fragment {
     public void onViewStateRestored(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
 
+        onRestored();
+        InitializeRecycler();
+    }
+
+    private void onRestored(){
         int progressBar = 0;
         int tempProgress = 0;
         int totalItems = 0;
@@ -99,6 +104,15 @@ public class learn_video_list extends Fragment {
         categoryVideoProgressLabel.setText(functionHelper.getCategoryProgressDescription(progressBar, getActivity()));
         categoryVideoProgressBar.setProgress(progressBar);
 
+        InitializeRecycler();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        onRestored();
+        InitializeRecycler();
     }
 
     private void setProgressSetup(){
@@ -150,6 +164,7 @@ public class learn_video_list extends Fragment {
             itemName = new String[]{
                     "Magandang Araw", "Maaari bang humiram ng telepono mo taena shem loko", "Ano ang pangalan mo",
                     "Tulungan nyo ako", "Ako ay nawawala", "Nauunawaan mo ba ako",
+                    "Maraming salamat sa iyo",
                     "Maraming salamat sa iyo"
             };
             isLearned = new int[]{
@@ -169,7 +184,7 @@ public class learn_video_list extends Fragment {
             learnListVideoCategoryItems.add(new LearnListVideoCategoryItem(itemName[i], isLearned[i]));
         }
 
-        LearnListVideoRecyclerAdapter adapter = new LearnListVideoRecyclerAdapter();
+        LearnListVideoRecyclerAdapter adapter = new LearnListVideoRecyclerAdapter(context);
         adapter.setLearnListVideoCategoryItems(learnListVideoCategoryItems);
 
         learnVideoListRecycler.setAdapter(adapter);

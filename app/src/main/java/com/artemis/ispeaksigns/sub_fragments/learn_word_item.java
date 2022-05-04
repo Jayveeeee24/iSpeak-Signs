@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns.sub_fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -24,6 +25,7 @@ import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.VideoActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,10 +44,14 @@ public class learn_word_item extends Fragment {
     TextView partsOfSpeech;
     ImageView heartItem;
     TextView howTo;
+    ImageView learnWordPlayVideo;
+
     int isFavorite;
     String itemType = "";
 
     String word;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,8 +98,10 @@ public class learn_word_item extends Fragment {
                 itemCategory = learnWordItemCursor.getString(1);
                 itemType = learnWordItemCursor.getString(2);
                 isLearned = learnWordItemCursor.getInt(3);
+                partsOfSpeech.setText(learnWordItemCursor.getString(4));
             }
         }
+
 
         if (isLearned == 0){
             functionHelper.updateisLearnedProgress(context, itemCategory, word);
@@ -107,12 +115,26 @@ public class learn_word_item extends Fragment {
             heartItem.setImageResource(R.drawable.ic_menu_favorites);
             isFavorite = 1;
         }
-
     }
 
     private void InitializeOnClick(){
         final ImageView learnWordItemFavorite = (ImageView) view.findViewById(R.id.learn_word_item_favorite);
         final ImageView playAudio = (ImageView) view.findViewById(R.id.learn_word_play_audio);
+        learnWordPlayVideo = view.findViewById(R.id.learn_word_play_video);
+
+        learnWordPlayVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
+                try {
+                    Intent intent = new Intent(context, VideoActivity.class);
+                    intent.putExtra("ItemName", "@" + word);
+                    context.startActivity(intent);
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
         learnWordItemFavorite.setOnClickListener(new View.OnClickListener() {
             @Override

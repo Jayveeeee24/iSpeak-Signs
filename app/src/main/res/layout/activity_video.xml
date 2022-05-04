@@ -4,21 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".VideoActivity">
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/player"
+    <LinearLayout
+        android:id="@+id/youtube_player_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:use_controller="true"
-        android:background="@color/gray"
-        app:player_layout_id="@layout/exo_player_view"
-        app:controller_layout_id="@layout/custom_controller"/>
+        android:visibility="invisible"
+        android:orientation="vertical">
 
-    <ProgressBar
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/progress_bar"
-        android:layout_centerInParent="true"/>
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            app:showFullScreenButton="true"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/exo_player_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:use_controller="true"
+            android:background="@color/gray"
+            app:player_layout_id="@layout/exo_player_view"
+            app:controller_layout_id="@layout/custom_controller"/>
+
+        <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/progress_bar"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

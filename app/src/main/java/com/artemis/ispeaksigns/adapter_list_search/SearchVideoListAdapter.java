@@ -1,5 +1,8 @@
 package com.artemis.ispeaksigns.adapter_list_search;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.VideoActivity;
+import com.artemis.ispeaksigns.WalkthroughActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +29,11 @@ public class SearchVideoListAdapter extends RecyclerView.Adapter<SearchVideoList
 
     ArrayList<SearchVideoItem> searchVideoItems = new ArrayList<>();
     ArrayList<SearchVideoItem> searchVideoItemsFull;
+    Context context;
+
+    public SearchVideoListAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @NotNull
@@ -41,14 +51,14 @@ public class SearchVideoListAdapter extends RecyclerView.Adapter<SearchVideoList
         holder.cardItemSearchParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("learn_video_item", searchVideoItems.get(position).getItemName());
-                NavOptions.Builder navBuilder = new NavOptions.Builder();
-                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
-                        .setExitAnim(R.anim.nav_default_exit_anim)
-                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                Navigation.findNavController(view).navigate(R.id.action_nav_search_to_learn_video_item, bundle, navBuilder.build());
+
+                try {
+                    Intent intent = new Intent(context, VideoActivity.class);
+                    intent.putExtra("ItemName", searchVideoItems.get(position).getItemName());
+                    context.startActivity(intent);
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
             }
         });
     }

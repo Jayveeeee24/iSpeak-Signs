@@ -1,6 +1,8 @@
 package com.artemis.ispeaksigns.adapter_list_favorite;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.VideoActivity;
+import com.artemis.ispeaksigns.WalkthroughActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -62,14 +66,14 @@ public class FavoriteRecyclerAdapter extends RecyclerView.Adapter<FavoriteRecycl
                             .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
                     Navigation.findNavController(view).navigate(R.id.action_nav_favorites_to_learn_word_item, bundle, navBuilder.build());
                 }else if (favoriteCategoryItems.get(position).getItemType().equals("Parirala")){
-                    Bundle bundle = new Bundle();
-                    bundle.putString("learn_video_item", favoriteCategoryItems.get(position).getItemName());
-                    NavOptions.Builder navBuilder = new NavOptions.Builder();
-                    navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
-                            .setExitAnim(R.anim.nav_default_exit_anim)
-                            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                            .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
-                    Navigation.findNavController(view).navigate(R.id.action_nav_favorites_to_learn_video_item, bundle, navBuilder.build());
+
+                    try {
+                        Intent intent = new Intent(context, VideoActivity.class);
+                        intent.putExtra("ItemName", favoriteCategoryItems.get(position).getItemName());
+                        context.startActivity(intent);
+                    }catch (IllegalArgumentException e){
+                        e.printStackTrace();
+                    }
                 }
             }
         });

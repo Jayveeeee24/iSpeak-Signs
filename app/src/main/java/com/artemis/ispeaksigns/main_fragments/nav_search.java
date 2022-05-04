@@ -43,12 +43,13 @@ public class nav_search extends Fragment {
     DBHelper DB;
     SearchCategoryListAdapter adapter = new SearchCategoryListAdapter();
     SearchWordListAdapter adapter1 = new SearchWordListAdapter();
-    SearchVideoListAdapter adapter2 = new SearchVideoListAdapter();
+    SearchVideoListAdapter adapter2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search, container, false);
         context = container.getContext();
+        adapter2 = new SearchVideoListAdapter(context);
         return view;
     }
 

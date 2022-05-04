@@ -2,6 +2,14 @@
 
 DEBUG NOTES
 
+v1.2r6 5/4
+- added an implementation for youtube videos for word items in video activity
+- updated manifest to include permission for internet
+- removed video item implementation (fragment), video items now directly goes to video activity
+- added new values in item table of database (partsOfSpeech)
+- updated the implementation in Favorite, Search, and learn list recycler adapter to directly go in video activity
+
+
 v1.2r5 5/1
 - implemented the sign of the day feature (word of the day) to be dependent with database
 - the word of the day feature now changes when a new day comes. 
