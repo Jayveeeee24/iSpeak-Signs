@@ -97,6 +97,7 @@
     <string name="learn_list_category_logo">Logo ng Kategorya</string>
     <string name="learn_category_progress_label">Simulan nang matuto!</string>
     <string name="learn_list_word_learned">Salitang natuklasan</string>
+    <string name="learn_list_video_learned">Pariralang natuklasan</string>
     <string name="learn_list_progress">%1$s/%2$s</string>
 
     <string name="play_video_desc">i-play ang video</string>

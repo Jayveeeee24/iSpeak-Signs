@@ -11,13 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -26,6 +29,7 @@ import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.VideoActivity;
+import com.artemis.ispeaksigns.WordImageSliderAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,6 +55,10 @@ public class learn_word_item extends Fragment {
 
     String word;
 
+    private TextView[] dots;
+    private int currentPage;
+    private ViewPager wordImageViewPager;
+    private LinearLayout wordImageLinear;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +73,8 @@ public class learn_word_item extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DB = new DBHelper(context);
+        wordImageViewPager = view.findViewById(R.id.viewpager_word_item);
+        wordImageLinear = view.findViewById(R.id.linear_word_item);
 
         SetUpDesign();
         InitializeOnClick();
@@ -115,7 +125,50 @@ public class learn_word_item extends Fragment {
             heartItem.setImageResource(R.drawable.ic_menu_favorites);
             isFavorite = 1;
         }
+//TODO need to change this to be dependent onto the number of images saved in database
+        final WordImageSliderAdapter wordImageSliderAdapter = (new WordImageSliderAdapter(context, "bansa", 4));
+        wordImageViewPager.setAdapter(wordImageSliderAdapter);
+        addDotsIndicator(0);
+
+        wordImageViewPager.addOnPageChangeListener(viewListener);
     }
+
+    private void addDotsIndicator(int position){
+        dots = new TextView[4];//TODO need to change this to be dependent onto the number of images saved in database
+        wordImageLinear.removeAllViews();
+
+        for (int i = 0; i<dots.length; i++){
+            dots[i] = new TextView(context);
+            dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setTextSize(35);
+            dots[i].setTextColor(getResources().getColor(R.color.colorDots, null));
+
+            wordImageLinear.addView(dots[i]);
+        }
+
+        if (dots.length > 0){
+            dots[position].setTextColor(getResources().getColor(R.color.colorPrimary, null));
+        }
+    }
+
+    ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            addDotsIndicator(position);
+            currentPage = position;
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
 
     private void InitializeOnClick(){
         final ImageView learnWordItemFavorite = (ImageView) view.findViewById(R.id.learn_word_item_favorite);

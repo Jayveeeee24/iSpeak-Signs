@@ -2,6 +2,11 @@
 
 DEBUG NOTES
 
+v1.2r7 5/10
+- added slide (viewpager) implementation for image in word item
+- updated the sign language model to include new dataset
+- updated the label for word discovered to phrase discovered in video list
+
 v1.2r6 5/4
 - added an implementation for youtube videos for word items in video activity
 - updated manifest to include permission for internet

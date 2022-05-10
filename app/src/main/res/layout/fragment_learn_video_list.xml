@@ -76,7 +76,7 @@
                         android:layout_marginTop="5dp"
                         android:textSize="14sp"
                         android:layout_toEndOf="@id/categoryVideoImageCard"
-                        android:text="@string/learn_list_word_learned" />
+                        android:text="@string/learn_list_video_learned" />
 
                     <TextView
                         android:id="@+id/txtProgressVideoPercent"

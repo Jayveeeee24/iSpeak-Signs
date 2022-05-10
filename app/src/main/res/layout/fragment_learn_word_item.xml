@@ -12,24 +12,38 @@
         android:layout_height="wrap_content"
         android:paddingBottom="50dp">
 
-        <com.google.android.material.card.MaterialCardView
+        <RelativeLayout
             android:id="@+id/learn_word_image_parent"
             android:layout_width="match_parent"
             android:layout_height="380dp"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/colorPrimaryVariant"
-            app:cardCornerRadius="0dp"
-            app:contentPadding="50dp">
+            android:background="@color/colorPrimaryVariant">
 
-            <ImageView
-                android:id="@+id/learn_word_item_image"
+<!--            <ImageView-->
+<!--                android:id="@+id/learn_word_item_image"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:contentDescription="@string/item_image_desc"-->
+<!--                android:src="@drawable/ic_buwan"-->
+<!--                android:tint="@color/white" />-->
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager_word_item"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/item_image_desc"
-                android:src="@drawable/ic_buwan"
-                android:tint="@color/white" />
+                android:layout_height="match_parent"/>
 
-        </com.google.android.material.card.MaterialCardView>
+            <LinearLayout
+                android:id="@+id/linear_word_item"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_centerHorizontal="true">
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

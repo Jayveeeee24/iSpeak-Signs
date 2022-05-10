@@ -87,7 +87,7 @@ public class VideoActivity extends AppCompatActivity {
             playExo();
         }else if (videoName.contains("@")){
             videoName = videoName.substring(1);
-            String videoId = "dQw4w9WgXcQ";
+            String videoId = "UI8gx7dK5js";
             youtube_layout.setVisibility(View.VISIBLE);
             exo_layout.setVisibility(View.INVISIBLE);
             youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {

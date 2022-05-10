@@ -98,6 +98,7 @@
     <string name="learn_list_category_logo">Category Logo</string>
     <string name="learn_category_progress_label">Start Learning!</string>
     <string name="learn_list_word_learned">Words discovered</string>
+    <string name="learn_list_video_learned">Phrases discovered</string>
     <string name="learn_list_progress">%1$s/%2$s</string>
 
     <string name="play_video_desc">Play the Video</string>
