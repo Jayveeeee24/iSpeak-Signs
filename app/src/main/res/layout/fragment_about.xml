@@ -255,7 +255,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/member3_image_desc"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/jb_profile" />
+                    android:src="@drawable/reianne_profile" />
 
             </com.google.android.material.card.MaterialCardView>
 

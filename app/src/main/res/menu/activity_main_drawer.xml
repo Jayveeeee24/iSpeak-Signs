@@ -54,18 +54,10 @@
         <menu>
 
             <group>
-
-                <item
-                    android:id="@+id/darkmode"
-                    android:icon="@drawable/ic_menu_night"
-                    android:title="@string/menu_darkmode_label"
-                    app:actionLayout="@layout/switch_layout"/>
-
                 <item
                     android:id="@+id/language"
                     android:icon="@drawable/ic_menu_language"
                     android:title="@string/menu_language_label" />
-
             </group>
 
         </menu>

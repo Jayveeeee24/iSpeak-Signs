@@ -2,6 +2,15 @@
 
 DEBUG NOTES
 
+v1.2.8 5/12
+- removed the dark mode function with resources in (main drawer, switch layout, resource image and implementation in MainActivity)
+- removed locale config in videoActivity
+- added and altered database queries in getCategory for all categories and for condition categories (ref in navHome recyclerView)
+- modified member profile images in about fragment
+- added setting applocale in getting categoryProgress description in each lists of categories (learn_word_list, learn_video_list)
+- moved implementation of setting applocale in main activity from onCreate to onStart
+- added backend algorithm implementation for recyclerviews in (navhome (word recycler and phrase recycler) and profile recycler)
+
 v1.2r7 5/10
 - added slide (viewpager) implementation for image in word item
 - updated the sign language model to include new dataset

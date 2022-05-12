@@ -73,18 +73,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        sharedPref = new SharedPref(this);
-//        if (sharedPref.loadNightModeState() == true){
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//        }else{
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//        }
-
         super.onCreate(savedInstanceState);
 
-        DB = new DBHelper(this);
+        //sets the app locale when changing the language via the option on navigation menu
+        //DO NOT REMOVE OR ELSE THE LANGUAGE WON'T UPDATE WHEN CHANGING LANGUAGE IN THE NAVIGATION MENU
         functionHelper.setAppLocale(this);
-        onUserLogin();
+
+        DB = new DBHelper(this);
+        onUserLogin();//this triggers the function when the user logs in
 
         setContentView(R.layout.activity_main);
 
@@ -108,12 +104,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mainFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Fab - floating action button (camera button)
                 startActivity(new Intent(MainActivity.this, RecognizeActivity.class));
             }
         });
 
         setSupportActionBar(mtoolbar);
-        //Setup for Navigation Drawer and AppBar
+        //Setup for Navigation Drawer and AppBar (lists all top navigation for appbar)
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
                 R.id.nav_learn,
@@ -135,29 +132,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             getUserStreak();
             //this changes the toolbar title as it has a bug of displaying only "home" title
             collapseToolbar.setTitle(navDestination.getLabel());
+
             editSearchParent.setVisibility(View.VISIBLE);
             mainFab.setVisibility(View.INVISIBLE);
-
             aboutToolbar.setVisibility(View.INVISIBLE);
             defaultToolbar.setVisibility(View.VISIBLE);
+
             //toolbar bg for curved green and the cvsu bg
             collapseToolbar.setBackgroundResource(R.drawable.appbar_bg);
             //bg for mag-aral and favorite toolbar bg
             collapseToolbarImage.setImageDrawable(null);
+
             setExpandedEnabled(false);
             profileState = false;
             searchState=false;
             invalidateOptionsMenu();
-
             mtoolbar.setNavigationIcon(R.drawable.ic_back);
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
             mtoolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onBackPressed();
                 }
             });
-
             editSearchParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -188,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         drawer.openDrawer(GravityCompat.START);
                     }
                 });
-            }  else if (navDestination.getId() == R.id.nav_learn) {
+            } else if (navDestination.getId() == R.id.nav_learn) {
                 txtHomeGreeting1.setText(getResources().getString(R.string.learn_greeting1_label));
                 txtHomeGreeting1.setTextSize(18);
                 txtHomeGreeting2.setText("");
@@ -218,28 +216,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //this function is triggered when the acitivity is started or restarted
+        // (ex. from VideoActivity to the MainActivity)
+        functionHelper.setAppLocale(this);
+    }
+
+//    @Override //TODO to be deleted when finalized
+//    protected void onResume() {
+//        super.onResume();
+//        //this function is triggered when the acitivity is resumed
+//        // because the user navigates back in this activity
+//
+//        functionHelper.setAppLocale(this);
+//    }
+
     public void InitializeMenuSetting()
     {
-        SwitchCompat drawerSwitch = (SwitchCompat) navigationView.getMenu().findItem(R.id.darkmode).getActionView();
-//        if (sharedPref.loadNightModeState() == true)
-//        {
-//            drawerSwitch.setChecked(true);
-//        }
-        drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                    sharedPref.setNightModeState(true);
-//                    restartApp();
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                    sharedPref.setNightModeState(false);
-//                    restartApp();
-                }
-            }
-        });
-
         MenuItem fslWord = navigationView.getMenu().findItem(R.id.nav_fsl_wotd);
         fslWord.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

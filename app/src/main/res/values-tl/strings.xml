@@ -19,7 +19,7 @@
     <string name="act_recognize">FSL Rekognisyon</string>
     <string name="menu_cvsu">CvSU - Misyon at Bisyon</string>
     <string name="menu_mini_game">Laro</string>
-    <string name="menu_setting_label">Mga Settings</string>
+    <string name="menu_setting_label">Setting</string>
     <string name="menu_darkmode_label">Dark Mode</string>
     <string name="menu_language_label">Wika</string>
     <string name="menu_about">Tungkol sa App</string>

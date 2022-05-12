@@ -336,13 +336,22 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         if (modifier.equals("Learn")){
             return DB.rawQuery("Select categoryName, categoryColor, categoryTotalItems, categoryType from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC", new String[]{categoryType});
-        }else if (categoryType.equals("Salita") && modifier.equals("By5")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' ORDER BY categoryProgress DESC LIMIT 5", null);
+        }
+        else if (categoryType.equals("Salita") && modifier.equals("By5")){
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' AND categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
         }else if (categoryType.equals("Parirala") && modifier.equals("By5")){
-            return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' ORDER BY categoryName ASC LIMIT 3", null);
-        }else if (modifier.equals("Profile")){
+            return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' AND categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 3", null);
+        }else if (categoryType.equals("Salita") && modifier.equals("All")){
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' ORDER BY categoryProgress DESC LIMIT 5", null);
+        }else if (categoryType.equals("Parirala") && modifier.equals("All")){
+            return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' ORDER BY categoryProgress DEsC LIMIT 3", null);
+        }
+        else if (modifier.equals("Profile")){
+            return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
+        }else if (modifier.equals("AllProfile")){
             return DB.rawQuery("Select * from CategoryTable ORDER BY categoryProgress DESC LIMIT 5", null);
-        }else if (modifier.equals("Search")){
+        }
+        else if (modifier.equals("Search")){
             return DB.rawQuery("Select categoryName, categoryType from CategoryTable ORDER By categoryName ASC", null);
         }else if (modifier.equals("SingleCategory")){
             return DB.rawQuery("Select categoryColor, categoryTotalItems, imageURL, categoryProgress from CategoryTable WHERE categoryName=?", new String[]{categoryType});
@@ -355,7 +364,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         switch (modifier) {
             case "SearchItem":
-                return DB.rawQuery("Select itemName from ItemTable WHERE itemType=? ORDER BY itemCategory ASC", new String[]{value});
+                return DB.rawQuery("Select itemName from ItemTable WHERE itemType=? ORDER BY itemName ASC", new String[]{value});
             case "ItemList":
                 return DB.rawQuery("Select itemName, isLearned from ItemTable WHERE itemCategory=?", new String[]{value});
             case "getCategoryProgress":

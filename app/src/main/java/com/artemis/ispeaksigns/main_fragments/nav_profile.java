@@ -43,6 +43,7 @@ public class nav_profile extends Fragment {
 
     View view;
     Context context;
+    DBHelper DB;
 
     RecyclerView profileRecycler;
     TextView wordDiscovered;
@@ -55,20 +56,18 @@ public class nav_profile extends Fragment {
     TextView userNameText;
     TextView currentStreak;
     TextView longestStreak;
-
     CardView userImageParent;
     CardView userImageEdit;
 
     String avatarName = "";
     String selectedAvatar = "";
     int avatarImage;
-    DBHelper DB;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         context = container.getContext();
-
         return view;
     }
 
@@ -149,7 +148,6 @@ public class nav_profile extends Fragment {
         currentStreak.setText(getResources().getString(R.string.profile_streak_count, Integer.toString(currentStreakCount)));
         avatarImage = getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
         userImage.setImageResource(avatarImage);
-
     }
 
     private void InitializeRecycler()
@@ -158,8 +156,9 @@ public class nav_profile extends Fragment {
         profileRecycler.setNestedScrollingEnabled(false);
 
         Cursor profileSeeMoreCursor = DB.getCategory("haha", "Profile");
+        Cursor allSeeMoreCursor = DB.getCategory("haha", "AllProfile");
 
-        String[] categoryName = new String[profileSeeMoreCursor.getCount()];
+        String[] categoryName = new String[5];
         String[] imageUrls = new String[categoryName.length];
         String [] bgColors = new String[categoryName.length];
         int[] images = new int[imageUrls.length];
@@ -170,9 +169,23 @@ public class nav_profile extends Fragment {
         String[] categoryType = new String[categoryName.length];
         String[] categoryPercentConverted = new String[categoryPercent.length];
 
+        //the below implementation is the same implementation that can be referenced in nav_home fragment
         if (profileSeeMoreCursor.getCount() == 0){
-            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
-            return;
+            if (allSeeMoreCursor.getCount() == 0){
+                Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                int j = 0;
+                while(allSeeMoreCursor.moveToNext()){
+                    categoryName[j] = allSeeMoreCursor.getString(0);
+                    bgColors[j] = allSeeMoreCursor.getString(1);
+                    categoryTotal[j] = allSeeMoreCursor.getInt(2);
+                    categoryType[j] = allSeeMoreCursor.getString(3);
+                    imageUrls[j] = allSeeMoreCursor.getString(4);
+                    categoryProgress[j] = allSeeMoreCursor.getInt(5);
+                    j++;
+                }
+            }
         }else{
             int i = 0;
             while(profileSeeMoreCursor.moveToNext()){
@@ -184,6 +197,23 @@ public class nav_profile extends Fragment {
                 categoryProgress[i] = profileSeeMoreCursor.getInt(5);
                 i++;
             }
+
+            if (profileSeeMoreCursor.getCount() < 5){
+                if (allSeeMoreCursor.getCount() == 0){
+                    Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+                }else{
+                    int j = profileSeeMoreCursor.getCount();
+                    while(allSeeMoreCursor.moveToNext() && j < 5){
+                        categoryName[j] = allSeeMoreCursor.getString(0);
+                        bgColors[j] = allSeeMoreCursor.getString(1);
+                        categoryTotal[j] = allSeeMoreCursor.getInt(2);
+                        categoryType[j] = allSeeMoreCursor.getString(3);
+                        imageUrls[j] = allSeeMoreCursor.getString(4);
+                        categoryProgress[j] = allSeeMoreCursor.getInt(5);
+                        j++;
+                    }
+                }
+            }
         }
 
         for (int i = 0; i<categoryName.length; i++){
@@ -191,11 +221,9 @@ public class nav_profile extends Fragment {
             images[i] = getResources().getIdentifier(imageUrls[i], "drawable", context.getPackageName());
             colors[i] = getResources().getIdentifier(bgColors[i], "color", context.getPackageName());
             categoryPercentConverted[i] = categoryPercent[i] + "%";
-
         }
 
-        for (int i = 0; i<categoryName.length; i++)
-        {
+        for (int i = 0; i<categoryName.length; i++) {
             profileProgressItems.add(new ProfileProgressItem(colors[i], images[i], categoryName[i],
                     categoryPercentConverted[i], categoryPercent[i], categoryType[i]));
         }

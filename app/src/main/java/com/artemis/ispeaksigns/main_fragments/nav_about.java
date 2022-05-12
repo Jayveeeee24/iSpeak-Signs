@@ -117,7 +117,7 @@ public class nav_about extends Fragment {
         }
         else if (name.equals("Rei Anne P. Velasco")){
             popupName.setText(name);
-            popupImage.setImageResource(R.drawable.cvsu_logo);
+            popupImage.setImageResource(R.drawable.reianne_profile);
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring World Class Chef ");
             popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");

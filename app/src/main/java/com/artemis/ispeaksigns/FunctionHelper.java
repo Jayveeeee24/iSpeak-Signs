@@ -69,6 +69,7 @@ public class FunctionHelper {
 
     public String getCategoryProgressDescription(int categoryProgress, Activity activity){
 
+        setAppLocale(activity);
         if (categoryProgress<30){
             return activity.getString(R.string.una);
         }else if (categoryProgress<49){

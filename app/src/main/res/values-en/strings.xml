@@ -19,7 +19,7 @@
     <string name="act_recognize">FSL Recognition</string>
     <string name="menu_cvsu">CvSU - Mission and Vision</string>
     <string name="menu_mini_game">Mini Game</string>
-    <string name="menu_setting_label">Settings</string>
+    <string name="menu_setting_label">Setting</string>
     <string name="menu_darkmode_label">Dark Mode</string>
     <string name="menu_language_label">Change Language</string>
     <string name="menu_about">About the App</string>
