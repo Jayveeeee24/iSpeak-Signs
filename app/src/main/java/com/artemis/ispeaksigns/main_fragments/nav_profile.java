@@ -156,7 +156,6 @@ public class nav_profile extends Fragment {
         profileRecycler.setNestedScrollingEnabled(false);
 
         Cursor profileSeeMoreCursor = DB.getCategory("haha", "Profile");
-        Cursor allSeeMoreCursor = DB.getCategory("haha", "AllProfile");
 
         String[] categoryName = new String[5];
         String[] imageUrls = new String[categoryName.length];
@@ -169,23 +168,9 @@ public class nav_profile extends Fragment {
         String[] categoryType = new String[categoryName.length];
         String[] categoryPercentConverted = new String[categoryPercent.length];
 
-        //the below implementation is the same implementation that can be referenced in nav_home fragment
         if (profileSeeMoreCursor.getCount() == 0){
-            if (allSeeMoreCursor.getCount() == 0){
-                Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
-                return;
-            }else{
-                int j = 0;
-                while(allSeeMoreCursor.moveToNext()){
-                    categoryName[j] = allSeeMoreCursor.getString(0);
-                    bgColors[j] = allSeeMoreCursor.getString(1);
-                    categoryTotal[j] = allSeeMoreCursor.getInt(2);
-                    categoryType[j] = allSeeMoreCursor.getString(3);
-                    imageUrls[j] = allSeeMoreCursor.getString(4);
-                    categoryProgress[j] = allSeeMoreCursor.getInt(5);
-                    j++;
-                }
-            }
+            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+            return;
         }else{
             int i = 0;
             while(profileSeeMoreCursor.moveToNext()){
@@ -196,23 +181,6 @@ public class nav_profile extends Fragment {
                 imageUrls[i] = profileSeeMoreCursor.getString(4);
                 categoryProgress[i] = profileSeeMoreCursor.getInt(5);
                 i++;
-            }
-
-            if (profileSeeMoreCursor.getCount() < 5){
-                if (allSeeMoreCursor.getCount() == 0){
-                    Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
-                }else{
-                    int j = profileSeeMoreCursor.getCount();
-                    while(allSeeMoreCursor.moveToNext() && j < 5){
-                        categoryName[j] = allSeeMoreCursor.getString(0);
-                        bgColors[j] = allSeeMoreCursor.getString(1);
-                        categoryTotal[j] = allSeeMoreCursor.getInt(2);
-                        categoryType[j] = allSeeMoreCursor.getString(3);
-                        imageUrls[j] = allSeeMoreCursor.getString(4);
-                        categoryProgress[j] = allSeeMoreCursor.getInt(5);
-                        j++;
-                    }
-                }
             }
         }
 
@@ -233,7 +201,6 @@ public class nav_profile extends Fragment {
 
         profileRecycler.setAdapter(adapter);
         profileRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-
 
     }
 

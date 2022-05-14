@@ -51,24 +51,12 @@
                 android:layout_marginTop="5dp"/>
 
             <TextView
-                android:id="@+id/popup_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type: O"
-                android:layout_below="@id/popup_age"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:textSize="15sp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
                 android:id="@+id/popup_goal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Aspiring Software Engineer"
                 android:fontFamily="@font/gotham_book_regular"
-                android:layout_below="@id/popup_type"
+                android:layout_below="@id/popup_age"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:textSize="15sp"
@@ -85,6 +73,18 @@
                 android:fontFamily="@font/gotham_book_regular"
                 android:textSize="15sp"
                 android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/popup_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type: O"
+                android:layout_below="@id/popup_strength"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_book_regular"
+                android:layout_marginTop="5dp"/>
 
         </RelativeLayout>
 

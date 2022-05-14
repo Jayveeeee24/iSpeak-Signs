@@ -358,6 +358,30 @@
                     android:text="Persons with Disabilites Affairs Office"
                     android:gravity="center"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="14sp"
+                    android:text="Path L. Erracho"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:text="Department of Education Sign Language Interpreter"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:text="Division of Dasmariñas City"
+                    android:gravity="center"/>
             </LinearLayout>
 
             <TextView
@@ -552,7 +576,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:text="johnbernard.tinio@cvsu.edu.ph"/>
+                    android:text="ispeaksigns.official@gmail.com"/>
 
 
             </LinearLayout>

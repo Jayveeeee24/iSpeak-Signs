@@ -198,12 +198,12 @@ public class FunctionHelper {
     public String[] getWordOfTheDay(Context context){
         DBHelper DB = new DBHelper(context);
         Cursor getWOTDCursor = DB.getItem("", "getWordOfTheDay");
-        int index = 0;
+        int index = 0;//
 
         String wotdItem = "";
         String itemType = "";
-        String[] tempWotdItem = new String[130];
-        String[] tempItemType = new String[130];
+        String[] tempWotdItem = new String[131];
+        String[] tempItemType = new String[131];
 
 
         if (getWOTDCursor.getCount() != 0){

@@ -2,6 +2,21 @@
 
 DEBUG NOTES
 
+v1.2.9 5/14
+- modified the DbHelper to add, remove and update items in itemtable (sampu in numero, mabuhay in pagbati and lagi akong naririto para sayo in ekspresyon ng pagmamahal respectively)
+- added credit for sign language interpreter in about fragment
+- updated the profile bg
+- updated the array size in getting word of the day in functionhelper
+- added database dependency for number of images and dots in learn word item
+- updated popup in about to include email of members instead of blood type
+- removed implementation of "recents progress" in profile progress like in nav home
+
+- added the content resource images for word
+category added:
+- Araw ng Linggo
+- Numero
+- Alpabeto
+
 v1.2.8 5/12
 - removed the dark mode function with resources in (main drawer, switch layout, resource image and implementation in MainActivity)
 - removed locale config in videoActivity

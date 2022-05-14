@@ -52,6 +52,7 @@ public class learn_word_item extends Fragment {
 
     int isFavorite;
     String itemType = "";
+    int imagesNo = 0;
 
     String word;
 
@@ -109,6 +110,7 @@ public class learn_word_item extends Fragment {
                 itemType = learnWordItemCursor.getString(2);
                 isLearned = learnWordItemCursor.getInt(3);
                 partsOfSpeech.setText(learnWordItemCursor.getString(4));
+                imagesNo = learnWordItemCursor.getInt(5);
             }
         }
 
@@ -125,28 +127,32 @@ public class learn_word_item extends Fragment {
             heartItem.setImageResource(R.drawable.ic_menu_favorites);
             isFavorite = 1;
         }
-//TODO need to change this to be dependent onto the number of images saved in database
-        final WordImageSliderAdapter wordImageSliderAdapter = (new WordImageSliderAdapter(context, "bansa", 4));
+
+        final WordImageSliderAdapter wordImageSliderAdapter = (new WordImageSliderAdapter(context, word.toLowerCase(), imagesNo));
         wordImageViewPager.setAdapter(wordImageSliderAdapter);
-        addDotsIndicator(0);
+        if (imagesNo != 1){
+            addDotsIndicator(0);
+        }
 
         wordImageViewPager.addOnPageChangeListener(viewListener);
     }
 
     private void addDotsIndicator(int position){
-        dots = new TextView[4];//TODO need to change this to be dependent onto the number of images saved in database
+        dots = new TextView[imagesNo];
         wordImageLinear.removeAllViews();
 
-        for (int i = 0; i<dots.length; i++){
-            dots[i] = new TextView(context);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(getResources().getColor(R.color.colorDots, null));
+        if (imagesNo!=1){
+            for (int i = 0; i<dots.length; i++){
+                dots[i] = new TextView(context);
+                dots[i].setText(Html.fromHtml("&#8226;"));
+                dots[i].setTextSize(35);
+                dots[i].setTextColor(getResources().getColor(R.color.colorDots, null));
 
-            wordImageLinear.addView(dots[i]);
+                wordImageLinear.addView(dots[i]);
+            }
         }
 
-        if (dots.length > 0){
+        if (dots.length > 0 && imagesNo != 1){
             dots[position].setTextColor(getResources().getColor(R.color.colorPrimary, null));
         }
     }

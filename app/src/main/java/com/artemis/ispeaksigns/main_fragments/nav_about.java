@@ -105,7 +105,7 @@ public class nav_about extends Fragment {
             popupAge.setText("Age: 22");
             popupGoal.setText("Aspiring Software Engineer");
             popupStrength.setText("\"What if one day you woke up and you were a potato salad\"");
-            popupType.setText("Type: O");
+            popupType.setText("Email me at: johnbernard.tinio@cvsu.edu.ph");
         }
         else if (name.equals("Marie Ann Karen De Guzman")){
             popupName.setText(name);
@@ -113,7 +113,7 @@ public class nav_about extends Fragment {
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring Graphic Artist");
             popupStrength.setText("\"Everything happens for a reason\"");
-            popupType.setText("Type: A");
+            popupType.setText("Email me at: marieannkaren@gmail.com");
         }
         else if (name.equals("Rei Anne P. Velasco")){
             popupName.setText(name);
@@ -121,7 +121,7 @@ public class nav_about extends Fragment {
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring World Class Chef ");
             popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");
-            popupType.setText("Type: B");
+            popupType.setText("Email me at: B");
         }
         memberPopup.show();
     }

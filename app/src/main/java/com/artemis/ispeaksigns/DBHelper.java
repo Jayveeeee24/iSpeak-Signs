@@ -43,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] categoryName = new String[]{
                 "Araw ng Linggo", "Buwan", "Lugar", "Emosyon", "Alpabeto",
                 "Numero", "Hayop", "Hugis", "Kulay", "Prutas",
-                "Gulay", "Parte ng Katawan", "Sasakyan", "Kasarian", "Miyembro ng Pamilya",
+                "Gulay", "Parte ng Katawan", "Transportasyon", "Kasarian", "Miyembro ng Pamilya",
                 "Pagbati", "Pang-Emergency", "Pangkomunikasyon", "Ekspresyon ng Oras", "Ekspresyon ng Pagmamahal"};
 
         String[] bgColors = new String[]{
@@ -51,9 +51,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         "tulip", "japanese_indigo", "silver_lake_blue", "pink", "blue_cola",
                         "golden_puppy", "cornflower_blue", "flame", "apple", "may_green",
                         "veronese_green", "violet_blue", "grape", "steel_teal", "blue_surf"};
-        int[] itemCount = new int[]{7, 12, 7, 7, 26, 10, 7, 5, 7,
-                                     6, 11, 8, 6, 4, 7,
-                                     6, 7, 10, 8, 6};
+        int[] itemCount = new int[]{7, 12, 7, 7, 26, 11, 7, 5, 7, 6, 11, 8, 6, 4, 7, 5, 7, 10, 8, 6};
+
         String[] imageURL = new String[]{
                 "ic_araw_ng_linggo", "ic_buwan", "ic_lugar", "ic_emosyon", "ic_alpabeto",
                 "ic_numero", "ic_hayop", "ic_hugis", "ic_kulay", "ic_prutas",
@@ -77,7 +76,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE FOR ITEM TABLE
         DB.execSQL("create Table IF NOT EXISTS ItemTable(itemName TEXT primary key," +
-                " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT)");
+                " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT, imagesNo INTEGER, youtubeId TEXT)");
 
         String[] itemName = new String[]{
                 "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo",
@@ -85,7 +84,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "Bahay", "Botika", "Ospital",  "Paaralan", "Palengke", "Parke", "Simbahan",
                 "Galit", "Gulat", "Hiya", "Lungkot", "Saya", "Takot", "Tuwa",
                 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-                "Isa", "Dalawa", "Tatlo", "Apat", "Lima", "Anim", "Pito", "Walo", "Siyam", "Sero",
+                "Sero", "Isa", "Dalawa", "Tatlo", "Apat", "Lima", "Anim", "Pito", "Walo", "Siyam", "Sampu",
                 "Aso", "Ahas", "Ibon", "Isda", "Palaka", "Pusa", "Unggoy",
                 "Bilog", "Bituin", "Parihaba", "Parisukat", "Tatsulok",
                 "Berde", "Bughaw", "Dilaw", "Itim", "Lila", "Pula", "Puti",
@@ -95,11 +94,11 @@ public class DBHelper extends SQLiteOpenHelper {
                 "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
                 "Babae", "Lalaki", "Bakla", "Tomboy",
                 "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Bunso",
-                "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi  sa iyo", "Paalam na sa’yo", "Mabuhay!",
+                "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi  sa iyo", "Paalam na sa’yo",
                 "Tulungan nyo ako!", "Nanakawan ako", "Ako ay nawawala", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
                 "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
                 "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Ala sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
-                "Lagi akong nariririto para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sayo", "Gusto kitang yakapin", "Gusto kita"
+                "Nandito lang ako para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sayo", "Gusto kitang yakapin", "Gusto kita"
         };
 
         String[] itemCategory = new String[itemName.length];
@@ -120,34 +119,34 @@ public class DBHelper extends SQLiteOpenHelper {
             }else if (i < 59){
                 itemCategory[i] = "Alpabeto";
                 itemType[i] = "Salita";
-            }else if (i < 69){
+            }else if (i < 70){
                 itemCategory[i] = "Numero";
                 itemType[i] = "Salita";
-            }else if (i < 76){
+            }else if (i < 77){
                 itemCategory[i] = "Hayop";
                 itemType[i] = "Salita";
-            }else if (i < 81){
+            }else if (i < 82){
                 itemCategory[i] = "Hugis";
                 itemType[i] = "Salita";
-            }else if (i < 88){
+            }else if (i < 89){
                 itemCategory[i] = "Kulay";
                 itemType[i] = "Salita";
-            }else if (i < 94){
+            }else if (i < 95){
                 itemCategory[i] = "Prutas";
                 itemType[i] = "Salita";
-            }else if (i < 105){
+            }else if (i < 106){
                 itemCategory[i] = "Gulay";
                 itemType[i] = "Salita";
-            }else if (i < 113){
+            }else if (i < 114){
                 itemCategory[i] = "Parte ng Katawan";
                 itemType[i] = "Salita";
-            }else if (i < 119){
-                itemCategory[i] = "Sasakyan";
+            }else if (i < 120){
+                itemCategory[i] = "Transportasyon";
                 itemType[i] = "Salita";
-            }else if (i < 123){
+            }else if (i < 124){
                 itemCategory[i] = "Kasarian";
                 itemType[i] = "Salita";
-            }else if (i < 130){
+            }else if (i < 131){
                 itemCategory[i] = "Miyembro ng Pamilya";
                 itemType[i] = "Salita";
             }else if (i < 136){
@@ -174,7 +173,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
                 "pang-uri", "pangngalan", "pandiwa", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
                 "Letrang A", "Letrang B", "Letrang C", "Letrang D", "Letrang E", "Letrang F", "Letrang G", "Letrang H", "Letrang I", "Letrang J", "Letrang K", "Letrang L", "Letrang M", "Letrang N", "Letrang O", "Letrang P", "Letrang Q", "Letrang R", "Letrang S", "Letrang T", "Letrang U", "Letrang V", "Letrang W", "Letrang X", "Letrang Y", "Letrang Z",
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
                 "pangngalan", "pangngalan", "pangngalan", "pang-uri", "pangngalan",
                 "pang-uri","pang-uri","pang-uri","pang-uri","pangngalan","pang-uri","pang-uri",
@@ -185,6 +184,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri",
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan", "pangngalan",
         };
+        int[] imagesNo = new int[itemName.length];
+
+        for (int i = 0; i < imagesNo.length; i++){
+            if (i < 3){
+                imagesNo[i] = 1;
+            }else if (i < 4){
+                imagesNo[i] = 2;
+            }else if (i < 7){
+                imagesNo[i] = 1;
+            }else if (i>= 33 && i < 59){
+                imagesNo[i] = 1;
+            }else if (i >= 59 && i<70){
+                imagesNo[i] = 1;
+            }
+        }
 
         for (int i = 0; i < itemName.length; i++){
             ContentValues values = new ContentValues();
@@ -192,11 +206,12 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("itemCategory", itemCategory[i]);
             values.put("itemType", itemType[i]);
             values.put("isLearned", 0);
-            if (i < 130){
+            if (i < 131){
                 values.put("partsOfSpeech", partsOfSpeech[i]);
             }else{
                 values.put("partsOfSpeech", "");
             }
+            values.put("imagesNo", imagesNo[i]);
             DB.insert("ItemTable", null, values);
         }
 
@@ -347,11 +362,8 @@ public class DBHelper extends SQLiteOpenHelper {
             return DB.rawQuery("Select categoryName, categoryColor, imageURL from CategoryTable WHERE categoryType='Parirala' ORDER BY categoryProgress DEsC LIMIT 3", null);
         }
         else if (modifier.equals("Profile")){
-            return DB.rawQuery("Select * from CategoryTable WHERE categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
-        }else if (modifier.equals("AllProfile")){
-            return DB.rawQuery("Select * from CategoryTable ORDER BY categoryProgress DESC LIMIT 5", null);
-        }
-        else if (modifier.equals("Search")){
+            return DB.rawQuery("Select * from CategoryTable ORDER BY categoryName ASC LIMIT 5", null);
+        }else if (modifier.equals("Search")){
             return DB.rawQuery("Select categoryName, categoryType from CategoryTable ORDER By categoryName ASC", null);
         }else if (modifier.equals("SingleCategory")){
             return DB.rawQuery("Select categoryColor, categoryTotalItems, imageURL, categoryProgress from CategoryTable WHERE categoryName=?", new String[]{categoryType});

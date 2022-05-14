@@ -30,7 +30,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 app:cardCornerRadius="90dp">
 
                 <ImageView
@@ -52,7 +52,7 @@
                 android:focusable="true"
                 android:layout_toEndOf="@id/user_image_parent"
                 android:layout_above="@id/edit_user_name"
-                android:backgroundTint="@color/white_bg"
+                android:backgroundTint="@color/black"
                 app:contentPadding="5dp"
                 android:layout_marginStart="-40dp">
 
@@ -60,7 +60,7 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:src="@drawable/ic_fab_camera"
-                    android:tint="@color/black_bg"
+                    android:tint="@color/white_bg"
                     android:scaleType="centerCrop"
                     android:elevation="10dp"
                     tools:ignore="ContentDescription" />
@@ -83,7 +83,6 @@
                 android:maxLength="10"
                 android:layout_below="@id/user_image_parent"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/white_bg"
                 android:gravity="center"
                 android:importantForAutofill="no"
                 tools:ignore="LabelFor" />
@@ -96,7 +95,6 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/user_name"
-                android:textColor="@color/white_bg"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
@@ -108,7 +106,6 @@
                 android:src="@drawable/ic_edit"
                 android:clickable="true"
                 android:focusable="true"
-                android:tint="@color/white"
                 android:layout_below="@id/user_image_parent"
                 android:layout_toEndOf="@id/user_name"
                 android:layout_marginTop="5dp"
