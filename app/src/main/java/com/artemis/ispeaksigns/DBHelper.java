@@ -103,10 +103,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String[] itemCategory = new String[itemName.length];
         String[] itemType = new String[itemName.length];
+        int[] imagesNo = new int[itemName.length];
+
         for (int i = 0; i < itemName.length; i++){
             if (i < 7){
                 itemCategory[i] = "Araw ng Linggo";
                 itemType[i] = "Salita";
+
+                if (i == 3){
+                    imagesNo[i] = 2;
+                }else {
+                    imagesNo[i] = 1;
+                }
             }else if (i < 19){
                 itemCategory[i] = "Buwan";
                 itemType[i] = "Salita";
@@ -119,9 +127,13 @@ public class DBHelper extends SQLiteOpenHelper {
             }else if (i < 59){
                 itemCategory[i] = "Alpabeto";
                 itemType[i] = "Salita";
+
+                imagesNo[i] = 1;
             }else if (i < 70){
                 itemCategory[i] = "Numero";
                 itemType[i] = "Salita";
+
+                imagesNo[i] = 1;
             }else if (i < 77){
                 itemCategory[i] = "Hayop";
                 itemType[i] = "Salita";
@@ -184,21 +196,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri",
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan", "pangngalan",
         };
-        int[] imagesNo = new int[itemName.length];
-
-        for (int i = 0; i < imagesNo.length; i++){
-            if (i < 3){
-                imagesNo[i] = 1;
-            }else if (i < 4){
-                imagesNo[i] = 2;
-            }else if (i < 7){
-                imagesNo[i] = 1;
-            }else if (i>= 33 && i < 59){
-                imagesNo[i] = 1;
-            }else if (i >= 59 && i<70){
-                imagesNo[i] = 1;
-            }
-        }
 
         for (int i = 0; i < itemName.length; i++){
             ContentValues values = new ContentValues();
@@ -226,7 +223,7 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists CategoryTable");
     }
 
-    public Cursor getUserData(String value, String modifier){
+    public Cursor getUserData(String modifier){
         SQLiteDatabase DB = this.getWritableDatabase();
 
         switch (modifier) {
@@ -458,6 +455,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1' AND itemType='Parirala'", null);
             case "FavoriteCount":
                 return DB.rawQuery("Select COUNT(*) from FavoriteTable", null);
+            case "countAllLearned":
+                return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1'", null);
             default:
                 return null;
         }

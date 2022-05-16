@@ -1,35 +1,23 @@
 package com.artemis.ispeaksigns;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.opencv.android.OpenCVLoader;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -71,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
                 Date currentTime = Calendar.getInstance().getTime();
                 String tempCurrentDate = currentTime.toString();
                 String currentDate = tempCurrentDate.substring(0, 10) + tempCurrentDate.substring(29, 34);
-                Cursor getDateCursor = DB.getUserData("", "Splash");
+                Cursor getDateCursor = DB.getUserData("Splash");
 
                 if (getDateCursor.getCount()==0){
                     Toast.makeText(SplashActivity.this, "No value on database found!", Toast.LENGTH_SHORT).show();

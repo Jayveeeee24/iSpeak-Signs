@@ -120,9 +120,19 @@ public class nav_learn extends Fragment {
             learnRecycler.setAdapter(adapter);
 
             for (int i = 0; i < categoryName.length; i++) {
-                learnWordCategoryItems.add(new LearnWordCategoryItem(categoryName[i], categorytype,
-                        itemCount[i] + " na " + categorytype.toLowerCase(),
-                        bgColorsConverted[i], gotoBgColorsConverted[i]));
+                if (categoryName[i].equals("Alpabeto")){
+                    learnWordCategoryItems.add(new LearnWordCategoryItem(categoryName[i], "Letra",
+                            itemCount[i] + " na letra",
+                            bgColorsConverted[i], gotoBgColorsConverted[i]));
+                }else if (categoryName[i].equals("Numero")){
+                    learnWordCategoryItems.add(new LearnWordCategoryItem(categoryName[i], "Bilang",
+                            itemCount[i] + " na bilang",
+                            bgColorsConverted[i], gotoBgColorsConverted[i]));
+                }else{
+                    learnWordCategoryItems.add(new LearnWordCategoryItem(categoryName[i], categorytype,
+                            itemCount[i] + " na " + categorytype.toLowerCase(),
+                            bgColorsConverted[i], gotoBgColorsConverted[i]));
+                }
             }
         }
         else if (categoryType.equals("Parirala"))

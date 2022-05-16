@@ -25,7 +25,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,7 +103,7 @@ public class nav_profile extends Fragment {
         if (getArguments() != null) {
             userName = getArguments().getString("userName");
         }
-        Cursor updateStreakCard = DB.getUserData("", "StreakAvatarCard");
+        Cursor updateStreakCard = DB.getUserData("StreakAvatarCard");
 
         if (updateStreakCard.getCount() == 0){
             Toast.makeText(context, "Ang database ay walang laman, Pakiulit na lamang", Toast.LENGTH_SHORT).show();

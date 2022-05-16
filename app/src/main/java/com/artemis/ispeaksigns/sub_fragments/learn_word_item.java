@@ -146,14 +146,14 @@ public class learn_word_item extends Fragment {
                 dots[i] = new TextView(context);
                 dots[i].setText(Html.fromHtml("&#8226;"));
                 dots[i].setTextSize(35);
-                dots[i].setTextColor(getResources().getColor(R.color.colorDots, null));
+                dots[i].setTextColor(getResources().getColor(R.color.colorPrimary, null));
 
                 wordImageLinear.addView(dots[i]);
             }
         }
 
         if (dots.length > 0 && imagesNo != 1){
-            dots[position].setTextColor(getResources().getColor(R.color.colorPrimary, null));
+            dots[position].setTextColor(getResources().getColor(R.color.colorDots, null));
         }
     }
 

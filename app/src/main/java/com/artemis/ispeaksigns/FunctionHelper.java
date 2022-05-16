@@ -2,27 +2,18 @@ package com.artemis.ispeaksigns;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.artemis.ispeaksigns.R;
 import com.google.android.exoplayer2.ExoPlayer;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class FunctionHelper {
@@ -52,7 +43,7 @@ public class FunctionHelper {
         DBHelper DB = new DBHelper(activity);
         String selectedLanguage = "";
 
-        Cursor getLocaleCursor = DB.getUserData("", "GetLocale");
+        Cursor getLocaleCursor = DB.getUserData("GetLocale");
         if (getLocaleCursor.getCount()==0){
             Toast.makeText(activity, "No value on database found!", Toast.LENGTH_SHORT).show();
         }else{

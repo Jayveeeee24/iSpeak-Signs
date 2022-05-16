@@ -2,6 +2,10 @@
 
 DEBUG NOTES
 
+v1.2.10 5/16
+- moved adding of default value for image number in each item from stand alone to the implementation of item category and type
+- other minor updates to codes
+
 v1.2.9 5/14
 - modified the DbHelper to add, remove and update items in itemtable (sampu in numero, mabuhay in pagbati and lagi akong naririto para sayo in ekspresyon ng pagmamahal respectively)
 - added credit for sign language interpreter in about fragment

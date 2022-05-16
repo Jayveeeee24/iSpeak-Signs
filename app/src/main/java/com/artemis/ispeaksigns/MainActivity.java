@@ -2,8 +2,6 @@ package com.artemis.ispeaksigns;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -29,7 +27,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -382,7 +379,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void getUserStreak(){
 
-        Cursor userDataCursor = DB.getUserData("", "GetNameStreak");
+        Cursor userDataCursor = DB.getUserData("GetNameStreak");
 
         if (userDataCursor.getCount()==0){
             Toast.makeText(this, "No value on database found!", Toast.LENGTH_SHORT).show();

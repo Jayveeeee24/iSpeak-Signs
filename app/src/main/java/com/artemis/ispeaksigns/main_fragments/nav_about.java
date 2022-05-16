@@ -121,7 +121,7 @@ public class nav_about extends Fragment {
             popupAge.setText("Age: 21");
             popupGoal.setText("Aspiring World Class Chef ");
             popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");
-            popupType.setText("Email me at: B");
+            popupType.setText("Email me at: vreianne@gmail.com");
         }
         memberPopup.show();
     }
