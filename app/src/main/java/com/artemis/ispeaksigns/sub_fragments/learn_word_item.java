@@ -85,21 +85,19 @@ public class learn_word_item extends Fragment {
         functionHelper = new FunctionHelper();
         ScrollView learnWordItemParent = view.findViewById(R.id.learn_word_item_parent);
         learnWordItemParent.setNestedScrollingEnabled(false);
-        String audioName = "audio_demo";
-        audio = getResources().getIdentifier(audioName, "raw", context.getPackageName());
-        mediaAudioWord = MediaPlayer.create(context, audio);
         learnWordItemName = view.findViewById(R.id.learn_word_item_name);
         partsOfSpeech = view.findViewById(R.id.parts_of_speech);
         heartItem = view.findViewById(R.id.learn_word_item_favorite);
         howTo = view.findViewById(R.id.learn_word_how_description);
 
-        if (getArguments() != null)
-        {
+        if (getArguments() != null){
             word = getArguments().getString("learn_word_item");
             ((MainActivity) Objects.requireNonNull(getActivity())).collapseToolbar
                     .setTitle(word);
         }
 
+        audio = getResources().getIdentifier(word.toLowerCase(), "raw", context.getPackageName());
+        mediaAudioWord = MediaPlayer.create(context, audio);
         int isLearned = 0;
         String itemCategory = "";
         learnWordItemName.setText(word);
