@@ -46,6 +46,7 @@ public class VideoActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
     LinearLayout youtube_layout;
     RelativeLayout exo_layout;
+    String videoId = "";
 
     boolean isFullScreen = false;
     float speed = 1.0f;
@@ -87,7 +88,18 @@ public class VideoActivity extends AppCompatActivity {
             playExo();
         }else if (videoName.contains("@")){
             videoName = videoName.substring(1);
-            String videoId = "FZ9L7AejW9Q";
+
+            Cursor youtubeIdCursor = DB.getItem(videoName, "getYoutubeId");
+            if (youtubeIdCursor.getCount() == 0){
+                Toast.makeText(this, "No database found!", Toast.LENGTH_SHORT).show();
+            }else{
+                while (youtubeIdCursor.moveToNext()){
+                    videoId = youtubeIdCursor.getString(0);
+                }
+                if (videoId.equals("")){
+                    videoId = "FZ9L7AejW9Q";
+                }
+            }
             youtube_layout.setVisibility(View.VISIBLE);
             exo_layout.setVisibility(View.INVISIBLE);
             youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
@@ -121,6 +133,7 @@ public class VideoActivity extends AppCompatActivity {
                     itemCategory = learnVideoItemCursor.getString(1);
                     itemType = learnVideoItemCursor.getString(2);
                     isLearned = learnVideoItemCursor.getInt(3);
+                    videoId = learnVideoItemCursor.getString(6);
                 }
             }
 
@@ -166,7 +179,7 @@ public class VideoActivity extends AppCompatActivity {
                 }
             }
         });
-        int videoNameConverted = getResources().getIdentifier("video_demo", "raw", getPackageName());
+        int videoNameConverted = getResources().getIdentifier(videoId, "raw", getPackageName());
         Uri videoUrl = Uri.parse("android.resource://" + getPackageName() + "/" + videoNameConverted);
         MediaItem media = MediaItem.fromUri(videoUrl);
         exoPlayer.setMediaItem(media);

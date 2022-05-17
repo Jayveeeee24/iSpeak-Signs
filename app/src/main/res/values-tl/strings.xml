@@ -153,4 +153,11 @@
     <string name="susunod">Susunod</string>
     <string name="tapos">Wakas</string>
 
+
+    <string name="mini_game_all_learned_words">%1$s/131</string>
+    <string name="mini_game_warning">Hindi sapat ang iyong alam na salita! (%1$s/50)\nSubukang tumuklas pa!</string>
+    <string name="mini_game_score_label">MATAAS \nNA \nISKOR</string>
+    <string name="mini_game_play_game_label">MAGLARO</string>
+    <string name="mini_game_how_to_label">Paano maglaro</string>
+
 </resources>

@@ -46,10 +46,10 @@ public class LearnListWordRecyclerAdapter extends RecyclerView.Adapter<LearnList
                 Bundle bundle = new Bundle();
                 bundle.putString("learn_word_item", learnListWordCategoryItems.get(position).getItemName());
                 NavOptions.Builder navBuilder = new NavOptions.Builder();
-                navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
-                        .setExitAnim(R.anim.nav_default_exit_anim)
-                        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-                        .setPopExitAnim(R.anim.nav_default_pop_exit_anim);
+                navBuilder.setEnterAnim(android.R.anim.slide_in_left)
+                        .setExitAnim(android.R.anim.slide_out_right)
+                        .setPopEnterAnim(android.R.anim.slide_in_left)
+                        .setPopExitAnim(android.R.anim.slide_out_right);
                 try {
                     Navigation.findNavController(view).navigate(R.id.action_learn_category_word_to_learn_word_item, bundle, navBuilder.build());
                 }catch (IllegalArgumentException e){

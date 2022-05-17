@@ -155,4 +155,11 @@
     <string name="tapos">Finish</string>
 
 
+
+    <string name="mini_game_all_learned_words">%1$s/131</string>
+    <string name="mini_game_warning">Not enough words learned! (%1$s/50)\nTry learning more!</string>
+    <string name="mini_game_score_label">BEST \nSCORE</string>
+    <string name="mini_game_play_game_label">PLAY GAME</string>
+    <string name="mini_game_how_to_label">How to Play</string>
+
 </resources>

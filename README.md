@@ -2,6 +2,12 @@
 
 DEBUG NOTES
 
+v1.3.1 5/17
+- added database dependency for video resources (offline video and yt id)
+- added strokes for member profiles in about fragment
+- designed loading screen for mini game
+- updated fragment navigation for learn list to learn item from default navigation to slide in/slide out
+
 v1.2.10 5/16
 - moved adding of default value for image number in each item from stand alone to the implementation of item category and type
 - other minor updates to codes

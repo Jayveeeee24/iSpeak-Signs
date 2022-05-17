@@ -93,12 +93,37 @@ public class DBHelper extends SQLiteOpenHelper {
                 "Bibig", "Ilong", "Kamay", "Leeg", "Mata", "Paa", "Tainga", "Ulo",
                 "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
                 "Babae", "Lalaki", "Bakla", "Tomboy",
-                "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Bunso",
-                "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi  sa iyo", "Paalam na sa’yo",
-                "Tulungan nyo ako!", "Nanakawan ako", "Ako ay nawawala", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
-                "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
-                "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Ala sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
-                "Nandito lang ako para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sayo", "Gusto kitang yakapin", "Gusto kita"
+                "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Sanggol",
+                "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi sa iyo", "Paalam na sa’yo",
+                "Tulungan nyo ako!", "Nananakawan ako!", "Ako ay nawawala!", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
+                "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo!", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
+                "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Alas sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
+                "Nandito lang ako para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sa'yo", "Gusto kitang yakapin", "Gusto kita"
+        };
+
+        String[] youtubeId = new String[]{
+                "", "", "", "", "", "", "", //ARAW MG LINGGO
+                "", "", "", "", "", "", "", "", "", "", "", "", //BUWAN
+                "", "", "", "", "", "", "", //LUGAR
+                "", "", "", "", "", "", "", //EMOSYON
+                "0TlXVpqj0nM", "yIsWhpKh8yU", "0qMhUvMQ8V8", "KrBfZi8ogPI", "I5V0zBreaSc", "3DS33WTk7vg", "omFLAedvvAk", "3WuLSCtDp6Y", "CHspfSKx6KM", "vQGBp-Xb6I8", "EOVQBO5TSCs", "1EY21RyefsU", "ZLS4c30jpQY", "fQIOVjkxss4", "5xxOhedo84o", "LdZ_6cJ_5YA", "neaANip8Nq0", "bGVP94FxuxA", "kNI0Gqzaxxw", "KDWV5NItXbc", "", "", "", "", "", "", //ALPABETO
+                "", "", "", "", "", "", "", "", "", "", "", //NUMERO
+                "", "", "", "", "", "", "", //HAYOP
+                "", "", "", "", "", //HUGIS
+                "", "", "", "", "", "", "", //KULAY
+                "", "", "", "", "", "", //PRUTAS
+                "", "", "", "", "", "", "", "", "", "", "", //GULAY
+                "", "", "", "", "", "", "", "", //PARTE NG KATAWAN
+                "", "", "", "", "", "", //TRANSPORTASYON
+                "", "", "", "", //KASARIAN
+                "", "", "", "", "", "", "", //MIYEMBRO NG PAMILYA
+
+                //MGA PARIRALA
+                "kamusta_ka", "magandang_umaga_sa_iyo", "magandang_hapon_sa_iyo", "magandang_gabi_sa_iyo", "paalam_na_sayo",
+                "tulungan_nyo_ako", "nananakawan_ako", "ako_ay_nawawala", "paki_bilisan_po", "anong_lugar_ito", "maaari_bang_humiram_ng_telepono", "paki_tigil_po",
+                "ano_ang_pangalan_mo", "patawarin_mo_ako", "salamat_sa_iyo", "saan_ka_nakatira", "ingat_ka_sa_iyong_patutunguhan", "magandang_araw_sayo", "kain_tayo", "nauunawan_mo_ba_ako", "nasaan_ang_banyo", "nasaan_ang_kusina",
+                "anong_oras_na", "pwede_mo_ba_sabihin_ang_oras", "alam_mo_ba_kung_anong_oras_na", "alas_sais_na_ng_umaga", "alas_dose_na_ng_tanghali", "alas_otso_na_ng_gabi", "magkita_tayo_mamaya", "magkita_tayo_bukas",
+                "nandito_lang_ako_para_sayo", "ikaw_ay_isang_kaakit_akit_na_babae", "siya_ay_may_magandang_mata", "may_paghanga_ako_sayo", "gusto_kitang_yakapin", "gusto_kita"
         };
 
         String[] itemCategory = new String[itemName.length];
@@ -118,6 +143,8 @@ public class DBHelper extends SQLiteOpenHelper {
             }else if (i < 19){
                 itemCategory[i] = "Buwan";
                 itemType[i] = "Salita";
+
+                imagesNo[i] = 2;
             }else if (i < 26){
                 itemCategory[i] = "Lugar";
                 itemType[i] = "Salita";
@@ -209,6 +236,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put("partsOfSpeech", "");
             }
             values.put("imagesNo", imagesNo[i]);
+            values.put("youtubeId", youtubeId[i]);
             DB.insert("ItemTable", null, values);
         }
 
@@ -388,6 +416,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 return DB.rawQuery("Select itemNameWOTD from UserTable WHERE UserID=201810336", null);
             case "getWOTDItem":
                 return DB.rawQuery("Select * from ItemTable WHERE itemType='Salita'", null);
+            case "getYoutubeId":
+                return DB.rawQuery("Select youtubeId from ItemTable WHERE itemName=?", new String[]{value});
             default:
                 return DB.rawQuery("Select * from ItemTable WHERE itemName=?", new String[]{value});
         }
@@ -455,8 +485,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1' AND itemType='Parirala'", null);
             case "FavoriteCount":
                 return DB.rawQuery("Select COUNT(*) from FavoriteTable", null);
-            case "countAllLearned":
-                return DB.rawQuery("Select COUNT(*) FROM ItemTable WHERE isLearned='1'", null);
             default:
                 return null;
         }
