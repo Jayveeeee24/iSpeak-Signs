@@ -122,4 +122,9 @@
             android:id="@+id/action_nav_search_to_learn_category_video"
             app:destination="@id/learn_category_video" />
     </fragment>
+    <activity
+        android:id="@+id/gameScreenActivity"
+        android:name="com.artemis.ispeaksigns.GameScreenActivity"
+        android:label="activity_game_screen"
+        tools:layout="@layout/activity_game_screen" />
 </navigation>

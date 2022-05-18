@@ -57,7 +57,6 @@ public class learn_word_item extends Fragment {
     String word;
 
     private TextView[] dots;
-    private int currentPage;
     private ViewPager wordImageViewPager;
     private LinearLayout wordImageLinear;
 
@@ -164,7 +163,6 @@ public class learn_word_item extends Fragment {
         @Override
         public void onPageSelected(int position) {
             addDotsIndicator(position);
-            currentPage = position;
         }
 
         @Override

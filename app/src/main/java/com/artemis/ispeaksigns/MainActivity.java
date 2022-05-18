@@ -221,15 +221,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         functionHelper.setAppLocale(this);
     }
 
-//    @Override //TODO to be deleted when finalized
-//    protected void onResume() {
-//        super.onResume();
-//        //this function is triggered when the acitivity is resumed
-//        // because the user navigates back in this activity
-//
-//        functionHelper.setAppLocale(this);
-//    }
-
     public void InitializeMenuSetting()
     {
         MenuItem fslWord = navigationView.getMenu().findItem(R.id.nav_fsl_wotd);

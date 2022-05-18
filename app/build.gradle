@@ -11,15 +11,15 @@ android {
         minSdkVersion 23
         targetSdkVersion 32
         versionCode 1
-        versionName "v1.3.1 alpha"
+        versionName "v1.3.2 alpha"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+//            minifyEnabled true
+//            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

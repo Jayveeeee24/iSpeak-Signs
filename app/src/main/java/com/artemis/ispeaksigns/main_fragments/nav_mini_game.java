@@ -84,7 +84,7 @@ public class nav_mini_game extends Fragment {
         miniGamePlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wordsLearned < 50){
+                if (wordsLearned < 1){//TODO CHANGE BACK TO 50
                     isMiniGameLocked.setVisibility(View.VISIBLE);
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                         @Override
@@ -94,16 +94,16 @@ public class nav_mini_game extends Fragment {
                         }
                     },500);
                 }else{
-//                    NavOptions.Builder navBuilder = new NavOptions.Builder();
-//                    navBuilder.setEnterAnim(android.R.anim.slide_in_left)
-//                            .setExitAnim(android.R.anim.slide_out_right)
-//                            .setPopEnterAnim(android.R.anim.slide_in_left)
-//                            .setPopExitAnim(android.R.anim.slide_out_right);
-//                    try {
-//                        Navigation.findNavController(view).navigate(R.id.action_learn_category_word_to_learn_word_item, navBuilder.build());
-//                    }catch (IllegalArgumentException e){
-//                        e.printStackTrace();
-//                    }
+                    NavOptions.Builder navBuilder = new NavOptions.Builder();
+                    navBuilder.setEnterAnim(android.R.anim.fade_in)
+                            .setExitAnim(android.R.anim.fade_out)
+                            .setPopEnterAnim(android.R.anim.fade_in)
+                            .setPopExitAnim(android.R.anim.fade_out);
+                    try {
+                        Navigation.findNavController(view).navigate(R.id.gameScreenActivity, null, navBuilder.build());
+                    }catch (IllegalArgumentException e){
+                        e.printStackTrace();
+                    }
                 }
                 miniGameWarning.setVisibility(View.INVISIBLE);
             }

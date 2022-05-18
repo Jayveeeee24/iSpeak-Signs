@@ -244,6 +244,9 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("create Table IF NOT EXISTS FavoriteTable(itemName TEXT primary key," +
                 " itemType TEXT)");
 
+        //DATABASE FOR FAVORITE TABLE
+        DB.execSQL("create Table IF NOT EXISTS GameTable(userID INTEGER primary key," +
+                " bestScore INTEGER)");
     }
 
     @Override

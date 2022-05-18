@@ -161,5 +161,13 @@
     <string name="mini_game_score_label">MATAAS \nNA \nISKOR</string>
     <string name="mini_game_play_game_label">MAGLARO</string>
     <string name="mini_game_how_to_label">Paano maglaro</string>
+    <string name="time_label">%1$ss</string>
+    <string name="guess_label">Ano kayang senyas ito?</string>
+    <string name="game_screen_category_label">Kategorya: %1$s</string>
+    <string name="pause_game_desc">i-pause ang laro</string>
+    <string name="ang_laro_ay_nakatigil">Ang Laro ay nakatigil</string>
+    <string name="game_resume_label">ituloy</string>
+    <string name="main_menu">main menu</string>
+    <string name="level_label">Level %1$s/%2$s</string>
 
 </resources>

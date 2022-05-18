@@ -50,12 +50,12 @@ public class  objectDetectorClass {
         Interpreter.Options options = new Interpreter.Options();
         gpuDelegate = new GpuDelegate();
         options.addDelegate(gpuDelegate);
-        options.setNumThreads(2);
+        options.setNumThreads(4);
         // loading model
         interpreter=new Interpreter(loadModelFile(assetManager,modelPath),options);
 
         Interpreter.Options options2 = new Interpreter.Options();
-        options2.setNumThreads(4);
+        options2.setNumThreads(2);
         interpreter2 = new Interpreter(loadModelFile(assetManager, classification_model),options2);
 
         recognizeAdd.setOnClickListener(new View.OnClickListener() {

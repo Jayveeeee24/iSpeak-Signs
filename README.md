@@ -2,6 +2,13 @@
 
 DEBUG NOTES
 
+v1.3.2 5/18
+- added an activity for game screen in mini game
+- with pause popup, countdown timer and viewpager
+- added new database table for game Table
+- updated the sign language model to include v3 dataset
+
+
 v1.3.1 5/17 (re-update)
 - added database dependency for video resources (offline video and yt id)
 - added strokes for member profiles in about fragment
