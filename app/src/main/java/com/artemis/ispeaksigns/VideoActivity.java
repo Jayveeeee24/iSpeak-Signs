@@ -81,10 +81,11 @@ public class VideoActivity extends AppCompatActivity {
         videoName = intent.getStringExtra("ItemName");
 
         exoItemName.setText(videoName);
-        if (videoName.equals("CvSU Misyon") || videoName.equals("CvSU Bisyon")){
+        if (videoName.equals("CvSU_Misyon") || videoName.equals("CvSU_Bisyon")){
             videoItemFavorite.setEnabled(false);
             videoItemFavorite.setVisibility(View.INVISIBLE);
 
+            videoId = videoName.toLowerCase();
             playExo();
         }else if (videoName.contains("@")){
             videoName = videoName.substring(1);
@@ -264,6 +265,7 @@ public class VideoActivity extends AppCompatActivity {
     {
 
         if (youtube_layout.getVisibility() == View.VISIBLE){
+            youTubePlayerView.release();
             super.onBackPressed();
         }
         //if user is in landscape mode we turn to portriat mode first then we can exit the app.

@@ -56,7 +56,7 @@ public class nav_cvsu extends Fragment {
         cvsuVideoViewLayout = view.findViewById(R.id.cvsu_videoViewLayout);
 
         type_selected = "mission";
-        videoName = "CvSU Misyon";
+        videoName = "CvSU_Misyon";
 
         InitializeDesign();
         InitializeOnClick();
@@ -64,7 +64,7 @@ public class nav_cvsu extends Fragment {
     }
 
     private void InitializeDesign(){
-        videoPath = "video_demo";
+        videoPath = videoName.toLowerCase();
         int videoNameConverted = getResources().getIdentifier(videoPath, "raw", context.getPackageName());
         Uri localUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + videoNameConverted);
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
@@ -101,7 +101,7 @@ public class nav_cvsu extends Fragment {
                 cvsuVision.setBackgroundResource(android.R.color.transparent);
                 cvsuVision.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 type_selected = "mission";
-                videoName = "CvSU Misyon";
+                videoName = "CvSU_Misyon";
                 cvsuText.setText(getResources().getString(R.string.cvsu_text_mission));
                 cvsuLabel.setText(getResources().getString(R.string.cvsu_label_mission));
             }
@@ -118,7 +118,7 @@ public class nav_cvsu extends Fragment {
                 cvsuMission.setBackgroundResource(android.R.color.transparent);
                 cvsuMission.setTextColor(getResources().getColor(R.color.gray_text_color, null));
                 type_selected = "vision";
-                videoName = "CvSU Bisyon";
+                videoName = "CvSU_Bisyon";
                 cvsuLabel.setText(getResources().getString(R.string.cvsu_label_vision));
                 cvsuText.setText(getResources().getString(R.string.cvsu_text_vision));
             }

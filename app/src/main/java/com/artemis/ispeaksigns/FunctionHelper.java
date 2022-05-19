@@ -193,8 +193,10 @@ public class FunctionHelper {
 
         String wotdItem = "";
         String itemType = "";
+        String howTo = "";
         String[] tempWotdItem = new String[131];
         String[] tempItemType = new String[131];
+        String[] temphowTo = new String[131];
 
 
         if (getWOTDCursor.getCount() != 0){
@@ -209,14 +211,16 @@ public class FunctionHelper {
             while (getAllItemCursor.moveToNext()){
                 tempWotdItem[i] = getAllItemCursor.getString(0);
                 tempItemType[i] = getAllItemCursor.getString(2);
+                temphowTo[i] = getAllItemCursor.getString(7);
                 i++;
             }
 
             wotdItem = tempWotdItem[index];
             itemType = tempItemType[index];
+            howTo = temphowTo[index];
         }
 
-        return new String[]{wotdItem, itemType};
+        return new String[]{wotdItem, itemType, howTo};
     }
 
 }

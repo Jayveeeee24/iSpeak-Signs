@@ -49,6 +49,7 @@ public class nav_home extends Fragment  {
 
     String wotdItem = "";
     String itemType = "";
+    String howTo = "";
     int isFavorite = 0;
 
     @Override
@@ -90,6 +91,8 @@ public class nav_home extends Fragment  {
         String[] getFavorite = functionHelper.getWordOfTheDay(context);
         wotdItem = getFavorite[0];
         itemType = getFavorite[1];
+        howTo = getFavorite[2];
+
         Cursor learnWordFavoriteCursor = DB.getItem(wotdItem, "getItemHeart");
 
         if (learnWordFavoriteCursor.getCount() == 0){
@@ -100,6 +103,8 @@ public class nav_home extends Fragment  {
             isFavorite = 1;
         }
         txtHomeFslName.setText(wotdItem);
+        txtHomeFslDesc.setText(howTo);
+
     }
 
     private void InitializeRecyclerView(){

@@ -41,7 +41,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             "Watch FSL video phrases",
             "Save favorite words or phrases",
             "Track your progress in each category",
-            "Recognize words with FSL Recognition"
+            "Recognize signs with FSL Recognition"
     };
     public String[] title_filipino = new String[]{
             "Tumuklas ng mga FSL na salita",
@@ -52,19 +52,19 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
     };
 
     public String[] descriptions_english = new String[]{
-            "You can learn words and their equivalent FSL demonstration in the right way.",
+            "You can learn words and their equivalent Filipino Sign Language (FSL) demonstration in the right way.",
             "You can watch how to sign the most common expressions with video phrase demonstration.",
-            "You can save and review words and phrases for an easy access anytime and anywhere!",
-            "Track all your progress on each category in percentage to plan your learning!",
-            "Recognize some words using the FSL Recognition feature with Finger Spelling to aid your FSL learning journey!"
+            "You can save and review words and phrases with an easy click to the heart button for an easy access anytime and anywhere.",
+            "Track all your progress on each words and phrase that you've learned in each category.",
+            "Recognize some FSL letters and words using your camera with the FSL Recognition Technology"
     };
 
     public String[] descriptions_filipino = new String[]{
-            "Maaaring matutunan at makita kung paano ang tamang paraan ng bawat FSL na salita.",
+            "Maaaring matutunan at makita kung paano ang tamang paraan ng bawat Filipino Sign Language (FSL) na salita.",
             "Maaaring manood kung paano gawin ang mga pinakakaraniwang ekspresyong parirala.",
-            "Maaaring i-save ang mga paboritong salita o parirala upang madali ang pag-access kahit kailan at kahit saan!",
-            "Maaaring subaybayan ang iyong progreso sa bawat kategorya at piliin ang kung ano ang iyong pagbubutihin",
-            "Maaaring kilalanin ang senyas gamit ang iyong kamera sa pamamagitan ng FSL Rekognisyon"
+            "Maaaring i-save ang mga paboritong salita o parirala sa pamamagitan ng pagclick sa puso upang madali ang pag-access kahit kailan at kahit saan.",
+            "Maaaring subaybayan ang iyong progreso sa mga salita o parirala na iyong napag-aralan sa bawat kategorya.",
+            "Maaaring kilalanin ang senyas gamit ang iyong kamera sa pamamagitan ng FSL Recognition Technology"
     };
 
     @Override

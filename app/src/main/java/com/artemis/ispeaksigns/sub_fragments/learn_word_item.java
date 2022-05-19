@@ -53,6 +53,7 @@ public class learn_word_item extends Fragment {
     int isFavorite;
     String itemType = "";
     int imagesNo = 0;
+    String stringHowTo = "";
 
     String word;
 
@@ -108,9 +109,11 @@ public class learn_word_item extends Fragment {
                 isLearned = learnWordItemCursor.getInt(3);
                 partsOfSpeech.setText(learnWordItemCursor.getString(4));
                 imagesNo = learnWordItemCursor.getInt(5);
+                stringHowTo = learnWordItemCursor.getString(7);
             }
         }
 
+        howTo.setText(stringHowTo);
 
         if (isLearned == 0){
             functionHelper.updateisLearnedProgress(context, itemCategory, word);
@@ -241,6 +244,6 @@ public class learn_word_item extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        mediaAudioWord.stop();
+        mediaAudioWord.release();
     }
 }

@@ -46,22 +46,9 @@
             android:textColor="@color/colorSecondary"
             android:layout_toEndOf="@id/recognize_app_name"
             android:textSize="8sp"
-            android:layout_toStartOf="@id/flip_camera"
             android:fontFamily="@font/gotham_book_regular"
             android:textStyle="bold"
             tools:ignore="SmallSp" />
-
-        <ImageView
-            android:id="@+id/flip_camera"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_switch_camera"
-            android:layout_alignParentEnd="true"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_vertical"
-            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 

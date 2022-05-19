@@ -2,6 +2,16 @@
 
 DEBUG NOTES
 
+v1.3.3 5/19
+- removed selfie camera for recognize activity
+- CONTENT RESOURCES
+- implemented all image resource
+- implemented all audio resource
+- implemented all howTo resource
+- implemented all video resource for video phrases including mission and vision
+- added gad logo for cavite state university
+
+
 v1.3.2 5/18
 - added an activity for game screen in mini game
 - with pause popup, countdown timer and viewpager

@@ -40,9 +40,6 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
 
-    private ImageView flipCamera;
-    private ImageView recognizeInfo;
-    private int cameraId = 0;
     private objectDetectorClass objectDetectorClass;
 
     private CardView recognizeRemove;
@@ -79,15 +76,9 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         }
         setContentView(R.layout.activity_recognize);
 
-        flipCamera = findViewById(R.id.flip_camera);
         recognizeAdd = findViewById(R.id.recognize_add);
         recognizeRemove = findViewById(R.id.recognize_remove);
         recognizeText = findViewById(R.id.recognized_text);
-
-        flipCamera.setOnClickListener(view -> {
-            view.startAnimation(AnimationUtils.loadAnimation(RecognizeActivity.this, R.anim.image_button_clicked));
-            swapCamera();
-        });
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.recognize_camera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -157,21 +148,9 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
 
-        if (cameraId == 1){
-            Core.flip(mRgba, mRgba, 1);
-            Core.flip(mGray, mGray, 1);
-        }
-
         return objectDetectorClass.recognizeImage(mRgba);
     }
 
-    private void swapCamera(){
-        cameraId = cameraId^1;
-        Log.i("CHECK THE CAMERA INDEX", Integer.toString(cameraId));
-        mOpenCvCameraView.disableView();
-        mOpenCvCameraView.setCameraIndex(cameraId);
-        mOpenCvCameraView.enableView();
-    }
 
 
 }
