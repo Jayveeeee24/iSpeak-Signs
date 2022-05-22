@@ -393,16 +393,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE FOR GAME TABLE
         DB.execSQL("create Table IF NOT EXISTS GameTable(userID INTEGER primary key," +
-                " bestScore INTEGER)");
+                " bestScore INTEGER, levelReached INTEGER)");
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("userID", 201810336);
         contentValues.put("bestScore", 0);
+        contentValues.put("levelReached", 0);
         DB.insert("GameTable", null, contentValues);
 
-        //DATABASE FOR PASTANSWER TABLE
-        DB.execSQL("create Table PastAnswer(itemName TEXT)");
-        DB.delete("PastAnswer", null, null);
     }
 
     @Override
@@ -411,20 +409,6 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists ItemTable");
         DB.execSQL("drop Table if exists UserTable");
         DB.execSQL("drop Table if exists GameTable");
-        DB.execSQL("drop Table if exists PastAnswer");
-    }
-
-    public Cursor getPastAnswer(){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        return DB.rawQuery("Select * from PastAnswer", null);
-    }
-
-    public boolean InsertPastAnswer(String itemName){
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("itemName", itemName);
-        long result = DB.insert("PastAnswer", null, contentValues);
-        return result != -1;
     }
 
     public Cursor getHighScore(){
@@ -432,11 +416,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return DB.rawQuery("Select * from GameTable where userID=201810336", null);
     }
 
-    public boolean updateScore(int score){
+    public boolean updateScore(int score, int levelReached){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("bestScore", score);
-        try (Cursor cursor = DB.rawQuery("Select bestScore from GameTable where userID=201810336", null)) {
+        values.put("levelReached", levelReached);
+        try (Cursor cursor = DB.rawQuery("Select bestScore, levelReached from GameTable where userID=201810336", null)) {
             if (cursor.getCount() > 0) {
                 long result = DB.update("GameTable", values, "userID=201810336", null);
                 return result != -1;

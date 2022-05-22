@@ -96,7 +96,7 @@
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/level_complete_sub_label"

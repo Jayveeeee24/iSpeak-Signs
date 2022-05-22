@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,11 +35,13 @@ public class nav_mini_game extends Fragment {
     Context context;
     DBHelper DB;
 
-    TextView miniGameTotalWords, miniGameBestScore, miniGameWarning;
+    TextView miniGameTotalWords, miniGameBestScore, miniGameWarning, bestScoreLabel;
     ImageView isMiniGameLocked;
-    CardView miniGamePlayGame;
+    CardView miniGamePlayGame, bestScoreCard;
 
     int wordsLearned = 0;
+    int bestScore = 0;
+    int levelReached = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +61,8 @@ public class nav_mini_game extends Fragment {
         miniGameWarning = view.findViewById(R.id.mini_game_warning);
         isMiniGameLocked = view.findViewById(R.id.is_mini_game_locked);
         miniGamePlayGame = view.findViewById(R.id.mini_game_play_game);
+        bestScoreCard = view.findViewById(R.id.bestScoreCard);
+        bestScoreLabel = view.findViewById(R.id.best_score_label);
 
         RelativeLayout miniGameLayout = view.findViewById(R.id.mini_game_layout);
         miniGameLayout.setNestedScrollingEnabled(false);
@@ -79,6 +84,36 @@ public class nav_mini_game extends Fragment {
                 wordsLearned = wordDiscoveredCursor.getInt(0);
             }
         }
+
+        Cursor getHighScoreCursor = DB.getHighScore();
+
+        if (getHighScoreCursor.getCount() != 0){
+            while (getHighScoreCursor.moveToNext()){
+                bestScore = getHighScoreCursor.getInt(1);
+                levelReached = getHighScoreCursor.getInt(2);
+            }
+        }
+
+        miniGameBestScore.setText(String.valueOf(bestScore));
+        bestScoreLabel.setText(getResources().getString(R.string.mini_game_score_label));
+        bestScoreCard.setOnClickListener(new View.OnClickListener() {
+            int isFront = 0;
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
+                if (isFront == 0){
+                    miniGameBestScore.setText(String.valueOf(levelReached));
+                    bestScoreLabel.setText(getResources().getString(R.string.mini_game_level_reach_label));
+                    isFront = 1;
+                }else if (isFront == 1){
+                    miniGameBestScore.setText(String.valueOf(bestScore));
+                    bestScoreLabel.setText(getResources().getString(R.string.mini_game_score_label));
+                    isFront = 0;
+                }
+            }
+        });
+
+
 
         miniGameTotalWords.setText(getResources().getString(R.string.mini_game_all_learned_words, Integer.toString(wordsLearned)));
         miniGamePlayGame.setOnClickListener(new View.OnClickListener() {
@@ -108,5 +143,12 @@ public class nav_mini_game extends Fragment {
                 miniGameWarning.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        InitializeDesign();
     }
 }

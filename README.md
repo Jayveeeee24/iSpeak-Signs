@@ -2,6 +2,14 @@
 
 DEBUG NOTES
 
+v1.3.5 5/23
+- moved the life label from below the level indicator to below the time
+- removed dependency for past answers in the database and migrated to local storage in variables
+- added a new value for gametable(level reached)
+- updated the scoring function in functionHelper
+- added highScore update and level reached in nav_mini_game
+
+
 v1.3.4 5/22
 - Game Mechanics: added lives or tries system
 - modified the choices layout from linear to grid and changed its implementation

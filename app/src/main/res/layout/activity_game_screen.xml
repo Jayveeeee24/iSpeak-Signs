@@ -61,6 +61,30 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_menu_favorites"
+                    android:tint="#FF3400"/>
+
+                <TextView
+                    android:id="@+id/life_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/life_label"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,29 +124,6 @@
                     android:textColor="@color/white"
                     android:fontFamily="@font/nunito_bold"
                     android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/level_label"
-                    android:layout_marginTop="2dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_menu_favorites"
-                        android:tint="@color/tulip"/>
-
-                    <TextView
-                        android:id="@+id/life_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/life_label"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"/>
-
-                </LinearLayout>
 
             </RelativeLayout>
 

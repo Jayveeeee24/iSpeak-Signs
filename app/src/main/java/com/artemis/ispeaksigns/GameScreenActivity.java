@@ -52,7 +52,7 @@ public class GameScreenActivity extends AppCompatActivity {
     boolean isMainMenu = false;
 
     String[] choices;
-    String[] pastAnswers;
+    String[] pastAnswers = new String[] {"", "", "", "", "", "", "", "", "", ""};
     String answer = "";
     int imagesNo = 0;
     int isLearned = 0;
@@ -191,33 +191,24 @@ public class GameScreenActivity extends AppCompatActivity {
         gamePause.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(100, 0, 0, 0)));
         gamePause.setCanceledOnTouchOutside(false);
         gamePause.setCancelable(false);
-        gamePauseGlobal = gamePause;
         final CardView miniGameResume = gamePause.findViewById(R.id.mini_game_resume);
         final CardView miniGameMainMenu = gamePause.findViewById(R.id.mini_game_main_menu);
 
-        miniGamePause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gamePause.show();
-                countDownTimer.cancel();
-            }
+        miniGamePause.setOnClickListener(view -> {
+            gamePause.show();
+            countDownTimer.cancel();
         });
 
-        miniGameResume.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gamePause.dismiss();
-                countDownTimer.start();
-            }
+        miniGameResume.setOnClickListener(view -> {
+            gamePause.dismiss();
+            countDownTimer.start();
         });
 
-        miniGameMainMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isMainMenu = true;
-                onBackPressed();
-            }
+        miniGameMainMenu.setOnClickListener(view -> {
+            isMainMenu = true;
+            onBackPressed();
         });
+
 
         setUpGame();
     }
@@ -282,84 +273,34 @@ public class GameScreenActivity extends AppCompatActivity {
 
         }
         shuffleChoices(allWords);
-
         for (int i = 0; i < 4; i++){
             choices[i] = allWords[i];
         }
-
         answer = getItem(choices.length, choices);
-        //UNTIL HERE, EVERYTHING WORKS EXCEPT FOR THE PAST ANSWERS PART
 
-        Cursor getPastAnswer = DB.getPastAnswer();
-        pastAnswers = new String[] {"", "", "", "", "", "", "", "", "", ""};
-
-        boolean isPassed = false;
-        int lastIndex = 0;
-
-        if (getPastAnswer.getCount() == 0){
-            boolean insertNewPastAnswer = DB.InsertPastAnswer(answer);
-            if (insertNewPastAnswer){
-                Log.i("BAGONG INSERT", "Insert New Past answer success");
-            }else{
-                Log.i("BAGONG INSERT", "Insert New Past answer failed");
-            }
-            pastAnswers[0] = answer;
-
-        }else{
-            int i = 0;
-            while (getPastAnswer.moveToNext()){
-                pastAnswers[i] = getPastAnswer.getString(0);
-                i++;
-            }
-
-            Log.i("PRESENT_ANSWER", answer);
-            for (int j = 0; j < pastAnswers.length; j++){
-                if (pastAnswers[j].equals(answer) && !pastAnswers[j].equals("")){
-                    SetUpDesign();
-                }else{
-                    isPassed = true;
-                    if (pastAnswers[j].equals("")){
-                        lastIndex = j;
-                        break;
-                    }
-                }
-                Log.i("PAST_ANSWER", pastAnswers[j]);
+        Log.i("PRESENT_ANSWER", answer);
+        for (int j = 0; j < pastAnswers.length; j++){//THIS CHECKS IF ALL PAST ANSWERS ARE NOT THE SAME WITH THE CURRENT ANSWER
+            if (pastAnswers[j].toLowerCase().equals(answer.toLowerCase())){
+                Log.i("PAST_ANSWER", "ULIT ULI");
+                SetUpDesign();
+                break;
             }
         }
 
-        if (pastAnswers[9].equals("") && isPassed){
-            boolean insertNewPastAnswer = DB.InsertPastAnswer(answer);
-            if (insertNewPastAnswer){
-                Log.i("LUMANG INSERT", "Insert New Past answer success");
-            }else{
-                Log.i("LUMANG INSERT", "Insert New Past answer failed");
-            }
-            pastAnswers[lastIndex] = answer;
-        }else if (!pastAnswers[9].equals("")){
-            Log.i("PAST_ANSWER_FULL", "POTA PUNO NA");
+        pastAnswers[currentLevel-1] = answer;
+
+        //WILL DELETE LATER
+        for (int i = 0; i < pastAnswers.length; i++){
+            Log.i("NEW_PAST_ANSWERS", pastAnswers[i]);
         }
 
         setUpImage();
-
-        //WILL DELETE LATER
-        for (String pastAnswer : pastAnswers) {
-            Log.i("NEW_PAST_ANSWER", pastAnswer);
-        }
-
-        for (String choice : choices) {
-            Log.i("OLD_CHOICE", choice);
-        }
 
         //LEGEND:
         //the current answer is (answer) variable
         //the current choices are in (choices) array
         //all of the past answers are in pastAnswers array
         shuffleChoices(choices);
-
-        for (String choice : choices) {
-            Log.i("NEW_CHOICE", choice);
-        }
-
         setChoices(choices);
 
     }
@@ -406,10 +347,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private void checkValidate(TextView textView){
         if (textView.getText().toString().toLowerCase().equals(answer.toLowerCase())){
-            Toast.makeText(this, "TAMAAAAA", Toast.LENGTH_SHORT).show();
             setUpResultPopUp(true);
         }else{
-            Toast.makeText(this, "MALIIIII", Toast.LENGTH_SHORT).show();
             setUpResultPopUp(false);
         }
     }
@@ -460,7 +399,7 @@ public class GameScreenActivity extends AppCompatActivity {
             gameResultLayout.setBackgroundResource(R.drawable.mini_game_bg3);
             levelCompleteLabel.setTextColor(getResources().getColor(R.color.golden_puppy, null));
             levelCompleteSubLabel.setText("");
-            score = score + functionHelper.getTimeScore(currentLevel, counter2, timePerLevel)[1];
+            score = score + functionHelper.getTimeScore(currentLevel, counter2, timePerLevel);
             miniGameScore.setText(String.valueOf(score));
             if (currentLevel < 10){
                 //IF CURRENT LEVEL IS LESS THAN 10 BUT THE ANSWER IS CORRECT
@@ -487,7 +426,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 //GET THE HIGH SCORE
                 if (functionHelper.getHighScore(this) < score){
                     levelCompleteLabel.setText("New HIGH SCORE!");
-                    boolean updateScore = DB.updateScore(score);
+                    boolean updateScore = DB.updateScore(score, currentLevel);
                     if (updateScore){
                         Log.i("UPDATE HIGH SCORE", "SUCCESS");
                     }else{
@@ -517,7 +456,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
                 if (functionHelper.getHighScore(this) < score){
                     levelCompleteLabel.setText("New HIGH SCORE!");
-                    boolean updateScore = DB.updateScore(score);
+                    boolean updateScore = DB.updateScore(score, currentLevel);
                     if (updateScore){
                         Log.i("UPDATE HIGH SCORE", "SUCCESS");
                     }else{
@@ -532,7 +471,7 @@ public class GameScreenActivity extends AppCompatActivity {
             }else{
                 //IF PLAYER HAS LIFE BUT ANSWER IS WRONG
 
-                if (currentLevel < 10){
+                if (currentLevel < 10){//if current level is less than 10 or if the game is not finished
                     levelCompleteLabel.setText("You are wrong!" + "\nLives left: " + life);
                     nextLevelLabel.setText("Level " + (currentLevel + 1));
                     counter2 = timePerLevel[currentLevel];
@@ -549,7 +488,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     if (functionHelper.getHighScore(this) < score){
                         levelCompleteLabel.setText("New HIGH SCORE!");
-                        boolean updateScore = DB.updateScore(score);
+                        boolean updateScore = DB.updateScore(score, currentLevel);
                         if (updateScore){
                             Log.i("UPDATE HIGH SCORE", "SUCCESS");
                         }else{
@@ -584,9 +523,5 @@ public class GameScreenActivity extends AppCompatActivity {
             super.onBackPressed();
         }
 
-        if (!gamePauseGlobal.isShowing() && !isMainMenu){
-            gamePauseGlobal.show();
-            countDownTimer.cancel();
-        }
     }
 }

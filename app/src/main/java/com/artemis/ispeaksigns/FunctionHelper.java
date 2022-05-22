@@ -76,14 +76,14 @@ public class FunctionHelper {
         }
     }
 
-    public int[] getTimeScore(int level, int time, int[] timePerLevel){
+    public int getTimeScore(int level, int time, int[] timePerLevel){
         int[] maxScore = new int[]{150, 250, 350, 450, 550, 650, 750, 850, 950, 1050};
         int score;
 
-        time = time * 100/timePerLevel[level];
-        score = (int)((float)maxScore[level] * ((float)time/100.0f));
+        time = time * 100/timePerLevel[level-1];
+        score = (int)((float)maxScore[level-1] * ((float)time/100.0f));
 
-        return new int[]{timePerLevel[level+1], score};
+        return score;
     }
 
     public int getHighScore(Context context){

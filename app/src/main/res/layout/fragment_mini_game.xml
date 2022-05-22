@@ -79,11 +79,14 @@
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bestScoreCard"
             android:layout_width="120dp"
             android:layout_height="120dp"
             app:cardCornerRadius="70dp"
             android:layout_marginTop="100dp"
-            app:cardElevation="5dp"
+            app:cardElevation="10dp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_gravity="center_horizontal">
 
             <LinearLayout
@@ -103,6 +106,7 @@
                     android:textSize="25sp" />
 
                 <TextView
+                    android:id="@+id/best_score_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
