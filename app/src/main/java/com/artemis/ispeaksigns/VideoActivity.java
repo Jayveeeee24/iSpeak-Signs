@@ -97,7 +97,7 @@ public class VideoActivity extends AppCompatActivity {
                 while (youtubeIdCursor.moveToNext()){
                     videoId = youtubeIdCursor.getString(0);
                 }
-                if (videoId.equals("")){
+                if (videoId.toLowerCase().equals(videoName.toLowerCase())){
                     videoId = "FZ9L7AejW9Q";
                 }
             }
@@ -269,8 +269,7 @@ public class VideoActivity extends AppCompatActivity {
             super.onBackPressed();
         }
         //if user is in landscape mode we turn to portriat mode first then we can exit the app.
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             bt_fullscreen.performClick();
         }
         else super.onBackPressed();
@@ -308,8 +307,6 @@ public class VideoActivity extends AppCompatActivity {
 
         if (exo_layout.getVisibility() == View.VISIBLE){
             exoPlayer.pause();
-        }else{
-            youTubePlayerView.release();
         }
     }
 

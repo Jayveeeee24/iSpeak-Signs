@@ -83,8 +83,7 @@ public class SplashActivity extends AppCompatActivity {
                         Log.i("SplashActivity", "New Word Of the Day update failed");
                     }
 
-                    if (checkDate)
-                    {//check if the date is inserted
+                    if (checkDate){//check if the date is inserted
                         Log.i("ETO OLD DATE", oldDate);
                         Log.i("ETO NEW DATE", currentDate);
                         Log.i("DATE", "UPDATE SUCCESS");

@@ -100,28 +100,30 @@ public class nav_about extends Fragment {
         final TextView popupGoal = (TextView) memberPopup.findViewById(R.id.popup_goal);
         final TextView popupStrength = (TextView) memberPopup.findViewById(R.id.popup_strength);
 
-        if (name.equals("John Bernard Tinio")){
-            popupName.setText(name);
-            popupAge.setText("Age: 22");
-            popupGoal.setText("Aspiring Software Engineer");
-            popupStrength.setText("\"What if one day you woke up and you were a potato salad\"");
-            popupType.setText("Email me at: johnbernard.tinio@cvsu.edu.ph");
-        }
-        else if (name.equals("Marie Ann Karen De Guzman")){
-            popupName.setText(name);
-            popupImage.setImageResource(R.drawable.meann_profile);
-            popupAge.setText("Age: 21");
-            popupGoal.setText("Aspiring Graphic Artist");
-            popupStrength.setText("\"Everything happens for a reason\"");
-            popupType.setText("Email me at: marieannkaren@gmail.com");
-        }
-        else if (name.equals("Rei Anne P. Velasco")){
-            popupName.setText(name);
-            popupImage.setImageResource(R.drawable.reianne_profile);
-            popupAge.setText("Age: 21");
-            popupGoal.setText("Aspiring World Class Chef ");
-            popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");
-            popupType.setText("Email me at: vreianne@gmail.com");
+        switch (name) {
+            case "John Bernard Tinio":
+                popupName.setText(name);
+                popupAge.setText("Age: 22");
+                popupGoal.setText("Aspiring Software Engineer");
+                popupStrength.setText("\"What if one day you woke up and you were a potato salad\"");
+                popupType.setText("Email me at: johnbernard.tinio@cvsu.edu.ph");
+                break;
+            case "Marie Ann Karen De Guzman":
+                popupName.setText(name);
+                popupImage.setImageResource(R.drawable.meann_profile);
+                popupAge.setText("Age: 21");
+                popupGoal.setText("Aspiring Graphic Artist");
+                popupStrength.setText("\"Everything happens for a reason\"");
+                popupType.setText("Email me at: marieannkaren@gmail.com");
+                break;
+            case "Rei Anne P. Velasco":
+                popupName.setText(name);
+                popupImage.setImageResource(R.drawable.reianne_profile);
+                popupAge.setText("Age: 21");
+                popupGoal.setText("Aspiring World Class Chef ");
+                popupStrength.setText("\"The journey of a thousand miles begins with every single step, so start walking\"");
+                popupType.setText("Email me at: vreianne@gmail.com");
+                break;
         }
         memberPopup.show();
     }
@@ -137,23 +139,25 @@ public class nav_about extends Fragment {
         final TextView logoSubname = (TextView) logoPopup.findViewById(R.id.logo_subname);
         final TextView logoDesc = (TextView) logoPopup.findViewById(R.id.logo_desc);
 
-        if (name.equals("Gender and Development Unit")){
-            logoName.setText(name);
-            logoImage.setImageResource(R.drawable.gad_logo);
-            logoSubname.setText("CvSU-CCC GAD");
-            logoDesc.setText("\"Gender Equality is a human fight, not a female fight\"");
-        }
-        else if (name.equals("iSpeak Signs")){
-            logoName.setText(name);
-            logoImage.setImageResource(R.drawable.ic_ispeak_sign_logo);
-            logoSubname.setText("Filipino Sign Language Learning Application");
-            logoDesc.setText("\"Learning should be accessible, anywhere\"");
-        }
-        else if (name.equals("Cavite State University")){
-            logoName.setText(name);
-            logoImage.setImageResource(R.drawable.cvsu_logo);
-            logoSubname.setText("Cavite City Campus");
-            logoDesc.setText("\"Truth, Excellence, and Service\"");
+        switch (name) {
+            case "Gender and Development Unit":
+                logoName.setText(name);
+                logoImage.setImageResource(R.drawable.gad_logo2);
+                logoSubname.setText("CvSU-CCC GAD");
+                logoDesc.setText("\"Gender Equality is a human fight, not a female fight\"");
+                break;
+            case "iSpeak Signs":
+                logoName.setText(name);
+                logoImage.setImageResource(R.drawable.ic_ispeak_sign_logo);
+                logoSubname.setText("Filipino Sign Language Learning Application");
+                logoDesc.setText("\"Learning should be accessible, anywhere\"");
+                break;
+            case "Cavite State University":
+                logoName.setText(name);
+                logoImage.setImageResource(R.drawable.cvsu_logo);
+                logoSubname.setText("Cavite City Campus");
+                logoDesc.setText("\"Truth, Excellence, and Service\"");
+                break;
         }
         logoPopup.show();
     }

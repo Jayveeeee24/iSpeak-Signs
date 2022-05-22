@@ -79,25 +79,46 @@ public class DBHelper extends SQLiteOpenHelper {
                 " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT, imagesNo INTEGER, youtubeId TEXT, howTo TEXT)");
 
         String[] itemName = new String[]{
+                //ARAW NG LINGGO
                 "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado", "Linggo",
+                //MGA BUWAN
                 "Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre",
+                //LUGAR
                 "Bahay", "Botika", "Ospital",  "Paaralan", "Palengke", "Parke", "Simbahan",
+                //EMOSYON
                 "Galit", "Gulat", "Hiya", "Lungkot", "Saya", "Takot", "Tuwa",
+                //ALPABETO
                 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                //NUMERO
                 "Sero", "Isa", "Dalawa", "Tatlo", "Apat", "Lima", "Anim", "Pito", "Walo", "Siyam", "Sampu",
+                //HAYOP
                 "Aso", "Ahas", "Ibon", "Isda", "Palaka", "Pusa", "Unggoy",
+                //HUGIS
                 "Bilog", "Bituin", "Parihaba", "Parisukat", "Tatsulok",
+                //KULAY
                 "Berde", "Bughaw", "Dilaw", "Itim", "Lila", "Pula", "Puti",
+                //PRUTAS
                 "Buko", "Mansanas", "Mangga", "Pakwan", "Pinya", "Saging",
+                //GULAY
                 "Bawang", "Kalabasa", "Kamatis", "Patatas", "Petsay", "Pipino", "Repolyo", "Sibuyas", "Sili", "Sitaw", "Talong",
+                //PARTE NG KATAWAN
                 "Bibig", "Ilong", "Kamay", "Leeg", "Mata", "Paa", "Tainga", "Ulo",
+                //TRANSPORTASYON
                 "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
+                //KASARIAN
                 "Babae", "Lalaki", "Bakla", "Tomboy",
+                //MIYEMBRO NG PAMILYA
                 "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Sanggol",
+
+                //PAGBATI
                 "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi sa iyo", "Paalam na sa’yo",
+                //PANG-EMERGENCY
                 "Tulungan nyo ako!", "Nananakawan ako!", "Ako ay nawawala!", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
+                //PANGKOMUNIKASYON
                 "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo!", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
+                //EKSPRESYON NG ORAS
                 "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Alas sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
+                //EKSPRESYON NG PAGMAMAHAL
                 "Nandito lang ako para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sa'yo", "Gusto kitang yakapin", "Gusto kita"
         };
 
@@ -142,21 +163,36 @@ public class DBHelper extends SQLiteOpenHelper {
         };
 
         String[] youtubeId = new String[]{
-                "", "", "", "", "", "", "", //ARAW MG LINGGO
-                "", "", "", "", "", "", "", "", "", "", "", "", //BUWAN
-                "", "", "", "", "", "", "", //LUGAR
-                "", "", "", "", "", "", "", //EMOSYON
-                "0TlXVpqj0nM", "yIsWhpKh8yU", "0qMhUvMQ8V8", "KrBfZi8ogPI", "I5V0zBreaSc", "3DS33WTk7vg", "omFLAedvvAk", "3WuLSCtDp6Y", "CHspfSKx6KM", "vQGBp-Xb6I8", "EOVQBO5TSCs", "1EY21RyefsU", "ZLS4c30jpQY", "fQIOVjkxss4", "5xxOhedo84o", "LdZ_6cJ_5YA", "neaANip8Nq0", "bGVP94FxuxA", "kNI0Gqzaxxw", "KDWV5NItXbc", "", "", "", "", "", "", //ALPABETO
-                "", "", "", "", "", "", "", "", "", "", "", //NUMERO
-                "", "", "", "", "", "", "", //HAYOP
-                "", "", "", "", "", //HUGIS
-                "", "", "", "", "", "", "", //KULAY
-                "", "", "", "", "", "", //PRUTAS
-                "", "", "", "", "", "", "", "", "", "", "", //GULAY
-                "", "", "", "", "", "", "", "", //PARTE NG KATAWAN
-                "", "", "", "", "", "", //TRANSPORTASYON
-                "", "", "", "", //KASARIAN
-                "", "", "", "", "", "", "", //MIYEMBRO NG PAMILYA
+                //ARAW NG LINGGO
+                "nMCxbW6sbDs", "1pQch9y9PUQ", "rcRH24YFkQc", "DJpfrYJAC_M", "IZjo1Ahj0Dc", "fXdKxnHpbS8", "WJQBH4YPPAo",
+                //MGA BUWAN
+                "Enero", "Pebrero", "Marso", "j8H0ndK8GGI", "Mayo", "Hunyo", "Hulyo", "q5h4fWB8Des", "Setyembre", "Oktubre", "Nobyembre", "AAat6bjCI60",
+                //LUGAR
+                "Bahay", "Botika", "Ospital",  "Paaralan", "Palengke", "Parke", "Simbahan",
+                //EMOSYON
+                "Galit", "Gulat", "Hiya", "Lungkot", "Saya", "Takot", "Tuwa",
+                //ALPABETO
+                "0TlXVpqj0nM", "yIsWhpKh8yU", "0qMhUvMQ8V8", "KrBfZi8ogPI", "I5V0zBreaSc", "3DS33WTk7vg", "omFLAedvvAk", "3WuLSCtDp6Y", "CHspfSKx6KM", "vQGBp-Xb6I8", "EOVQBO5TSCs", "1EY21RyefsU", "ZLS4c30jpQY", "fQIOVjkxss4", "5xxOhedo84o", "LdZ_6cJ_5YA", "neaANip8Nq0", "bGVP94FxuxA", "kNI0Gqzaxxw", "KDWV5NItXbc", "3kbtMLBwzXA", "4Rm_orGU7Ds", "iX7OVUW2uus", "iEK4hwvYEXQ", "KQ4VzhYLpAs", "05hAeNWWLVU",
+                //NUMERO
+                "QpAUrFo8WfE", "OVexagWF3Rk", "YaFwBJH07Vc", "pwaV_jNkTxQ", "Dad9UrYXvh8", "hc0ExXXcQVI", "bZCQ_6kZ330", "FWr6jl9-wZA", "9LUwtmxri_k", "uPNt2fxMPWA", "BmyJbs_NQpU",
+                //HAYOP
+                "Aso", "Ahas", "Ibon", "Isda", "Palaka", "Pusa", "Unggoy",
+                //HUGIS
+                "Bilog", "Bituin", "Parihaba", "Parisukat", "Tatsulok",
+                //KULAY
+                "Berde", "Bughaw", "Dilaw", "Itim", "Lila", "Pula", "Puti",
+                //PRUTAS
+                "Buko", "Mansanas", "Mangga", "Pakwan", "Pinya", "Saging",
+                //GULAY
+                "Bawang", "Kalabasa", "Kamatis", "Patatas", "Petsay", "Pipino", "Repolyo", "Sibuyas", "Sili", "Sitaw", "Talong",
+                //PARTE NG KATAWAN
+                "Bibig", "Ilong", "Kamay", "Leeg", "Mata", "Paa", "Tainga", "Ulo",
+                //TRANSPORTASYON
+                "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
+                //KASARIAN
+                "Babae", "Lalaki", "Bakla", "Tomboy",
+                //MIYEMBRO NG PAMILYA
+                "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Sanggol",
 
                 //MGA PARIRALA
                 "kamusta_ka", "magandang_umaga_sa_iyo", "magandang_hapon_sa_iyo", "magandang_gabi_sa_iyo", "paalam_na_sayo",
@@ -355,14 +391,59 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("create Table IF NOT EXISTS FavoriteTable(itemName TEXT primary key," +
                 " itemType TEXT)");
 
-        //DATABASE FOR FAVORITE TABLE
+        //DATABASE FOR GAME TABLE
         DB.execSQL("create Table IF NOT EXISTS GameTable(userID INTEGER primary key," +
                 " bestScore INTEGER)");
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("userID", 201810336);
+        contentValues.put("bestScore", 0);
+        DB.insert("GameTable", null, contentValues);
+
+        //DATABASE FOR PASTANSWER TABLE
+        DB.execSQL("create Table PastAnswer(itemName TEXT)");
+        DB.delete("PastAnswer", null, null);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
         DB.execSQL("drop Table if exists CategoryTable");
+        DB.execSQL("drop Table if exists ItemTable");
+        DB.execSQL("drop Table if exists UserTable");
+        DB.execSQL("drop Table if exists GameTable");
+        DB.execSQL("drop Table if exists PastAnswer");
+    }
+
+    public Cursor getPastAnswer(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        return DB.rawQuery("Select * from PastAnswer", null);
+    }
+
+    public boolean InsertPastAnswer(String itemName){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("itemName", itemName);
+        long result = DB.insert("PastAnswer", null, contentValues);
+        return result != -1;
+    }
+
+    public Cursor getHighScore(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        return DB.rawQuery("Select * from GameTable where userID=201810336", null);
+    }
+
+    public boolean updateScore(int score){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("bestScore", score);
+        try (Cursor cursor = DB.rawQuery("Select bestScore from GameTable where userID=201810336", null)) {
+            if (cursor.getCount() > 0) {
+                long result = DB.update("GameTable", values, "userID=201810336", null);
+                return result != -1;
+            } else {
+                return false;
+            }
+        }
     }
 
     public Cursor getUserData(String modifier){
@@ -490,6 +571,8 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         if (modifier.equals("Learn")){
             return DB.rawQuery("Select categoryName, categoryColor, categoryTotalItems, categoryType from CategoryTable WHERE categoryType=? ORDER BY categoryName ASC", new String[]{categoryType});
+        }else if (modifier.equals("getWordCategory")){
+            return DB.rawQuery("Select categoryName from CategoryTable WHERE categoryType='Salita'", null);
         }
         else if (categoryType.equals("Salita") && modifier.equals("By5")){
             return DB.rawQuery("Select * from CategoryTable WHERE categoryType='Salita' AND categoryProgress != categoryTotalItems ORDER BY categoryProgress DESC LIMIT 5", null);
@@ -528,6 +611,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 return DB.rawQuery("Select * from FavoriteTable", null);
             case "getWordOfTheDay":
                 return DB.rawQuery("Select itemNameWOTD from UserTable WHERE UserID=201810336", null);
+            case "getItemByCategory":
+                return DB.rawQuery("Select * from ItemTable WHERE itemCategory=?", new String[]{value});
             case "getWOTDItem":
                 return DB.rawQuery("Select * from ItemTable WHERE itemType='Salita'", null);
             case "getYoutubeId":

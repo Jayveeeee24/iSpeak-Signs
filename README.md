@@ -2,6 +2,20 @@
 
 DEBUG NOTES
 
+v1.3.4 5/22
+- Game Mechanics: added lives or tries system
+- modified the choices layout from linear to grid and changed its implementation
+- updated the youtube resource id for word videos in youtube (DBHelper)
+- added tables for past answers and game table with functions:
+- getPastAnswer, insertPastAnswer for PastAnswer Table
+- getHighScore, updateHighScore for GameTable
+- changed layout for about fragment, changed GAD logo
+- added functions in functionHelper: getTimeScore and getHighScore
+- implemented the whole game with minor logical errors such as:
+- past answers do not clear when the user leaves the game
+- time ticks becomes faster when the game is near the end level (10)
+- added new popup layout for game results
+
 v1.3.3 5/19
 - removed selfie camera for recognize activity
 - CONTENT RESOURCES

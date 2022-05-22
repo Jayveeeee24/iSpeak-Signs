@@ -168,6 +168,8 @@
     <string name="ang_laro_ay_nakatigil">Game is paused</string>
     <string name="game_resume_label">resume</string>
     <string name="main_menu">main menu</string>
-    <string name="level_label">Level %1$s/%2$s</string>
+    <string name="level_label">Level %1$s/10</string>
+    <string name="life_label">%1$s</string>
+    <string name="iskor_label">Score</string>
 
 </resources>

@@ -76,6 +76,32 @@ public class FunctionHelper {
         }
     }
 
+    public int[] getTimeScore(int level, int time, int[] timePerLevel){
+        int[] maxScore = new int[]{150, 250, 350, 450, 550, 650, 750, 850, 950, 1050};
+        int score;
+
+        time = time * 100/timePerLevel[level];
+        score = (int)((float)maxScore[level] * ((float)time/100.0f));
+
+        return new int[]{timePerLevel[level+1], score};
+    }
+
+    public int getHighScore(Context context){
+        DBHelper DB = new DBHelper(context);
+        Cursor getHighScoreCursor = DB.getHighScore();
+
+        if (getHighScoreCursor.getCount() == 0){
+            Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+            return 0;
+        }else {
+            int score = 0;
+            while (getHighScoreCursor.moveToNext()){
+                score = getHighScoreCursor.getInt(1);
+            }
+            return score;
+        }
+    }
+
     Activity thisActivity;
     MediaPlayer thisMediaPlayer;
     ExoPlayer thisExoPlayer;
