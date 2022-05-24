@@ -18,7 +18,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
-            app:cardCornerRadius="90dp"
+            app:cardCornerRadius="30dp"
             app:cardElevation="0dp">
 
             <RelativeLayout
@@ -47,7 +47,7 @@
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@id/cardItemImage"
             android:layout_marginStart="15dp"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/profile_progress_item_percent"

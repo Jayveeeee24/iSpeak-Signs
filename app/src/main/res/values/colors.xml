@@ -14,4 +14,6 @@
     <color name="gray">#353535</color>
     <color name="toolbar_color">#4cb050</color>
     <color name="gray_text_color">#6A6E6A</color>
+    <color name="congrats_color">#F3DE2C</color>
+    <color name="wrong_color">#F45C5C</color>
 </resources>

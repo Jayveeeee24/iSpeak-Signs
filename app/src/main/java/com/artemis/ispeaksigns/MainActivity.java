@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         RelativeLayout aboutToolbar = findViewById(R.id.about_toolbar);
         RelativeLayout defaultToolbar = findViewById(R.id.default_toolbar);
         ImageView collapseToolbarImage = findViewById(R.id.collapse_toolbar_image);
+        ImageView isBadgeImage = findViewById(R.id.isBadgeImage);
         //////End of Definitions
 
         mainFab.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             getUserStreak();
             //this changes the toolbar title as it has a bug of displaying only "home" title
             collapseToolbar.setTitle(navDestination.getLabel());
+            isBadgeImage.setVisibility(View.INVISIBLE);
 
             editSearchParent.setVisibility(View.VISIBLE);
             mainFab.setVisibility(View.INVISIBLE);
@@ -172,6 +174,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 setExpandedEnabled(true);
                 profileState = true;
                 invalidateOptionsMenu();
+                if (functionHelper.isBadgeVisible(MainActivity.this) == 1){
+                    isBadgeImage.setVisibility(View.VISIBLE);
+                }
 
                 mainFab.setVisibility(View.VISIBLE);
 

@@ -39,6 +39,20 @@ public class FunctionHelper {
         return greeting;
     }
 
+    public int isBadgeVisible(Context context){
+        DBHelper DB = new DBHelper(context);
+        int isBadge = 0;
+        Cursor getBadgeCursor = DB.getBadge();
+        if (getBadgeCursor.getCount() == 0){
+            Log.i("BADGE FETCHING", "No Database found!");
+        }else{
+            while (getBadgeCursor.moveToNext()){
+                isBadge = getBadgeCursor.getInt(0);
+            }
+        }
+        return isBadge;
+    }
+
     public void setAppLocale (Activity activity){
         DBHelper DB = new DBHelper(activity);
         String selectedLanguage = "";

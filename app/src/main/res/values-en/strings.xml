@@ -172,5 +172,10 @@
     <string name="level_label">Level %1$s/10</string>
     <string name="life_label">%1$s</string>
     <string name="iskor_label">Score</string>
+    <string name="congrats_label">Congratulations!\nYour answer is correct</string>
+    <string name="congrats_finished_label">Congratulations!\nYou finished the game</string>
+    <string name="high_score_achieved_label">New High score Achieved!</string>
+    <string name="perfect_answer_label">Your answers are perfect!</string>
+    <string name="correct_answer_label">The correct answer is %1$s</string>
 
 </resources>

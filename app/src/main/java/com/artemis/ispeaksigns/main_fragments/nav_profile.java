@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
+import com.artemis.ispeaksigns.FunctionHelper;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressItem;
 import com.artemis.ispeaksigns.adapter_list_profile.ProfileProgressListAdapter;
@@ -43,6 +44,7 @@ public class nav_profile extends Fragment {
     View view;
     Context context;
     DBHelper DB;
+    FunctionHelper functionHelper;
 
     RecyclerView profileRecycler;
     TextView wordDiscovered;
@@ -57,6 +59,7 @@ public class nav_profile extends Fragment {
     TextView longestStreak;
     CardView userImageParent;
     CardView userImageEdit;
+    ImageView isBadgeImage;
 
     String avatarName = "";
     String selectedAvatar = "";
@@ -86,7 +89,9 @@ public class nav_profile extends Fragment {
         longestStreak = view.findViewById(R.id.longest_streak);
         userImageParent = view.findViewById(R.id.user_image_parent);
         userImageEdit = view.findViewById(R.id.user_image_edit);
+        isBadgeImage = view.findViewById(R.id.isBadgeImage);
         DB = new DBHelper(context);
+        functionHelper = new FunctionHelper();
 
         InitializeDesign();
         InitializeRecycler();
@@ -147,6 +152,10 @@ public class nav_profile extends Fragment {
         currentStreak.setText(getResources().getString(R.string.profile_streak_count, Integer.toString(currentStreakCount)));
         avatarImage = getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
         userImage.setImageResource(avatarImage);
+
+        if (functionHelper.isBadgeVisible(context) == 1){
+            isBadgeImage.setVisibility(View.VISIBLE);
+        }
     }
 
     private void InitializeRecycler()

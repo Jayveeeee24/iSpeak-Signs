@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //DATABASE TABLE FOR USER TABLE
         DB.execSQL("create Table IF NOT EXISTS UserTable(userID INTEGER primary key ," +
                 " userName TEXT , isOldUser INTEGER , dateToday TEXT , currentStreak INTEGER," +
-                "longestStreak INTEGER, itemNameWOTD INTEGER , selectedLanguage TEXT, avatarName TEXT)");
+                "longestStreak INTEGER, itemNameWOTD INTEGER , selectedLanguage TEXT, avatarName TEXT, isBadge INTEGER)");
 
         ContentValues userValue = new ContentValues();
         userValue.put("userID", 201810336);
@@ -32,6 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
         userValue.put("itemNameWOTD", 0);
         userValue.put("selectedLanguage", "tl");
         userValue.put("avatarName", "avatar1");
+        userValue.put("isBadge", 0);
         DB.insert("UserTable", null, userValue);
 
         //DATABASE TABLE FOR CATEGORY TABLE
@@ -124,13 +125,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String[] howTo = new String[]{
                 //Araw ng Linggo
-                "isenyas ang letrang ‘M’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘T’ paikot sa kanang direksyon ", "isenyas ang letrang ‘W’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘T’ sunod ay ipalit ang senyas ng letrang ‘H’ ", "isenyas ang letrang ‘F’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘S’ sa magkabilang kamay paikot sa kaliwang ", "buksan ang magkabilang palad at isenyas paikot sa kaliwang direksyon ",
+                "isenyas ang letrang ‘M’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘T’ paikot sa kanang direksyon ", "isenyas ang letrang ‘W’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘T’ sunod ay ipalit ang senyas ng letrang ‘H’ ", "isenyas ang letrang ‘F’ paikot sa kaliwang direksyon ", "isenyas ang letrang ‘S’ paikot sa kaliwang direksyon", "buksan ang magkabilang palad at isenyas paikot sa kaliwang direksyon ",
                 //Buwan
                 "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘J’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang D sa kaliwang kamay at isenyas ang letrang ‘F’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘M’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘A’ pagkatapos ay letrang ‘L’ sa kanang kamay mula sa likod pababa", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘M’ pagkatapos ay letrang ‘Y’ naman sa kanang kamay mula sa likod pababa", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘M’ pagkatapos ay letrang ‘Y’ naman sa kanang kamay mula sa likod pababa", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘J’ pagkatapos ay letrang ‘Y’ sa kanang kamay mula sa likod pababa", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘A’ pagkatapos ay letrang ‘V’ sa kanang kamay mula sa likod pababa", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘S’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘O’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang ‘D’ sa kaliwang kamay at isenyas ang letrang ‘N’ sa kanang kamay mula sa likod ng kaliwang kamay pababa nito", "isenyas ang letrang ‘D’ magkabilang kamay pagkatapos ay isenyas ang kanang kamay mula sa likod pababa ng kaliwang kamay",
                 //LUGAR
                 "ibukas ang palad at ipagdikit ang dulong daliri sa isat isa na parang isang bahay", "gamit ang gitnang daliri sa kanang kamay,  ipatong ito sa gitnang bahago ng kaliwang palad at saka marahang iikot pakaliwa. Ngayon ay sabay na iikom at pagtapatin ang kanan at kaliwang kamay pagkatapos ay iwisik ng dalawang beses", "isenyas ang letrang ‘U’ sa kanang kamay, humagod ng patayong linya sa kaliwang balikat pababa sa braso at saka humagod ng pahalang na linya mula sa kaliwang direksyon papunta sa kanang direksyon ng balikat upang makabuo ng hugis krus",  "buksan ang magkabilang palad, patagilidin ang kaliwa at saka ipalakpak ang kanang kamay sa gitnang bahagi ng kaliwang palad", "isenyas sa magkabilaang kamay ang letrang ‘M’, ngunit sa puntong ito nakaharap at nakabuka ang tatlong mga daliri na gumagalaw ng pauna at palikod ng paulit-ulit", "ilapat ang kaliwang likod ng palad at ipatong ang nakaikom na kanang kamay at saka bumuo ng pabilog na hugis sa direksyong pakaliwa habang nakabuka ang mga daliri sa kanang kamay", "isenyas ang letrang ‘C’ sa kanang kamay at ipatong sa kaliwang likod ng palad at saka tapikin ng dalawang beses",
                 //EMOSYON
-                "isenyas ang letrang C sa kanang kamay ng magkakahiwalay ang mga daliri pagkapos ay itapat ito sa mukha nang may kaunting distansya at saka humila pababa", "pag dikitin ang dalawang kamao sa magkabilaang gilid at pagkatapos nito ay isenyas ang letrang ‘L’ sa magkabilaang kamay ng palayo sa isa’t isa", "gamit ang kabilaang likod ng palad, ikiskis ito sa pisngi ng dahan-dahan", "isenyas ang letrang C sa magkabilang kamay, idikit ito sa gilid ng labi at saka paghiwalayin nang pakurba pababa", "buksan ang magkabilang palad, itapat ito sa dibdib nang may kaunting distansya at saka ikutin nang sabay", "ibuka ang magkabilaang palad sa puntong ito ay nasa may tapat na ng dibdib", "isenyas ang letrang ‘G’ sa magkabilaang kamay at saka ito igalaw pasalubong sa isa’t isa ng paulit- ulit",
+                "isenyas ang letrang C sa kanang kamay ng magkakahiwalay ang mga daliri pagkapos ay itapat ito sa mukha nang may kaunting distansya at saka humila pababa", "pag dikitin ang dalawang kamao sa magkabilaang gilid at pagkatapos nito ay isenyas ang letrang ‘L’ sa magkabilaang kamay ng palayo sa isa’t isa", "gamit ang kabilaang likod ng palad, ikiskis ito sa pisngi nang dahan-dahan", "isenyas ang letrang C sa magkabilang kamay, idikit ito sa gilid ng labi at saka paghiwalayin nang pakurba pababa", "buksan ang magkabilang palad, itapat ito sa dibdib nang may kaunting distansya at saka ikutin nang sabay", "ibuka ang magkabilaang palad sa puntong ito ay nasa may tapat na ng dibdib", "isenyas ang letrang ‘G’ sa magkabilaang kamay at saka ito igalaw pasalubong sa isa’t isa ng paulit- ulit",
                 //ALPABETO
                 "iikom ang mga daliri sa kamay nang nasa gilid ang hinlalaki", "isenyas ang numerong apat at saka pagdikitin ang mga daliri", "ihugis ang kalahating bilog gamit ang mga daliri sa kamay", "bumuo ng hugis bilog sa isang kamay at saka itaas ang hintuturo", "itupi ang mga daliri sa kamay", "bumuo ng hugis bilog gamit ang hinlalaki at hintuturong daliri at saka itaas ang mga natitira pang mga daliri", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang hintuturo at hinlalaki. Ituro ito sa pahalang na direksyon", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang gitnang daliri at hintuturo. Ituro ito sa pahalang na direksyon", "iikom ang mga daliri sa kamay, pagkatapos ay itaas ang hinliliit", "iikom ang mga daliri sa kamay, pagkatapos ay itaas ang hinliliit at saka gumuhit sa hangin ng letrang J", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas at paghiwalayin ang gitnang daliri at hintuturo at saka isingit sa gitna ang hinlalaki", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang hintuturo at hinlalaki", "iikom ang mga daliri sa kamay, pagkatapos ay isingit ang hinlalaki sa gitna ng hinliliit at palasingsingan", "iikom ang mga daliri sa kamay, pagkatapos ay isingit ang hinlalaki sa gitna ng palasingsingan at gitnang daliri", "bumuo ng hugis bilog sa isang kamay", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas at paghiwalayin ang gitnang daliri at hintuturo at saka isingit sa gitna ang hinlalaki. Ituro ito sa direksyon pababa", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang hintuturo at hinlalaki. Ituro ito sa direksyon pababa", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang gitnang daliri at hintuturo. Ipatong ang gitnang daliri sa likod ng hintuturo", "iikom ang mga daliri sa kamay nang nasa gitna ang hinlalaki", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang hintuturo at hinlalaki. Ipatong sa ibabaw ng hinlalaki ang hintuturo", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang gitnang daliri at hintuturo, saka pagdikitin", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang gitnang daliri at hintuturo, saka paghiwalayin", "pagdikitin ang hinliliit at hinlalaki. Ang mga natirang daliri ay itaas at saka paghiwalayin", "iikom ang mga daliri sa kamay, pagkatapos ay itaas ang hintuturo at saka itupi sa kalahati", "iikom ang mga daliri sa kamay, pagkatapos ay sabay na itaas ang hinliliit at hinlalaki", "iikom ang mga daliri sa kamay, pagkatapos ay itaas ang hintuturo, saka gumuhit sa hangin ng letrang Z",
                 //NUMERO
@@ -409,6 +410,26 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists ItemTable");
         DB.execSQL("drop Table if exists UserTable");
         DB.execSQL("drop Table if exists GameTable");
+    }
+
+    public Cursor getBadge(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        return DB.rawQuery("Select isBadge from UserTable where UserID=201810336", null);
+    }
+
+    public boolean updateBadge(int isBadge){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("isBadge", isBadge);
+        try (Cursor cursor = DB.rawQuery("Select isBadge from UserTable where userID=201810336", null)){
+            if (cursor.getCount() > 0){
+                long result = DB.update("UserTable", values, "userID=201810336", null);
+                return result != -1;
+            }else{
+                return false;
+            }
+        }
+
     }
 
     public Cursor getHighScore(){

@@ -33,11 +33,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:backgroundTint="@color/white"
-                app:cardCornerRadius="90dp">
+                app:cardCornerRadius="13dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
                     android:contentDescription="Play"
                     android:src="@drawable/ic_play"
                     android:tint="@color/colorSecondary"

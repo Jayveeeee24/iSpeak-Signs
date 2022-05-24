@@ -48,15 +48,12 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public int counter = 60000;
     private int counter2 = 60;
-    Dialog gamePauseGlobal;
     boolean isMainMenu = false;
 
     String[] choices;
     String[] pastAnswers = new String[] {"", "", "", "", "", "", "", "", "", ""};
     String answer = "";
     int imagesNo = 0;
-    int isLearned = 0;
-    String stringHowTo = "";//TODO remind lang about sa HOW TO
     String itemCategory= "";
 
     String category = "";
@@ -65,6 +62,7 @@ public class GameScreenActivity extends AppCompatActivity {
     int currentLevel = 0;
     int life = 3;
     int score = 0;
+    int correctAnswer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,21 +95,13 @@ public class GameScreenActivity extends AppCompatActivity {
         if (learnWordItemCursor.getCount() != 0){
             while(learnWordItemCursor.moveToNext()){
                 itemCategory = learnWordItemCursor.getString(1);
-                isLearned = learnWordItemCursor.getInt(3);
                 imagesNo = learnWordItemCursor.getInt(5);
-                stringHowTo = learnWordItemCursor.getString(7);
             }
-        }
-
-        if (isLearned == 0){
-            functionHelper.updateisLearnedProgress(GameScreenActivity.this, itemCategory, answer);
         }
 
         final WordImageSliderAdapter wordImageSliderAdapter = (new WordImageSliderAdapter(GameScreenActivity.this, answer.toLowerCase(), imagesNo));
         battleViewPager.setAdapter(wordImageSliderAdapter);
-        if (imagesNo != 1){
-            addDotsIndicator(0);
-        }
+        addDotsIndicator(0);
 
         battleViewPager.addOnPageChangeListener(viewListener);
     }
@@ -120,18 +110,16 @@ public class GameScreenActivity extends AppCompatActivity {
         TextView[] dots = new TextView[imagesNo];
         linearBattleItemLayout.removeAllViews();
 
-        if (imagesNo!=1){
-            for (int i = 0; i< dots.length; i++){
+        for (int i = 0; i< dots.length; i++){
                 dots[i] = new TextView(GameScreenActivity.this);
                 dots[i].setText(Html.fromHtml("&#8226;"));
                 dots[i].setTextSize(35);
                 dots[i].setTextColor(getResources().getColor(R.color.colorPrimary, null));
 
                 linearBattleItemLayout.addView(dots[i]);
-            }
         }
 
-        if (dots.length > 0 && imagesNo != 1){
+        if (dots.length > 0){
             dots[position].setTextColor(getResources().getColor(R.color.colorDots, null));
         }
     }
@@ -194,28 +182,36 @@ public class GameScreenActivity extends AppCompatActivity {
         final CardView miniGameResume = gamePause.findViewById(R.id.mini_game_resume);
         final CardView miniGameMainMenu = gamePause.findViewById(R.id.mini_game_main_menu);
 
-        miniGamePause.setOnClickListener(view -> {
-            gamePause.show();
-            countDownTimer.cancel();
+        miniGamePause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gamePause.show();
+                countDownTimer.cancel();
+            }
         });
 
-        miniGameResume.setOnClickListener(view -> {
-            gamePause.dismiss();
-            countDownTimer.start();
+        miniGameResume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gamePause.dismiss();
+                countDownTimer.start();
+            }
         });
 
-        miniGameMainMenu.setOnClickListener(view -> {
-            isMainMenu = true;
-            onBackPressed();
+        miniGameMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isMainMenu = true;
+                onBackPressed();
+            }
         });
-
 
         setUpGame();
     }
 
     private int getRandom(int tempMax){
         int min = 0;
-        return (int)(Math.random()*(tempMax -min+1)+min);
+        return (int)(Math.random()*(tempMax - min+1)+min);
     }
 
     private String getItem(int tempMax, String[] itemArray){
@@ -287,7 +283,9 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         }
 
-        pastAnswers[currentLevel-1] = answer;
+        pastAnswers[(currentLevel-1)] = answer;
+        Log.i("CURRENT INDEX", String.valueOf(currentLevel-1));
+        Log.i("Current LEVEL", String.valueOf(currentLevel));
 
         //WILL DELETE LATER
         for (int i = 0; i < pastAnswers.length; i++){
@@ -302,7 +300,6 @@ public class GameScreenActivity extends AppCompatActivity {
         //all of the past answers are in pastAnswers array
         shuffleChoices(choices);
         setChoices(choices);
-
     }
 
     private void setChoices(String[] choices){
@@ -324,24 +321,36 @@ public class GameScreenActivity extends AppCompatActivity {
         choice3_label.setText(choices[2]);
         choice4_label.setText(choices[3]);
 
-        choice1_button.setOnClickListener(view -> {
-            view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
-            checkValidate(choice1_label);
+        choice1_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
+                checkValidate(choice1_label);
+            }
         });
 
-        choice2_button.setOnClickListener(view -> {
-            view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
-            checkValidate(choice2_label);
+        choice2_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
+                checkValidate(choice2_label);
+            }
         });
 
-        choice3_button.setOnClickListener(view -> {
-            view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
-            checkValidate(choice3_label);
+        choice3_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
+                checkValidate(choice3_label);
+            }
         });
 
-        choice4_button.setOnClickListener(view -> {
-            view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
-            checkValidate(choice4_label);
+        choice4_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(AnimationUtils.loadAnimation(GameScreenActivity.this, R.anim.image_button_clicked));
+                checkValidate(choice4_label);
+            }
         });
     }
 
@@ -373,6 +382,8 @@ public class GameScreenActivity extends AppCompatActivity {
         final TextView nextLevelLabel = gameResultDialog.findViewById(R.id.next_level_label);
         final LinearLayout gameResultLayout = gameResultDialog.findViewById(R.id.game_result_layout);
         final TextView levelCompleteSubLabel = gameResultDialog.findViewById(R.id.level_complete_sub_label);
+        final CardView scoreLayout = gameResultDialog.findViewById(R.id.score_layout);
+        final LinearLayout badgeLayout = gameResultDialog.findViewById(R.id.badge_layout);
 
         Cursor wordDiscoveredCursor = DB.countItems("WordDiscovered");
         int wordsLearned = 0;
@@ -390,22 +401,23 @@ public class GameScreenActivity extends AppCompatActivity {
         resultTotalWords.setText(getResources().getString(R.string.mini_game_all_learned_words, Integer.toString(wordsLearned)));
         levelOverviewLabel.setText(getResources().getString(R.string.level_label, Integer.toString(currentLevel)));
         progressGameLabel.setProgress(currentLevel);
-        countDownTimer.cancel();
         int[] timePerLevel = new int[]{60, 55, 50, 45, 40, 35, 35, 30, 30, 25};
 
         if (isCorrect){
             //IF THE ANSWER IS CORRECT
 
             gameResultLayout.setBackgroundResource(R.drawable.mini_game_bg3);
-            levelCompleteLabel.setTextColor(getResources().getColor(R.color.golden_puppy, null));
+            levelCompleteLabel.setTextColor(getResources().getColor(R.color.congrats_color, null));
             levelCompleteSubLabel.setText("");
             score = score + functionHelper.getTimeScore(currentLevel, counter2, timePerLevel);
             miniGameScore.setText(String.valueOf(score));
+            correctAnswer = correctAnswer + 1;
             if (currentLevel < 10){
                 //IF CURRENT LEVEL IS LESS THAN 10 BUT THE ANSWER IS CORRECT
 
-                levelCompleteLabel.setText("Congrats! You are correct");
+                levelCompleteLabel.setText(R.string.congrats_label);
 
+                countDownTimer.cancel();
                 counter2 = timePerLevel[currentLevel];
                 counter = counter2 * 1000;
 
@@ -420,12 +432,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 //IF THE CURRENT LEVEL IS 10 AND THE ANSWER IS CORRECT,
                 //THUS THE GAME IS FINISHED
 
-                levelCompleteLabel.setText("Congrats! You finished the game");
-                nextLevelLabel.setText("Main Menu");
+                levelCompleteLabel.setText(R.string.congrats_finished_label);
+                nextLevelLabel.setText(getResources().getString(R.string.main_menu));
+                levelOverviewLabel.setText(getResources().getString(R.string.level_label, Integer.toString(currentLevel)));
+                countDownTimer.cancel();
 
                 //GET THE HIGH SCORE
                 if (functionHelper.getHighScore(this) < score){
-                    levelCompleteLabel.setText("New HIGH SCORE!");
+                    levelCompleteLabel.setText(R.string.high_score_achieved_label);
                     boolean updateScore = DB.updateScore(score, currentLevel);
                     if (updateScore){
                         Log.i("UPDATE HIGH SCORE", "SUCCESS");
@@ -433,6 +447,24 @@ public class GameScreenActivity extends AppCompatActivity {
                         Log.i("UPDATE HIGH SCORE", "Failed");
                     }
                 }
+                int isBadge;
+                if (correctAnswer == 10){
+                    levelCompleteLabel.setText(R.string.perfect_answer_label);
+                    if (functionHelper.isBadgeVisible(GameScreenActivity.this) == 0){
+                        scoreLayout.setVisibility(View.GONE);
+                        badgeLayout.setVisibility(View.VISIBLE);
+
+                        isBadge = 1;
+
+                        boolean updateIsBadge = DB.updateBadge(isBadge);
+                        if (updateIsBadge){
+                            Log.i("UPDATE BADGE", "SUCCESS");
+                        }else{
+                            Log.i("UPDATE BADGE", "FAILED");
+                        }
+                    }
+                }
+
                 nextLevelButton.setOnClickListener(view -> {
                     gameResultDialog.dismiss();
                     isMainMenu = true;
@@ -444,18 +476,20 @@ public class GameScreenActivity extends AppCompatActivity {
             //IF THE ANSWER IS WRONG
 
             gameResultLayout.setBackgroundResource(R.drawable.mini_game_bg1);
-            levelCompleteLabel.setTextColor(getResources().getColor(R.color.white, null));
-            levelCompleteSubLabel.setText("The correct answer is " + answer);
+            levelCompleteLabel.setTextColor(getResources().getColor(R.color.wrong_color, null));
+            levelCompleteSubLabel.setText(getResources().getString(R.string.correct_answer_label, answer));
             life = life - 1;
             miniGameScore.setText(String.valueOf(score));
             if (life <= 0){
                 //IF LIFE IS 0 or less and ANSWER IS WRONG
 
                 levelCompleteLabel.setText("You Lost! No Lives Left");
-                nextLevelLabel.setText("Main Menu");
+                nextLevelLabel.setText(getResources().getString(R.string.main_menu));
+                countDownTimer.cancel();
 
                 if (functionHelper.getHighScore(this) < score){
-                    levelCompleteLabel.setText("New HIGH SCORE!");
+                    levelCompleteLabel.setText(getResources().getString(R.string.high_score_achieved_label));
+                    levelCompleteSubLabel.setText("You Lost! No Lives Left");
                     boolean updateScore = DB.updateScore(score, currentLevel);
                     if (updateScore){
                         Log.i("UPDATE HIGH SCORE", "SUCCESS");
@@ -474,6 +508,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 if (currentLevel < 10){//if current level is less than 10 or if the game is not finished
                     levelCompleteLabel.setText("You are wrong!" + "\nLives left: " + life);
                     nextLevelLabel.setText("Level " + (currentLevel + 1));
+                    countDownTimer.cancel();
                     counter2 = timePerLevel[currentLevel];
                     counter = counter2 * 1000;
 
@@ -483,11 +518,13 @@ public class GameScreenActivity extends AppCompatActivity {
                     });
 
                 }else{
-                    levelCompleteLabel.setText("You finished the game");
-                    nextLevelLabel.setText("Main Menu");
+
+                    levelCompleteLabel.setText(getResources().getString(R.string.congrats_finished_label));
+                    nextLevelLabel.setText(getResources().getString(R.string.main_menu));
+                    countDownTimer.cancel();
 
                     if (functionHelper.getHighScore(this) < score){
-                        levelCompleteLabel.setText("New HIGH SCORE!");
+                        levelCompleteLabel.setText(getResources().getString(R.string.high_score_achieved_label));
                         boolean updateScore = DB.updateScore(score, currentLevel);
                         if (updateScore){
                             Log.i("UPDATE HIGH SCORE", "SUCCESS");

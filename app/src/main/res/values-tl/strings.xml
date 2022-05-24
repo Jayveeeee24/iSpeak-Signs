@@ -156,7 +156,7 @@
 
     <string name="mini_game_all_learned_words">%1$s/131</string>
     <string name="mini_game_warning">Hindi sapat ang iyong alam na salita! (%1$s/50)\nSubukang tumuklas pa!</string>
-    <string name="mini_game_score_label">MATAAS \nNA \nISKOR</string>
+    <string name="mini_game_score_label">MATAAS \nNA \nPUNTOS</string>
     <string name="mini_game_level_reach_label">Level\nna\nNarating</string>
     <string name="mini_game_play_game_label">MAGLARO</string>
     <string name="mini_game_how_to_label">Paano maglaro</string>
@@ -169,6 +169,11 @@
     <string name="main_menu">main menu</string>
     <string name="level_label">Level %1$s/10</string>
     <string name="life_label">%1$s</string>
-    <string name="iskor_label">ISKOR</string>
+    <string name="iskor_label">PUNTOS</string>
+    <string name="congrats_label">Magbunyi!\nTama ang iyong sagot</string>
+    <string name="congrats_finished_label">Magbunyi!\nNatapos mo na ang laro</string>
+    <string name="high_score_achieved_label">Bagong mataas na puntos ay nakamit!</string>
+    <string name="perfect_answer_label">Perpekto ang iyong mga sagot!</string>
+    <string name="correct_answer_label">Ang tamang sagot ay %1$s</string>
 
 </resources>

@@ -16,8 +16,8 @@
             android:id="@+id/game_result_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/mini_game_bg1">
+            android:background="@drawable/mini_game_bg1"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -28,15 +28,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_margin="2dp"
-                    android:padding="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_learn_list_word"
-                        android:tint="@color/white"/>
+                        android:tint="@color/white" />
 
                     <TextView
                         android:id="@+id/result_total_words"
@@ -55,9 +55,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="60dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,8 +72,9 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/i"
-                    android:layout_gravity="center_vertical" />
+                    android:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -90,34 +91,67 @@
                 android:id="@+id/level_complete_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Level 1 complete"
-                android:textAllCaps="true"
-                android:gravity="center"
-                android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:gravity="center"
+                android:shadowColor="@color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
+                android:text="You are wrong!"
+                android:textAllCaps="true"
+                android:textColor="@color/wrong_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/level_complete_sub_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
                 android:text=""
                 android:textAllCaps="true"
-                android:gravity="center"
                 android:textColor="@color/white"
-                android:layout_gravity="center_horizontal"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
+            <LinearLayout
+                android:id="@+id/badge_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_crown"
+                    android:tint="@color/golden_puppy" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="Ikaw ay nakakuha ng badge!\nMaaari itong makita sa Home at Profile"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/score_layout"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                app:cardCornerRadius="70dp"
-                android:layout_marginTop="100dp"
-                app:cardElevation="5dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:visibility="visible"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -141,10 +175,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textAllCaps="true"
                             android:layout_below="@id/mini_game_score"
+                            android:gravity="center"
                             android:text="@string/iskor_label"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 
@@ -158,37 +192,37 @@
                 android:id="@+id/level_overview_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/level_label"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:textSize="18sp"
-                android:textColor="@color/white"
                 android:fontFamily="@font/gotham_book_regular"
-                android:textStyle="bold"/>
+                android:text="@string/level_label"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressGameLevel"
                 android:layout_width="250dp"
                 android:layout_height="10dp"
                 android:layout_gravity="center_horizontal"
-                app:trackThickness="15dp"
-                app:indicatorColor="@color/tulip"
                 android:max="10"
-                android:progress="9" />
+                android:progress="9"
+                app:indicatorColor="@color/tulip"
+                app:trackThickness="15dp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/next_level_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:strokeColor="@color/white"
-                app:strokeWidth="1dp"
-                app:cardCornerRadius="20dp"
-                android:backgroundTint="@android:color/transparent"
-                app:cardElevation="0dp"
-                android:layout_marginTop="70dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:backgroundTint="@android:color/transparent"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,8 +237,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
-                        android:backgroundTint="@android:color/transparent"
                         android:layout_marginBottom="5dp"
+                        android:backgroundTint="@android:color/transparent"
                         android:fontFamily="@font/nunito_bold"
                         android:text="Level 2"
                         android:textAllCaps="true"

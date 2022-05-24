@@ -105,7 +105,7 @@ public class nav_about extends Fragment {
                 popupName.setText(name);
                 popupAge.setText("Age: 22");
                 popupGoal.setText("Aspiring Software Engineer");
-                popupStrength.setText("\"What if one day you woke up and you were a potato salad\"");
+                popupStrength.setText("\"What if one day you woke up and ikaw na ang Seo Dal Mi ko?\"");
                 popupType.setText("Email me at: johnbernard.tinio@cvsu.edu.ph");
                 break;
             case "Marie Ann Karen De Guzman":
@@ -161,6 +161,4 @@ public class nav_about extends Fragment {
         }
         logoPopup.show();
     }
-
-
 }

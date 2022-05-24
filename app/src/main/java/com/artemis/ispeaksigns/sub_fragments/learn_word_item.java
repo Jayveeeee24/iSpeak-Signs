@@ -238,12 +238,20 @@ public class learn_word_item extends Fragment {
                 }
             }
         });
-
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        ImageView playAudio = view.findViewById(R.id.learn_word_play_audio);
+        ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
         mediaAudioWord.release();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        audio = getResources().getIdentifier(word.toLowerCase(), "raw", context.getPackageName());
+        mediaAudioWord = MediaPlayer.create(context, audio);
     }
 }

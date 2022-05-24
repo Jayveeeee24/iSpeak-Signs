@@ -2,6 +2,13 @@
 
 DEBUG NOTES
 
+v1.3.6 5/25
+- added a badge dependency in DBHelper with functions; getBadge and updateBadge
+- added badge images in profile and home
+- added badge acquire in mini game
+- added function in functionHelper in getting the badge visibility
+- added strings for GameScreenActivity
+
 v1.3.5 5/23
 - moved the life label from below the level indicator to below the time
 - removed dependency for past answers in the database and migrated to local storage in variables
