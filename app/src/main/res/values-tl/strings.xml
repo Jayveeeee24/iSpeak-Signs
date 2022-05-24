@@ -175,5 +175,7 @@
     <string name="high_score_achieved_label">Bagong mataas na puntos ay nakamit!</string>
     <string name="perfect_answer_label">Perpekto ang iyong mga sagot!</string>
     <string name="correct_answer_label">Ang tamang sagot ay %1$s</string>
+    <string name="game_over_label">Tapos na ang laro\nUbos na ang iyong buhay</string>
+    <string name="answer_wrong_label">Mali ang iyong sagot\nBuhay na natitira: %1$s</string>
 
 </resources>

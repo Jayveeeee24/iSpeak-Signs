@@ -177,5 +177,7 @@
     <string name="high_score_achieved_label">New High score Achieved!</string>
     <string name="perfect_answer_label">Your answers are perfect!</string>
     <string name="correct_answer_label">The correct answer is %1$s</string>
+    <string name="game_over_label">Game Over\nNo lives left</string>
+    <string name="answer_wrong_label">Your answer is incorrect\nLife left: %1$s</string>
 
 </resources>

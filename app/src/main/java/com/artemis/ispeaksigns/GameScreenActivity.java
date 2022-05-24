@@ -483,13 +483,13 @@ public class GameScreenActivity extends AppCompatActivity {
             if (life <= 0){
                 //IF LIFE IS 0 or less and ANSWER IS WRONG
 
-                levelCompleteLabel.setText("You Lost! No Lives Left");
+                levelCompleteLabel.setText(getResources().getString(R.string.game_over_label));
                 nextLevelLabel.setText(getResources().getString(R.string.main_menu));
                 countDownTimer.cancel();
 
                 if (functionHelper.getHighScore(this) < score){
                     levelCompleteLabel.setText(getResources().getString(R.string.high_score_achieved_label));
-                    levelCompleteSubLabel.setText("You Lost! No Lives Left");
+                    levelCompleteSubLabel.setText(getResources().getString(R.string.game_over_label));
                     boolean updateScore = DB.updateScore(score, currentLevel);
                     if (updateScore){
                         Log.i("UPDATE HIGH SCORE", "SUCCESS");
@@ -506,7 +506,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 //IF PLAYER HAS LIFE BUT ANSWER IS WRONG
 
                 if (currentLevel < 10){//if current level is less than 10 or if the game is not finished
-                    levelCompleteLabel.setText("You are wrong!" + "\nLives left: " + life);
+                    levelCompleteLabel.setText(getResources().getString(R.string.answer_wrong_label));
                     nextLevelLabel.setText("Level " + (currentLevel + 1));
                     countDownTimer.cancel();
                     counter2 = timePerLevel[currentLevel];

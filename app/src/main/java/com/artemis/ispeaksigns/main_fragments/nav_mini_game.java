@@ -37,7 +37,7 @@ public class nav_mini_game extends Fragment {
 
     TextView miniGameTotalWords, miniGameBestScore, miniGameWarning, bestScoreLabel;
     ImageView isMiniGameLocked;
-    CardView miniGamePlayGame, bestScoreCard;
+    CardView miniGamePlayGame, bestScoreCard, miniGameHowTo;
 
     int wordsLearned = 0;
     int bestScore = 0;
@@ -63,6 +63,7 @@ public class nav_mini_game extends Fragment {
         miniGamePlayGame = view.findViewById(R.id.mini_game_play_game);
         bestScoreCard = view.findViewById(R.id.bestScoreCard);
         bestScoreLabel = view.findViewById(R.id.best_score_label);
+        miniGameHowTo = view.findViewById(R.id.mini_game_how_to);
 
         RelativeLayout miniGameLayout = view.findViewById(R.id.mini_game_layout);
         miniGameLayout.setNestedScrollingEnabled(false);
@@ -141,6 +142,15 @@ public class nav_mini_game extends Fragment {
                     }
                 }
                 miniGameWarning.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
+
+        miniGameHowTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO CHANGE THIS
             }
         });
     }
