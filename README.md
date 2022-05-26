@@ -2,6 +2,10 @@
 
 DEBUG NOTES
 
+v1.3.7 5/26
+- changed the bg in activity game screen from gradient to bg2
+- fixed bug of showing the crown in profile even if it does have permission
+
 v1.3.6 5/25
 - added a badge dependency in DBHelper with functions; getBadge and updateBadge
 - added badge images in profile and home

@@ -3,13 +3,13 @@
 
     <item
         android:drawable="@drawable/mini_game_bg1"
-        android:duration="3500"/>
+        android:duration="2000"/>
     <item
         android:drawable="@drawable/mini_game_bg2"
-        android:duration="3500"/>
+        android:duration="2000"/>
     <item
         android:drawable="@drawable/mini_game_bg3"
-        android:duration="3500"/>
+        android:duration="2000"/>
 
 
 </animation-list>

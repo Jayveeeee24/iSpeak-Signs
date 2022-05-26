@@ -68,8 +68,8 @@ public class nav_mini_game extends Fragment {
         RelativeLayout miniGameLayout = view.findViewById(R.id.mini_game_layout);
         miniGameLayout.setNestedScrollingEnabled(false);
         AnimationDrawable animationDrawable = (AnimationDrawable) miniGameLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2500);
-        animationDrawable.setExitFadeDuration(3500);
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(2000);
         animationDrawable.start();
 
         InitializeDesign();
@@ -113,8 +113,6 @@ public class nav_mini_game extends Fragment {
                 }
             }
         });
-
-
 
         miniGameTotalWords.setText(getResources().getString(R.string.mini_game_all_learned_words, Integer.toString(wordsLearned)));
         miniGamePlayGame.setOnClickListener(new View.OnClickListener() {

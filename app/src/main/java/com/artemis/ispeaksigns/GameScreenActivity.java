@@ -1,5 +1,6 @@
 package com.artemis.ispeaksigns;
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
@@ -7,14 +8,11 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -142,12 +140,6 @@ public class GameScreenActivity extends AppCompatActivity {
     };
 
     private void SetUpDesign(){
-        LinearLayout gameScreenLayout = findViewById(R.id.game_screen_layout);
-        gameScreenLayout.setNestedScrollingEnabled(false);
-        AnimationDrawable animationDrawable = (AnimationDrawable) gameScreenLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(1500);
-        animationDrawable.setExitFadeDuration(2500);
-        animationDrawable.start();
 
         countDownTimer = new CountDownTimer(counter,1000) {
             @Override
@@ -250,9 +242,7 @@ public class GameScreenActivity extends AppCompatActivity {
         Cursor getAllWordsByCategory = DB.getItem(category, "getItemByCategory");
         allWords = new String[getAllWordsByCategory.getCount()];
         choices = new String[]{"", "", "", ""};
-        currentLevel = currentLevel + 1;
         categoryLabel.setText(getResources().getString(R.string.game_screen_category_label, category));
-        levelLabel.setText(getResources().getString(R.string.level_label, Integer.toString(currentLevel)));
         lifeLabel.setText(getResources().getString(R.string.life_label, Integer.toString(life)));
 
         if (getAllWordsByCategory.getCount() == 0){
@@ -283,9 +273,12 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         }
 
-        pastAnswers[(currentLevel-1)] = answer;
+        currentLevel = currentLevel + 1;
+        levelLabel.setText(getResources().getString(R.string.level_label, Integer.toString(currentLevel)));
+
         Log.i("CURRENT INDEX", String.valueOf(currentLevel-1));
         Log.i("Current LEVEL", String.valueOf(currentLevel));
+        pastAnswers[(currentLevel-1)] = answer;
 
         //WILL DELETE LATER
         for (int i = 0; i < pastAnswers.length; i++){
@@ -478,6 +471,7 @@ public class GameScreenActivity extends AppCompatActivity {
             gameResultLayout.setBackgroundResource(R.drawable.mini_game_bg1);
             levelCompleteLabel.setTextColor(getResources().getColor(R.color.wrong_color, null));
             levelCompleteSubLabel.setText(getResources().getString(R.string.correct_answer_label, answer));
+
             life = life - 1;
             miniGameScore.setText(String.valueOf(score));
             if (life <= 0){
@@ -506,7 +500,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 //IF PLAYER HAS LIFE BUT ANSWER IS WRONG
 
                 if (currentLevel < 10){//if current level is less than 10 or if the game is not finished
-                    levelCompleteLabel.setText(getResources().getString(R.string.answer_wrong_label));
+                    levelCompleteLabel.setText(getResources().getString(R.string.answer_wrong_label, String.valueOf(life)));
                     nextLevelLabel.setText("Level " + (currentLevel + 1));
                     countDownTimer.cancel();
                     counter2 = timePerLevel[currentLevel];

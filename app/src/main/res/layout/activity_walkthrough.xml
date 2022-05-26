@@ -13,7 +13,6 @@
         android:layout_above="@id/linear_walkthrough"
         android:layout_height="match_parent">
 
-
     </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
@@ -34,7 +33,8 @@
         android:text="@string/susunod"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        tools:ignore="RelativeOverlap" />
 
     <Button
         android:id="@+id/back"

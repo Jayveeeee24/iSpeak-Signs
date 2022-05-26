@@ -89,7 +89,7 @@ public class nav_profile extends Fragment {
         longestStreak = view.findViewById(R.id.longest_streak);
         userImageParent = view.findViewById(R.id.user_image_parent);
         userImageEdit = view.findViewById(R.id.user_image_edit);
-        isBadgeImage = view.findViewById(R.id.isBadgeImage);
+        isBadgeImage = view.findViewById(R.id.isBadgeImageProfile);
         DB = new DBHelper(context);
         functionHelper = new FunctionHelper();
 

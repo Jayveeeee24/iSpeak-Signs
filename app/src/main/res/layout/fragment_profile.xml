@@ -44,9 +44,10 @@
             </com.google.android.material.card.MaterialCardView>
 
             <ImageView
-                android:id="@+id/isBadgeImage"
+                android:id="@+id/isBadgeImageProfile"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:visibility="invisible"
                 android:src="@drawable/ic_crown"
                 android:rotation="50"
                 android:layout_toEndOf="@id/user_image_parent"
