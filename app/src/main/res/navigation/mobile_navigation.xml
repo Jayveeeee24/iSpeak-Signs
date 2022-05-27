@@ -127,4 +127,9 @@
         android:name="com.artemis.ispeaksigns.GameScreenActivity"
         android:label="activity_game_screen"
         tools:layout="@layout/activity_game_screen" />
+    <activity
+        android:id="@+id/miniGameHowto"
+        android:name="com.artemis.ispeaksigns.MiniGameHowto"
+        android:label="activity_mini_game_howto"
+        tools:layout="@layout/activity_mini_game_howto" />
 </navigation>

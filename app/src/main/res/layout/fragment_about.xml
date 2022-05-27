@@ -470,7 +470,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sen Arya Dinosaur"
+                    android:text="Sen Arya Stark"
                     android:layout_marginTop="2dp"
                     android:textSize="14sp"
                     android:fontFamily="@font/gotham_book_regular"/>
@@ -478,7 +478,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jewel Pony"
+                    android:text="Jewel Kelly Clarkson"
                     android:layout_marginTop="2dp"
                     android:textSize="14sp"
                     android:fontFamily="@font/gotham_book_regular"/>

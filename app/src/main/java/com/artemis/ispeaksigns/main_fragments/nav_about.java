@@ -105,7 +105,7 @@ public class nav_about extends Fragment {
                 popupName.setText(name);
                 popupAge.setText("Age: 22");
                 popupGoal.setText("Aspiring Software Engineer");
-                popupStrength.setText("\"What if one day you woke up and ikaw na ang Seo Dal Mi ko?\"");
+                popupStrength.setText("\"What if one day you woke up and you are a potato\"");
                 popupType.setText("Email me at: johnbernard.tinio@cvsu.edu.ph");
                 break;
             case "Marie Ann Karen De Guzman":

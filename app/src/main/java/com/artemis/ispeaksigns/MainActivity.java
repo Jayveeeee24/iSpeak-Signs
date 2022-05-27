@@ -176,6 +176,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 invalidateOptionsMenu();
                 if (functionHelper.isBadgeVisible(MainActivity.this) == 1){
                     isBadgeImage.setVisibility(View.VISIBLE);
+                    isBadgeImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(MainActivity.this, getResources().getString(R.string.badge_toast), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
                 mainFab.setVisibility(View.VISIBLE);

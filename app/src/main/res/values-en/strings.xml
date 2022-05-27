@@ -87,7 +87,7 @@
 
     <!--    Strings for Recognition-->
     <string name="recog_app_name">iSpeak Signs Recognition</string>
-    <string name="recog_version">ALPHA</string>
+    <string name="recog_version">BETA</string>
     <string name="idagdag">Add</string>
     <string name="bawasan">Remove</string>
 
@@ -157,7 +157,7 @@
 
 
     <string name="mini_game_all_learned_words">%1$s/131</string>
-    <string name="mini_game_warning">Not enough words learned! (%1$s/50)\nTry learning more!</string>
+    <string name="mini_game_warning">Not enough words learned (%1$s/30)\nTry learning more</string>
     <string name="mini_game_score_label">BEST \nSCORE</string>
     <string name="mini_game_level_reach_label">Levels\nReached</string>
     <string name="mini_game_play_game_label">PLAY GAME</string>
@@ -180,5 +180,6 @@
     <string name="game_over_label">Game Over\nNo lives left</string>
     <string name="answer_wrong_label">Your answer is incorrect\nLife left: %1$s</string>
     <string name="learn_the_word_label"><u>Learn the word: %1$s</u></string>
+    <string name="badge_toast">You are an \"FSL Learner\"</string>
 
 </resources>

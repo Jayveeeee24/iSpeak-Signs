@@ -155,6 +155,12 @@ public class nav_profile extends Fragment {
 
         if (functionHelper.isBadgeVisible(context) == 1){
             isBadgeImage.setVisibility(View.VISIBLE);
+            isBadgeImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, getResources().getString(R.string.badge_toast), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

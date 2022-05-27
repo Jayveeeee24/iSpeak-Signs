@@ -167,33 +167,33 @@ public class DBHelper extends SQLiteOpenHelper {
                 //ARAW NG LINGGO
                 "nMCxbW6sbDs", "1pQch9y9PUQ", "rcRH24YFkQc", "DJpfrYJAC_M", "IZjo1Ahj0Dc", "fXdKxnHpbS8", "WJQBH4YPPAo",
                 //MGA BUWAN
-                "Enero", "Pebrero", "Marso", "j8H0ndK8GGI", "Mayo", "Hunyo", "Hulyo", "q5h4fWB8Des", "Setyembre", "Oktubre", "Nobyembre", "AAat6bjCI60",
+                "3B0EhpDIsWs", "lbVZMEygLPo", "GntFXCS2oXk", "j8H0ndK8GGI", "wfmyGv0MfP4", "0slrxjjS6mQ", "rUOiIQDxo5Y", "q5h4fWB8Des", "tXUoQULWnH4", "ndXKW1x3QNg", "roUUtHcLy0I", "AAat6bjCI60",
                 //LUGAR
-                "Bahay", "Botika", "Ospital",  "Paaralan", "Palengke", "Parke", "Simbahan",
+                "NMVLBcGmf44", "26QKxb_1Bm4", "0KbE355H_Q0",  "gHIQtOXTQ9s", "MP-Y_XMYMDg", "l8TRMw3NkKU", "l8TRMw3NkKU",
                 //EMOSYON
-                "Galit", "Gulat", "Hiya", "Lungkot", "Saya", "Takot", "Tuwa",
+                "DKGqDAQv9IE", "t28nM9AiYtk", "h-sTw1qvo70", "PmnseN7UZDQ", "zx4unH9NaBc", "ZcwzsGlnNmY", "aFK8BuvjZp4",
                 //ALPABETO
                 "0TlXVpqj0nM", "yIsWhpKh8yU", "0qMhUvMQ8V8", "KrBfZi8ogPI", "I5V0zBreaSc", "3DS33WTk7vg", "omFLAedvvAk", "3WuLSCtDp6Y", "CHspfSKx6KM", "vQGBp-Xb6I8", "EOVQBO5TSCs", "1EY21RyefsU", "ZLS4c30jpQY", "fQIOVjkxss4", "5xxOhedo84o", "LdZ_6cJ_5YA", "neaANip8Nq0", "bGVP94FxuxA", "kNI0Gqzaxxw", "KDWV5NItXbc", "3kbtMLBwzXA", "4Rm_orGU7Ds", "iX7OVUW2uus", "iEK4hwvYEXQ", "KQ4VzhYLpAs", "05hAeNWWLVU",
                 //NUMERO
                 "QpAUrFo8WfE", "OVexagWF3Rk", "YaFwBJH07Vc", "pwaV_jNkTxQ", "Dad9UrYXvh8", "hc0ExXXcQVI", "bZCQ_6kZ330", "FWr6jl9-wZA", "9LUwtmxri_k", "uPNt2fxMPWA", "BmyJbs_NQpU",
                 //HAYOP
-                "Aso", "Ahas", "Ibon", "Isda", "Palaka", "Pusa", "Unggoy",
+                "BApEDu9GHuU", "VhhR6s0g-pQ", "hQ7ZpR6eVMM", "yofItbqR0XU", "OYIvYV3Z8fs", "rKJA7QREqvU", "fjGHl1KoRVo",
                 //HUGIS
-                "Bilog", "Bituin", "Parihaba", "Parisukat", "Tatsulok",
+                "P75kcPV6T6c", "wfoyj6nts2c", "9CkRrLkQBw4", "d0Xwq7DaVI0", "BQTpBZ1Q788",
                 //KULAY
-                "Berde", "Bughaw", "Dilaw", "Itim", "Lila", "Pula", "Puti",
+                "SptnckZ2bBU", "iDaDw2aC8LQ", "COmsG_EIj24", "oHVQaVQzGls", "a-ZsCrAVMyU", "zdf0r6XaXP8", "tzhi16G0oo0",
                 //PRUTAS
-                "Buko", "Mansanas", "Mangga", "Pakwan", "Pinya", "Saging",
+                "1n-0govK-yY", "MNj2cEXvEkM", "gZj9Cis18A4", "F5GJm3MLlZg", "n-mnQPvoSwM", "UCmdb1vh0wM",
                 //GULAY
-                "Bawang", "Kalabasa", "Kamatis", "Patatas", "Petsay", "Pipino", "Repolyo", "Sibuyas", "Sili", "Sitaw", "Talong",
+                "YVVdYidPLkQ", "RLkd1UES2cg", "sBpvpCXT-To", "pnwD6N9mj5o", "j55ChxZZ4d8", "VuvAUrLeISQ", "vpXiCX0tJCM", "bPZSiVhYAP4", "WJUC_EcwZHY", "CHu_3K67Cgo", "OwQXmppp1CY",
                 //PARTE NG KATAWAN
-                "Bibig", "Ilong", "Kamay", "Leeg", "Mata", "Paa", "Tainga", "Ulo",
+                "rpPAvgnoKOc", "mGpMqeffYcs", "IjvUMT1loNs", "wAqIsfqiFuk", "7e8GPATzKA0", "PFRYjaJ9XJY", "ZpuxcSm6Bx0", "SOk-eTAJeR8",
                 //TRANSPORTASYON
-                "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
+                "-yhKPlUP16E", "0RZwvpkH4h0", "xvhswEPL7gs", "Yt_fN6r2Ysk", "KHtAD38fMnQ", "Y2F8OnViRME",
                 //KASARIAN
-                "Babae", "Lalaki", "Bakla", "Tomboy",
+                "pAhRlRHetR8", "f2XLgn2DoiM", "bb6nah-i904", "xGWPEgP_2DU",
                 //MIYEMBRO NG PAMILYA
-                "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Sanggol",
+                "ux-EPIqJO5w", "-N9ovBXHQt4", "sgEgS4YEaHk", "TA-E30JKVLQ", "TPqkixXxLl0", "6HqnVu4BpFk", "gpdtOhQcOAY",
 
                 //MGA PARIRALA
                 "kamusta_ka", "magandang_umaga_sa_iyo", "magandang_hapon_sa_iyo", "magandang_gabi_sa_iyo", "paalam_na_sayo",

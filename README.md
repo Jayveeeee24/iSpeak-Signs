@@ -1,6 +1,15 @@
 # iSpeak-Signs
 
-DEBUG NOTES
+DEBUG NOTES //THIS ARE BETA VERSIONS
+
+v1.3.8 5/27
+- added HowTo instructions in mini game (slider adapter, activity, layouts)
+- updated the about section
+- updated profile fragment
+- updated the gameScreenActivity
+- added a toast for crowns in profile and home
+
+DEBUG NOTES //THIS ARE ALPHA VERSIONS
 
 v1.3.7 5/26
 - changed the bg in activity game screen from gradient to bg2

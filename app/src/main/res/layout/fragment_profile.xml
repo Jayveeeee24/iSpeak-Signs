@@ -56,7 +56,6 @@
                 android:tint="@color/golden_puppy"
                 android:elevation="10dp"/>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/user_image_edit"
                 android:layout_width="wrap_content"
@@ -71,8 +70,8 @@
                 android:layout_marginStart="-40dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_fab_camera"
                     android:tint="@color/white_bg"
                     android:scaleType="centerCrop"

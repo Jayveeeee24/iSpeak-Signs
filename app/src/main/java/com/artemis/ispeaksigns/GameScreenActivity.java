@@ -193,7 +193,8 @@ public class GameScreenActivity extends AppCompatActivity {
         miniGameMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isMainMenu = true;
+//                isMainMenu = true;
+                gamePause.dismiss();
                 onBackPressed();
             }
         });
@@ -549,8 +550,8 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        super.onBackPressed();
         if (isMainMenu){
-            super.onBackPressed();
             super.onBackPressed();
         }
 

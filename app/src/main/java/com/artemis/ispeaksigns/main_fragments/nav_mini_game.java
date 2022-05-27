@@ -1,6 +1,7 @@
 package com.artemis.ispeaksigns.main_fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -25,7 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
+import com.artemis.ispeaksigns.MiniGameHowto;
 import com.artemis.ispeaksigns.R;
+import com.artemis.ispeaksigns.SplashActivity;
+import com.artemis.ispeaksigns.VideoActivity;
+import com.artemis.ispeaksigns.WalkthroughActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -118,7 +123,7 @@ public class nav_mini_game extends Fragment {
         miniGamePlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wordsLearned < 1){//TODO CHANGE BACK TO 50
+                if (wordsLearned < 30){
                     isMiniGameLocked.setVisibility(View.VISIBLE);
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                         @Override
@@ -143,12 +148,15 @@ public class nav_mini_game extends Fragment {
             }
         });
 
-
-
         miniGameHowTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO CHANGE THIS
+                try {
+                    Intent intent = new Intent(context, MiniGameHowto.class);
+                    context.startActivity(intent);
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
             }
         });
     }

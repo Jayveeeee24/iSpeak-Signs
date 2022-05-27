@@ -19,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.ISpeakSigns">
-        <activity android:name=".GameScreenActivity"
+        <activity
+            android:name=".MiniGameHowto"
+            android:screenOrientation="portrait"
+            android:theme="@style/WalkthroughTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".GameScreenActivity"
             android:configChanges="locale"
             android:screenOrientation="portrait"
             android:theme="@style/GameScreenStyle"
