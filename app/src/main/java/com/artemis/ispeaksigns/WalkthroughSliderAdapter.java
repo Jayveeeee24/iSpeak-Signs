@@ -33,6 +33,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             R.drawable.ic_walkthrough_video,
             R.drawable.ic_walkthrough_favorites,
             R.drawable.ic_walkthrough_progress,
+            R.drawable.ic_walkthrough_mini_game,
             R.drawable.ic_walkthrough_recognition
     };
 
@@ -41,6 +42,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             "Watch FSL video phrases",
             "Save favorite words or phrases",
             "Track your progress in each category",
+            "You can play the mini game \"Guess the Sign\"",
             "Recognize signs with FSL Recognition"
     };
     public String[] title_filipino = new String[]{
@@ -48,6 +50,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             "Manood ng FSL ekspresyong parirala",
             "i-Save ang paboritong salita o parirala",
             "Subaybayan ang progreso sa bawat kategorya",
+            "Maaari mong laruin ang mini game na \"Guess the Sign\"",
             "Kumilala gamit ang FSL Rekognisyon"
     };
 
@@ -56,6 +59,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             "You can watch how to sign the most common expressions with video phrase demonstration.",
             "You can save and review words and phrases with an easy click to the heart button for an easy access anytime and anywhere.",
             "Track all your progress on each words and phrase that you've learned in each category.",
+            "The user can play the mini game \"Guess the Sign\" and earn a badge of \"FSL Learner\"",
             "Recognize some FSL letters and words using your camera with the FSL Recognition Technology"
     };
 
@@ -64,6 +68,7 @@ public class WalkthroughSliderAdapter extends PagerAdapter {
             "Maaaring manood kung paano gawin ang mga pinakakaraniwang ekspresyong parirala.",
             "Maaaring i-save ang mga paboritong salita o parirala sa pamamagitan ng pagclick sa puso upang madali ang pag-access kahit kailan at kahit saan.",
             "Maaaring subaybayan ang iyong progreso sa mga salita o parirala na iyong napag-aralan sa bawat kategorya.",
+            "Ang user ay maaaring laruin ang mini game na \"Guess the Sign\" at makakuha ng palatandaang ikaw ay isang \"FSL Learner\"",
             "Maaaring kilalanin ang senyas gamit ang iyong kamera sa pamamagitan ng FSL Recognition Technology"
     };
 

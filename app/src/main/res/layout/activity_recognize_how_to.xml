@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mini_game_bg2"
+    tools:context=".MiniGameHowto">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_recognize_how_to"
+        android:layout_width="match_parent"
+        android:layout_above="@id/linear_recognize_how_to"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linear_recognize_how_to"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_centerHorizontal="true">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next_recognize_how_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/susunod"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent"
+        tools:ignore="RelativeOverlap" />
+
+    <Button
+        android:id="@+id/back_recognize_how_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ibalik"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"/>
+
+</RelativeLayout>

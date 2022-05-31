@@ -2,6 +2,12 @@
 
 DEBUG NOTES //THIS ARE BETA VERSIONS
 
+v1.3.9 5/31
+- added a how to instructions for recognition
+- changed gad logo
+- changed the recognition label font thickness and color
+- added new slide for walkthrough (mini game)
+
 v1.3.8 5/27
 - added HowTo instructions in mini game (slider adapter, activity, layouts)
 - updated the about section

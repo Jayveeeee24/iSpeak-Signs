@@ -146,7 +146,7 @@ public class WalkthroughActivity extends AppCompatActivity implements AdapterVie
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentPage == 4){
+                if (currentPage == 5){
                     startActivity(new Intent(WalkthroughActivity.this, MainActivity.class));
                     finish();
                 }else{
@@ -165,7 +165,7 @@ public class WalkthroughActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void addDotsIndicator(int position){
-        dots = new TextView[5];
+        dots = new TextView[6];
         walkthroughLinear.removeAllViews();
 
         for (int i = 0; i<dots.length; i++){

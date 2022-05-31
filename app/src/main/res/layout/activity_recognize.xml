@@ -50,6 +50,28 @@
             android:textStyle="bold"
             tools:ignore="SmallSp" />
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/recognize_info_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_centerVertical="true"
+            app:cardElevation="0dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/recognize_info"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_menu_about"
+                android:tint="@color/white"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
     </RelativeLayout>
 
     <RelativeLayout

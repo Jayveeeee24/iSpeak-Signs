@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -39,6 +40,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
     private Mat mRgba;
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
+    private CardView recognizeInfoCard;
 
     private objectDetectorClass objectDetectorClass;
 
@@ -79,6 +81,7 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
         recognizeAdd = findViewById(R.id.recognize_add);
         recognizeRemove = findViewById(R.id.recognize_remove);
         recognizeText = findViewById(R.id.recognized_text);
+        recognizeInfoCard = findViewById(R.id.recognize_info_card);
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.recognize_camera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -92,6 +95,13 @@ public class RecognizeActivity extends AppCompatActivity implements CameraBridge
             Log.d("MainActivity","Getting some error");
             e.printStackTrace();
         }
+
+        recognizeInfoCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RecognizeActivity.this, RecognizeHowTo.class));
+            }
+        });
     }
 
     @Override

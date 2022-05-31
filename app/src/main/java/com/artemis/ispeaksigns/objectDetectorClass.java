@@ -195,8 +195,8 @@ public class  objectDetectorClass {
 
                 String sign_val = get_alphabets(output_class_value[0][0]);
                 currentText = sign_val;
-                Imgproc.putText(rotated_mat_image, ""+sign_val,new Point(x1+10,y1+40),2,1.5,new Scalar(253, 193, 6),2); // golden puppy
-                Imgproc.rectangle(rotated_mat_image,new Point(x1,y1),new Point(x2,y2),new Scalar(90, 200, 81),2); // colorSecondary
+                Imgproc.putText(rotated_mat_image, "" + sign_val, new Point(x1+10,y1+40),2,1.5,new Scalar(255,193,0),5); // yellow
+                Imgproc.rectangle(rotated_mat_image, new Point(x1,y1), new Point(x2,y2), new Scalar(90, 200, 81),2); // colorSecondary
 
                 // Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
             }
