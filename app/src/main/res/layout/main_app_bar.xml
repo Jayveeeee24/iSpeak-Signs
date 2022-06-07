@@ -96,9 +96,9 @@
 
                 <ImageView
                     android:id="@+id/toolbarImage1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="165dp"
                     android:layout_height="165dp"
-                    android:layout_marginStart="-130dp"
+                    android:layout_marginStart="-75dp"
                     android:layout_marginBottom="15dp"
                     android:contentDescription="@string/cvsu_logo_desc"
                     android:src="@drawable/cvsu_logo_50"/>

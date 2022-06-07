@@ -123,7 +123,7 @@ public class nav_mini_game extends Fragment {
         miniGamePlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wordsLearned < 30){
+                if (wordsLearned < 1){
                     isMiniGameLocked.setVisibility(View.VISIBLE);
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                         @Override

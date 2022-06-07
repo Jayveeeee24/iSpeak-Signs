@@ -74,7 +74,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (!currentDate.equals(oldDate)){//DATE IS NOT UPDATED
                     boolean checkDate = DB.updateSingleData(currentDate, 0, "currentDate");
                     int min = 0;
-                    int max = 129;
+                    int max = 128;
                     int random = (int)(Math.random()*(max-min+1)+min);
                     boolean UpdateWotd = DB.UpdateItem(null, random, "NewWordOfTheDay");
                     if (UpdateWotd){
@@ -96,11 +96,10 @@ public class SplashActivity extends AppCompatActivity {
 
                 if (isOldUser == 0){
                     startActivity(new Intent(SplashActivity.this, WalkthroughActivity.class));
-                    finish();
                 }else{
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
                 }
+                finish();
 
             }
         }, 2200);

@@ -90,11 +90,14 @@ public class FunctionHelper {
         }
     }
 
-    public int getTimeScore(int level, int time, int[] timePerLevel){
-        int[] maxScore = new int[]{150, 250, 350, 450, 550, 650, 750, 850, 950, 1050};
+    public int getTimeScore(int level, int time, int timePerLevel){
+        int[] maxScore = new int[25];
+        for (int i = 0; i < 25; i++){
+            maxScore[i] = 50 + (100*level);
+        }
         int score;
 
-        time = time * 100/timePerLevel[level-1];
+        time = time * 100/timePerLevel;
         score = (int)((float)maxScore[level-1] * ((float)time/100.0f));
 
         return score;
@@ -234,10 +237,9 @@ public class FunctionHelper {
         String wotdItem = "";
         String itemType = "";
         String howTo = "";
-        String[] tempWotdItem = new String[131];
-        String[] tempItemType = new String[131];
-        String[] temphowTo = new String[131];
-
+        String[] tempWotdItem = new String[129];
+        String[] tempItemType = new String[129];
+        String[] temphowTo = new String[129];
 
         if (getWOTDCursor.getCount() != 0){
             while (getWOTDCursor.moveToNext()){

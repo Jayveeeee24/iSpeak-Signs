@@ -37,7 +37,7 @@ public class HowToSliderAdapter extends PagerAdapter {
             "Be mindful of your time!, each level has certain time limits",
             "Each game has three (3) lives which acts as a shield when you choose the wrong answer",
             "Each hand signs guessed correctly will give score, rise through the high scores!",
-            "Guess all the hand signs correctly and earn a badge that symbolizes that you are an \"FSL Learner\""
+            "Guess all the hand signs correctly and earn a badge that symbolizes that you're an \"FSL Learner\""
     };
 
     public String[] title_filipino = new String[]{
@@ -45,7 +45,7 @@ public class HowToSliderAdapter extends PagerAdapter {
             "Palaging alamin ang natitirang oras dahil bawat level ay may limitadong oras",
             "Bawat laro ay mayroong tatlo (3) na buhay na magsisilbing kasangga sa tuwing ikaw ay nakapili ng maling sagot",
             "Bawat tamang senyas na iyong mahuhulaan ay magbibigay ng puntos, abutin ang pinakamataas na puntos!",
-            "Hulaan ang lahat ng senyas nang tama at makakuha ng palatandaan na sumisimbulo na ikaw ay \"FSL Learner\""
+            "Hulaan ang lahat ng senyas nang tama at makakuha ng palatandaang sumisimbulo na ikaw ay isang \"FSL Learner\""
     };
 
     @Override

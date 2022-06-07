@@ -2,6 +2,13 @@
 
 DEBUG NOTES //THIS ARE BETA VERSIONS
 
+v1.3.10 6/7
+- Changed the cvsu logo
+- removed the gay, and tomboy at the database
+- adjusted resource nos in DBHelper
+- modified the scoring system for mini game in FunctionHelper
+- added more levels and modified implementation of checking past answers
+
 v1.3.9 5/31
 - added a how to instructions for recognition
 - changed gad logo

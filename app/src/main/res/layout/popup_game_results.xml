@@ -19,44 +19,11 @@
             android:background="@drawable/mini_game_bg1"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="2dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_learn_list_word"
-                        android:tint="@color/white" />
-
-                    <TextView
-                        android:id="@+id/result_total_words"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/mini_game_all_learned_words"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="80dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -205,7 +172,7 @@
                 android:layout_width="250dp"
                 android:layout_height="10dp"
                 android:layout_gravity="center_horizontal"
-                android:max="10"
+                android:max="25"
                 android:progress="9"
                 app:indicatorColor="@color/tulip"
                 app:trackThickness="15dp" />

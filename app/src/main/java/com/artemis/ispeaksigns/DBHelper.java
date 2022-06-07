@@ -52,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         "tulip", "japanese_indigo", "silver_lake_blue", "pink", "blue_cola",
                         "golden_puppy", "cornflower_blue", "flame", "apple", "may_green",
                         "veronese_green", "violet_blue", "grape", "steel_teal", "blue_surf"};
-        int[] itemCount = new int[]{7, 12, 7, 7, 26, 11, 7, 5, 7, 6, 11, 8, 6, 4, 7, 5, 7, 10, 8, 6};
+        int[] itemCount = new int[]{7, 12, 7, 7, 26, 11, 7, 5, 7, 6, 11, 8, 6, 2, 7, 5, 7, 10, 8, 6};
 
         String[] imageURL = new String[]{
                 "ic_araw_ng_linggo", "ic_buwan", "ic_lugar", "ic_emosyon", "ic_alpabeto",
@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 //TRANSPORTASYON
                 "Bangka", "Bisikleta", "Bus", "Dyip", "Eroplano", "Motorsiklo",
                 //KASARIAN
-                "Babae", "Lalaki", "Bakla", "Tomboy",
+                "Babae", "Lalaki",
                 //MIYEMBRO NG PAMILYA
                 "Nanay", "Tatay", "Ate", "Kuya", "Lolo", "Lola", "Sanggol",
 
@@ -116,9 +116,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 //PANG-EMERGENCY
                 "Tulungan nyo ako!", "Nananakawan ako!", "Ako ay nawawala!", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
                 //PANGKOMUNIKASYON
-                "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo!", "Saan ka nakatira", "Ingat ka sa iyong patutunguhan", "Magandang araw sa’yo", "Kain tayo", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
+                "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo!", "Saan ka nakatira?", "Ingat ka sa iyong patutunguhan!", "Magandang araw sa’yo!", "Kain tayo!", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
                 //EKSPRESYON NG ORAS
-                "Anong oras na?", "Pwede mo ba sabihin ang oras?", "Alam mo ba kung anong oras na?", "Alas sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
+                "Anong oras na?", "Pwede mo bang sabihin ang oras?", "Alam mo ba kung anong oras na?", "Alas sais na ng umaga", "Alas dose na ng tanghali", "Alas otso na ng gabi", "Magkita tayo mamaya", "Magkita tayo bukas",
                 //EKSPRESYON NG PAGMAMAHAL
                 "Nandito lang ako para sa’yo", "Ikaw ay isang kaakit-akit na babae", "Siya ay may may magandang mata", "May paghanga ako sa'yo", "Gusto kitang yakapin", "Gusto kita"
         };
@@ -151,7 +151,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 //TRANSPORTASYON
                 "ibuka na nakatihaya at  nakadikit ang magkabilang kamay at igalaw pasulong", "isenyas ang letrang ‘S’ sa magkabilang kamay at igalaw sa paikot na pasulong ng hindi nagsasabay", "isenyas ang letrang ‘B’ sa magkabilang kamay at igalaw ng magkasalungkat na taas at baba na direksyon", "ibuka ang palad sa kaliwang kamay nang nakahiwalay ang hinlalaki at isenyas ang letrang ‘J’ sa espasyo ng nakabukas na palad", "ibuka ang palad pahalang na nakahiwalay ang hinliliit at hinlalaki sa tatlong daliri at igalaw pahilig", "isenyas ang letrang ‘S’ na nakahiga sa magkabilang kamay at iangat na para bang nagmamaneho",
                 //KASARIAN
-                "isenyas ang letrang ‘A’ sa isang kamay, igalaw ito ng paunahan gamit ang hinlalaking daliri na sasayad sa pisngi", "itapat ng patagilid ang isang kamay sa noo at osenyas ang letrang ‘L’ na ang lahat ng daliri ay nakabukas. Igalaw ito ng pa sarado at bukas na galaw", "ibuka ang palad sa kanang kamay at ibaba ang gitnang daliri, idikit ang gitnang daliri sa pisngi at igalaw ang kamay papasok", "isenyas sa isang kamay ang letrang ‘T’ at kasunod nito ang letrang ‘V’ na nakatagilid sa unahang bahagi ng mukha",
+                "isenyas ang letrang ‘A’ sa isang kamay, igalaw ito ng paunahan gamit ang hinlalaking daliri na sasayad sa pisngi", "itapat ng patagilid ang isang kamay sa noo at isenyas ang letrang ‘L’ na ang lahat ng daliri ay nakabukas. Igalaw ito ng pa sarado at bukas na galaw",
                 //MIYEMBRO NG PAMILYA
                 "ibuka ang palad gamit ang kanang kamay at idikit ang hinlalaki sa baba ", "ibuka ang palad gamit ang kanang kamay at idikit ang hinlalaki sa noo ", "isenyas ang letrang ‘S’ sa kaliwang kamay, itapat sa pisngi at isenyas ang letrang ‘D’ pasulong na pahiga ", "Isenyas ang letrang ‘B’ sa kaliwang kamay, itapat sa pisngi at isenyas pababa ang kamay ", "isensyas ang letrang ‘O’ sa kanang kamay, ilapat ang likod ng palad sa noo at ibuka ang mga daliri ng dalawang beses ", "isenyas ang letrang ‘O’ sa kanang kamay pahiga sa ilalim ng baba at ibuka ang mga daliri ng dalawang beses", "Pag patungin o pag higain sa isa’t isa ang dalawang palad at saka ito igalaw o galawin na para bang may dinuduyang sanggol",
 
@@ -191,7 +191,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 //TRANSPORTASYON
                 "-yhKPlUP16E", "0RZwvpkH4h0", "xvhswEPL7gs", "Yt_fN6r2Ysk", "KHtAD38fMnQ", "Y2F8OnViRME",
                 //KASARIAN
-                "pAhRlRHetR8", "f2XLgn2DoiM", "bb6nah-i904", "xGWPEgP_2DU",
+                "pAhRlRHetR8", "f2XLgn2DoiM",
                 //MIYEMBRO NG PAMILYA
                 "ux-EPIqJO5w", "-N9ovBXHQt4", "sgEgS4YEaHk", "TA-E30JKVLQ", "TPqkixXxLl0", "6HqnVu4BpFk", "gpdtOhQcOAY",
 
@@ -317,34 +317,34 @@ public class DBHelper extends SQLiteOpenHelper {
                 }else{
                     imagesNo[i] = 1;
                 }
-            }else if (i < 124){
+            }else if (i < 122){
                 itemCategory[i] = "Kasarian";
                 itemType[i] = "Salita";
 
-                if (i == 120 || i == 122){
+                if (i == 120){
                     imagesNo[i] = 1;
                 }else{
                     imagesNo[i] = 2;
                 }
-            }else if (i < 131){
+            }else if (i < 129){
                 itemCategory[i] = "Miyembro ng Pamilya";
                 itemType[i] = "Salita";
 
-                if (i == 127 || i == 128 || i == 129){
+                if (i == 125 || i == 126 || i == 127){
                     imagesNo[i] = 2;
                 }else{
                     imagesNo[i] = 1;
                 }
-            }else if (i < 136){
+            }else if (i < 134){
                 itemCategory[i] = "Pagbati";
                 itemType[i] = "Parirala";
-            }else if (i < 143){
+            }else if (i < 141){
                 itemCategory[i] = "Pang-Emergency";
                 itemType[i] = "Parirala";
-            }else if (i < 153){
+            }else if (i < 151){
                 itemCategory[i] = "Pangkomunikasyon";
                 itemType[i] = "Parirala";
-            }else if (i < 161){
+            }else if (i < 159){
                 itemCategory[i] = "Ekspresyon ng Oras";
                 itemType[i] = "Parirala";
             }else {
@@ -367,7 +367,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
                 "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan",
-                "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri",
+                "pangngalan", "pangngalan",
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan", "pangngalan",
         };
 
@@ -377,7 +377,7 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("itemCategory", itemCategory[i]);
             values.put("itemType", itemType[i]);
             values.put("isLearned", 0);
-            if (i <= 131){
+            if (i < 129){
                 values.put("partsOfSpeech", partsOfSpeech[i]);
             }else{
                 values.put("partsOfSpeech", "");
