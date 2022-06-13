@@ -2,6 +2,12 @@
 
 DEBUG NOTES //THIS ARE BETA VERSIONS
 
+v1.4.1 6/13
+- added values for IPA in DBHelper
+- modified some values in parts of speech values in DBHelper
+- fixed bug in GameScreenActivity where the window for popup has bugs
+- fixed bug in searching category, word and videos using search functions to always search that starts with input search text
+
 v1.3.10 6/7
 - Changed the cvsu logo
 - removed the gay, and tomboy at the database

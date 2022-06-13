@@ -83,7 +83,7 @@ public class SearchVideoListAdapter extends RecyclerView.Adapter<SearchVideoList
             }else{
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (SearchVideoItem item : searchVideoItemsFull) {
-                    if(item.getItemName().toLowerCase().contains(filterPattern)){
+                    if(item.getItemName().toLowerCase().startsWith(filterPattern)){
                         filteredList.add(item);
                     }
                 }

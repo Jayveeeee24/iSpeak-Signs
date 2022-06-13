@@ -77,7 +77,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //DATABASE FOR ITEM TABLE
         DB.execSQL("create Table IF NOT EXISTS ItemTable(itemName TEXT primary key," +
-                " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT, imagesNo INTEGER, youtubeId TEXT, howTo TEXT)");
+                " itemCategory TEXT, itemType TEXT, isLearned INTEGER, partsOfSpeech TEXT, imagesNo INTEGER, youtubeId TEXT, howTo TEXT, IPA TEXT)");
 
         String[] itemName = new String[]{
                 //ARAW NG LINGGO
@@ -114,7 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 //PAGBATI
                 "Kamusta ka?", "Magandang umaga sa iyo", "Magandang hapon sa iyo", "Magandang gabi sa iyo", "Paalam na sa’yo",
                 //PANG-EMERGENCY
-                "Tulungan nyo ako!", "Nananakawan ako!", "Ako ay nawawala!", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
+                "Tulungan nyo ako!", "Nanakawan ako!", "Ako ay nawawala!", "Paki bilisan po", "Anong lugar ito?", "Maaari bang humiram ng telepono?", "Paki tigil po",
                 //PANGKOMUNIKASYON
                 "Ano ang pangalan mo?", "Patawarin mo ako", "Salamat sa iyo!", "Saan ka nakatira?", "Ingat ka sa iyong patutunguhan!", "Magandang araw sa’yo!", "Kain tayo!", "Nauunawaan mo ba ako?", "Nasaan ang banyo?", "Nasaan ang kusina?",
                 //EKSPRESYON NG ORAS
@@ -354,21 +354,78 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String[] partsOfSpeech = new String[]{
-                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
-                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
-                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
-                "pang-uri", "pangngalan", "pandiwa", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+
+//ARAW NG LINGGO
+                " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan", " pangngalan ", " pangngalan ",
+//MGA BUWAN
+                " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ",
+//LUGAR
+                " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ", " pangngalan ",
+//EMOSYON
+                " pang-uri ", " pang-uri ", " pang-uri ", " pang-uri ", " pang-uri ", " pang-uri ", " pang-uri ",
+//ALPABETO
                 "Letrang A", "Letrang B", "Letrang C", "Letrang D", "Letrang E", "Letrang F", "Letrang G", "Letrang H", "Letrang I", "Letrang J", "Letrang K", "Letrang L", "Letrang M", "Letrang N", "Letrang O", "Letrang P", "Letrang Q", "Letrang R", "Letrang S", "Letrang T", "Letrang U", "Letrang V", "Letrang W", "Letrang X", "Letrang Y", "Letrang Z",
+//NUMERO
                 "0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+//HAYOP
                 "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
-                "pangngalan", "pangngalan", "pangngalan", "pang-uri", "pangngalan",
-                "pang-uri","pang-uri","pang-uri","pang-uri","pangngalan","pang-uri","pang-uri",
-                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
-                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
-                "pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan","pangngalan",
-                "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan",
+//HUGIS
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+//KULAY
+                "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri", "pang-uri",
+//PRUTAS
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+//GULAY
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+//PARTE NG KATAWAN
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+//TRANSPORTASYON
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+//KASARIAN
                 "pangngalan", "pangngalan",
-                "pangngalan", "pangngalan", "pangngalan", "pangngalan"," pangngalan", "pangngalan", "pangngalan",
+//MIYEMBRO NG PAMILYA
+                "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan", "pangngalan",
+
+        };
+
+        String[] IPA = new String[]{
+                //ARAW NG LINGGO
+                "/lu-nes/", "/mar-tes/", "/mi-yer-ku-les/", "/hu-we-bes/", "/bi-yer-nes/", "/sa-ba-do/", "/ling-go/",
+//MGA BUWAN
+                "/e-ne-ro/", "/pe-bre-ro/", "/mar-so/", "/ab-ril/", "/ma-yo/", "/hu-nyo/", "/hul-yo/", "/a-gos-to/", "/se-tyem-bre/", "/ok-tub-re/", "/no-byem-bre/", "/di-syem-bre/",
+//LUGAR
+                "/ba-hay/", "/bo-ti-ka/", "/os-pi-tal/", "/pa-a-ra-lan/", "/pa-leng-ke/", "/par-ke/", "/sim-ba-han/",
+//EMOSYON
+                "/ga-lit/", "/gu-lat/", "/hi-ya/", "/lung-kot/", "/sa-ya/", "/ta-kot/", "/tu-wâ/",
+//ALPABETO
+                "/a/", "/b/", "/c/", "/d/", "/e/", "/f/", "/g/", "/h/", "/i/", "/j/", "/k/", "/l/", "/m/", "/n/", "/o/", "/p/", "/q/", "/r/", "/s/", "/t/", "/u/", "/v/", "/w/", "/x/", "/y/", "/z/",
+//NUMERO
+                "/se-ro/", "/i-sa/", "/da-la-wa/", "/tat-lo/", "/a-pat/", "/li-ma/", "/a-nim/", "/pi-to/", "/wa-lo/", "/si-yam/", "/sam-pu/",
+//HAYOP
+                "/aso/", "/a-has/", "/i-bon/", "/is-da/", "/Palaka/", "/pu-sa/", "/ung-goy/",
+//HUGIS
+                "/bi-log/", "/bi-tu-in/", "/pa-ri-ha-ba/", "/pa-ri-su-kat/", "/tat-su-lok/",
+//KULAY
+                "/ber-de/", "/bug-haw/", "/di-law/", "/i-tim/", "/li-la/", "/pu-la/", "/pu-ti/",
+//PRUTAS
+                "/bu-ko/", "/man-sa-nas/", "/mang-ga/", "/pak-wan/", "/pin-ya/", "/sa-ging/",
+//GULAY
+                "/ba-wang/", "/ka-la-ba-sa/", "/ka-ma-tis/", "/pa-ta-tas/", "/pet-say/", "/pi-pi-no/", "/re-pol-yo/", "/si-bu-yas/", "/si-li/", "/si-taw/", "/ta-long/",
+//PARTE NG KATAWAN
+                "/bi-big/", "/i-long/", "/ka-may/", "/le-eg/", "/ma-ta/", "/pa-a/", "/ta-i-nga/", "/u-lo/",
+//TRANSPORTASYON
+                "/bang-ka/", "/bi-sik-le-ta/", "/bus/", "/dyip/", "/e-rop-la-no/", "/mo-tor-sik-lo/",
+                //KASARIAN
+                "/ba-ba-e/", "/la-la-ki/",
+//MIYEMBRO NG PAMILYA
+                "/na-nay/", "/ta-tay/", "/a-te/", "/ku-ya/", "/lo-lo/", "/lo-la/", "/sang-gol/",
+
+                //PARIRALA
+                "", "", "", "", "",
+                "", "", "", "", "", "", "",
+                "", "", "", "", "", "", "", "", "", "",
+                "", "", "", "", "", "", "", "",
+                "", "", "", "", "", ""
         };
 
         for (int i = 0; i < itemName.length; i++){
@@ -385,6 +442,7 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("imagesNo", imagesNo[i]);
             values.put("youtubeId", youtubeId[i]);
             values.put("howTo", howTo[i]);
+            values.put("IPA", IPA[i]);
             DB.insert("ItemTable", null, values);
         }
 

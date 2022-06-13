@@ -44,7 +44,7 @@ public class learn_word_item extends Fragment {
     FunctionHelper functionHelper;
     int audio;
 
-    TextView learnWordItemName;
+    TextView learnWordItemName, ipa;
     TextView partsOfSpeech;
     ImageView heartItem;
     TextView howTo;
@@ -54,6 +54,7 @@ public class learn_word_item extends Fragment {
     String itemType = "";
     int imagesNo = 0;
     String stringHowTo = "";
+    String stringIpa = "";
 
     String word;
 
@@ -89,6 +90,7 @@ public class learn_word_item extends Fragment {
         partsOfSpeech = view.findViewById(R.id.parts_of_speech);
         heartItem = view.findViewById(R.id.learn_word_item_favorite);
         howTo = view.findViewById(R.id.learn_word_how_description);
+        ipa = view.findViewById(R.id.ipa);
 
         if (getArguments() != null){
             word = getArguments().getString("learn_word_item");
@@ -110,10 +112,12 @@ public class learn_word_item extends Fragment {
                 partsOfSpeech.setText(learnWordItemCursor.getString(4));
                 imagesNo = learnWordItemCursor.getInt(5);
                 stringHowTo = learnWordItemCursor.getString(7);
+                stringIpa = learnWordItemCursor.getString(8);
             }
         }
 
         howTo.setText(stringHowTo);
+        ipa.setText(stringIpa);
 
         if (isLearned == 0){
             functionHelper.updateisLearnedProgress(context, itemCategory, word);

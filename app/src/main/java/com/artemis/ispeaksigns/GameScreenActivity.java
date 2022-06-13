@@ -366,7 +366,7 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     private void setUpResultPopUp(boolean isCorrect){
-        final Dialog gameResultDialog = new Dialog(this);
+        final Dialog gameResultDialog = new Dialog(GameScreenActivity.this);
         gameResultDialog.setContentView(R.layout.popup_game_results);
         gameResultDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(100, 0, 0, 0)));
         gameResultDialog.setCanceledOnTouchOutside(false);
@@ -387,19 +387,10 @@ public class GameScreenActivity extends AppCompatActivity {
         final CardView scoreLayout = gameResultDialog.findViewById(R.id.score_layout);
         final LinearLayout badgeLayout = gameResultDialog.findViewById(R.id.badge_layout);
 
-        Cursor wordDiscoveredCursor = DB.countItems("WordDiscovered");
-        int wordsLearned = 0;
-
-        if (wordDiscoveredCursor.getCount() == 0){
-            Toast.makeText(this, "No database found!", Toast.LENGTH_SHORT).show();
-        }else{
-            while (wordDiscoveredCursor.moveToNext()){
-                wordsLearned = wordDiscoveredCursor.getInt(0);
-            }
-        }
-
-        gameResultDialog.show();
         gameResultDialog.getWindow().setAttributes(lp);
+        if (!isFinishing()){
+            gameResultDialog.show();
+        }
         levelOverviewLabel.setText(getResources().getString(R.string.level_label, Integer.toString(currentLevel)));
         progressGameLabel.setProgress(currentLevel);
 

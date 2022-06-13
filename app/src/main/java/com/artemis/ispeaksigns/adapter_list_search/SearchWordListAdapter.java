@@ -73,7 +73,7 @@ public class SearchWordListAdapter extends RecyclerView.Adapter<SearchWordListAd
             }else{
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (SearchWordItem item : searchWordItemsFull) {
-                    if(item.getItemName().toLowerCase().contains(filterPattern)){
+                    if(item.getItemName().toLowerCase().startsWith(filterPattern)){
                         filteredList.add(item);
                     }
                 }

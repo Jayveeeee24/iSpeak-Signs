@@ -85,7 +85,7 @@ public class SearchCategoryListAdapter extends RecyclerView.Adapter<SearchCatego
             }else{
                 String filterPattern = charSequence.toString().toLowerCase().trim();
                 for (SearchCategoryItem item : searchCategoryItemsFull) {
-                    if(item.getSearchItemName().toLowerCase().contains(filterPattern)){
+                    if(item.getSearchItemName().toLowerCase().startsWith(filterPattern)){
                         filteredList.add(item);
                     }
                 }
