@@ -182,5 +182,6 @@
     <string name="answer_wrong_label">Your answer is incorrect\nLife left: %1$s</string>
     <string name="learn_the_word_label"><u>Learn the word: %1$s</u></string>
     <string name="badge_toast">You are an \"FSL Learner\"</string>
+    <string name="magsumite_ng_puna">Submit a Feedback</string>
 
 </resources>

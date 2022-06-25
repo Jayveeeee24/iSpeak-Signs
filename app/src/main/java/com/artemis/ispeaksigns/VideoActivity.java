@@ -43,8 +43,6 @@ public class VideoActivity extends AppCompatActivity {
     TextView exoItemName;
     ImageView videoItemFavorite;
     ImageView btnBack;
-    YouTubePlayerView youTubePlayerView;
-    LinearLayout youtube_layout;
     RelativeLayout exo_layout;
     String videoId = "";
 
@@ -67,8 +65,6 @@ public class VideoActivity extends AppCompatActivity {
         videoItemFavorite = findViewById(R.id.video_item_favorite);
         btnBack = findViewById(R.id.btn_back);
 
-        youTubePlayerView = findViewById(R.id.youtube_player_view);
-        youtube_layout = findViewById(R.id.youtube_player_layout);
         exo_layout = findViewById(R.id.exo_player_layout);
 
         InitializeDesign();
@@ -86,43 +82,6 @@ public class VideoActivity extends AppCompatActivity {
             videoItemFavorite.setVisibility(View.INVISIBLE);
 
             videoId = videoName.toLowerCase();
-            playExo();
-        }else if (videoName.contains("@")){
-            videoName = videoName.substring(1);
-
-            Cursor youtubeIdCursor = DB.getItem(videoName, "getYoutubeId");
-            if (youtubeIdCursor.getCount() == 0){
-                Toast.makeText(this, "No database found!", Toast.LENGTH_SHORT).show();
-            }else{
-                while (youtubeIdCursor.moveToNext()){
-                    videoId = youtubeIdCursor.getString(0);
-                }
-                if (videoId.toLowerCase().equals(videoName.toLowerCase())){
-                    videoId = "FZ9L7AejW9Q";
-                }
-            }
-            youtube_layout.setVisibility(View.VISIBLE);
-            exo_layout.setVisibility(View.INVISIBLE);
-            youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-                @Override
-                public void onReady(YouTubePlayer youTubePlayer) {
-                    super.onReady(youTubePlayer);
-                    youTubePlayer.loadVideo(videoId, 0);
-                }
-            });
-
-            youTubePlayerView.addFullScreenListener(new YouTubePlayerFullScreenListener() {
-                @Override
-                public void onYouTubePlayerEnterFullScreen() {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                }
-
-                @SuppressLint("SourceLockedOrientationActivity")
-                @Override
-                public void onYouTubePlayerExitFullScreen() {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                }
-            });
         }else {
             videoItemFavorite.setEnabled(true);
             videoItemFavorite.setVisibility(View.VISIBLE);
@@ -151,8 +110,8 @@ public class VideoActivity extends AppCompatActivity {
                 isFavorite = 1;
             }
 
-            playExo();
         }
+        playExo();
 
     }
 
@@ -233,8 +192,7 @@ public class VideoActivity extends AppCompatActivity {
                         ContextCompat
                                 .getDrawable(getApplicationContext(), R.drawable.ic_fullscreen_exit));
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            } else
-            {
+            }else{
                 bt_fullscreen.setImageDrawable(ContextCompat
                         .getDrawable(getApplicationContext(), R.drawable.ic_fullscreen));
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -263,11 +221,6 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-
-        if (youtube_layout.getVisibility() == View.VISIBLE){
-            youTubePlayerView.release();
-            super.onBackPressed();
-        }
         //if user is in landscape mode we turn to portriat mode first then we can exit the app.
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             bt_fullscreen.performClick();
@@ -282,8 +235,6 @@ public class VideoActivity extends AppCompatActivity {
         super.onStop();
         if (exo_layout.getVisibility() == View.VISIBLE){
             exoPlayer.stop();
-        }else{
-            youTubePlayerView.release();
         }
 
     }
@@ -295,8 +246,6 @@ public class VideoActivity extends AppCompatActivity {
 
         if (exo_layout.getVisibility() == View.VISIBLE){
             exoPlayer.release();
-        }else{
-            youTubePlayerView.release();
         }
     }
 

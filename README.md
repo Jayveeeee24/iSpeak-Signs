@@ -2,6 +2,10 @@
 
 DEBUG NOTES //THIS ARE BETA VERSIONS
 
+v1.4.2 6/25
+- added new navigation for feedbacks
+- removed yt implementation in video activity and moved to learn word item
+
 v1.4.1 6/13
 - added values for IPA in DBHelper
 - modified some values in parts of speech values in DBHelper

@@ -1,7 +1,9 @@
 package com.artemis.ispeaksigns.sub_fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -21,8 +23,10 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.artemis.ispeaksigns.DBHelper;
 import com.artemis.ispeaksigns.FunctionHelper;
@@ -30,6 +34,11 @@ import com.artemis.ispeaksigns.MainActivity;
 import com.artemis.ispeaksigns.R;
 import com.artemis.ispeaksigns.VideoActivity;
 import com.artemis.ispeaksigns.WordImageSliderAdapter;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -55,12 +64,17 @@ public class learn_word_item extends Fragment {
     int imagesNo = 0;
     String stringHowTo = "";
     String stringIpa = "";
+    String videoId = "";
 
     String word;
 
     private TextView[] dots;
     private ViewPager wordImageViewPager;
     private LinearLayout wordImageLinear;
+    RelativeLayout learnWordImageParent;
+
+    YouTubePlayerView youTubePlayerView;
+    LinearLayout youtube_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,6 +91,8 @@ public class learn_word_item extends Fragment {
         DB = new DBHelper(context);
         wordImageViewPager = view.findViewById(R.id.viewpager_word_item);
         wordImageLinear = view.findViewById(R.id.linear_word_item);
+        learnWordImageParent = view.findViewById(R.id.learn_word_image_parent);
+
 
         SetUpDesign();
         InitializeOnClick();
@@ -91,6 +107,9 @@ public class learn_word_item extends Fragment {
         heartItem = view.findViewById(R.id.learn_word_item_favorite);
         howTo = view.findViewById(R.id.learn_word_how_description);
         ipa = view.findViewById(R.id.ipa);
+
+        youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+        youtube_layout = view.findViewById(R.id.youtube_player_layout);
 
         if (getArguments() != null){
             word = getArguments().getString("learn_word_item");
@@ -185,15 +204,56 @@ public class learn_word_item extends Fragment {
         learnWordPlayVideo = view.findViewById(R.id.learn_word_play_video);
 
         learnWordPlayVideo.setOnClickListener(new View.OnClickListener() {
+            int i = 0;
             @Override
             public void onClick(View view) {
                 view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.image_button_clicked));
-                try {
-                    Intent intent = new Intent(context, VideoActivity.class);
-                    intent.putExtra("ItemName", "@" + word);
-                    context.startActivity(intent);
-                }catch (IllegalArgumentException e){
-                    e.printStackTrace();
+
+                Cursor youtubeIdCursor = DB.getItem(word, "getYoutubeId");
+                if (youtubeIdCursor.getCount() == 0){
+                        Toast.makeText(context, "No database found!", Toast.LENGTH_SHORT).show();
+                }else{
+                    while (youtubeIdCursor.moveToNext()){
+                        videoId = youtubeIdCursor.getString(0);
+                    }
+                    if (videoId.toLowerCase().equals(word.toLowerCase())){
+                        videoId = "FZ9L7AejW9Q";
+                    }
+                }
+                if (i == 0){
+                    youtube_layout.setVisibility(View.VISIBLE);
+                    learnWordImageParent.setVisibility(View.INVISIBLE);
+
+                    ImageViewCompat.setImageTintList(learnWordPlayVideo, ColorStateList.valueOf(getResources().getColor(R.color.outrageous_orange, null)));
+                    youTubePlayerView.getPlayerUiController().showFullscreenButton(false);
+                    youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                        @Override
+                        public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                            super.onReady(youTubePlayer);
+                            youTubePlayer.loadVideo(videoId, 0);
+
+                            playAudio.performClick();
+                        }
+
+                        @Override
+                        public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState state) {
+                            super.onStateChange(youTubePlayer, state);
+
+                            if(state.equals(PlayerConstants.PlayerState.ENDED)){
+                                ImageViewCompat.setImageTintList(learnWordPlayVideo, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+
+                                youTubePlayer.loadVideo(videoId,0);
+                                youTubePlayer.seekTo(0);
+                            }
+                        }
+                    });
+                    i = 1;
+                }else{
+                    youtube_layout.setVisibility(View.INVISIBLE);
+                    learnWordImageParent.setVisibility(View.VISIBLE);
+
+                    ImageViewCompat.setImageTintList(learnWordPlayVideo, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
+                    i = 0;
                 }
             }
         });
@@ -250,6 +310,17 @@ public class learn_word_item extends Fragment {
         ImageView playAudio = view.findViewById(R.id.learn_word_play_audio);
         ImageViewCompat.setImageTintList(playAudio, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary, null)));
         mediaAudioWord.release();
+        if (youtube_layout.getVisibility() == View.VISIBLE){
+            youTubePlayerView.release();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (youtube_layout.getVisibility() == View.VISIBLE){
+            youTubePlayerView.release();
+        }
     }
 
     @Override
@@ -258,4 +329,5 @@ public class learn_word_item extends Fragment {
         audio = getResources().getIdentifier(word.toLowerCase(), "raw", context.getPackageName());
         mediaAudioWord = MediaPlayer.create(context, audio);
     }
+
 }

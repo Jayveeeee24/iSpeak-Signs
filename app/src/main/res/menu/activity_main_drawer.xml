@@ -58,6 +58,10 @@
                     android:id="@+id/language"
                     android:icon="@drawable/ic_menu_language"
                     android:title="@string/menu_language_label" />
+                <item
+                    android:id="@+id/nav_feedback"
+                    android:icon="@drawable/ic_feedback"
+                    android:title="@string/magsumite_ng_puna" />
             </group>
 
         </menu>

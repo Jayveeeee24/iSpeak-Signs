@@ -181,5 +181,8 @@
     <string name="answer_wrong_label">Mali ang iyong sagot\nBuhay na natitira: %1$s</string>
     <string name="learn_the_word_label"><u>Aralin ang salita: %1$s</u></string>
     <string name="badge_toast">Ikaw ay isang \"FSL Learner\"</string>
+    <string name="magsumite_ng_puna">Magsumite ng puna</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
