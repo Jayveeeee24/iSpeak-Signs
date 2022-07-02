@@ -184,4 +184,15 @@
     <string name="badge_toast">You are an \"FSL Learner\"</string>
     <string name="magsumite_ng_puna">Submit a Feedback</string>
 
+    <string name="trivia1">Hearing loss can range from mild to profound and has many different causes, including injury, disease, genetic defects and the ageing process.</string>
+    <string name="trivia2">The most common cause of acquired hearing loss is noise, which accounts for over one quarter of people affected by hearing loss.</string>
+    <string name="trivia3">On the International Day of Sign Languages, Sept. 23, we celebrate the Philippines’ national sign language, Filipino Sign Language (FSL).</string>
+    <string name="trivia4">FSL has been recognized as the national sign language of the Filipino Deaf through the Filipino Sign Language Act in October 2018. The law mandates that FSL be used in transactions with the Deaf and as the language of instruction for Deaf learners.</string>
+    <string name="trivia5">Rafael Abat and Liza B. Martinez grouped the "milestones and landmark events" of the development of Filipino linguistic signing into four waves, namely those that occurred in the early 1900s, the 1960s, the middle of the 1970s, and the 1990s.</string>
+    <string name="trivia6">Hearing loss is a common problem caused by noise, aging, disease, and heredity.</string>
+    <string name="trivia7">15% of the population of the Philippines have a moderate or worse hearing loss, a study finds.</string>
+    <string name="trivia8">There are degrees of hearing loss: mild, moderate, severe, profound.</string>
+    <string name="trivia9">Every sign gesture of FSL came from the experience and culture of the Filipino.</string>
+    <string name="trivia_desc">FSL Trivia</string>
+
 </resources>

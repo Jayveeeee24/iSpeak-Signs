@@ -11,17 +11,31 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/cvsu_fsl_gad"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="100dp"
+            android:fontFamily="@font/gotham_book_regular"
+            android:text="FSL &amp; GADRC"
+            android:background="@drawable/highlight_text"
+            android:textColor="@color/colorSecondary"
+            android:layout_centerHorizontal="true"
+            android:rotation="-90"
+            android:layout_marginTop="110dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/cvsu_mission"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_marginEnd="100dp"
             android:fontFamily="@font/gotham_book_regular"
             android:text="@string/cvsu_mission_nav"
-            android:background="@drawable/highlight_text"
-            android:textColor="@color/colorSecondary"
+            android:textColor="@color/gray_text_color"
             android:layout_centerHorizontal="true"
             android:rotation="-90"
-            android:layout_marginTop="102dp"
+            android:layout_marginTop="243dp"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -31,7 +45,7 @@
             android:layout_height="25dp"
             android:layout_centerHorizontal="true"
             android:layout_marginEnd="150dp"
-            android:layout_marginTop="242dp"
+            android:layout_marginTop="382dp"
             android:rotation="-90"
             android:fontFamily="@font/gotham_book_regular"
             android:text="@string/cvsu_vision_nav"
@@ -43,7 +57,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_toEndOf="@id/navigation_layout"
         android:paddingTop="58dp"
         android:paddingStart="10dp"
@@ -53,66 +67,138 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvsu_videoViewLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:ignore="UselessParent">
-
-                    <ImageView
-                        android:id="@+id/cvsu_video_thumbnail"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_magaral_bg"
-                        android:background="@color/may_green"
-                        tools:ignore="ContentDescription" />
-
-                    <ImageView
-                        android:id="@+id/cvsu_play_video"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_play"
-                        android:tint="@color/white"
-                        android:layout_centerInParent="true"
-                        android:contentDescription="@string/play_video_desc" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/cvsu_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="@string/cvsu_label_mission"
-                android:textColor="@color/colorPrimary"
-                android:gravity="center"
-                android:fontFamily="@font/gotham_book_regular"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_below="@id/cvsu_videoViewLayout"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:id="@+id/cvsu_text"
+            <LinearLayout
+                android:id="@+id/fsl_gad_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cvsu_label"
-                android:layout_marginTop="20dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/gotham_book_regular"
-                android:gravity="center"
-                android:text="@string/cvsu_text_mission"/>
+                android:visibility="visible"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ano nga ba ang FSL?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ang Filipino Sign Language ay isang wikang pansenyas gamit ang manwal at biswal na komunikasyon na ginagamit ng mga mamamayang pipi at bingi."
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sapagkat may malaking impluho ang American Sign language (ASL) at ang Signing Exact English (SEE) sa FSL ay mayroon parin itong malaking pagkakaiba sa isa\'t isa"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ano ang tungkulin ng CvSU GAD-RC?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ang Gender and Development Resource Center ay hindi lamang nakatuon sa mga programang nakapokus sa kasarian. Sila rin ay tumutugon at naglalaan ng programa para sa mga minorya at may kapansanan"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ang application na ito ay isa sa mga hakbang ng GADRC upang makatulong sa deaf community sa pag aaral ng Filipino Sign Language (FSL) na kasama sa gender mainstreaming strategy ng organisasyon"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/gotham_book_regular"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/cvsu_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvsu_videoViewLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:id="@+id/cvsu_video_thumbnail"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_magaral_bg"
+                            android:background="@color/may_green"
+                            tools:ignore="ContentDescription" />
+
+                        <ImageView
+                            android:id="@+id/cvsu_play_video"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/ic_play"
+                            android:tint="@color/white"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="@string/play_video_desc" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/cvsu_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/cvsu_label_mission"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/cvsu_videoViewLayout"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/cvsu_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cvsu_label"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/gotham_book_regular"
+                    android:gravity="center"
+                    android:text="@string/cvsu_text_mission"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

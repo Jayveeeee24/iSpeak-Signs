@@ -182,4 +182,15 @@
     <string name="badge_toast">Ikaw ay isang \"FSL Learner\"</string>
     <string name="magsumite_ng_puna">Magsumite ng puna</string>
 
+    <string name="trivia1">Ang pagkawala ng pandinig ay maaaring mula sa banayad hanggang sa malalim at may maraming iba\'t ibang dahilan, kabilang ang pinsala, sakit, genetic defect at ang proseso ng pagtanda.</string>
+    <string name="trivia2">Ang pinakakaraniwang sanhi ng nakuhang pagkawala ng pandinig ay ingay, na bumubuo sa mahigit isang-kapat ng mga taong apektado ng pagkawala ng pandinig.</string>
+    <string name="trivia3">Sa International Day of Sign Languages, Set. 23, ipinagdiriwang natin ang pambansang sign language ng Pilipinas, Filipino Sign Language (FSL).</string>
+    <string name="trivia4">Kinilala ang FSL bilang pambansang sign language ng Filipino Deaf sa pamamagitan ng Filipino Sign Language Act noong Oktubre 2018. Ang batas ay nag-uutos na ang FSL ay gamitin sa mga transaksyon sa mga Bingi at bilang wika ng pagtuturo para sa mga Bingi na nag-aaral.</string>
+    <string name="trivia5">Sina Rafael Abat at Liza B. Martinez ay pinagsama-sama ang mga "milestones and landmark events" ng pag-unlad ng Filipino linguistic signing sa apat na alon, ito ay ang mga naganap noong unang bahagi ng 1900s, 1960s, kalagitnaan ng 1970s, at 1990s.</string>
+    <string name="trivia6">Ang pagkawala ng pandinig ay isang karaniwang problema na dulot ng ingay, pagtanda, sakit, at pagmamana.</string>
+    <string name="trivia7">15% ng populasyon ng Pilipinas ay may katamtaman o mas matinding  pagkawala ng pandinig, natuklasan ng isang pag-aaral.</string>
+    <string name="trivia8">May mga antas ng pagkawala ng pandinig: banayad, katamtaman, malubha, malalim.</string>
+    <string name="trivia9">Bawat senyales ng kamay /kilos ng senyas ng FSL ay nagmula sa karanasan at kultura ng Pilipino.</string>
+    <string name="trivia_desc">FSL Trivia</string>
+
 </resources>

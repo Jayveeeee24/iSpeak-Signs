@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.artemis.ispeaksigns.R;
@@ -30,9 +32,12 @@ public class nav_cvsu extends Fragment {
     ImageView cvsuVideoThumbnail;
     ImageView cvsuPlayVideo;
     CardView cvsuVideoViewLayout;
+    LinearLayout fslGadLayout;
+    RelativeLayout cvsuLayout;
 
     TextView cvsuMission;
     TextView cvsuVision;
+    TextView cvsuFslGad;
     TextView cvsuText;
     TextView cvsuLabel;
 
@@ -46,14 +51,20 @@ public class nav_cvsu extends Fragment {
 
         cvsuMission = view.findViewById(R.id.cvsu_mission);
         cvsuVision = view.findViewById(R.id.cvsu_vision);
-        cvsuMission.setTypeface(Typeface.DEFAULT_BOLD);
+        cvsuFslGad = view.findViewById(R.id.cvsu_fsl_gad);
+        cvsuFslGad.setTypeface(Typeface.DEFAULT_BOLD);
+        cvsuMission.setTypeface(Typeface.DEFAULT);
         cvsuVision.setTypeface(Typeface.DEFAULT);
         cvsuText = view.findViewById(R.id.cvsu_text);
         cvsuLabel = view.findViewById(R.id.cvsu_label);
         cvsuVideoThumbnail = view.findViewById(R.id.cvsu_video_thumbnail);
         cvsuPlayVideo = view.findViewById(R.id.cvsu_play_video);
         cvsuVideoViewLayout = view.findViewById(R.id.cvsu_videoViewLayout);
+        fslGadLayout = view.findViewById(R.id.fsl_gad_layout);
+        cvsuLayout = view.findViewById(R.id.cvsu_layout);
 
+        fslGadLayout.setVisibility(View.VISIBLE);
+        cvsuLayout.setVisibility(View.INVISIBLE);
         videoName = "CvSU_Misyon";
 
         InitializeDesign();
@@ -73,6 +84,26 @@ public class nav_cvsu extends Fragment {
 
     public void InitializeOnClick()
     {
+        cvsuFslGad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fslGadLayout.setVisibility(View.VISIBLE);
+                cvsuLayout.setVisibility(View.INVISIBLE);
+
+                cvsuFslGad.setTypeface(Typeface.DEFAULT_BOLD);
+                cvsuFslGad.setBackgroundResource(R.drawable.highlight_text);
+                cvsuFslGad.setTextColor(getResources().getColor(R.color.colorSecondary, null));
+
+                cvsuMission.setTypeface(Typeface.DEFAULT);
+                cvsuMission.setBackgroundResource(android.R.color.transparent);
+                cvsuMission.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+
+                cvsuVision.setTypeface(Typeface.DEFAULT);
+                cvsuVision.setBackgroundResource(android.R.color.transparent);
+                cvsuVision.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+            }
+        });
+
         cvsuPlayVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +122,13 @@ public class nav_cvsu extends Fragment {
         cvsuMission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fslGadLayout.setVisibility(View.INVISIBLE);
+                cvsuLayout.setVisibility(View.VISIBLE);
+
+                cvsuFslGad.setTypeface(Typeface.DEFAULT);
+                cvsuFslGad.setBackgroundResource(android.R.color.transparent);
+                cvsuFslGad.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+
                 cvsuMission.setTypeface(Typeface.DEFAULT_BOLD);
                 cvsuMission.setBackgroundResource(R.drawable.highlight_text);
                 cvsuMission.setTextColor(getResources().getColor(R.color.colorSecondary, null));
@@ -108,6 +146,13 @@ public class nav_cvsu extends Fragment {
         cvsuVision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fslGadLayout.setVisibility(View.INVISIBLE);
+                cvsuLayout.setVisibility(View.VISIBLE);
+
+                cvsuFslGad.setTypeface(Typeface.DEFAULT);
+                cvsuFslGad.setBackgroundResource(android.R.color.transparent);
+                cvsuFslGad.setTextColor(getResources().getColor(R.color.gray_text_color, null));
+
                 cvsuVision.setTypeface(Typeface.DEFAULT_BOLD);
                 cvsuVision.setBackgroundResource(R.drawable.highlight_text);
                 cvsuVision.setTextColor(getResources().getColor(R.color.colorSecondary, null));

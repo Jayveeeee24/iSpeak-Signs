@@ -132,9 +132,4 @@
         android:name="com.artemis.ispeaksigns.MiniGameHowto"
         android:label="activity_mini_game_howto"
         tools:layout="@layout/activity_mini_game_howto" />
-    <fragment
-        android:id="@+id/nav_feedback"
-        android:name="com.artemis.ispeaksigns.FragmentFeeback"
-        android:label="@string/ispeak_signs_feedbacks"
-        tools:layout="@layout/fragment_feedback" />
 </navigation>

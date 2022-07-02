@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private NavController navController;
     private NavigationView navigationView;
 
-
     FunctionHelper functionHelper = new FunctionHelper();
     DBHelper DB;
     Boolean profileState;
@@ -71,16 +70,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //sets the app locale when changing the language via the option on navigation menu
         //DO NOT REMOVE OR ELSE THE LANGUAGE WON'T UPDATE WHEN CHANGING LANGUAGE IN THE NAVIGATION MENU
         functionHelper.setAppLocale(this);
 
         DB = new DBHelper(this);
         onUserLogin();//this triggers the function when the user logs in
-
         setContentView(R.layout.activity_main);
 
+        initializeTrivia();
         ///////Variable Definitions and Initializations
         ImageView toolbarImage1 = findViewById(R.id.toolbarImage1);
         TextView txtHomeGreeting1 = findViewById(R.id.txtHomeGreeting1);
@@ -286,6 +284,41 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return true;
             }
         });
+    }
+
+    private void initializeTrivia(){
+        int min = 0;
+        int random = (int)(Math.random() * (9 - min+1)+min);
+
+        String[] trivia = new String[]{
+                getString(R.string.trivia1),
+                getString(R.string.trivia2),
+                getString(R.string.trivia3),
+                getString(R.string.trivia4),
+                getString(R.string.trivia5),
+                getString(R.string.trivia6),
+                getString(R.string.trivia7),
+                getString(R.string.trivia8),
+                getString(R.string.trivia9)
+        };
+        final Dialog triviaDialog = new Dialog(MainActivity.this);
+        triviaDialog.setContentView(R.layout.popup_trivia);
+        triviaDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(100, 0, 0, 0)));
+        triviaDialog.setCanceledOnTouchOutside(true);
+        triviaDialog.setCancelable(true);
+        CardView triviaOk = triviaDialog.findViewById(R.id.trivia_ok);
+        TextView triviaSub = triviaDialog.findViewById(R.id.trivia_sub);
+
+        triviaDialog.show();
+        triviaSub.setText(trivia[random]);
+        triviaOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                triviaDialog.dismiss();
+            }
+        });
+
+
     }
 
     @Override
