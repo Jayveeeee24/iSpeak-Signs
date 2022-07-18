@@ -1,10 +1,10 @@
 # iSpeak-Signs
 
-//THIS REPOSITORY IS MY UNDERGRADUATE THESIS for the degree BS Computer Science
-//It is a collaborative project with our team from the Cavite State University-Cavite City Campus Gender and Development (CvSU-CCC GAD Unit)
+THIS REPOSITORY IS MY UNDERGRADUATE THESIS for the degree BS Computer Science.
+It is a collaborative project with our team from the Cavite State University-Cavite City Campus Gender and Development (CvSU-CCC GAD Unit)
 and Persons and Disabilities Affairs Office Cavite (PDAO).
-//It aims to provide a Filipino Sign Language (FSL) learning application for signers and non signers in the CvSU through the inclusion of gender mainstreaming strategy.
-//All content resources presented within the application are verified, validated and properly demonstrated by a licensed Sign Language Interpreter
+It aims to provide a Filipino Sign Language (FSL) learning application for signers and non signers in the CvSU through the inclusion of gender mainstreaming strategy.
+All content resources presented within the application are verified, validated and properly demonstrated by a licensed Sign Language Interpreter
 
 DEBUG NOTES //THIS ARE BETA VERSIONS
 
