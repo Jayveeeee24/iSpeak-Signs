@@ -1,4 +1,4 @@
-##DEBUG NOTES: THESE ARE BETA VERSIONS
+## DEBUG NOTES: THESE ARE BETA VERSIONS
 
 * v1.4.2 6/25
 - added new navigation for feedbacks
@@ -30,7 +30,7 @@
 - updated the gameScreenActivity
 - added a toast for crowns in profile and home
 
-##DEBUG NOTES: THESE ARE ALPHA VERSIONS
+## DEBUG NOTES: THESE ARE ALPHA VERSIONS
 
 * v1.3.7 5/26
 - changed the bg in activity game screen from gradient to bg2
@@ -207,7 +207,7 @@ category added:
 - removed dialog in onEnterStartedState in CameraBridgeViewBase class
 
 
-##THE ABOVE COMMITS CONTAINS THE SIGN LANGUAGE RECOGNITION IMPLEMENTATION
+## THE ABOVE COMMITS CONTAINS THE SIGN LANGUAGE RECOGNITION IMPLEMENTATION
 
 * v1.1r10 4/14
 - last commit before implementing sign language recognition
