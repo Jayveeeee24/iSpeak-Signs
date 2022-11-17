@@ -33,18 +33,21 @@ For each gesture, the developers accumulated 800 to 1000 images per gesture to t
 The dataset can be found [here](https://github.com/Jayveeeee24/ImagePro.git)
 
 ## Sign Youth Tech Team
+
+* Tinio, John Bernard - Leader, Lead Programmer
 <p align="left">
 <img src="https://media.discordapp.net/attachments/1042839582267428987/1042840348369625148/308426850_623670762723630_129748105148634594_n.jpg?width=395&height=413" alt="John Bernard's Profile" width="200" height="200">
 </p>
-* Tinio, John Bernard - Leader, Lead Programmer
+
+* De Guzman, Marie Ann Karen - Lead Graphic Designer
 <p align="left">
 <img src="https://media.discordapp.net/attachments/1042839582267428987/1042840348570964018/meh.png?width=412&height=413" alt="Marie Anne Karen's Profile" width="200" height="200">
 </p>
-* De Guzman, Marie Ann Karen - Lead Graphic Designer
+
+* Velasco, Rei Anne - Lead Researcher
 <p align="left">
 <img src="https://media.discordapp.net/attachments/1042839582267428987/1042840348902305832/reianne.png?width=395&height=413" alt="Rei Anne's Profile" width="200" height="200">
 </p>
-* Velasco, Rei Anne - Lead Researcher
 
 ## License
 GNU Affero General Public License v3.0. For a more detailed explanation, check it out [here.](https://github.com/Jayveeeee24/iSpeak-Signs/blob/main/LICENSE)
