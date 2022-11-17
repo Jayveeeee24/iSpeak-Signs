@@ -23,9 +23,9 @@ Latest release 1.4.2
 5. Resources are mostly offline except for online videos.
 
 ## Languages used
-1. Java
-2. Python
-3. SQL
+1. Java (Android)
+2. Python (Sign Language Detection)
+3. SQL (SQLite Database)
 
 ## How to explore on local machine?
 1. Download the project files by downloading zip or by git clone using bash
