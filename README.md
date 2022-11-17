@@ -10,12 +10,17 @@ and **Persons and Disabilities Affairs Office Cavite (PDAO)**.
 It aims to provide a **Filipino Sign Language (FSL) learning application** for signers and non signers in the CvSU through the inclusion of gender mainstreaming strategy.
 All content resources presented within the application are **verified, validated and properly demonstrated** by a licensed Sign Language Interpreter
 
-## Project Scope and Delimitation
-0. Can only be installed in Android devices (suggested: mobile).
-1. Filipino Sign Language Gestures of Letters A-Y (static only).
-2. Modules include: Word and Phrase FSL dictionary, FSL Recognition Technology, FSL word of the day, Mini Game, Profile.
-3. 15 word categories and 5 phrase category.
-3. Resources are mostly offline except for online videos.
+## Project Release APK
+Latest release 1.4.2
+* Google [Link](https://drive.google.com/file/d/1Mkq1tYz9UKotR7OxRwfEsAG-q5hfZFde/view?usp=share_link)
+* Github Tag [here.](https://github.com/Jayveeeee24/iSpeak-Signs/releases/tag/1.4.2)
+
+## Project Scope
+1. Can only be installed in Android devices (suggested: mobile).
+2. Filipino Sign Language Gestures of Letters A-Y (static only).
+3. Modules include: Word and Phrase FSL dictionary, FSL Recognition Technology, FSL word of the day, Mini Game, Profile.
+4. 15 word categories and 5 phrase category.
+5. Resources are mostly offline except for online videos.
 
 ## Languages used
 1. Java
