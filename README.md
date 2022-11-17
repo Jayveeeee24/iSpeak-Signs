@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://drive.google.com/file/d/1j449j7Nis03jPy4xSYcPQCNdqmBhijRR/view?usp=share_link" alt="iSpeak Signs Logo" width="200" height="200">
+<img src="https://drive.google.com/file/d/1j449j7Nis03jPy4xSYcPQCNdqmBhijRR/view" alt="iSpeak Signs Logo" width="200" height="200">
 </p>
 
 <h1 align="center">iSpeak Signs</h1>
