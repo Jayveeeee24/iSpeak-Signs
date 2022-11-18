@@ -15,6 +15,9 @@ Latest release 1.4.2
 * Google [Link](https://drive.google.com/file/d/1Mkq1tYz9UKotR7OxRwfEsAG-q5hfZFde/view?usp=share_link)
 * Github Tag [here.](https://github.com/Jayveeeee24/iSpeak-Signs/releases/tag/1.4.2)
 
+## Project Preview
+* You can view the project preview by visiting my portfolio [here](https://jayveeportfolio.brizy.site/ispeak-signs-projects)
+
 ## Project Scope
 1. Can only be installed in Android devices (suggested: mobile).
 2. Filipino Sign Language Gestures of Letters A-Y (static only).
