@@ -3,6 +3,10 @@ plugins {
 }
 
 android {
+
+    androidResources {
+        noCompress 'lite'
+    }
     compileSdkVersion 32
     buildToolsVersion "32.0.0"
 
@@ -27,17 +31,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            jni {
-                srcDirs 'src\\main\\jni', 'src\\main\\jnilibs'
-            }
-        }
-    }
-    aaptOptions {
-        noCompress "tflite"
-        noCompress "lite"
-    }
+    namespace 'com.artemis.ispeaksigns'
     /*
     buildFeatures {
         mlModelBinding true
