@@ -5,6 +5,6 @@
 5    android:versionName="3.4.13" >
 6
 7    <uses-sdk android:minSdkVersion="23" />
-7-->D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+7-->C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
 8
 9</manifest>

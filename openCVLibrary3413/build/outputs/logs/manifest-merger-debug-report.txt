@@ -1,29 +1,29 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
+ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
 	package
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:1-6:12
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:4:7-35
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:4:7-35
 	xmlns:android
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:3:5-32
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml:3:5-32
 uses-sdk
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-		ADDED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
-		INJECTED from D:\Final Projects\Projects\AndroidStudioProjects\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		ADDED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml
+		INJECTED from C:\D\Project Files\iSpeak-Signs\openCVLibrary3413\src\main\AndroidManifest.xml

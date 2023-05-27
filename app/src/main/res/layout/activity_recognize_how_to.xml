@@ -11,9 +11,8 @@
         android:id="@+id/viewpager_recognize_how_to"
         android:layout_width="match_parent"
         android:layout_above="@id/linear_recognize_how_to"
-        android:layout_height="match_parent">
-
-    </androidx.viewpager.widget.ViewPager>
+        android:contentDescription="How To FSL Recognition"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/linear_recognize_how_to"
